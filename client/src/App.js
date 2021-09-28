@@ -1,14 +1,14 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
+import Header from './components/Logos/Header';
 
 
 function App() {
   return (
-    <div >
-      <h1>Vamosss  Equipooooo</h1>
-       <Switch>
-        {/* <Route exact path = '/home' component={Home} /> */}
-        </Switch>
+    <div>
+       {/*<Switch>*/}
+        <Route path = '/' component={Header} /> 
+        {/*</Switch>*/}
     </div>
   );
 }
