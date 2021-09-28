@@ -19,10 +19,12 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const { getInfoAnnoun } = require("./src/utills/Announcements/preload/announcements.preload")
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(() => {
-  server.listen(3001, () => {
+conn.sync({ force: true }).then(async() => {
+  await server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
+    await getInfoAnnoun();
   });
 });
