@@ -1,0 +1,21 @@
+.cities {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    
+}
+
+.places {
+    border: 1px solid black ;
+    display: flex;
+    justify-content: center;
+    background-color: darkviolet;
+}
+
+.sms {
+    text-align: center;
+    background-color: coral;    
+}
