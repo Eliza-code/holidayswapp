@@ -1,0 +1,57 @@
+const { DataTypes } = require("sequelize");
+
+module.exports = (sequelize) => {
+   return sequelize.define("user", {
+        username: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+            pprimaryKey: true,
+        },
+        googleId: {
+            type: DataTypes.STRING,
+        },
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        isDeleted: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+        },
+        profilePicture: {
+            type: DataTypes.STRING,
+        },
+        name: {
+            type: DataTypes.STRING,
+        },
+        lastName: {
+            type: DataTypes.STRING,
+        },
+        email: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true,
+        },
+        password: {
+            type: DataTypes.STRING(60),
+            allowNull: false,
+        },
+        // phoneNumber: {
+        //     type: DataTypes.INTEGER,
+        // },  
+        dateOfBirth: {
+            type: DataTypes.DATE,
+        },
+        nacionality: {
+            type: DataTypes.STRING,
+        },
+        languagesSpoken: {
+            type: DataTypes.STRING,
+        },
+        points: {
+            type: DataTypes.INTEGER,
+            defaultValue: 500,
+        },
+    });
+};
