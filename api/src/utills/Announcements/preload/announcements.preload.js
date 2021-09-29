@@ -32,6 +32,7 @@ async function getInfoAnnoun (req, res) {
               a_c: el.amenities.a_c,
               private_parking: el.amenities.private_parking,
               image: el.image?.map(i => i),
+              
             },
           });
           return announcementData;
