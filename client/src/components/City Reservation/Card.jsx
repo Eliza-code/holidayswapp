@@ -4,18 +4,18 @@ import './Card.css';
 
 export default function AnnouncementCard(props) {
   // acá va tu código
-  const {id, Dueño, Ciudad, País, Rating, Puntos} = props;
+  const {id, Owner, City, Country, Rating, Points} = props;
   return (
   <div className="card2">
     <Link to={`/Anuncio/${id}`}>
     <li className="list-item">
       {/*<img width={100}src={image[0]} alt="No imagen"/>*/}
       <div className="align">
-  <h4 className="name">{Dueño}</h4>
-  <h4>{Ciudad}</h4>
-  <h4>{País}</h4>
+  <h4 className="name">{Owner}</h4>
+  <h4>{City}</h4>
+  <h4>{Country}</h4>
   <h4>{Rating}</h4>
-  <h4>{Puntos}</h4>
+  <h4>{Points}</h4>
   </div>
     </li>
     </Link>
