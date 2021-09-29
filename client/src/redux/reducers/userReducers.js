@@ -1,5 +1,8 @@
 const initialState =  {
-    home: []
+    home: [],
+    announcements: [{
+       
+    }]
 }
 
 const userReducer = (state=initialState, action) => {
@@ -9,6 +12,11 @@ const userReducer = (state=initialState, action) => {
                ...state,
                home: action.payload
            }
+        case "ANNOUNCEMENTS":
+            return {
+                ...state,
+                announcements: action.payload
+            }
         
         default: 
         return state;
