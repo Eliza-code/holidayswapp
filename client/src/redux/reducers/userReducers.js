@@ -7,7 +7,7 @@ const initialState =  {
 
 const userReducer = (state=initialState, action) => {
     switch (action.type){
-       case "GET_HOUSES":
+       case types.GET_HOUSES:
            return {
                ...state,
                home: action.payload
