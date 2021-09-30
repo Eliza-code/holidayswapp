@@ -1,4 +1,5 @@
 import axios from "axios";
+import * as types from "../types/userTypes";
 
 
 export function getHouses(name) {
@@ -15,3 +16,17 @@ export function getHouses(name) {
       }
     };
   }
+
+export const postUser = (input) => {
+  return async (dispatch) => {
+    try{
+      // const response = await axios.post('http://localhost:3001/user', input)
+    //   return dispatch({
+    //     type: types.POST_USER,
+    //     payload: response.data
+    // })
+    }catch (error) {
+      console.log(error);
+    }
+  }
+}
