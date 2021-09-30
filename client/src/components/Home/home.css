@@ -13,9 +13,23 @@
     display: flex;
     justify-content: center;
     background-color: darkviolet;
+    margin: 10px;
 }
 
 .sms {
     text-align: center;
     background-color: coral;    
+    margin: 10px;
+}
+
+.motivation{
+    display: flex;
+    border: 1px solid black;
+    margin: 10px;
+}
+
+.prayer{
+    display: inline-flex;
+    align-items: center;
+    
 }
