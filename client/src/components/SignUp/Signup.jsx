@@ -54,6 +54,7 @@ const validate= values => {
     }
     return errors;
 }
+
 const Signup = () => {
 
     const formik =  useFormik({
@@ -70,61 +71,61 @@ const Signup = () => {
             <h1>Post your Amazing Home</h1>
                 <div className="formLabel">
                     <label htmlFor='username'>Username</label>
-                    <input id='username' type='text' name='username' onChange={formik.handleChange} value={formik.values.username}/>
+                    <input id='username' type='text' name='username' onChange={formik.handleChange} value={formik.values.username} onBlur={formik.handleBlur}/>
                     {formik.errors.username ? <span>{formik.errors.username}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='password'>Password</label>
-                    <input id='password' type='password' name='password' onChange={formik.handleChange} value={formik.values.password} />
+                    <input id='password' type='password' name='password' onChange={formik.handleChange} value={formik.values.password} onBlur={formik.handleBlur} />
                     {formik.errors.password ? <span>{formik.errors.password}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='profilePicture'>Profile Picture</label>
-                    <input id='profilePicture' type='url' name='profilePicture' onChange={formik.handleChange} value={formik.values.profilePicture} />
+                    <input id='profilePicture' type='file' name='profilePicture' onChange={formik.handleChange} value={formik.values.profilePicture} onBlur={formik.handleBlur}/>
                     {formik.errors.profilePicture ? <span>{formik.errors.profilePicture}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='name'>Name</label>
-                    <input id='name' type='text' name='name' onChange={formik.handleChange} value={formik.values.name}/>
+                    <input id='name' type='text' name='name' onChange={formik.handleChange} value={formik.values.name} onBlur={formik.handleBlur}/>
                     {formik.errors.name ? <span>{formik.errors.name}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='lastname'>Lastname</label>
-                    <input id='lastname' type='text' name='lastname' onChange={formik.handleChange} value={formik.values.lastname}/>
+                    <input id='lastname' type='text' name='lastname' onChange={formik.handleChange} value={formik.values.lastname} onBlur={formik.handleBlur}/>
                     {formik.errors.lastname ? <span>{formik.errors.lastname}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='email'>E-mail</label>
-                    <input id='email' type='text' name='email' onChange={formik.handleChange} value={formik.values.email}/>
+                    <input id='email' type='text' name='email' onChange={formik.handleChange} value={formik.values.email} onBlur={formik.handleBlur}/>
                     {formik.errors.email ? <span>{formik.errors.email}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='phonenumber'>Phone Number</label>
-                    <input id='phonenumber' type='number' name='phonenumber' onChange={formik.handleChange} value={formik.values.phonenumber} />
+                    <input id='phonenumber' type='number' name='phonenumber' onChange={formik.handleChange} value={formik.values.phonenumber} onBlur={formik.handleBlur}/>
                     {formik.errors.phonenumber ? <span>{formik.errors.phonenumber}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='dateOfBirth'>Date Of Birth</label>
-                    <input id='dateOfBirth' type='date' name='dateOfBirth' onChange={formik.handleChange} value={formik.values.dateOfBirth}/>
+                    <input id='dateOfBirth' type='date' name='dateOfBirth' onChange={formik.handleChange} value={formik.values.dateOfBirth} onBlur={formik.handleBlur}/>
                     {formik.errors.dateOfBirth ? <span>{formik.errors.dateOfBirth}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='nationality'>Nationality</label>
-                    <input id='nationality' type='text' name='nationality' onChange={formik.handleChange} value={formik.values.nationality}/>
+                    <input id='nationality' type='text' name='nationality' onChange={formik.handleChange} value={formik.values.nationality} onBlur={formik.handleBlur}/>
                     {formik.errors.dateOfBirth ? <span>{formik.errors.dateOfBirth}</span> : null}
                 </div>
 
                 <div className="formLabel">
                     <label htmlFor='languagesSpoken'>Languages Spoken</label>
-                    <input id='languagesSpoken' type='text' name='languagesSpoken' onChange={formik.handleChange} value={formik.values.languagesSpoken} />
+                    <input id='languagesSpoken' type='text' name='languagesSpoken' onChange={formik.handleChange} value={formik.values.languagesSpoken} onBlur={formik.handleBlur}/>
                     {formik.errors.dateOfBirth ? <span>{formik.errors.dateOfBirth}</span> : null}
                 </div>
 
