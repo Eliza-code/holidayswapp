@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const router = require('express').Router();
 const express = require('express');
 const {User} = require('./../db');
@@ -32,5 +33,26 @@ router.get("/", async (req, res) => {
       res.status(400).send(error);
     }
   });
+=======
+const { Router } = require('express');
+const express = require('express');
+const {User} =require('../../src/db')
+
+const createUser = require('../controllers/user/createUser');
+const getUserById = require('../controllers/user/getUserById');
+
+const router = Router();
+router.use(express.json());
+
+router.post('/', createUser
+
+);
+
+// router.get('/getUser/:id', getUserById);
+
+
+
+
+>>>>>>> 6c600863fa966ec00923b64eacc2c28c61156fb4
 
 module.exports = router;

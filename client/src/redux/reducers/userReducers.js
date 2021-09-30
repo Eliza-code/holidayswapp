@@ -1,4 +1,7 @@
+import * as types from "../types/userTypes";
+
 const initialState =  {
+    userInfo:[],
     home: []
 }
 
@@ -9,7 +12,12 @@ const userReducer = (state=initialState, action) => {
                ...state,
                home: action.payload
            }
-        
+        case types.POST_USER:
+           return {
+               ...state,
+               userInfo: action.payload
+           }
+
         default: 
         return state;
     }

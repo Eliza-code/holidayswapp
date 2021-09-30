@@ -79,14 +79,3 @@ router.get("/", async (req, res) => {
   module.exports = router;
  
 
-/* const router = require('express').Router();
-const express = require('express');
-const { getInfoAnnoun } = require("../utills/Announcements/preload/announcements.preload")
-
-router.use(express.json());
-
-
-router.post('/', getInfoAnnoun);
-
-
-module.exports = router; */

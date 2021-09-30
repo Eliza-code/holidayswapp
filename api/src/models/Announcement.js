@@ -112,6 +112,10 @@ module.exports = (sequelize) => {
     },
     image:{
       type: DataTypes.ARRAY(DataTypes.STRING),
+    },
+    rating:{
+      type: DataTypes.BOOLEAN,
+            defaultValue: false,
     }
   });
 };

@@ -1,0 +1,42 @@
+.mainForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.containerForm{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(3, 21, 82, 0.644);
+    color: rgb(236, 230, 230);
+    width:50%;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+.formLabel{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formBtn{
+    background-color: rgba(8, 38, 46, 0.644);
+    color: rgb(236, 230, 230);
+    font-size: 20px;
+    padding: 15px;
+    margin: 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center; 
+}
+.formLabel span{
+    color:rgb(248, 62, 62);
+    font-weight: bold;
+    font-size: small;
+    margin-bottom: 10px;
+    text-align: center; 
+}
