@@ -6,7 +6,7 @@ import Announcements from './components/City Reservation/Anuncios';
 
 //User
 import Signup from './components/SignUp/Signup';
-import { Announcements } from './redux/actions/userActions';
+
 
 function App() {
   return (
