@@ -2,7 +2,8 @@ import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import "../NavBar/navbar.css";
-import Signup from "../SignUp/Signup"
+
+
 const NavBar = () => {
   return (
     <div>
