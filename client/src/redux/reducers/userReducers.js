@@ -1,8 +1,9 @@
 import * as types from "../types/userTypes";
 
 const initialState =  {
+    home: [],
+    announcements: [],
     userInfo:[],
-    home: []
 }
 
 const userReducer = (state=initialState, action) => {
@@ -17,7 +18,6 @@ const userReducer = (state=initialState, action) => {
                ...state,
                userInfo: action.payload
            }
-
         default: 
         return state;
     }
