@@ -1,5 +1,5 @@
 import React  from "react";
-import  Map  from "./New Google";
+import  Map  from "./Google Maps";
 import credentials from "./credentials";
 
 const mapURL = `https://maps.googleapis.com/maps/api/js?v=3.46.exp&key=${credentials.mapsKey}`;

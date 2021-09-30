@@ -1,8 +1,11 @@
+import Houses from '../../components/City Reservation/Stock Houses Photos/Houses';
+
 const initialState =  {
     home: [],
     announcements: [{
         id: 1,
         Owner: "Silvio",
+        Image: Houses.img1,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -11,6 +14,7 @@ const initialState =  {
     {
         id: 2,
         Owner: "Maria",
+        Image: Houses.img2,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -19,6 +23,7 @@ const initialState =  {
     {
         id: 3,
         Owner: "Silvia",
+        Image: Houses.img3,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -27,6 +32,7 @@ const initialState =  {
     {
         id: 4,
         Owner: "Silvana",
+        Image: Houses.img4,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -35,6 +41,7 @@ const initialState =  {
     {
         id: 5,
         Owner: "Silvestre",
+        Image: Houses.img5,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -43,6 +50,7 @@ const initialState =  {
     {
         id: 6,
         Owner: "Sandro",
+        Image: Houses.img6,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -51,6 +59,7 @@ const initialState =  {
     {
         id: 7,
         Owner: "Sofia",
+        Image: Houses.img7,
         City: "Roma",
         Country: "Italy",
         Rating: 5,
@@ -59,6 +68,7 @@ const initialState =  {
     {
         id: 8,
         Owner: "Sandro",
+        Image: Houses.img8,
         City: "Roma",
         Country: "Italy",
         Rating: 5,

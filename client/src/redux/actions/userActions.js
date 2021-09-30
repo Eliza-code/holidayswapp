@@ -1,7 +1,7 @@
 import axios from "axios";
 
 
-export function getHouses(name) {
+export function getHouses() {
     return async function (dispatch) {
       try {
         var json = ""   
@@ -15,3 +15,10 @@ export function getHouses(name) {
       }
     };
   }
+
+export function Announcements(payload) {
+  return {
+    type: "ANNOUNCEMENTS",
+    payload
+  }
+}
