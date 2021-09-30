@@ -1,6 +1,6 @@
 import Cards from './Cards'
 
-export default function Anuncios() {
+export default function Announcements() {
     return (
       <div>
         <Cards/>

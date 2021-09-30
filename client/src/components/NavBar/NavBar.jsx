@@ -1,7 +1,9 @@
 import React from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
-import "../NavBar/navbar.css"
+import "../NavBar/navbar.css";
+
+
 const NavBar = () => {
   return (
     <div>
@@ -22,9 +24,9 @@ const NavBar = () => {
       <button>
           Sing In
       </button>
-      <button>
-          Create Account
-      </button>
+      <Link to="/register">
+         <button> Create Account </button>
+      </Link>
       </div>
       </div>
     </div>
