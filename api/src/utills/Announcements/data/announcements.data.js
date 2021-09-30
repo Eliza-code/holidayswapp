@@ -1,6 +1,7 @@
 
 let announcements = [
   {
+    ownerId: 1,
     title: "TERRI's House",
     owner: "TERRI",
     country: "United States",
@@ -32,6 +33,7 @@ let announcements = [
     description: "Wonderful location, excellent neighborhood, quiet street, lots of privacy, best location on the Beach.",
   },
   {
+    ownerId: 2,
     title: "JAQUELINE's Home",
     owner: "JAQUELINE",
     country: "Brazil",
@@ -66,6 +68,7 @@ let announcements = [
     description: "Nuestra casa está situada en una muy buena parte de Copacabana. A solo 5 minutos a pie de la famosa playa de Copacabana y de muchos bares y restaurantes agradables que mantienen la vida en la calle hasta tarde. ",
   },
   {
+    ownerId: 3,
     title: "WHALTER's House",
     owner: "WHALTER",
     country: "Netherlands",
@@ -100,6 +103,7 @@ let announcements = [
     description: "Very comfortable house (groundfloor) in the centre of Amsterdam.",
   },
   {
+    ownerId: 4,
     title: "NADINA's Home",
     owner: "NADINA",
     country: "Russia",
@@ -134,6 +138,7 @@ let announcements = [
     description: "The apartment in the new house is being renovated. Furnished in the rooms and kitchen on the 15th floor. Near the lake. Subway 10 minutes walk.",
   },
   {
+    ownerId: 5,
     title: "MICHAEL's House",
     owner: "MICHAEL",
     country: "Indonesia",
@@ -168,6 +173,7 @@ let announcements = [
     description: "My place is a beautiful 3 bedroom Balinese open-style villa with a private pool. Great for families.",
   },
   {
+    ownerId: 6,
     title: "GEERT's House",
     owner: "GEERT",
     country: "Belgium",
@@ -202,6 +208,7 @@ let announcements = [
     description: "Our home is a big apartment built in 1926 and we tried to keep it authentic , yet it has all the modern comfort anyone could need.",
   },
   {
+    ownerId: 7,
     title: "ANA, VANINA I NEO's Home",
     owner: "ANA, VANINA I NEO",
     country: "Croatia",
@@ -236,6 +243,7 @@ let announcements = [
     description: "We live in the suburbs, its 20 min drive from city center and its surrounded with nature. Sometimes you can see deers, rabbits, foxes and sheep nearby.",
   },
   {
+    ownerId: 8,
     title: "IVY's House",
     owner: "IVY",
     country: "Australia",
@@ -270,6 +278,7 @@ let announcements = [
     description: "My home, a fairly new (2 years old) townhouse which is on 3 floors. Entrance is on the middle floor, as is the lounge room and kitchen.",
   },
   {
+    ownerId: 9,
     title: "La Casa de Xochimilco",
     owner: "PALOMA",
     country: "México",
@@ -304,6 +313,7 @@ let announcements = [
     description: "Cute house at the perfect location in new port of Nativitas, few blocks from Chapultepec Park and metro/bus stations.",
   },
   {
+    ownerId: 10,
     title: "YENY's House",
     owner: "YENY",
     country: "United States",
@@ -338,6 +348,7 @@ let announcements = [
     description: "Mi apartamento es amplio y con excelentes espacios, un apartamento por piso, con ascensor privado, 3 habitaciones cada una con baño privado, dos salas, amplia cocina, hermosa decoración",
   },
   {
+    ownerId: 11,
     title: "ALMA's place",
     owner: "ALMA DIAZ",
     country: "Spain",
@@ -372,6 +383,7 @@ let announcements = [
     description: "Si tengo que describir mi piso diría que tiene personalidad, es luminoso y se encuentra en pleno corazón del Madrid de los Austrias, ubicado en el emblemático barrio de Palacio y La Latina, la zona con más encanto de Madrid.",
   },
   {
+    ownerId: 12,
     title: "La Morada de ANDREA",
     owner: "ANDREA",
     country: "Spain",
@@ -406,6 +418,7 @@ let announcements = [
     description: "Nuestro apartamento es realmente muy bonito, recién reformado, espacioso y moderno.",
   },
   {
+    ownerId: 13,
     title: "Il Palatium",
     owner: "SONJA",
     country: "Italy",
@@ -439,6 +452,7 @@ let announcements = [
     description: "Our apartment is located on the 5th floor of a 6 stories high liberty style bulding from the 1930's.",
   },
   {
+    ownerId: 14,
     title: "Dreamland",
     owner: "VANESSA",
     country: "Switzerland",
@@ -473,6 +487,7 @@ let announcements = [
     description: "We live in a terraced house in a lovely residential area with a village like feel.",
   },
   {
+    ownerId: 15,
     title: "Not aLONE",
     owner: "LONE",
     country: "Denmark",
@@ -507,6 +522,7 @@ let announcements = [
     description:"Our home is a beautiful almost 100 year old house in Copenhagen on the Island of Amager. ",
   },
   {
+    ownerId: 16,
     title: "El Diego",
     owner: "DIEGO",
     country: "Uruguay",
@@ -541,6 +557,7 @@ let announcements = [
     description: "Es un hermoso y cómodo apartamento.Cuenta con un confortable living comedor con aire acondicionado, para relajarse, leer o si lo prefiere conectarse a internet y/o mirar TV en el Smart TV de 65 (Netflix, YouTube,Señal Satelital, Etc).",
   },
   {
+    ownerId: 17,
     title: "Chillax",
     owner: "NORMA",
     country: "Paraguay",
@@ -575,6 +592,7 @@ let announcements = [
     description: "La casa es única. Ubicación privilegiada con un entorno placentero. Querrán quedarse a vivir en ella.",
   },
   {
+    ownerId: 18,
     title: "LASSE's House",
     owner: "LASSE & OYVIND",
     country: "Norway",
@@ -609,6 +627,7 @@ let announcements = [
     description: "4 BR apartment at Aker Brygge downtown Oslo.The apartment is on the 7th and 8th floor above the bustle of street life.",
   },
   {
+    ownerId: 19,
     title: "JOANA's Home",
     owner: "JOANA",
     country: "Portugal ",
@@ -643,6 +662,7 @@ let announcements = [
     description: "My home is a duplex located on the second floor of a Lisbon looking building. Because it is located in a dead end street, it is very quiet and central at the same time.",
   },
   {
+    ownerId: 20,
     title: "PAULA's House",
     owner: "PAULA",
     country: "Chile",
