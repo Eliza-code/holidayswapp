@@ -1,12 +1,13 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Home from './components/Home/Home';
-import Google from './components/Google Maps/Map.js'
-import Announcements from './components/City Reservation/Anuncios';
+import Google from './components/GoogleMaps/Map.js'
+import Announcements from './components/CityReservation/Announcements';
+import Footer from './components/Footer/Footer';
 
 //User
 import Signup from './components/SignUp/Signup';
-import { Announcements } from './redux/actions/userActions';
+//import { Announcements } from './redux/actions/userActions';
 
 function App() {
   return (

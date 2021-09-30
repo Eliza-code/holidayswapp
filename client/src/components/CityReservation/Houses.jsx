@@ -1,14 +1,14 @@
-/*import React, { useEffect, useState } from 'react';
-import AnnouncementCard from './Card.jsx';
+import React, { useEffect, useState } from 'react';
+import HouseCard from './HouseCard.jsx';
 import { useSelector } from 'react-redux';
-import "./Countries.css"*/
+import "./CityCards.css"
 
-/*export default function City_Cards() {
-    const announcement = useSelector((state) => state.announcements);
+export default function Houses() {
+    const houses = useSelector((state) => state.home);
     const [currentPage, setCurrentPage] = useState(0);
-
+    
     const next_Page = () => {
-        if(announcement.length <= currentPage + 10) {
+        if(houses.length <= currentPage + 10) {
             setCurrentPage(currentPage);
         } else setCurrentPage(currentPage + 10);
     };
@@ -23,17 +23,19 @@ import "./Countries.css"*/
         setCurrentPage(0);
     };
     const last_Page = () => {
-        setCurrentPage(announcement.length - 10)
+        setCurrentPage(houses.length - 10)
     };
     useEffect(() => {
         first_Page()
-    }, [Homes]);
+    }, [houses]);
+    console.log(houses)
 
-const Filtred_Announcement = announcement.slice(currentPage, currentPage + 10);
+const filtredHouses = houses?.slice(currentPage, currentPage + 10);
+console.log(filtredHouses)
 
 return (
     <div>
-        {Filtred_Announcement.length >= 10 ? (
+        {filtredHouses?.length >= 10 ? (
             <div>
         <button className="button" onClick={first_Page}> {"<<"}</button>
         <button className="button" onClick={prev_Page}> {"<"}</button>
@@ -42,16 +44,17 @@ return (
         </div>
         ): null}
         <div className="grid">
-        {Filtred_Country.map((e)  => (
-        <AnnouncementCard
+        {filtredHouses?.map((e)  => (
+        <HouseCard
         id = {e.id}
-        Owner = {e.Owner}
-        City = {e.City}
+        title = {e.title}
+        image = {e.image}
         country = {e.country}
-        points = {e.points}
+        state = {e.state}
+        city = {e.city}
         />
         ))}
       </div>
     </div>
 )
-}*/
+}

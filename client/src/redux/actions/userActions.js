@@ -5,11 +5,9 @@ import * as types from "../types/userTypes";
 export function getHouses() {
     return async function (dispatch) {
       try {
-        var json = ""   
+        const json = await axios.get("http://localhost:3001/announcement")   
         return dispatch({
-          type: "GET_HOUSES",
-          payload: json.data,
-        });
+          type: types.GET_HOUSES, payload: json.data});
       } catch (error) {
         console.log(error);
         alert("ciudad o pais no encontrado");
@@ -17,14 +15,18 @@ export function getHouses() {
     };
   }
 
-<<<<<<< HEAD
-export function Announcements(payload) {
-  return {
-    type: "ANNOUNCEMENTS",
-    payload
+export function getHouseID(id) {
+  return async function (dispatch) {
+    try {
+      var json = await axios.get(`http://localhost:3001/announcement/${id}`);
+      return dispatch({ 
+        type: types.GET_HOUSES_ID, payload: json.data})
+    } catch(error) {
+      console.log(`No se encontró la casa con id ${id}`)
+    }
   }
 }
-=======
+
 export const postUser = (input) => {
   return async (dispatch) => {
     try{
@@ -38,4 +40,3 @@ export const postUser = (input) => {
     }
   }
 }
->>>>>>> bc6ec4e9c936bcce919fe17c7179ab8fde313b9a
