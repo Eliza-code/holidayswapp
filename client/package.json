@@ -7,9 +7,14 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.21.4",
+<<<<<<< HEAD
+    "google-maps-react": "^2.0.6",
+=======
     "formik": "^2.2.9",
+>>>>>>> bc6ec4e9c936bcce919fe17c7179ab8fde313b9a
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-google-maps": "^9.4.5",
     "react-redux": "^7.2.5",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",

@@ -1,12 +1,12 @@
 const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
-   return sequelize.define("user", {
+    return sequelize.define("user", {
         username: {
             type: DataTypes.STRING,
             allowNull: false,
             unique: true,
-            pprimaryKey: true,
+            primaryKey: true
         },
         googleId: {
             type: DataTypes.STRING,
@@ -37,9 +37,9 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING(60),
             allowNull: false,
         },
-        // phoneNumber: {
-        //     type: DataTypes.INTEGER,
-        // },  
+        phoneNumber: {
+            type: DataTypes.INTEGER,
+        },  
         dateOfBirth: {
             type: DataTypes.DATE,
         },
