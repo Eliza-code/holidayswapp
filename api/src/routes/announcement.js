@@ -2,7 +2,7 @@ const {Router} = require("express");
 const { Announcement } = require("../db");
 const { Op } = require("sequelize");
 const axios = require("axios");
-const { getInfoAnnoun } = require("../utills/Announcements/preload/announcements.preload")
+const { getInfoAnnoun } = require("../utils/Announcements/preload/announcements.preload")
 const router = Router();
 
 
@@ -51,6 +51,24 @@ router.get("/", async (req, res) => {
     }
   });
   
+  //Mia Personal...borrar despues!!
+  router.post('/', async (req,res,next)=>{
+    let anuncio = req.body;
+    console.log(anuncio);
+
+    try{       
+
+        const crearAnuncio = await Announcement.create({
+            ...anuncio,          
+            
+        })
+
+        return res.json(crearAnuncio)
+        
+    }catch (error) {
+        return res.send(error.message).status(409)
+    }
+  })
   module.exports = router;
  
 
