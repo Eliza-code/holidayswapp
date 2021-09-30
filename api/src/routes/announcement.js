@@ -1,24 +1,10 @@
 const {Router} = require("express");
 const { Announcement } = require("../db");
-const { User } = require("../db");
 const { Op } = require("sequelize");
 const axios = require("axios");
 const { getInfoAnnoun } = require("../utills/Announcements/preload/announcements.preload")
 const router = Router();
 
-
-router.post('/', async (req, res) => {
-    let announcement = req.body;
-    try{
-     const newAnnouncement = await Announcement.create({
-        ...announcement,
-    })
-    return res.json(newAnnouncement)
-    } catch (error) {
-      console.log(error)
-    }
-
-});
 
 router.get("/:id", async (req, res) => {
     const { id } = req.params;
@@ -37,9 +23,6 @@ router.get("/", async (req, res) => {
     try {
       if (city) {
         const announcementCity = await Announcement.findAll({
-          include: {
-                model: User
-          },
           where: {
             city: { [Op.iLike]: `%${city}%` },
           },
@@ -50,10 +33,6 @@ router.get("/", async (req, res) => {
       } 
       if (country) {
         const announcementCity = await Announcement.findAll({
-            
-          include: {
-            model: User
-            },
           where: {
             country: { [Op.iLike]: `%${country}%` },
           },
@@ -64,11 +43,7 @@ router.get("/", async (req, res) => {
       } 
       
       else {
-        const announcement = await Announcement.findAll({
-            include: {
-                model: User
-            }
-        });
+        const announcement = await Announcement.findAll();
         res.send(announcement);
       }
     } catch (error) {

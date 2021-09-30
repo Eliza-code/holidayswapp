@@ -39,16 +39,6 @@ Announcement.belongsTo(User, {
   foreignKey: 'userId'
 });
 
-// Uno a muchos, 1 a N
-// Usuario(User) va a tener muchos Anuncios(Announcements).
-// Se añade una clave -userId- en la tabla de Anuncios(Announcements).
-
-User.hasMany(Announcement /* , {foreignKey: 'dueñoId'} */);
-Announcement.belongsTo(User,/*  {as: 'dueño'} */);
-
-/* User.hasMany(Announcement);
-Announcement.belongsTo(User); */
-
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');
