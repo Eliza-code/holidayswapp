@@ -2,7 +2,7 @@ import axios from "axios";
 import * as types from "../types/userTypes";
 
 
-export function getHouses() {
+export function getHouses(name) {
     return async function (dispatch) {
       try {
         var json = ""   
@@ -17,14 +17,6 @@ export function getHouses() {
     };
   }
 
-<<<<<<< HEAD
-export function Announcements(payload) {
-  return {
-    type: "ANNOUNCEMENTS",
-    payload
-  }
-}
-=======
 export const postUser = (input) => {
   return async (dispatch) => {
     try{
@@ -38,4 +30,3 @@ export const postUser = (input) => {
     }
   }
 }
->>>>>>> bc6ec4e9c936bcce919fe17c7179ab8fde313b9a
