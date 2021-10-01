@@ -22,7 +22,8 @@ export function getHouseID(id) {
       return dispatch({ 
         type: types.GET_HOUSES_ID, payload: json.data})
     } catch(error) {
-      console.log(`No se encontró la casa con id ${id}`)
+      console.log(error)
+      alert('sadsad')
     }
   }
 }

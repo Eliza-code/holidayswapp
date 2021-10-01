@@ -5,7 +5,7 @@ import { getHouseID } from '../../redux/actions/userActions';
 import "./HouseDetail.css"
 
 export default function HomeID() {
-    const homeDetailed = useSelector((state) => state.userReducer.homeInfo)
+    const homeDetailed = useSelector((state) => state.userReducer.homeInfo) //userReducer.homeInfo
     const dispatch = useDispatch();
     const id = useParams();
     useEffect(() => {
@@ -20,12 +20,13 @@ export default function HomeID() {
     return (
         <div className="all">
             <button className="buton">
-                <Link className="link"to="/Country">Home</Link>
+                <Link className="link"to="/">Home</Link>
             </button>
+            <h1>PRUEBA</h1>
             <div className="container">
               <h1>{homeDetailed.owner}</h1>
               <div className="imgcontainer">
-                  <img src={homeDetailed.image[0]} alt="No se encontró la bandera"/>
+                  <img src={homeDetailed.image} alt="No se encontró la bandera"/>
               </div>
               <div className="table">
                  <h3>Country {homeDetailed.country}</h3>
