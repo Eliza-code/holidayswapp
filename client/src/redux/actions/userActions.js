@@ -6,6 +6,7 @@ export function getHouses(name) {
     return async function (dispatch) {
       try {
         var json = ""   
+        
         return dispatch({
           type: "GET_HOUSES",
           payload: json.data,
