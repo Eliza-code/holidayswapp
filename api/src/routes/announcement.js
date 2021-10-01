@@ -29,7 +29,7 @@ router.get("/", async (req, res) => {
         });
         announcementCity.length
           ? res.status(200).json(announcementCity)
-          : res.status(404).send("The country with that name was not found");
+          : res.status(404).send("The city with that name was not found");
       } 
       if (country) {
         const announcementCity = await Announcement.findAll({
