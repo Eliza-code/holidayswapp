@@ -17,6 +17,10 @@ const userReducer = (state=initialState, action) => {
                ...state,
                userInfo: action.payload
            }
+        case types.POST_SIGN_IN :
+            return {
+                ...state,
+            }
 
         default: 
         return state;
