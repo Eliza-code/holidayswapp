@@ -20,7 +20,7 @@ server.use(express.json({ limit: "50mb" }));
 server.use(helmet());
 server.use(cookieParser());
 server.set("trust proxy", 1);
-server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
+// server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
 server.use(
     session({
         secret: SECRET_KEY,
@@ -33,7 +33,7 @@ server.use(passport.initialize());
 server.use(passport.session());
 
 server.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', `${CLIENT_DOMAIN}`); // update to match the domain you will make the request from
+  res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
   res.header('Access-Control-Allow-Credentials', 'true');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
