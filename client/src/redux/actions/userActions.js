@@ -4,7 +4,7 @@ import * as types from "../types/userTypes";
 
 export function getHouses() {
     return async function (dispatch) {
-      try {
+      try {       
         const json = await axios.get("http://localhost:3001/announcement")   
         return dispatch({
           type: types.GET_HOUSES, payload: json.data});
@@ -54,3 +54,4 @@ export const postSignIn = (input) => {
     }
   }
 }
+

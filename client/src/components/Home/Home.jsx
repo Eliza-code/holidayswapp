@@ -18,6 +18,7 @@ import handHeart from  "../Photographs/statics/handHeart.png"
 import regular from  "../Photographs/statics/regular.png"
 import handright from  "../Photographs/statics/handright.png"
 import "../Home/home.css";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -25,10 +26,11 @@ const Home = () => {
       <NavBar />
       <hr />
       <div className="cities">
-        <p>
+      <Link>               
           <img src={miami} alt="miami" width="250em" height="200em" />
-          <h3>Miami</h3>
-        </p>
+          <h3>Miami</h3>          
+        </Link>
+        
         <p>
           <img src={paris} alt="paris" width="250em" height="200em" />
           <h3>Paris</h3>
