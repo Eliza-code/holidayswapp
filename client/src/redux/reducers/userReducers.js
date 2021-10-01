@@ -4,7 +4,6 @@ const initialState =  {
     home: [],
     homeInfo: [],
     userInfo:[],
-    home: []
 }
 
 const userReducer = (state=initialState, action) => {
