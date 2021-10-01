@@ -21,9 +21,9 @@ const NavBar = () => {
         </Link>
       </div>
       <div className="botoncitos">
-      <button>
-          Sing In
-      </button>
+      <Link to="/singin">
+         <button> Sing In </button>
+      </Link>
       <Link to="/register">
          <button> Create Account </button>
       </Link>

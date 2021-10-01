@@ -2,7 +2,7 @@ import axios from "axios";
 import * as types from "../types/userTypes";
 
 
-export function getHouses() {
+export function getHouses(name) {
     return async function (dispatch) {
       try {
         var json = ""   
@@ -17,25 +17,30 @@ export function getHouses() {
     };
   }
 
-<<<<<<< HEAD
-export function Announcements(payload) {
-  return {
-    type: "ANNOUNCEMENTS",
-    payload
-  }
-}
-=======
 export const postUser = (input) => {
   return async (dispatch) => {
     try{
-      // const response = await axios.post('http://localhost:3001/user', input)
-    //   return dispatch({
-    //     type: types.POST_USER,
-    //     payload: response.data
-    // })
+      const { data } = await axios.post('http://localhost:3001/user/', input)
+      return dispatch({
+        type: types.POST_USER,
+        payload: data,
+      })
     }catch (error) {
       console.log(error);
     }
   }
 }
->>>>>>> bc6ec4e9c936bcce919fe17c7179ab8fde313b9a
+
+export const postSignIn = (input) => {
+  return async (dispatch) => {
+    try{
+      const { data } = await axios.post('http://localhost:3001/user/signin', input)
+      return dispatch({
+        type: types.POST_SIGN_IN,
+        payload: data,
+      })
+    }catch (error) {
+      console.log(error);
+    }
+  }
+}

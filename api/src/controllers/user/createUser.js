@@ -15,6 +15,7 @@ module.exports = async (req,res,next) => {
         return res.json(createdUser)
         
     }catch (error) {
+        next(error)
         return res.send(error.message).status(409)
     }
 
