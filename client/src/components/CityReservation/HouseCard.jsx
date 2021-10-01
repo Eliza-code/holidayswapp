@@ -9,7 +9,7 @@ export default function HouseCard(props) {
   <div className="card2">
     <Link to={`/house/${id}`}>
     <li className="list-item">
-      <img width={100}src={image} alt="No imagen"/>
+      <img width={100}src={image[Math.floor(Math.random()*((image.length -1) - 0)+ 0)]} alt="No imagen"/>
       <div className="align">
   <h4 className="name">{title}</h4>
   <h4>{country}</h4>

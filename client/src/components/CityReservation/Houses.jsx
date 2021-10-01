@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import "./CityCards.css"
 
 export default function Houses() {
-    const houses = useSelector((state) => state.home);
+    const houses = useSelector((state) => state.userReducer.home);
     const [currentPage, setCurrentPage] = useState(0);
     
     const next_Page = () => {
