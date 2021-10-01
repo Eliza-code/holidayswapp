@@ -34,11 +34,11 @@ export const postUser = (input) => {
 export const postSignIn = (input) => {
   return async (dispatch) => {
     try{
-      const { data } = await axios.post('http://localhost:3001/user/signin', input)
-      return dispatch({
-        type: types.POST_SIGN_IN,
-        payload: data,
-      })
+      // const { data } = await axios.post('http://localhost:3001/user/signin', input)
+      // return dispatch({
+      //   type: types.POST_SIGN_IN,
+      //   payload: data,
+      // })
     }catch (error) {
       console.log(error);
     }
