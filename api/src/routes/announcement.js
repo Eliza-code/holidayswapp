@@ -18,8 +18,5 @@ router.delete('/:id', deleteAnnouncement);
 router.put('/:id', updateAnnouncement);
 router.get('/:id', getAnnouncementById);
 
-
-
-
 module.exports = router;
 
