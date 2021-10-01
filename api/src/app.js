@@ -17,20 +17,20 @@ server.name = 'API';
 server.use(morgan('dev'));
 server.use(express.urlencoded({ extended: true, limit: "50mb" }));
 server.use(express.json({ limit: "50mb" }));
-server.use(helmet());
-server.use(cookieParser());
-server.set("trust proxy", 1);
-server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
-server.use(
-    session({
-        secret: SECRET_KEY,
-        saveUninitialized: false,
-        resave: false,
-    })
-);
+// server.use(helmet());
+// server.use(cookieParser());
+// server.set("trust proxy", 1);
+// server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
+// server.use(
+//     session({
+//         secret: SECRET_KEY,
+//         saveUninitialized: false,
+//         resave: false,
+//     })
+// );
 
-server.use(passport.initialize());
-server.use(passport.session());
+// server.use(passport.initialize());
+// server.use(passport.session());
 
 server.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*'); // update to match the domain you will make the request from
