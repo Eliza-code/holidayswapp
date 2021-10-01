@@ -1,64 +1,47 @@
 import React from 'react';
 import { useFormik } from 'formik';
-import '../SignUp/Signup.css';
+import { useDispatch } from 'react-redux';
+import Autocomplete from "@mui/material/Autocomplete"
+import TextField from "@mui/material/TextField"
+import Box from "@mui/material/Box"
+import './Signup.css';
+import * as Yup from 'yup';
+import { nationalities, validate } from "./validate"
+import { postUser } from "../../redux/actions/userActions";
 
 const initialValues = {
     username:'',
     password:'',
+    confirmpassword: '',
     profilePicture:'',
     name:'',
-    lastname:'',
+    lastName:'',
     email:'',
-    phonenumber:'',
+    phoneNumber:'',
     dateOfBirth:'',
-    nationality:'',
+    nacionality:'',
     languagesSpoken:'',
 }
 
-const onSubmit = (e) => {
-    e.preventDefault();
-    console.log("work");
-}
-
-const validate= values => {
-    let errors = {}
-    if(!values.username){
-        errors.username = 'Required';
-    } 
-
-    if(!values.password){
-        errors.password = 'Required'
-    }else if(!/([A-Za-z][0-9]){5}/i.test(values.password)) {
-        errors.password = 'Must contain letters, numbers and more than 4 characters';
-    }else if( values.password !== values.confirmpassword){
-        errors.confirmpassword='Pasword ust be the same';
-    }
-    
-    // if(values.profilePicture !== "" && !/^(ftp|http|https):\/\/[^ "]+$/.test(values.profilePicture)){
-    //     errors.profilePicture = 'Must be an url';
-    // }
-    if(!values.name){
-        errors.name = 'Required';
-    } 
-    if(!values.lastname){
-        errors.lastname = 'Required';
-    } 
-
-    if(!values.email){
-        errors.email = 'Required';
-    } else if (!/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/i.test(values.email)){
-        errors.email = 'Invalid email format';
-    }
-
-    if( values.phonenumber){
-        if(!/^(\+0?1\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/.test(values.phonenumber)){
-            errors.phonenumber = 'Enter a valid phone number';
-        }
-    }
-    return errors;
-}
-
 const Signup = () => {
+
+    const dispatch = useDispatch()
+
+    const onSubmit = (values) => {
+        console.log(values)
+        dispatch(postUser({
+            username: values.username,
+            password: values.password,
+            profilePicture: values.profilePicture,
+            name: values.name,
+            lastName: values.lastName,
+            email: values.email,
+            phoneNumber: values.phoneNumber,
+            dateOfBirth: values.dateOfBirth,
+            nacionality: values.nacionality,
+            languagesSpoken: values.languagesSpoken
+        }));
+    }
 
     const formik =  useFormik({
         initialValues,
@@ -66,10 +49,9 @@ const Signup = () => {
         validate
     });
 
-    console.log(formik.touched)
     return ( 
         <div className="mainForm">
-            <form className="containerForm" onSubmit={formik.handleSumbit}>
+            <form className="containerForm" onSubmit={formik.handleSubmit}>
             <h1>Create your Profile</h1>
                 <div className="formLabel">
                     <label htmlFor='username'>Username</label>
@@ -132,15 +114,15 @@ const Signup = () => {
                 </div>
 
                 <div className="formLabel">
-                    <label htmlFor='lastname'>Lastname</label>
-                    <input id='lastname' 
+                    <label htmlFor='lastName'>Lastname</label>
+                    <input id='lastName' 
                     placeholder='Lastname' 
                     type='text' 
-                    name='lastname' 
+                    name='lastName' 
                     onChange={formik.handleChange} 
-                    value={formik.values.lastname} 
+                    value={formik.values.lastName} 
                     onBlur={formik.handleBlur}/>
-                    {formik.touched.lastname && formik.errors.lastname ? <span>{formik.errors.lastname}</span> : null}
+                    {formik.touched.lastName && formik.errors.lastName ? <span>{formik.errors.lastName}</span> : null}
                 </div>
 
                 <div className="formLabel">
@@ -156,15 +138,15 @@ const Signup = () => {
                 </div>
 
                 <div className="formLabel">
-                    <label htmlFor='phonenumber'>Phone Number</label>
-                    <input id='phonenumber' 
+                    <label htmlFor='phoneNumber'>Phone Number</label>
+                    <input id='phoneNumber' 
                     placeholder='' 
                     type='text' 
-                    name='phonenumber' 
+                    name='phoneNumber' 
                     onChange={formik.handleChange} 
-                    value={formik.values.phonenumber} 
+                    value={formik.values.phoneNumber} 
                     onBlur={formik.handleBlur}/>
-                    {formik.touched.phonenumber && formik.errors.phonenumber ? <span>{formik.errors.phonenumber}</span> : null}
+                    {formik.touched.phoneNumber && formik.errors.phoneNumber ? <span>{formik.errors.phoneNumber}</span> : null}
                 </div>
 
                 <div className="formLabel">
@@ -180,15 +162,32 @@ const Signup = () => {
                 </div>
 
                 <div className="formLabel">
-                    <label htmlFor='nationality'>Nationality</label>
-                    <input id='nationality' 
-                    placeholder='' 
-                    type='text' 
-                    name='nationality' 
-                    onChange={formik.handleChange} 
-                    value={formik.values.nationality} 
-                    onBlur={formik.handleBlur}/>
-                    {formik.touched.nationality && formik.errors.dateOfBirth ? <span>{formik.errors.dateOfBirth}</span> : null}
+
+                    <label htmlFor='nacionality'>Nationality</label>
+                    <Autocomplete
+                        id="nacionality"
+                        name="nacionality"
+                        sx={{ width: 300 }}
+                        options={nationalities}
+                        onChange={(e, value) => formik.setFieldValue("nacionality", value)}
+                        renderOption={(props, option) => (
+                        <Box
+                            component="li"
+                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                            {...props}
+                        >
+                            {option}
+                        </Box>
+                        )}
+                        renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Choose a nationality"
+                            name="nacionality"
+                        />
+                        )}
+                    />
+                    {formik.touched.nacionality && formik.errors.dateOfBirth ? <span>{formik.errors.dateOfBirth}</span> : null}
                 </div>
 
                 <div className="formLabel">
