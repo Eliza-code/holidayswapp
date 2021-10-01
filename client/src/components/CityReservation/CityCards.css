@@ -1,0 +1,22 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+.grid {
+    display: flex;
+    justify-content: space-arounds;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border-radius: 1em;
+    font-size: larger;
+    color: rgb(14, 13, 13)
+}
+
+.button:hover {
+    color: rgb(252, 249, 249);
+    background-color: #706e6e;
+}
