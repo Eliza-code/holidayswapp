@@ -2,7 +2,7 @@ import axios from "axios";
 import * as types from "../types/userTypes";
 
 
-export function getHouses(name) {
+export function getHouses() {
     return async function (dispatch) {
       try {
         const json = await axios.get("http://localhost:3001/announcement")   
