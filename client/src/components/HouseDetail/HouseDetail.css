@@ -1,0 +1,60 @@
+.all {
+    display: inline;
+}
+.link{
+    text-decoration: none;
+    color: gray;
+    display: contents;
+}
+
+.link:hover{
+    text-decoration: none;
+    color: rgb(99, 97, 97);
+    display: contents;
+}
+
+.container {
+    background-color: transparent;
+    border: 1px black solid;
+    border-radius: 10%;
+    margin: 0.5rem;
+    width:30%;
+    border: 2px solid rgba(255, 255, 255, 0.500);
+    color: white;
+}
+
+.container:hover {
+    background-color: rgb(97, 86, 86);
+}
+
+.imgcontainer img{
+    width: 50%;
+    height: 50%;
+    border-radius:10%;
+    margin: 2rem;
+}
+
+.buton {
+    color: gray;
+    display: inline-block;
+    padding: 0.5em;
+    margin-top: 5px;
+    border-radius: 1rem;
+    font-family: 'Arial',Arial, Helvetica, sans-serif;
+    font-weight: 350;
+    text-align: center;
+    font-size: larger;
+    color: transparent;
+}
+
+.buton:hover {
+    background-color: gray;
+}
+
+.Activity {
+    margin-right: 18px;
+}
+
+.table {
+    margin: 0.2rem;
+}
