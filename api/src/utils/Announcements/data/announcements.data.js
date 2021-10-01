@@ -277,7 +277,7 @@ let announcements = [
     description: "My home, a fairly new (2 years old) townhouse which is on 3 floors. Entrance is on the middle floor, as is the lounge room and kitchen.",
   },
   {
-   
+    
     title: "La Casa de Xochimilco",
     owner: "PALOMA",
     country: "México",
@@ -625,7 +625,8 @@ let announcements = [
     },
     description: "4 BR apartment at Aker Brygge downtown Oslo.The apartment is on the 7th and 8th floor above the bustle of street life.",
   },
-  { 
+  {
+    
     title: "JOANA's Home",
     owner: "JOANA",
     country: "Portugal ",
@@ -660,6 +661,7 @@ let announcements = [
     description: "My home is a duplex located on the second floor of a Lisbon looking building. Because it is located in a dead end street, it is very quiet and central at the same time.",
   },
   {
+    
     title: "PAULA's House",
     owner: "PAULA",
     country: "Chile",
