@@ -4,11 +4,8 @@ import Home from './components/Home/Home';
 import GMap from './components/GoogleMaps/Map.js'
 import Announcements from './components/CityReservation/Announcements';
 import HouseDetail from './components/HouseDetail/HouseDetail';
-<<<<<<< HEAD
 import AboutUs from './components/aboutUs/aboutUs';
 
-=======
->>>>>>> 2608dbd148be0ead1dc01f4783eff7c7444978d0
 
 //User
 import Signup from './components/SignUp/Signup';
