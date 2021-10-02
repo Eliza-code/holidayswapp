@@ -18,6 +18,7 @@ import handright from  "../Photographs/statics/handright.png"
 import "../Home/home.css";
 
 
+
 const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
