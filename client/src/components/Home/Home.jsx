@@ -19,6 +19,7 @@ import regular from  "../Photographs/statics/regular.png"
 import handright from  "../Photographs/statics/handright.png"
 import "../Home/home.css";
 import { Link } from "react-router-dom";
+import Announcements from "../CityReservation/Announcements";
 
 const Home = () => {
   return (
@@ -62,6 +63,9 @@ const Home = () => {
       </div>
       <div className="places">
         <h3>Places you may like</h3>
+      </div>
+      <div>
+      <Announcements/>
       </div>
       <div className="sms">
         <h2>it's official... we're the best home swapping platform </h2>

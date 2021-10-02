@@ -22,7 +22,7 @@ const NavBar = () => {
       </div>
       <div className="botoncitos">
       <Link to="/singin">
-         <button> Sing In </button>
+         <button> Sign In </button>
       </Link>
       <Link to="/register">
          <button> Create Account </button>

@@ -56,14 +56,14 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 2,
-            description: "Vodka tastes like wc water and doesn't shoot.",
+            description: "A very comfortable apartment, all the furniture in excellent condition",
             userId: 17,
             announcementId: 14,
             
         })
         await Review.create({
             stars: 3,
-            description: "Good location in this beautiful accommodation and all kinds of amenities",
+            description: "A very comfortable apartment, all the furniture in excellent condition",
             userId: 9,
             announcementId: 10,
             
@@ -85,7 +85,7 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 3,
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+            description: "A very comfortable apartment, all the furniture in excellent condition",
             userId: 9,
             announcementId: 11,
             
@@ -122,7 +122,7 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 3,
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+            description: "Good location in this beautiful accommodation and all kinds of amenities",
             userId: 5,
             announcementId: 1,
             
@@ -159,7 +159,7 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 3,
-            description: " Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+            description: " Good location in this beautiful accommodation and all kinds of amenities",
             userId: 4,
             announcementId: 2,
             
@@ -173,14 +173,14 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 3,
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+            description: "Good location in this beautiful accommodation and all kinds of amenities",
             userId: 6,
             announcementId: 2,
             
         })
         await Review.create({
             stars: 5,
-            description: "Very fine vodka. Bottle is a nice detail.",
+            description: "The apartment is very comfortable and beautiful. Excellent location",
             userId: 1,
             announcementId: 14,
             
@@ -195,7 +195,7 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 4,
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+            description: "The apartment is very comfortable and beautiful. Excellent location",
             userId: 13,
             announcementId: 12,
             
@@ -210,7 +210,7 @@ const getInfoReviews = async () => {
         })
         await Review.create({
             stars: 3,
-            description: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus.",
+            description: "The apartment is very comfortable and beautiful. Excellent location",
             userId: 5,
             announcementId: 20,
             
