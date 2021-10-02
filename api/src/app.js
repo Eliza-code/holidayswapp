@@ -21,15 +21,16 @@ server.use(helmet());
 server.use(cookieParser());
 server.set("trust proxy", 1);
 server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
+server.use(passport.initialize());
 server.use(
     session({
-        secret: SECRET_KEY,
+        secret: 'miclavepro',
         saveUninitialized: false,
         resave: false,
     })
 );
 
-server.use(passport.initialize());
+server.use(express.static("public"));
 server.use(passport.session());
 
 server.use((req, res, next) => {

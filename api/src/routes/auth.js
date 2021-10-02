@@ -1,12 +1,19 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const { User } = require('../db');
+const { User } = require("../db");
 const { SECRET_KEY } = process.env;
 
 const router = Router();
 router.use(express.json());
+
+router.post("/login",
+  passport.authenticate('local', {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  })
+);
 
 // router.post("/login", function (req, res, next) {
 //     passport.authenticate(
@@ -33,24 +40,22 @@ router.use(express.json());
 //     )(req, res, next);
 // });
 
-// //Con esta ruta enviamos un token de session
-// router.get("/user", async (req, res) => {
-//     const userid = 4 //harcodeado hasta saber como lo recibo/deberia ser req.user de passport?
-//     try {
-//         const user = await User.findOne({
-//             where: { id: userid },
-//         });
+//Con esta ruta enviamos un token de session
+router.get("/user", async (req, res) => {
+  try {
+    const user = await User.findOne({
+      where: { id: req.user.id },
+    });
 
-//         const { id, email, isAdmin, isDeleted } = user;
-//         let token = await jwt.sign({ id, email, isAdmin, isDeleted }, SECRET_KEY, {
-//             expiresIn: "24hr",
-//         });
+    const { id, email, isAdmin, isDeleted } = user;
+    let token = await jwt.sign({ id, email, isAdmin, isDeleted }, SECRET_KEY, {
+      expiresIn: "24hr",
+    });
 
-//         res.json(token);
-//     } catch (error) {
-//         res.json(error.message);
-//     }
-// });
-
+    res.json(token);
+  } catch (error) {
+    res.json(error.message);
+  }
+});
 
 module.exports = router;

@@ -8,9 +8,7 @@ const getUserById = require('../controllers/user/getUserById');
 const router = Router();
 router.use(express.json());
 
-router.post('/', createUser
-
-);
+router.post('/', createUser);
 
 // router.get('/getUser/:id', getUserById);
 

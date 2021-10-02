@@ -1,6 +1,8 @@
-var express = require('express');
-var passport = require('passport');
-var Strategy = require('passport-local').Strategy;
+var express = require("express");
+var passport = require("passport");
+const bcrypt = require("bcryptjs");
+var LocalStrategy = require("passport-local").Strategy;
+const { User } = require("../../db");
 
 // Configuración de estrategia local de Passport.
 
@@ -12,20 +14,64 @@ var Strategy = require('passport-local').Strategy;
 //  - Si las credenciales son invalidas --> done(null, false)
 //  - Si hubo un error durante la ejecución de esta función --> done(err)
 
-// passport.use(new Strategy(
-//     function(username, password, done) {
-//       db.users.findByUsername(username)
-//         .then((user) => {
-//           if(!user) {
-//             return done(null, false);
-//           }
-//           if(user.password != password) {
-//             return done(null, false);
-//           }
+passport.use('local',new LocalStrategy(
+    function(username, password, done) {
+      User.findOne({ username: username }, function (err, user) {
+        if (err) { return done(err); }
+        if (!user) { return done(null, false); }
+        if (!user.verifyPassword(password)) { return done(null, false); }
+        return done(null, user);
+      });
+    }
+  ));
+// passport.use(
+//   new LocalStrategy(
+//     {
+//       usernameField: "username",
+//       passwordField: "password",
+//       session: false,
+//     },
+
+    
+//     async (username, password, done) => {
+//     //   email = email.toLowerCase();
+//       const user = await User.findOne({ where: { username: username } });
+//       if (!user) return done(null, false);
+//       bcrypt.compare(password, user.password, (err, result) => {
+//         if (err) {
+//           return done(err);
+//         }
+//         if (!result) {
+//           return done(null, false);
+//         } else {
 //           return done(null, user);
-//         })
-//       .catch(err => {
-//         return done(err);
-//       })
-//     }));
-  
+//         }
+//       });
+//     }
+//   )
+// );
+
+// Configuración de la persistencia de la sesión autenticada
+
+// Para recuperar los datos de la sesión autenticada Passport necesita dos métodos para
+// serializar y deserializar al usuario de la sesión. Para ello la forma más práctica de hacerlo
+// es serializando el ID del usuario para luego al deserealizar a partir de dicho ID obtener
+// los demás datos de ese usuario. Esto permite que la información almacenada en la sesión sea
+// lo más simple y pequeña posible
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+// Al deserealizar la información del usuario va a quedar almacenada en req.user
+
+passport.deserializeUser(async (id, done) => {
+  try {
+    const user = await User.findOne({ where: { id } });
+    if (user) done(null, user);
+  } catch (err) {
+    done(err, null);
+  }
+});
+
+
