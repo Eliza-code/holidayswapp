@@ -13,7 +13,7 @@ import handHeart from  "../Photographs/statics/handHeart.png"
 import regular from  "../Photographs/statics/regular.png"
 import handright from  "../Photographs/statics/handright.png"
 import "../Home/home.css";
-import { Link } from "react-router-dom";
+
 import Announcements from "../CityReservation/Announcements";
 
 const Home = () => {
