@@ -11,11 +11,14 @@ const userRoutes = require('./user')
 const announcementRoutes = require('./announcement')
 const reviewrRoutes = require('./review')
 const favouriteRoutes = require('./favourite')
+const auth = require("./auth")
 
 router.use('/user', userRoutes);
 router.use("/announcement", announcementRoutes);
 router.use("/review", reviewrRoutes);
 router.use("/favourites", favouriteRoutes);
+router.use("/auth", auth)
+
 
 module.exports = router  
 

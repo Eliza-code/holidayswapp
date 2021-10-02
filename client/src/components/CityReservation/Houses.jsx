@@ -5,7 +5,8 @@ import "./CityCards.css"
 import { Link } from 'react-router-dom';
 
 export default function Houses() {
-    const houses = useSelector((state) => state.userReducer.home);
+    const houses = useSelector((state) => state.postReducer.houses);
+    
     const [currentPage, setCurrentPage] = useState(0);
     
     const next_Page = () => {
@@ -50,6 +51,7 @@ return (
         <div className="grid">
         {filtredHouses?.map((e)  => (
         <HouseCard
+        key={e.id}
         id = {e.id}
         title = {e.title}
         image = {e.image}

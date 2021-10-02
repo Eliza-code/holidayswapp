@@ -1,14 +1,12 @@
 import React from "react";
+import { useHistory } from "react-router-dom"
+import { useDispatch } from "react-redux";
+import { getHouseCity } from "../../redux/actions/postActions";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import miami from "../Photographs/miami.jpg";
-import bali from "../Photographs/bali.jpg";
-import paris from "../Photographs/paris.jpg";
-import rome from "../Photographs/roma.jpg";
-import moscow from "../Photographs/moscow.jpg";
-import riodejaneiro from "../Photographs/riodejaneiro.jpg";
-import Amsterdam from "../Photographs/Amsterdam.jpg";
-import Reikiavik from "../Photographs/Reikiavik.jpg";
+import {turisticCities} from "./turisticCities";
+import Announcements from '../CityReservation/Announcements';
+
 import Salta from "../Photographs/statics/salta.jpg"
 import Plane from  "../Photographs/statics/plane.png"
 import Location from "../Photographs/statics/Location.png"
@@ -18,48 +16,35 @@ import handHeart from  "../Photographs/statics/handHeart.png"
 import regular from  "../Photographs/statics/regular.png"
 import handright from  "../Photographs/statics/handright.png"
 import "../Home/home.css";
-import { Link } from "react-router-dom";
-import Announcements from "../CityReservation/Announcements";
+
 
 const Home = () => {
+  const dispatch = useDispatch();
+  const history = useHistory();
+
+  const handleOnClick = (e, name) => {
+    e.preventDefault();
+    dispatch(getHouseCity(name.trim()));
+    history.push(`/announcements/${name}`);
+  }
+
+
+
   return (
     <div>
       <NavBar />
-      <hr />
+      
       <div className="cities">
-      <Link to>               
-          <img src={miami} alt="miami" width="250em" height="200em" />
-          <h3>Miami</h3>          
-        </Link>
+        { turisticCities.map( el => {
+          return (
+            <div key={el.id}>
+              <img src = {el.image} alt="city" width="250em" height="200em"/>
+              <button onClick={(e)=>handleOnClick(e, el.name)}>
+                {el.name}
+              </button>
+            </div>
+        )})}
         
-        <p>
-          <img src={paris} alt="paris" width="250em" height="200em" />
-          <h3>Paris</h3>
-        </p>
-        <p>
-          <img src={bali} alt="bali" width="250em" height="200em" />
-          <h3>Bali</h3>
-        </p>
-        <p>
-          <img src={rome} alt="rome" width="250em" height="200em" />
-          <h3>Rome</h3>
-        </p>
-        <p>
-        <img src={riodejaneiro} alt="riodejaneiro" width="250em" height="200em"/>
-        <h3>Rio de Janeiro</h3>
-        </p>
-        <p>
-        <img src={moscow} alt="moscow" width="250em" height="200em" />
-        <h3>Moscow</h3>
-        </p>
-        <p>
-        <img src={Amsterdam} alt="Amsterdam" width="250em" height="200em" />
-        <h3>Amsterdam</h3>
-        </p>
-        <p>
-        <img src={Reikiavik} alt="Reikiavik" width="250em" height="200em" />
-        <h3>Reikiavik</h3>
-        </p>
       </div>
       <div className="places">
         <h3>Places you may like</h3>
