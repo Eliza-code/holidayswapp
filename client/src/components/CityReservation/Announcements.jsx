@@ -1,22 +1,20 @@
-import React, {useEffect}  from "react";
-import { getHouses } from "../../redux/actions/userActions";
+import React, { useEffect } from "react";
+import { getHouses } from "../../redux/actions/postActions";
 import { useDispatch } from "react-redux";
 import Houses from "./Houses";
-import NavBar from "../NavBar/NavBar";
-import Footer from "../Footer/Footer";
 
-
-export default function Announcements() {
+const Announcements = () => {
   const dispatch = useDispatch();
+  
   useEffect(() => {
     dispatch(getHouses());
   }, [dispatch]);
+
   return (
     <div>
-      <NavBar />
-      <hr />
       <Houses />
-      <Footer />
     </div>
   );
-}
+};
+
+export default Announcements;

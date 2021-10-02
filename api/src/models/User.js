@@ -1,4 +1,6 @@
 const { DataTypes } = require("sequelize");
+const user = require("../utils/Users/data/users.data");
+
 
 module.exports = (sequelize) => {
     sequelize.define("user", {
@@ -58,5 +60,9 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             defaultValue: 500,
         },
+
+        
     });
+
+ 
 };
