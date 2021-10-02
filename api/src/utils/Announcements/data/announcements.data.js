@@ -15,6 +15,7 @@ let announcements = [
     beds: 5,
     bathrooms: 4,
     surfaceM2: 260,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -46,6 +47,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 90,
     points: 280,
+    rating: 5,
     image: ["https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/09/ac/69/3e.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/09/ac/69/40.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/08/63/86/c9.jpg"
@@ -81,6 +83,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 85,
     points: 123,
+    rating: 3,
     image: [ "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/07/88/ab/cd.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/07/88/ab/8f.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/07/89/8e/1b.jpg"
@@ -116,6 +119,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 65,
     points: 136,
+    rating: 4,
     image:[ "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/50/57/53.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/50/57/6e.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/50/56/e8.jpg"
@@ -170,6 +174,7 @@ let announcements = [
       private_parking: false,
     },
     description: "My place is a beautiful 3 bedroom Balinese open-style villa with a private pool. Great for families.",
+    rating: 4,
   },
   {
     
@@ -186,6 +191,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 49,
     points: 270,
+    rating: 5,
     image:[  "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/0d/36/eb.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/34/e7/36.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/0d/36/03.jpg"
@@ -203,6 +209,7 @@ let announcements = [
       a_c: true,
       bancony: true,
       private_parking: false,
+      
     },
     description: "Our home is a big apartment built in 1926 and we tried to keep it authentic , yet it has all the modern comfort anyone could need.",
   },
@@ -225,6 +232,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 71,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -260,6 +268,7 @@ let announcements = [
     beds: 4,
     bathrooms: 1,
     surfaceM2: 92,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -295,6 +304,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 88,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -330,6 +340,7 @@ let announcements = [
     beds: 4,
     bathrooms: 2,
     surfaceM2: 167,
+    rating: 4,
     home_rules: {
       smokersWelcome: true,
       petsWelcome: false,
@@ -365,6 +376,7 @@ let announcements = [
     beds: 2,
     bathrooms: 1,
     surfaceM2: 80,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -400,6 +412,7 @@ let announcements = [
     beds: 6,
     bathrooms: 2,
     surfaceM2: 125,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -435,6 +448,7 @@ let announcements = [
     beds: 3,
     bathrooms: 2,
     surfaceM2: 170,
+    rating: 5,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -469,6 +483,7 @@ let announcements = [
     beds: 5,
     bathrooms: 1,
     surfaceM2: 120,
+    rating: 4,
     home_rules: {
       smokersWelcome: true,
       petsWelcome: true,
@@ -504,6 +519,7 @@ let announcements = [
     beds: 6,
     bathrooms: 2,
     surfaceM2: 109,
+    rating: 5,
     home_rules: {
       smokersWelcome: true,
       petsWelcome: false,
@@ -539,6 +555,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 67,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -574,6 +591,7 @@ let announcements = [
     beds: 7,
     bathrooms: 4,
     surfaceM2: 325,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -609,6 +627,7 @@ let announcements = [
     beds: 5,
     bathrooms: 2,
     surfaceM2: 140,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -644,6 +663,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 90,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -679,6 +699,7 @@ let announcements = [
     beds: 6,
     bathrooms: 2,
     surfaceM2: 110,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
