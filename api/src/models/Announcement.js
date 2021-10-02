@@ -112,5 +112,9 @@ module.exports = (sequelize) => {
     image: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
+    rating: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 };

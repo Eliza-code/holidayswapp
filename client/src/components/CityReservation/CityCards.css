@@ -4,8 +4,9 @@
 }
 .grid {
     display: flex;
-    justify-content: space-arounds;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .button {
@@ -13,10 +14,16 @@
     padding: 0.35em 1.2em;
     border-radius: 1em;
     font-size: larger;
-    color: rgb(14, 13, 13)
+    color: rgb(14, 13, 13);
+    margin: 3PX;
 }
 
 .button:hover {
-    color: rgb(252, 249, 249);
+    color: rgb(20, 19, 19);
     background-color: #706e6e;
+}
+
+.arrow{
+    display: flex;
+    justify-content: center;
 }

@@ -7,6 +7,6 @@ module.exports = async (req, res) => {
       let announcementById = await Announcement.findByPk(id);
       announcementById ? res.send(announcementById) : res.sendStatus(404);
     } catch (error) {
-        res.send({ error: err.message }).status(409);
+        res.send({ error: error.message }).status(409);
     }
   }
