@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getHouseID } from '../../redux/actions/userActions';
+import { getHouseID } from '../../redux/actions/postActions';
 import Footer from '../Footer/Footer';
 import NavBar from '../NavBar/NavBar';
 import "./HouseDetail.css"
