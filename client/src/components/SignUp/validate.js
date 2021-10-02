@@ -153,7 +153,7 @@ export const nationalities = [
     
 ]
 
-export const languages = [
+export const languagesSpoken = [
     "Afrikaans",
     "Albanian",
     "Amharic",

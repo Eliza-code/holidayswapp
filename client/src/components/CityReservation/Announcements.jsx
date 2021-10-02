@@ -5,6 +5,7 @@ import Houses from "./Houses";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 
+
 export default function Announcements() {
   const dispatch = useDispatch();
   useEffect(() => {
