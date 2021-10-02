@@ -16,7 +16,7 @@ const NavBar = () => {
         <SearchBar />
       </div>
       <div>
-        <Link>
+        <Link to="/aboutus">
           <h4>about us</h4>
         </Link>
       </div>

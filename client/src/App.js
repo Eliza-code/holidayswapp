@@ -4,7 +4,8 @@ import Home from './components/Home/Home';
 import GMap from './components/GoogleMaps/Map.js'
 import Announcements from './components/CityReservation/Announcements';
 import HouseDetail from './components/HouseDetail/HouseDetail';
-import Footer from './components/Footer/Footer';
+import AboutUs from './components/aboutUs/aboutUs';
+
 
 //User
 import Signup from './components/SignUp/Signup';
@@ -22,6 +23,7 @@ function App() {
           <Route exact path = '/announcements' component={Announcements}/>
           <Route exact path = '/announcements/:id' component={HouseDetail}/>
           <Route exact path="/singin" component={SignIn} />
+          <Route exact path="/aboutus" component={AboutUs} />
         </Switch>
     </div>
   );

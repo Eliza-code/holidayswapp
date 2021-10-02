@@ -26,7 +26,7 @@ const Home = () => {
       <NavBar />
       <hr />
       <div className="cities">
-      <Link>               
+      <Link to>               
           <img src={miami} alt="miami" width="250em" height="200em" />
           <h3>Miami</h3>          
         </Link>
