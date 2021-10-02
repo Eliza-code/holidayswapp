@@ -28,6 +28,18 @@ export function getHouseID(id) {
   }
 }
 
+export function getHouseCity(city) {
+  return async function(dispatch) {
+      try {
+          const json = await axios.get("http://localhost:3001/announcement?city=" + city);
+          return dispatch({ type: "GET_HOUSE_CITY", payload: json.data})
+      } catch(error) {
+          console.log(error)
+          alert("There's not cities avalaible on this city")
+      }
+  }
+}
+
 export const postUser = (input) => {
   return async (dispatch) => {
     try{

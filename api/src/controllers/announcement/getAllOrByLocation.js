@@ -23,14 +23,14 @@ module.exports = async (req, res) => {
         });
         announcementCountry.length
           ? res.status(200).json(announcementCountry)
-          : res.status(404).send("The country with that name was not found");
+          : res.status(405).send("The country with that name was not found");
       } else {
         const announcement = await Announcement.findAll({
           include: User,
         });
         res.send(announcement);
       }
-    } catch (err) {
-      return res.send({ error: err.message }).status(409);
+    } catch (error) {
+       res.send({ error: error.message }).status(409);
     }
   }
