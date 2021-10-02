@@ -4,7 +4,6 @@ import Home from './components/Home/Home';
 import GMap from './components/GoogleMaps/Map.js'
 import Announcements from './components/CityReservation/Announcements';
 import HouseDetail from './components/HouseDetail/HouseDetail';
-import Footer from './components/Footer/Footer';
 
 //User
 import Signup from './components/SignUp/Signup';
