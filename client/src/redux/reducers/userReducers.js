@@ -1,9 +1,8 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-    home: [],
-    homeInfo: [],
-    userInfo:[],
+    userInfo: [],
+    
 }
 
 const userReducer = (state=initialState, action) => {
