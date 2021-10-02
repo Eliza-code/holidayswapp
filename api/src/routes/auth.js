@@ -1,61 +1,63 @@
-const { Router } = require("express");
+const { Router } = require('express');
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const { User } = require("../db");
+const { User } = require('../db');
 const { SECRET_KEY } = process.env;
+var LocalStrategy = require('passport-local').Strategy;
+
 
 const router = Router();
 router.use(express.json());
 
-router.post("/login",
-  passport.authenticate('local', {
-    successRedirect: "/",
-    failureRedirect: "/login",
-  })
-);
+router.post('/login', 
+  passport.authenticate('local', { failureRedirect: '/login' }),
+  async function(req, res) {
+    res.send('logeado');
+  });
 
-// router.post("/login", function (req, res, next) {
-//     passport.authenticate(
-//         "local",
-//         { session: false },
-//         async function (err, user) {
-//             if (err) return next(err);
-//             else if (!user) return res.sendStatus(401);
-//             else {
-//                 return res.send(
-//                     await jwt.sign(
-//                         {
-//                             id: user.id,
-//                             email: user.email,
-//                             isAdmin: user.isAdmin,
-//                             isDeleted: user.isDeleted,
-//                         },
-//                         SECRET_KEY,
-//                         { expiresIn: "24hr" }
-//                     )
-//                 );
-//             }
-//         }
-//     )(req, res, next);
-// });
+  passport.use(
+    new LocalStrategy(
+      {
+        usernameField: 'username', 
+        passwordField: 'password',
+        session: false
+      },
+      async (username, password, done) => {
+        
+        const user = await User.findOne({where:{ username: username }})
+        console.log(user);
+        if (!user) return done(null, false);
+        if (!user.password===password) { return done(null, false); }
+        return done(null, user);      
+        
+      })
+  );
+  
+// Configuración de la persistencia de la sesión autenticada
 
-//Con esta ruta enviamos un token de session
-router.get("/user", async (req, res) => {
-  try {
-    const user = await User.findOne({
-      where: { id: req.user.id },
-    });
+// Para recuperar los datos de la sesión autenticada Passport necesita dos métodos para
+// serializar y deserializar al usuario de la sesión. Para ello la forma más práctica de hacerlo
+// es serializando el ID del usuario para luego al deserealizar a partir de dicho ID obtener
+// los demás datos de ese usuario. Esto permite que la información almacenada en la sesión sea
+// lo más simple y pequeña posible
 
-    const { id, email, isAdmin, isDeleted } = user;
-    let token = await jwt.sign({ id, email, isAdmin, isDeleted }, SECRET_KEY, {
-      expiresIn: "24hr",
-    });
+passport.serializeUser((username, done) => {
+   
+    done(null, username);
+  });
 
-    res.json(token);
-  } catch (error) {
-    res.json(error.message);
-  }
-});
+// Al deserealizar la información del usuario va a quedar almacenada en req.user
+
+passport.deserializeUser(async (username, done) => {
+    try{
+      const user = await User.findOne({ where: { username } })
+      if (user) done(null, user);
+    }catch(err){
+      done(err, null);
+    }
+  });
+ 
+
 
 module.exports = router;
