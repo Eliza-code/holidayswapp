@@ -16,13 +16,13 @@ const NavBar = () => {
         <SearchBar />
       </div>
       <div>
-        <Link>
+        <Link to="/aboutus">
           <h4>about us</h4>
         </Link>
       </div>
       <div className="botoncitos">
       <Link to="/singin">
-         <button> Sing In </button>
+         <button> Sign In </button>
       </Link>
       <Link to="/register">
          <button> Create Account </button>
