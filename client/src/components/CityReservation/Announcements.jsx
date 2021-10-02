@@ -7,7 +7,7 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 =======
 import React, { useEffect } from 'react';
-import { getHouses } from '../../redux/actions/userActions'
+import { getHouses } from '../../redux/actions/postActions'
 import { useDispatch } from 'react-redux'
 import Houses from './Houses'
 import NavBar from '../NavBar/NavBar';
