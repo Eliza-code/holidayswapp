@@ -18,6 +18,8 @@ import handHeart from  "../Photographs/statics/handHeart.png"
 import regular from  "../Photographs/statics/regular.png"
 import handright from  "../Photographs/statics/handright.png"
 import "../Home/home.css";
+import { Link } from "react-router-dom";
+import Announcements from "../CityReservation/Announcements";
 
 const Home = () => {
   return (
@@ -25,10 +27,11 @@ const Home = () => {
       <NavBar />
       <hr />
       <div className="cities">
-        <p>
+      <Link>               
           <img src={miami} alt="miami" width="250em" height="200em" />
-          <h3>Miami</h3>
-        </p>
+          <h3>Miami</h3>          
+        </Link>
+        
         <p>
           <img src={paris} alt="paris" width="250em" height="200em" />
           <h3>Paris</h3>
@@ -60,6 +63,9 @@ const Home = () => {
       </div>
       <div className="places">
         <h3>Places you may like</h3>
+      </div>
+      <div>
+      <Announcements/>
       </div>
       <div className="sms">
         <h2>it's official... we're the best home swapping platform </h2>
