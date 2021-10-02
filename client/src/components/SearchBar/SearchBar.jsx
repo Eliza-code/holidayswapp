@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getHouses } from "../../redux/actions/userActions";
+import { getHouses } from "../../redux/actions/postActions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const SearchBar = () => {
     <div>
       <input
         type="text"
-        placeholder="city or country..."
+        placeholder="city..."
         value={word}
         onChange={(event) => handleImputChange(event)}
         onKeyPress={(event) => {
@@ -40,7 +40,7 @@ const SearchBar = () => {
         }}
       />
       <button type="submit" onClick={(event) => handleSubmit(event)}>
-        Buscar
+        Search
       </button>
     </div>
   );

@@ -1,14 +1,9 @@
 import React from "react";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
-import miami from "../Photographs/miami.jpg";
-import bali from "../Photographs/bali.jpg";
-import paris from "../Photographs/paris.jpg";
-import rome from "../Photographs/roma.jpg";
-import moscow from "../Photographs/moscow.jpg";
-import riodejaneiro from "../Photographs/riodejaneiro.jpg";
-import Amsterdam from "../Photographs/Amsterdam.jpg";
-import Reikiavik from "../Photographs/Reikiavik.jpg";
+import {turisticCities} from "./turisticCities";
+import {Link} from 'react-router-dom';
+
 import Salta from "../Photographs/statics/salta.jpg"
 import Plane from  "../Photographs/statics/plane.png"
 import Location from "../Photographs/statics/Location.png"
@@ -23,9 +18,18 @@ const Home = () => {
   return (
     <div>
       <NavBar />
-      <hr />
+      
       <div className="cities">
-        <p>
+        <Link to='/'>
+        { turisticCities.map( el => {
+          return (
+            <div>
+            <img src = {el.image} alt="city" width="250em" height="200em"/>
+            <h3>{el.name}</h3>
+            </div>
+        )})}
+        </Link>
+        {/* <p>
           <img src={miami} alt="miami" width="250em" height="200em" />
           <h3>Miami</h3>
         </p>
@@ -56,7 +60,7 @@ const Home = () => {
         <p>
         <img src={Reikiavik} alt="Reikiavik" width="250em" height="200em" />
         <h3>Reikiavik</h3>
-        </p>
+        </p> */}
       </div>
       <div className="places">
         <h3>Places you may like</h3>

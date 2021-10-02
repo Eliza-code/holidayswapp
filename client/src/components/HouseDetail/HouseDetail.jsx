@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
-import { getHouseID } from '../../redux/actions/userActions';
+import { getHouseID } from '../../redux/actions/postActions';
 import "./HouseDetail.css"
 
 export default function HomeID() {
-    const homeDetailed = useSelector((state) => state.userReducer.homeInfo)
+    const homeDetailed = useSelector((state) => state.postReducer.homeInfo)
     const dispatch = useDispatch();
     const id = useParams();
     useEffect(() => {

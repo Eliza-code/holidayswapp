@@ -6,7 +6,7 @@ import TextField from "@mui/material/TextField"
 import Box from "@mui/material/Box"
 import './Signup.css';
 import * as Yup from 'yup';
-import { nationalities, validate } from "./validate"
+import { nationalities, validate, languagesSpoken } from "./validate"
 import { postUser } from "../../redux/actions/userActions";
 
 const initialValues = {
@@ -192,13 +192,29 @@ const Signup = () => {
 
                 <div className="formLabel">
                     <label htmlFor='languagesSpoken'>Languages Spoken</label>
-                    <input id='languagesSpoken' 
-                    placeholder='' 
-                    type='text' 
-                    name='languagesSpoken' 
-                    onChange={formik.handleChange} 
-                    value={formik.values.languagesSpoken} 
-                    onBlur={formik.handleBlur}/>
+                    <Autocomplete
+                        id="languagesSpoken"
+                        name="languagesSpoken"
+                        sx={{ width: 300 }}
+                        options={languagesSpoken}
+                        onChange={(e, value) => formik.setFieldValue("languagesSpoken", value)}
+                        renderOption={(props, option) => (
+                        <Box
+                            component="li"
+                            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                            {...props}
+                        >
+                            {option}
+                        </Box>
+                        )}
+                        renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            label="Choose a language"
+                            name="languagesSpoken"
+                        />
+                        )}
+                    />
                     {formik.touched.languagesSpoken && formik.errors.dateOfBirth ? <span>{formik.errors.dateOfBirth}</span> : null}
                 </div>
 
