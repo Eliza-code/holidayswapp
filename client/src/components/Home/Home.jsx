@@ -16,12 +16,12 @@ const Home = () => {
   const handleOnClick = (e, name) => {
     e.preventDefault();
     dispatch(getHouseCity(name.trim()));
-    history.push(`/announcements/${name}`);
+    history.push(`/announcements/city/${name}`);
   };
 
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <div className="cities">
         {turisticCities.map((el) => {
           return (
