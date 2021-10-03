@@ -14,7 +14,7 @@ module.exports = async (req,res,next) => {
             password: hashedPassword,
             email: user.email.toLowerCase()
         })
-        return res.json(createdUser)
+        return res.json(createdUser);
 
     } catch (error) {
         next(error);
