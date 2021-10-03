@@ -6,6 +6,7 @@
     align-items: center;
     text-align: center;
     
+    
 }
 
 .places {
@@ -32,4 +33,14 @@
     display: inline-flex;
     align-items: center;
     
+}
+
+.cityCard{
+    display: grid;
+    margin: 1%;
+}
+
+.icons{
+display: grid;
+margin-top: -1%;
 }

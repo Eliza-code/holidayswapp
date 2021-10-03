@@ -19,8 +19,8 @@ function App() {
           <Route exact path = '/' component={Home} />
           <Route exact path="/register" component={Signup} />
           <Route exact path = '/googleMap' component={GMap}/>
-          <Route exact path = '/announcements/:name' component={CityResults} />
           <Route exact path = '/announcements/:id' component={HouseDetail}/>
+          <Route exact path = '/announcements/city/:name' component={CityResults} />
           <Route exact path="/singin" component={SignIn} />
           <Route exact path="/aboutus" component={AboutUs} />
         </Switch>
