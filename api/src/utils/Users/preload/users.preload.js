@@ -20,6 +20,7 @@ async function getInfoUsers (req, res) {
               nacionality: el.nacionality,
               languagesSpoken: el.languagesSpoken,
             },
+            
           });
           return userData;
         } catch (error) {
