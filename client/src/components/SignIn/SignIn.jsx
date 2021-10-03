@@ -1,45 +1,44 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useFormik } from 'formik';
 import { useDispatch } from 'react-redux';
 import './Signin.css';
 import {postSignIn} from '../../redux/actions/userActions';
 
-const initialValues = {
-    username:'',
-    password:''
-}
 
 const SignIn = () => {
 
+    const [input, setInput] = useState({
+        username:'',
+        password:','
+    })
+   
+
     const dispatch = useDispatch();
 
-    const onSubmit = (values) => {
-        console.log(values)
-        dispatch(postSignIn(values));
+    const handleChange = (e) => {
+        setInput({...input, [e.target.name] : e.target.value});
+      }
+    
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('works')
+        dispatch(postSignIn(input));
     }
-
-
-    const formik =  useFormik({
-        initialValues,
-         onSubmit,
-        // validate
-    });
-
 
     return ( 
         <div className="mainForm">
-        <form className="containerForm" onSubmit={formik.handleSubmit}>
+        <form className="containerForm" onSubmit={handleSubmit}>
             <h1>Sign In</h1>
                 <div className="formLabel">
                     <label htmlFor='username'>Username</label>
                     <input id='username' 
-                    placeholder='Ej: cori47' 
+                    placeholder='Username' 
                     type='text' 
                     name='username' 
-                    onChange={formik.handleChange} 
-                    value={formik.values.username} 
-                    onBlur={formik.handleBlur}/>
-                    {formik.touched.username && formik.errors.username ? <span>{formik.errors.username}</span> : null}
+                    value={input.username}
+                    onChange={ handleChange } 
+                    />
                 </div>
 
                 <div className="formLabel">
@@ -48,10 +47,9 @@ const SignIn = () => {
                     placeholder='Password' 
                     type='password' 
                     name='password' 
-                    onChange={formik.handleChange} 
-                    value={formik.values.password} 
-                    onBlur={formik.handleBlur} />
-                    {formik.touched.password && formik.errors.password ? <span>{formik.errors.password}</span> : null}
+                    value={input.password}
+                    onChange={ handleChange }  
+                    />
                 </div>
             <button className="formBtn" type='submit'>Submit</button>
         </form>
