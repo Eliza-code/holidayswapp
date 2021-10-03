@@ -16,7 +16,7 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getHouseCity(input.trim()));
-    history.push(`/announcements/${input}`);
+    history.push(`/announcements/ciudad/${input}`);
   }
 
   return (
@@ -27,9 +27,9 @@ const SearchBar = () => {
             required
             name='city'
             type="text"
-            placeholder="City.."
+            placeholder="City..."
             onChange={handleInputChange}
-            value={input}
+            value={input}            
           />
           <button type="submit">Search</button>
       </form>
