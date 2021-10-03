@@ -1,0 +1,31 @@
+.container {
+    display: flex;
+    justify-content: space-around;
+}
+.grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border-radius: 1em;
+    font-size: larger;
+    color: rgb(14, 13, 13);
+    margin: 3PX;
+}
+
+.button:hover {
+    color: rgb(20, 19, 19);
+    background-color: #706e6e;
+}
+
+.arrow{
+    display: flex;
+    position: relative;
+    justify-content: center;
+    flex-wrap: wrap;
+}

@@ -1,6 +1,6 @@
-
 let announcements = [
-  {
+  { 
+    
     title: "TERRI's House",
     owner: "TERRI",
     country: "United States",
@@ -15,6 +15,7 @@ let announcements = [
     beds: 5,
     bathrooms: 4,
     surfaceM2: 260,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -32,6 +33,7 @@ let announcements = [
     description: "Wonderful location, excellent neighborhood, quiet street, lots of privacy, best location on the Beach.",
   },
   {
+    
     title: "JAQUELINE's Home",
     owner: "JAQUELINE",
     country: "Brazil",
@@ -45,6 +47,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 90,
     points: 280,
+    rating: 5,
     image: ["https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/09/ac/69/3e.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/09/ac/69/40.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/08/63/86/c9.jpg"
@@ -66,6 +69,7 @@ let announcements = [
     description: "Nuestra casa está situada en una muy buena parte de Copacabana. A solo 5 minutos a pie de la famosa playa de Copacabana y de muchos bares y restaurantes agradables que mantienen la vida en la calle hasta tarde. ",
   },
   {
+    
     title: "WHALTER's House",
     owner: "WHALTER",
     country: "Netherlands",
@@ -79,6 +83,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 85,
     points: 123,
+    rating: 3,
     image: [ "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/07/88/ab/cd.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/07/88/ab/8f.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/07/89/8e/1b.jpg"
@@ -100,6 +105,7 @@ let announcements = [
     description: "Very comfortable house (groundfloor) in the centre of Amsterdam.",
   },
   {
+    
     title: "NADINA's Home",
     owner: "NADINA",
     country: "Russia",
@@ -113,6 +119,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 65,
     points: 136,
+    rating: 4,
     image:[ "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/50/57/53.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/50/57/6e.jpg",
             "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/50/56/e8.jpg"
@@ -134,6 +141,7 @@ let announcements = [
     description: "The apartment in the new house is being renovated. Furnished in the rooms and kitchen on the 15th floor. Near the lake. Subway 10 minutes walk.",
   },
   {
+    
     title: "MICHAEL's House",
     owner: "MICHAEL",
     country: "Indonesia",
@@ -166,8 +174,10 @@ let announcements = [
       private_parking: false,
     },
     description: "My place is a beautiful 3 bedroom Balinese open-style villa with a private pool. Great for families.",
+    rating: 4,
   },
   {
+    
     title: "GEERT's House",
     owner: "GEERT",
     country: "Belgium",
@@ -181,6 +191,7 @@ let announcements = [
     bathrooms: 1,
     surfaceM2: 49,
     points: 270,
+    rating: 5,
     image:[  "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/0d/36/eb.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/34/e7/36.jpg",
              "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/0d/36/03.jpg"
@@ -198,10 +209,12 @@ let announcements = [
       a_c: true,
       bancony: true,
       private_parking: false,
+      
     },
     description: "Our home is a big apartment built in 1926 and we tried to keep it authentic , yet it has all the modern comfort anyone could need.",
   },
   {
+    
     title: "ANA, VANINA I NEO's Home",
     owner: "ANA, VANINA I NEO",
     country: "Croatia",
@@ -219,6 +232,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 71,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -236,6 +250,7 @@ let announcements = [
     description: "We live in the suburbs, its 20 min drive from city center and its surrounded with nature. Sometimes you can see deers, rabbits, foxes and sheep nearby.",
   },
   {
+    
     title: "IVY's House",
     owner: "IVY",
     country: "Australia",
@@ -253,6 +268,7 @@ let announcements = [
     beds: 4,
     bathrooms: 1,
     surfaceM2: 92,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -270,6 +286,7 @@ let announcements = [
     description: "My home, a fairly new (2 years old) townhouse which is on 3 floors. Entrance is on the middle floor, as is the lounge room and kitchen.",
   },
   {
+    
     title: "La Casa de Xochimilco",
     owner: "PALOMA",
     country: "México",
@@ -287,6 +304,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 88,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -304,6 +322,7 @@ let announcements = [
     description: "Cute house at the perfect location in new port of Nativitas, few blocks from Chapultepec Park and metro/bus stations.",
   },
   {
+    
     title: "YENY's House",
     owner: "YENY",
     country: "United States",
@@ -321,6 +340,7 @@ let announcements = [
     beds: 4,
     bathrooms: 2,
     surfaceM2: 167,
+    rating: 4,
     home_rules: {
       smokersWelcome: true,
       petsWelcome: false,
@@ -338,6 +358,7 @@ let announcements = [
     description: "Mi apartamento es amplio y con excelentes espacios, un apartamento por piso, con ascensor privado, 3 habitaciones cada una con baño privado, dos salas, amplia cocina, hermosa decoración",
   },
   {
+    
     title: "ALMA's place",
     owner: "ALMA DIAZ",
     country: "Spain",
@@ -355,6 +376,7 @@ let announcements = [
     beds: 2,
     bathrooms: 1,
     surfaceM2: 80,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -372,6 +394,7 @@ let announcements = [
     description: "Si tengo que describir mi piso diría que tiene personalidad, es luminoso y se encuentra en pleno corazón del Madrid de los Austrias, ubicado en el emblemático barrio de Palacio y La Latina, la zona con más encanto de Madrid.",
   },
   {
+    
     title: "La Morada de ANDREA",
     owner: "ANDREA",
     country: "Spain",
@@ -389,6 +412,7 @@ let announcements = [
     beds: 6,
     bathrooms: 2,
     surfaceM2: 125,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -406,6 +430,7 @@ let announcements = [
     description: "Nuestro apartamento es realmente muy bonito, recién reformado, espacioso y moderno.",
   },
   {
+    
     title: "Il Palatium",
     owner: "SONJA",
     country: "Italy",
@@ -423,6 +448,7 @@ let announcements = [
     beds: 3,
     bathrooms: 2,
     surfaceM2: 170,
+    rating: 5,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -439,6 +465,7 @@ let announcements = [
     description: "Our apartment is located on the 5th floor of a 6 stories high liberty style bulding from the 1930's.",
   },
   {
+    
     title: "Dreamland",
     owner: "VANESSA",
     country: "Switzerland",
@@ -456,6 +483,7 @@ let announcements = [
     beds: 5,
     bathrooms: 1,
     surfaceM2: 120,
+    rating: 4,
     home_rules: {
       smokersWelcome: true,
       petsWelcome: true,
@@ -473,6 +501,7 @@ let announcements = [
     description: "We live in a terraced house in a lovely residential area with a village like feel.",
   },
   {
+    
     title: "Not aLONE",
     owner: "LONE",
     country: "Denmark",
@@ -490,6 +519,7 @@ let announcements = [
     beds: 6,
     bathrooms: 2,
     surfaceM2: 109,
+    rating: 5,
     home_rules: {
       smokersWelcome: true,
       petsWelcome: false,
@@ -507,6 +537,7 @@ let announcements = [
     description:"Our home is a beautiful almost 100 year old house in Copenhagen on the Island of Amager. ",
   },
   {
+    
     title: "El Diego",
     owner: "DIEGO",
     country: "Uruguay",
@@ -524,6 +555,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 67,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -541,6 +573,7 @@ let announcements = [
     description: "Es un hermoso y cómodo apartamento.Cuenta con un confortable living comedor con aire acondicionado, para relajarse, leer o si lo prefiere conectarse a internet y/o mirar TV en el Smart TV de 65 (Netflix, YouTube,Señal Satelital, Etc).",
   },
   {
+    
     title: "Chillax",
     owner: "NORMA",
     country: "Paraguay",
@@ -558,6 +591,7 @@ let announcements = [
     beds: 7,
     bathrooms: 4,
     surfaceM2: 325,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -575,6 +609,7 @@ let announcements = [
     description: "La casa es única. Ubicación privilegiada con un entorno placentero. Querrán quedarse a vivir en ella.",
   },
   {
+    
     title: "LASSE's House",
     owner: "LASSE & OYVIND",
     country: "Norway",
@@ -592,6 +627,7 @@ let announcements = [
     beds: 5,
     bathrooms: 2,
     surfaceM2: 140,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,
@@ -609,6 +645,7 @@ let announcements = [
     description: "4 BR apartment at Aker Brygge downtown Oslo.The apartment is on the 7th and 8th floor above the bustle of street life.",
   },
   {
+    
     title: "JOANA's Home",
     owner: "JOANA",
     country: "Portugal ",
@@ -626,6 +663,7 @@ let announcements = [
     beds: 3,
     bathrooms: 1,
     surfaceM2: 90,
+    rating: 3,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: false,
@@ -643,6 +681,7 @@ let announcements = [
     description: "My home is a duplex located on the second floor of a Lisbon looking building. Because it is located in a dead end street, it is very quiet and central at the same time.",
   },
   {
+    
     title: "PAULA's House",
     owner: "PAULA",
     country: "Chile",
@@ -660,6 +699,7 @@ let announcements = [
     beds: 6,
     bathrooms: 2,
     surfaceM2: 110,
+    rating: 4,
     home_rules: {
       smokersWelcome: false,
       petsWelcome: true,

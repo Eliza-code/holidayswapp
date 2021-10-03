@@ -1,15 +1,24 @@
+import * as types from "../types/userTypes.js";
+
 const initialState =  {
-    home: []
+    userInfo: [],
+    
 }
 
 const userReducer = (state=initialState, action) => {
     switch (action.type){
-       case "GET_HOUSES":
+     
+        case types.POST_USER:
            return {
                ...state,
-               home: action.payload
+               userInfo: action.payload
            }
-        
+        case types.POST_SIGN_IN :
+            return {
+                ...state,
+                
+            }
+
         default: 
         return state;
     }

@@ -1,47 +1,38 @@
 import React from "react";
 import { useState } from "react";
+import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux";
-import { getHouses } from "../../redux/actions/userActions";
+import { getHouseCity } from "../../redux/actions/postActions";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const [word, setWord] = useState("");
+  const history = useHistory();
+  const [input, setInput] = useState("");
 
-  function handleImputChange(event) {
-    event.preventDefault();
-    setWord(event.target.value);
+  const handleInputChange = (e) => {
+    setInput(e.target.value)
   }
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    if (word !== "") {
-      dispatch(getHouses(word));
-      setWord("");
-    } else {
-      alert("Ingrese una ciudad o pais");
-    }
-  }
-
-  function handleKeyDown(event) {
-    event.preventDefault();
-    dispatch(getHouses(word));
-    setWord("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(getHouseCity(input.trim()));
+    history.push(`/announcements/ciudad/${input}`);
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        placeholder="city or country..."
-        value={word}
-        onChange={(event) => handleImputChange(event)}
-        onKeyPress={(event) => {
-          if (event.key === "Enter") handleKeyDown(event);
-        }}
-      />
-      <button type="submit" onClick={(event) => handleSubmit(event)}>
-        Buscar
-      </button>
+    <div className='search'>
+      <form onSubmit={handleSubmit}>
+          <input
+            className='searchInput'
+            required
+            name='city'
+            type="text"
+            placeholder="City.."
+            onChange={handleInputChange}
+            value={input}
+          />
+          <button type="submit">Search</button>
+      </form>
     </div>
   );
 };
