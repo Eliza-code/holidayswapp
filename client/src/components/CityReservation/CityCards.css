@@ -25,5 +25,7 @@
 
 .arrow{
     display: flex;
+    position: relative;
     justify-content: center;
+    flex-wrap: wrap;
 }
