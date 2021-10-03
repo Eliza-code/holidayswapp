@@ -13,6 +13,11 @@ const NavBar = () => {
       </div>
       <div className="items">
       <div>
+      <Link to="/">
+          <button>HOME</button>
+        </Link>
+      </div>
+      <div>
         <SearchBar />
       </div>
       <div>
@@ -29,6 +34,7 @@ const NavBar = () => {
       </Link>
       </div>
       </div>
+      <hr/>
     </div>
   );
 };

@@ -69,7 +69,7 @@ const MapWrapped = withScriptjs(withGoogleMap(Map));
 
 export default function GMap() {
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
+    <div style={{ width: "60em", height: "40em" }}>
       <MapWrapped
         googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=${
           mapsKey
