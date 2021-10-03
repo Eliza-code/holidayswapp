@@ -16,7 +16,7 @@ const SearchBar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getHouseCity(input.trim()));
-    history.push(`/announcements/ciudad/${input}`);
+    history.push(`/announcements/city/${input}`);
   }
 
   return (
