@@ -27,9 +27,9 @@ const SearchBar = () => {
             required
             name='city'
             type="text"
-            placeholder="City.."
+            placeholder="City..."
             onChange={handleInputChange}
-            value={input}
+            value={input}            
           />
           <button type="submit">Search</button>
       </form>

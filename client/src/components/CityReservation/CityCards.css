@@ -27,5 +27,9 @@
     display: flex;
     position: relative;
     justify-content: center;
+}
+.map{
+    display: flex;
+    justify-content: center;
     flex-wrap: wrap;
 }

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import HouseCard from './HouseCard.jsx';
 import { useSelector } from 'react-redux';
 import "./CityCards.css"
-import { Link } from 'react-router-dom';
 import NavBar from '../NavBar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
 
@@ -69,7 +68,8 @@ const CityResults = () => {
             <Footer/>
         </div>
         </div>
-    )
-}
+     
+  );
+};
 
-export default CityResults;;
+export default CityResults;
