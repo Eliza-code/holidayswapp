@@ -9,6 +9,7 @@ async function getInfoAnnoun (req, res) {
                 owner: el.owner,
             },
             defaults: {
+              userId: el.userId,
               title: el.title,
               owner: el.owner,
               country: el.country,

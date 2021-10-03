@@ -15,7 +15,7 @@ async function getInfoUsers (req, res) {
               lastName: el.lastName,
               email: el.email,
               password: el.password,
-              // phoneNumber: el.phoneNumber,
+              phoneNumber: el.phoneNumber,
               dateOfBirth: el.dateOfBirth,
               nacionality: el.nacionality,
               languagesSpoken: el.languagesSpoken,
