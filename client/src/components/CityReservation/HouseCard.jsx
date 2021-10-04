@@ -4,7 +4,7 @@ import './HouseCard.css';
 
 export default function HouseCard(props) {
   // acá va tu código
-  const {id, title, image, country,city, points } = props;
+  const {id, title, image, country,city, points} = props;
   return (
   <div className="card2">
     <Link to={`/announcements/${id}`}>
@@ -14,7 +14,7 @@ export default function HouseCard(props) {
   <h4 className="name">{title}</h4>
   <h4>{country}</h4>  
   <h4>{city}</h4>
-  <h4>{points} GP/Night</h4>
+  <h4>{points} GP/Night</h4>  
   </div>
     </li>
     </Link>

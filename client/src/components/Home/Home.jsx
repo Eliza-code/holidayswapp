@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getHouseCity } from "../../redux/actions/postActions";
 import NavBar from "../NavBar/NavBar";
@@ -14,6 +14,7 @@ const Home = () => {
   const history = useHistory();
 
   const handleOnClick = (e, name) => {
+    console.log(e);
     e.preventDefault();
     dispatch(getHouseCity(name.trim()));
     history.push(`/announcements/city/${name}`);
