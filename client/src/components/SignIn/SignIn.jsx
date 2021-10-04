@@ -18,23 +18,25 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { validate } from '../SignUp/validate';
-
+import { validate } from "../SignUp/validate";
+import swal from "sweetalert";
 
 const initialValues = {
   username: "",
   password: "",
-  showPassword: false
+  showPassword: false,
 };
 
 const SignIn = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    console.log('works!')
-    console.log(values.username)
-    dispatch(postSignIn({ username: values.username,
-      password: values.password}))
+    dispatch(
+      postSignIn({
+        username: formik.values.username,
+        password: formik.values.password,
+      })
+    );
   };
 
   const formik = useFormik({
@@ -63,90 +65,90 @@ const SignIn = () => {
               autoComplete="off"
               onSubmit={onSubmit}
             >
-            <div>
-              <Typography
-                sx={{ marginTop: 5 }}
-                align="center"
-                variant="h4"
-                gutterBottom
+              <div>
+                <Typography
+                  sx={{ marginTop: 5 }}
+                  align="center"
+                  variant="h4"
+                  gutterBottom
+                >
+                  Sign In
+                </Typography>
+              </div>
+              <div>
+                <TextField
+                  required
+                  id="username"
+                  label="Username"
+                  type="text"
+                  name="username"
+                  placeholder="Ej: cori47"
+                  value={formik.values.username}
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  error={Boolean(
+                    formik.touched.username && formik.errors.username
+                  )}
+                  helperText={formik.touched.username && formik.errors.username}
+                />
+              </div>
+
+              <div>
+                <FormControl sx={{ m: 2, width: "17rem" }}>
+                  <InputLabel htmlFor="password">Password</InputLabel>
+                  <OutlinedInput
+                    required
+                    error={Boolean(
+                      formik.touched.password && formik.errors.password
+                    )}
+                    id="password"
+                    label="Password"
+                    placeholder="Password"
+                    type={formik.values.showPassword ? "text" : "password"}
+                    name="password"
+                    onChange={formik.handleChange}
+                    value={formik.values.password}
+                    onBlur={formik.handleBlur}
+                    // helperText={formik.touched.password && formik.errors.password}
+                    endAdornment={
+                      <InputAdornment position="end">
+                        <IconButton
+                          aria-label="toggle password visibility"
+                          onClick={(e) =>
+                            formik.setFieldValue(
+                              "showPassword",
+                              !formik.values.showPassword
+                            )
+                          }
+                          onMouseDown={(e) => e.preventDefault()}
+                          edge="end"
+                        >
+                          {formik.values.showPassword ? (
+                            <VisibilityOff />
+                          ) : (
+                            <Visibility />
+                          )}
+                        </IconButton>
+                      </InputAdornment>
+                    }
+                  />
+                </FormControl>
+              </div>
+              <Button
+                sx={{
+                  marginTop: 5,
+                  marginBottom: 10,
+                  width: "17rem",
+                  height: "3rem",
+                }}
+                type="submit"
+                variant="contained"
               >
                 Sign In
-              </Typography>
-            </div>
-            <div>
-              <TextField
-                required
-                id="username"
-                label="Username"
-                type="text"
-                name="username"
-                placeholder="Ej: cori47"
-                value={formik.values.username}
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
-                error={Boolean(
-                  formik.touched.username && formik.errors.username
-                )}
-                helperText={formik.touched.username && formik.errors.username}
-              />
-            </div>
-
-            <div>
-              <FormControl sx={{ m: 2, width: "17rem" }}>
-                <InputLabel htmlFor="password">Password</InputLabel>
-                <OutlinedInput
-                  required
-                  error={Boolean(
-                    formik.touched.password && formik.errors.password
-                  )}
-                  id="password"
-                  label="Password"
-                  placeholder="Password"
-                  type={formik.values.showPassword ? "text" : "password"}
-                  name="password"
-                  onChange={formik.handleChange}
-                  value={formik.values.password}
-                  onBlur={formik.handleBlur}
-                  // helperText={formik.touched.password && formik.errors.password}
-                  endAdornment={
-                    <InputAdornment position="end">
-                      <IconButton
-                        aria-label="toggle password visibility"
-                        onClick={(e) =>
-                          formik.setFieldValue(
-                            "showPassword",
-                            !formik.values.showPassword
-                          )
-                        }
-                        onMouseDown={(e) => e.preventDefault()}
-                        edge="end"
-                      >
-                        {formik.values.showPassword ? (
-                          <VisibilityOff />
-                        ) : (
-                          <Visibility />
-                        )}
-                      </IconButton>
-                    </InputAdornment>
-                  }
-                />
-              </FormControl>
-            </div>
-            <Button
-              sx={{
-                marginTop: 5,
-                marginBottom: 10,
-                width: "17rem",
-                height: "3rem",
-              }}
-              type="submit"
-              variant="contained"
-            >
-              Sign In
-            </Button>
-          </Box>
-        </Paper>
-      </Container>
+              </Button>
+            </Box>
+          </Paper>
+        </Container>
       </div>
     </div>
   );

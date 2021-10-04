@@ -16,18 +16,18 @@ router.post("/login", (req, res, next) => {
     if (err) throw err;
     if (!user) res.send("No User Exists");
     else {
-      return res.send(
-        await jwt.sign(
-          {
-            id: user.id,
-            email: user.email,
-            isAdmin: user.isAdmin,
-            isDeleted: user.isDeleted,
-          },
-          SECRET_KEY,
-          { expiresIn: "24hr" }
-        )
-      );
+      const token=await jwt.sign(
+        {
+          id: user.id,
+          email: user.email,
+          isAdmin: user.isAdmin,
+          isDeleted: user.isDeleted,
+        },
+        SECRET_KEY,
+        { expiresIn: "24hr" }
+      )
+      console.log(token)
+      return res.send(token);
     }
   })(req, res, next);
 });
