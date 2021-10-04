@@ -1,5 +1,4 @@
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
 import logo from '../images/logo.jpg';
 import {Link} from 'react-router-dom';
 import './Header.css';
@@ -8,7 +7,7 @@ const Header = () => {
     return (
         <div className='headerContainer'>
             <div className='logoLink'>
-                <Link to="/" > <img src={logo} alt="logo" width="200em" height="200em"/></Link>
+                <Link to="/" > <img src={logo} alt="logo" width="150em" height="150em"/></Link>
             </div>
             <div className='title'>
                 <h2>HolidaySwApp</h2>

@@ -38,3 +38,7 @@ export function getHouseCity(city) {
       }
   }
 }
+
+export function clearPage() {
+  return { type: types.GET_HOUSE_CITY, payload: undefined };
+}
