@@ -34,7 +34,7 @@ export function getHouseCity(city) {
           return dispatch({ type: types.GET_HOUSE_CITY, payload: json.data})
       } catch(error) {
           console.log(error)
-          alert("There's not houses avalaible on this city")
+          // alert("There's not houses avalaible on this city")
       }
   }
 }
