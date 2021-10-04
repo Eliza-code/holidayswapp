@@ -18,14 +18,17 @@ export const postUser = (input) => {
 export const postSignIn = (input) => {
   return async (dispatch) => {
     try{
-      // const { data } = await axios.post('http://localhost:3001/user/signin', input)
-      // return dispatch({
-      //   type: types.POST_SIGN_IN,
-      //   payload: data,
-      // })
+      const { data } = await axios.post('http://localhost:3001/auth/login', input)
+      return dispatch({
+        type: types.POST_SIGN_IN,
+        payload: data,
+      })
     }catch (error) {
       console.log(error);
     }
   }
 }
 
+export function clearPage() {
+  return { type: types.GET_HOUSE_CITY, payload: undefined };
+}
