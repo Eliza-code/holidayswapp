@@ -10,35 +10,8 @@ import { clearPage } from "../../redux/actions/postActions.js";
 import { Grid } from "@mui/material";
 
 const CityResults = () => {
-    const houses = useSelector((state) => state.postReducer.searchResults); 
-    const dispatch = useDispatch();  
-    
-    const [currentPage, setCurrentPage] = useState(0);
-    
-    const next_Page = () => {
-        if(houses.length <= currentPage + 3) {
-            setCurrentPage(currentPage);
-        } else setCurrentPage(currentPage + 3);
-    };
-    const prev_Page = () => {
-        if (currentPage < 4) {
-            setCurrentPage(0);
-        } else {
-            setCurrentPage(currentPage - 3);
-        }
-    };
-    const first_Page = () => {
-        setCurrentPage(0);
-    };
-    const last_Page = () => {
-        setCurrentPage(houses.length - 3)
-    };
-    useEffect(() => {       
-        first_Page()       
-        return () => dispatch(clearPage())
-        
-    }, []);
-    console.log(houses)
+  const houses = useSelector((state) => state.postReducer.searchResults);
+  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
 
