@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import HouseCard from './HouseCard.jsx';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import "./CityCards.css"
 import NavBar from '../NavBar/NavBar.jsx';
 import Footer from '../Footer/Footer.jsx';
+import { clearPage } from '../../redux/actions/userActions.js';
 
 const CityResults = () => {
-    const houses = useSelector((state) => state.postReducer.searchResults);
+    const houses = useSelector((state) => state.postReducer.searchResults); 
+    const dispatch = useDispatch();  
     
     const [currentPage, setCurrentPage] = useState(0);
     
@@ -28,9 +30,10 @@ const CityResults = () => {
     const last_Page = () => {
         setCurrentPage(houses.length - 3)
     };
-    useEffect(() => {
+    useEffect(() => {       
         first_Page()
-    }, [houses]);
+        return () => dispatch(clearPage())
+    }, []);
     console.log(houses)
 
     const filtredHouses = houses?.slice(currentPage, currentPage + 3);
@@ -42,7 +45,7 @@ const CityResults = () => {
                 <NavBar/>
             </div>
             <div className="grid">
-            {filtredHouses?.map((e)  => (
+            {filtredHouses? ( filtredHouses.map((e)  => (
             <HouseCard
             key={e.id}
             id = {e.id}
@@ -52,7 +55,9 @@ const CityResults = () => {
             city = {e.city}
             points = {e.points}
             />
-            ))}
+            ))) : (
+                <h1>No hay ciudades para mostrar</h1>
+              )}
             </div>
             <div>
             {filtredHouses?.length >= 3 ? (
