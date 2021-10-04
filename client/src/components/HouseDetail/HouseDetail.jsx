@@ -7,6 +7,7 @@ import NavBar from '../NavBar/NavBar';
 import images from './Images.js'
 import "./HouseDetail.css"
 import Announcements from '../CityReservation/Announcements'
+import Header from '../Header/Header';
 
 /*const languagues = [
     {
@@ -30,8 +31,8 @@ export default function HomeID() {
     console.log(homeDetailed, "Detalle del Hogar")
     return (
         <div>
-            <div>
-                <NavBar/>
+            <div className='headerNav'>
+                <Header/>
             </div>
             <div className="user-info">
             {homeDetailed && homeDetailed.image ? (
