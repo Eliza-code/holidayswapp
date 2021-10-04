@@ -11,9 +11,9 @@ const Announcements = () => {
   }, [dispatch]);
 
   return (
-    <div>
+    <React.Fragment>
       <Houses />
-    </div>
+    </React.Fragment>
   );
 };
 

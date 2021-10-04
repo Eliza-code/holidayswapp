@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as types from "../types/userTypes";
 
+
 export const postUser = (input) => {
   return async (dispatch) => {
     try{
