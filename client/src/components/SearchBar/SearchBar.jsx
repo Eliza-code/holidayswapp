@@ -8,7 +8,7 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import { clearPage } from "../../redux/actions/postActions";
 import './SearchBar.css';
-import { clearPage } from "../../redux/actions/postActions.js";
+
 
 const SearchBar = () => {
   const dispatch = useDispatch();
