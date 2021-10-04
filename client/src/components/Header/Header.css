@@ -1,0 +1,33 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&family=Tangerine:wght@700&display=swap');
+
+.headerContainer{
+    
+    display:flex;
+    flex-direction:row;
+}
+
+.logoLink{
+    width: 13%;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+    margin-top: 10px;
+    margin-left: 10px;
+
+}
+.title{
+    font-weight: bolder;
+    display: block;
+    text-align: center;
+    width: 70%;
+}
+.title h2{
+    font-family: 'Rock Salt', cursive;
+    font-size:3rem;
+    margin-bottom: 0em;
+}
+.title h6{
+    font-family: roboto, monospace;
+    margin-top: 0%;
+    padding-left: 40%;
+    font-size: larger;
+}

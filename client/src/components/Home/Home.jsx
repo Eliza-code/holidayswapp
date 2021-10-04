@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { getHouseCity } from "../../redux/actions/postActions";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import Header from "../Header/Header";
 import { turisticCities } from "./turisticCities";
 import Announcements from "../CityReservation/Announcements";
 import "../Home/home.css";
@@ -21,12 +22,15 @@ const Home = () => {
 
   return (
     <div>
-      <NavBar />
-      <div className="cities">
+      <div className="headerNav">
+        <Header/>
+        <NavBar />
+      </div>
+      <div className="citiesCards">
         {turisticCities.map((el) => {
           return (
             <div key={el.id} className="cityCard">
-              <img src={el.image} alt="city" width="300em" height="250em" />
+              <img src={el.image} alt="city" />
               <button onClick={(e) => handleOnClick(e, el.name)}>
                 {el.name}
               </button>
@@ -35,7 +39,7 @@ const Home = () => {
         })}
       </div>
       <div className="places">
-        <h3>Places you may like</h3>
+        <h2>Places you may like</h2>
       </div>
       <div>
         <Announcements />

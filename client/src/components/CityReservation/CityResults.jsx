@@ -3,7 +3,9 @@ import HouseCard from './HouseCard.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import "./CityCards.css"
 import NavBar from '../NavBar/NavBar.jsx';
+import Header from '../Header/Header.jsx';
 import Footer from '../Footer/Footer.jsx';
+import './CityResults.css';
 import { clearPage } from '../../redux/actions/userActions.js';
 
 const CityResults = () => {
@@ -13,22 +15,22 @@ const CityResults = () => {
     const [currentPage, setCurrentPage] = useState(0);
     
     const next_Page = () => {
-        if(houses.length <= currentPage + 3) {
+        if(houses.length <= currentPage + 12) {
             setCurrentPage(currentPage);
-        } else setCurrentPage(currentPage + 3);
+        } else setCurrentPage(currentPage + 12);
     };
     const prev_Page = () => {
         if (currentPage < 4) {
             setCurrentPage(0);
         } else {
-            setCurrentPage(currentPage - 3);
+            setCurrentPage(currentPage - 12);
         }
     };
     const first_Page = () => {
         setCurrentPage(0);
     };
     const last_Page = () => {
-        setCurrentPage(houses.length - 3)
+        setCurrentPage(houses.length - 12)
     };
     useEffect(() => {       
         first_Page()
@@ -41,8 +43,9 @@ const CityResults = () => {
 
     return (
         <div>
-            <div>
-                <NavBar/>
+            <div className="headerNav">
+                <Header/>
+                <NavBar />
             </div>
             <div className="grid">
             {filtredHouses? ( filtredHouses.map((e)  => (
@@ -62,11 +65,11 @@ const CityResults = () => {
             <div>
             {filtredHouses?.length >= 3 ? (
                 <div className="arrow">
-            <button className="button" onClick={first_Page}> {"<<"}</button>
-            <button className="button" onClick={prev_Page}> {"<"}</button>
-            <button className="button" onClick={next_Page}> {">"}</button>
-            <button className="button" onClick={last_Page}> {">>"}</button>
-            </div>
+                        <button className="button" onClick={first_Page}> {"<<"}</button>
+                        <button className="button" onClick={prev_Page}> {"<"}</button>
+                        <button className="button" onClick={next_Page}> {">"}</button>
+                        <button className="button" onClick={last_Page}> {">>"}</button>
+                </div>
             ): null}
         </div>
         <div>
