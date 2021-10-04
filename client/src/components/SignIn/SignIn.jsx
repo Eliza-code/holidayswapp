@@ -19,7 +19,7 @@ import Paper from "@mui/material/Paper";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { validate } from '../SignUp/validate';
-import swal from 'sweetalert';
+
 
 const initialValues = {
   username: "",
@@ -32,6 +32,9 @@ const SignIn = () => {
 
   const onSubmit = (values) => {
     console.log('works!')
+    console.log(values.username)
+    dispatch(postSignIn({ username: values.username,
+      password: values.password}))
   };
 
   const formik = useFormik({
@@ -41,25 +44,25 @@ const SignIn = () => {
   });
 
   return (
-    <div>
+    <div className="singup">
       <div className="singinContainer">
         <Header />
       </div>
-      <div className="formContainer">
-      <Container sx={{ marginTop: 5, marginBottom: 10 }} maxWidth="sm">
-        <CssBaseline />
-        <Paper elevation={3}>
-          <Box
-            component="form"
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              "& .MuiTextField-root": { m: 2, width: "17rem" },
-            }}
-            autoComplete="off"
-            onSubmit={formik.handleSubmit}
-          >
+      <div className="formcontainer">
+        <Container sx={{ marginBottom: 10 }} maxWidth="sm">
+          <CssBaseline />
+          <Paper elevation={3}>
+            <Box
+              component="form"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+                "& .MuiTextField-root": { m: 2, width: "17rem" },
+              }}
+              autoComplete="off"
+              onSubmit={onSubmit}
+            >
             <div>
               <Typography
                 sx={{ marginTop: 5 }}

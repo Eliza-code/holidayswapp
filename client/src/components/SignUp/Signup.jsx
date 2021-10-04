@@ -83,7 +83,10 @@ const Signup = () => {
                 "& .MuiTextField-root": { m: 2, width: "17rem" },
               }}
               autoComplete="off"
-              onSubmit={formik.handleSubmit}
+              onSubmit={(e, values) => {
+                formik.handleSubmit(values)
+                formik.setSubmitting(false)
+              }}
             >
               <div>
                 <Typography
