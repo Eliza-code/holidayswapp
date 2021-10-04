@@ -21,7 +21,12 @@ module.exports = async (req, res) => {
             .status(404)
             .send("The city or country with that name was not found");
     } else {
-      const announcement = await Announcement.findAll();
+      const announcement = await Announcement.findAll({
+        include: {
+          model: User,
+          attributes: ["username"],
+        }
+      });
       res.send(announcement);
     }
   } catch (error) {

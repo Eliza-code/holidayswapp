@@ -1,24 +1,24 @@
 import React from "react";
 
-import Salta from "../Photographs/statics/salta.jpg"
-import Plane from  "../Photographs/statics/plane.png"
-import Location from "../Photographs/statics/Location.png"
-import navigation from  "../Photographs/statics/navigation.png"
-import Cycling from "../Photographs/statics/Cycling.png"
-import handHeart from  "../Photographs/statics/handHeart.png"
-import regular from  "../Photographs/statics/regular.png"
-import handright from  "../Photographs/statics/handright.png"
+import Salta from "../Photographs/statics/salta.jpg";
+import Plane from "../Photographs/statics/plane.png";
+import Location from "../Photographs/statics/Location.png";
+import navigation from "../Photographs/statics/navigation.png";
+import Cycling from "../Photographs/statics/Cycling.png";
+import handHeart from "../Photographs/statics/handHeart.png";
+import regular from "../Photographs/statics/regular.png";
+import handright from "../Photographs/statics/handright.png";
 
-
-
-const Statics =  () => {
-    return (
-<div>
-<div className="sms">
-        <h2>it's official... we're the best home swapping platform </h2>
+const Statics = () => {
+  return (
+    <div>
+      <div className="sms">
+        <div className="staticTitle">
+          <h2>It's official... We're the best home swapping plataform </h2>
+        </div>
       </div>
       <div className="motivation">
-        <img src={Salta} alt="Salta" width="450em" height="400em" />
+        <img src={Salta} alt="Salta" />
         <div className="icons">
           <div className="prayer">
             <img src={Plane} alt="Plane" />
@@ -68,8 +68,8 @@ const Statics =  () => {
           </div>
         </div>
       </div>
-</div>
-    )
-}
+    </div>
+  );
+};
 
-export default Statics
+export default Statics;

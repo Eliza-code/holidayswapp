@@ -23,7 +23,7 @@ const postReducer = (state=initialState, action) => {
             return {
                 ...state,
                 searchResults: action.payload
-            }
+            }        
         
         default: 
         return state;
