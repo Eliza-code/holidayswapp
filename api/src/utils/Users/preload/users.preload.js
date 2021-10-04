@@ -3,7 +3,7 @@ const user  = require("../data/users.data");
 const bcrypt = require('bcrypt');
 
 async function getInfoUsers (req, res) {
-  const hashedPassword = await bcrypt.hash("12345678", 12);
+  const hashedPassword = await bcrypt.hash("Password123", 12);
       user.map(async (el) => {
         try {
             const userData = await User.findOrCreate({
