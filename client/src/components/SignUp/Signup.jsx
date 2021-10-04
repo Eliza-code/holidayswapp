@@ -69,7 +69,7 @@ const Signup = () => {
       <Header/>
     </div>
     <div className='formcontainer'>
-    <Container maxWidth="sm">
+    <Container sx={{  marginBottom: 10 }} maxWidth="sm">
       <CssBaseline />
       <Paper elevation={3}>
         <Box
