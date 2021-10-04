@@ -19,24 +19,25 @@ import Paper from "@mui/material/Paper";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { validate } from '../SignUp/validate';
+import swal from 'sweetalert';
 
 const initialValues = {
   username: "",
   password: "",
+  showPassword: false
 };
 
 const SignIn = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    console.log(values);
-    dispatch(postSignIn(values));
+    console.log('works!')
   };
 
   const formik = useFormik({
     initialValues,
     onSubmit,
-    validate
+    validate,
   });
 
   return (
@@ -66,7 +67,7 @@ const SignIn = () => {
                 variant="h4"
                 gutterBottom
               >
-                Create your profile
+                Sign In
               </Typography>
             </div>
             <div>

@@ -144,137 +144,49 @@
     border-radius: 1em;
 }
 
-.announce-owner {
+
+.icoUno{
     display: flex;
-    justify-content: center;
-    position: relative;
-    top: -1rem;
-    color: white;
+    justify-content: space-around; 
+    margin-top: 5%;
+   text-align: center;
 }
 
-.announce-rooms img{
-    position: relative;
-    margin: 0.5rem;
-    margin-left: 0.2rem;
-    width: 29.5em;
-    height: 20em;
+.pictures{
+   display: flex;
+   justify-content: space-around;   
+}
+h5{
+    margin-top: -1%;
+    font-family: 'Raleway', sans-serif;
 }
 
-.announce-description {
-    width: 60em;
-    height: 18.15em;
-    background-color: rgb(10, 17, 59);
-    border: 0.4em solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 1em;
+.descr{
+    margin-left: 2%;
 }
 
-.announce-house-description {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -1rem;
-    color: white;
-}
-
-.announce-house-description-title {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -1rem;
-    color: white;
-}
-
-.announce-house-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: left;
-    top: -2rem;
-    margin: 1px;
-    flex-direction: column;
-    position: relative;
-    color: white;
-}
-
-.rules-calendly {
-    width: 82.9em;
-    margin-top: 1em;
-    height: 24em;
-    background-color: rgb(10, 17, 59);
-    border: 0.4em solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 1em;
-}
-
-.rules-amenities {
-    width: 60em;
-    height: 23em;
-    position: relative;
-    top: -1.2rem;
-    background-color: white;
-    border-radius: 1rem;
-    box-sizing: border-box;
-}
-
-.amenity {
-    display: flex;
-    justify-content: stretch;
-    position: relative;
-    margin: none;
-}
-
-.amenity-logos {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.rules-logos {
+.houserules{
     display: flex;
     justify-content: space-around;
+    margin-top: -1%;
+    text-align: center;
+    }
+
+.Amenities{
+        display: flex;
+        justify-content: space-around;
+        margin-top: -1%;
+        text-align: center;
+        }
+h1{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
 }
 
-.logos  {
-    height: 2rem;
-    width: 2rem;
-    border-radius: 1em;
+h3{
+    font-family: 'Raleway', sans-serif;
 }
 
-.amenity-descr {
-    margin: 5px;
-    background-color: gray;
-    border: 5px solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 20px;
-}
-
-
-
-.amen-rules-description {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.Agend {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    left: 19rem;
-    top: -16rem;
-    color: white;
-}
-
-.calendar {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    left: 60rem;
-    top: -16rem;
-    width: 22.5rem;
-    height: 17rem;
-    border-radius: 2rem;
+h2{
+    font-family: 'Raleway', sans-serif;
 }

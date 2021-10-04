@@ -9,6 +9,7 @@ import Stack from '@mui/material/Stack';
 import { clearPage } from "../../redux/actions/postActions";
 import './SearchBar.css';
 
+
 const SearchBar = () => {
   const dispatch = useDispatch();
   const history = useHistory();  
