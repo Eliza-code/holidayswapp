@@ -1,6 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
 .footer {
-    text-align: center;
-    border: 1px solid black;
-    background-color: darkviolet;
-    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 6rem;
+    color: rgb(255, 255, 255);
+    background: rgb(26, 26, 26);
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2%;
 }

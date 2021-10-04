@@ -1,0 +1,19 @@
+.arrow{
+    display: flex;
+    position: relative;
+    justify-content: center;
+}
+
+.arrow button {
+    display: inline-block;
+    padding: 0.35em 1.2em;
+    border-color: transparent;
+    font-size: larger;
+    color: rgb(14, 13, 13);
+    margin: 3PX;
+}
+
+.arrow button:hover {
+    color: black;
+    background-color: rgba(131, 168, 250, 0.774);
+}
