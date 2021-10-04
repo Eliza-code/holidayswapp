@@ -15,10 +15,12 @@ const Statics =  () => {
     return (
 <div>
 <div className="sms">
-        <h2>it's official... we're the best home swapping platform </h2>
+      <div className='staticTitle'>
+        <h2>It's official... We're the best home swapping plataform </h2>
+      </div>
       </div>
       <div className="motivation">
-        <img src={Salta} alt="Salta" width="450em" height="400em" />
+        <img src={Salta} alt="Salta"  />
         <div className="icons">
           <div className="prayer">
             <img src={Plane} alt="Plane" />

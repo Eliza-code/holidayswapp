@@ -3,6 +3,10 @@ import { useState } from "react";
 import { useHistory } from "react-router-dom"
 import { useDispatch } from "react-redux";
 import { getHouseCity } from "../../redux/actions/postActions";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import './SearchBar.css';
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -22,16 +26,21 @@ const SearchBar = () => {
   return (
     <div className='search'>
       <form onSubmit={handleSubmit}>
-          <input
-            className='searchInput'
-            required
-            name='city'
-            type="text"
-            placeholder="City..."
-            onChange={handleInputChange}
-            value={input}            
+        <Stack direction="row"  spacing={0.5}>
+          <TextField 
+          id="outlined-basic"
+          label="Search" 
+          variant="outlined"
+          name='city'
+          type="text"
+          placeholder="City..."
+          onChange={handleInputChange}
+          value={input}
           />
-          <button type="submit">Search</button>
+          <Button 
+          variant="contained"
+          type="submit">Search</Button>
+        </Stack>
       </form>
     </div>
   );
