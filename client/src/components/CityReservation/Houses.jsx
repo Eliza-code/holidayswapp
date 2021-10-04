@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HouseCard from "./HouseCard.jsx";
 import { useSelector } from "react-redux";
-import { Grid, Box } from "@mui/material";
+import { Grid } from "@mui/material";
 import "./Houses.css";
 
 export default function Houses() {
@@ -30,10 +30,10 @@ export default function Houses() {
   useEffect(() => {
     first_Page();
   }, [houses]);
-  console.log(houses);
+ 
 
   const filtredHouses = houses?.slice(currentPage, currentPage + 3);
-  console.log(filtredHouses);
+ 
 
   return (
     <div>

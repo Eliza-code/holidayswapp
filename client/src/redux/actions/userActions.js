@@ -1,6 +1,7 @@
 import axios from "axios";
 import * as types from "../types/userTypes";
 
+
 export const postUser = (input) => {
   return async (dispatch) => {
     try{
@@ -29,6 +30,3 @@ export const postSignIn = (input) => {
   }
 }
 
-export function clearPage() {
-  return { type: types.GET_HOUSE_CITY, payload: undefined };
-}

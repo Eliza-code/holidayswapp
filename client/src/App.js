@@ -2,7 +2,6 @@ import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Home from './components/Home/Home';
 import GMap from './components/GoogleMaps/Map.js'
-import Announcements from './components/CityReservation/Announcements';
 import HouseDetail from './components/HouseDetail/HouseDetail';
 import AboutUs from './components/aboutUs/aboutUs';
 import CityResults from './components/CityReservation/CityResults';
