@@ -27,8 +27,8 @@ const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
 conn.sync({ force: true }).then(async() => {
   await server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
-    await getInfoAnnoun();
     await getInfoUsers();
+    await getInfoAnnoun();
     await getInfoReviews();
   });
 });

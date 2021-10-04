@@ -1,59 +1,85 @@
 import React, { useEffect, useState } from "react";
 import HouseCard from "./HouseCard.jsx";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./CityCards.css";
 import NavBar from "../NavBar/NavBar.jsx";
+import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
+import "./CityResults.css";
+import { clearPage } from "../../redux/actions/postActions.js";
+import { Grid } from "@mui/material";
 
 const CityResults = () => {
   const houses = useSelector((state) => state.postReducer.searchResults);
+  const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
 
   const next_Page = () => {
-    if (houses.length <= currentPage + 3) {
+    if (houses.length <= currentPage + 12) {
       setCurrentPage(currentPage);
-    } else setCurrentPage(currentPage + 3);
+    } else setCurrentPage(currentPage + 12);
   };
   const prev_Page = () => {
     if (currentPage < 4) {
       setCurrentPage(0);
     } else {
-      setCurrentPage(currentPage - 3);
+      setCurrentPage(currentPage - 12);
     }
   };
   const first_Page = () => {
     setCurrentPage(0);
   };
   const last_Page = () => {
-    setCurrentPage(houses.length - 3);
+    setCurrentPage(houses.length - 12);
   };
   useEffect(() => {
     first_Page();
-  }, [houses]);
-  console.log(houses);
-
+    return () => dispatch(clearPage());
+  }, [dispatch]);
+  
   const filtredHouses = houses?.slice(currentPage, currentPage + 3);
-  console.log(filtredHouses);
+  
 
   return (
     <div>
-      <div>
+      <div className="headerNav">
+        <Header />
         <NavBar />
       </div>
-      <div className="grid">
-        {filtredHouses?.map((e) => (
-          <HouseCard
-            key={e.id}
-            id={e.id}
-            title={e.title}
-            image={e.image}
-            country={e.country}
-            city={e.city}
-            points={e.points}            
-          />
-        ))}
+      <div>
+        <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+          <Grid item xs={12}>
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              sx={{ marginTop: 0, marginBottom: 2 }}
+              spacing={3}
+            >
+              {filtredHouses ? (
+                filtredHouses.map((e) => (
+                  <Grid key={e.id} item>
+                    <HouseCard
+                      key={e.id}
+                      id={e.id}
+                      title={e.title}
+                      image={e.image}
+                      country={e.country}
+                      city={e.city}
+                      points={e.points}
+                      rating={e.rating}
+                    />
+                  </Grid>
+                ))
+              ) : (
+                <h1>There are not available homes in this location</h1>
+              )}
+            </Grid>
+          </Grid>
+        </Grid>
       </div>
+
       <div>
         {filtredHouses?.length >= 3 ? (
           <div className="arrow">

@@ -1,0 +1,40 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster+Two:ital@1&display=swap');
+
+.headerContainer{
+    
+    display:flex;
+    flex-direction:row;
+}
+
+.logoLink{
+    width: 13%;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+    margin-top: 30px;
+    margin-left: 40px;
+
+}
+
+.logoLink img{
+    border-radius: 100%;
+}
+.title{
+    font-weight: bolder;
+    display: block;
+    text-align: center;
+    width: 70%;
+    color: rgb(4, 7, 51);
+    text-shadow: -4px 3px 0 #f9fdfa;
+}
+.title h2{
+    font-family: 'Lobster Two', cursive;
+    font-size:5rem;
+    margin-bottom: 0em;
+}
+.title h6{
+    font-family: roboto, monospace;
+    margin-top: 0%;
+    padding-left: 40%;
+    font-size: larger;
+    margin-bottom: 2em;
+}
