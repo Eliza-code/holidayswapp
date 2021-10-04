@@ -31,8 +31,9 @@ const CityResults = () => {
         setCurrentPage(houses.length - 3)
     };
     useEffect(() => {       
-        first_Page()
+        first_Page()       
         return () => dispatch(clearPage())
+        
     }, []);
     console.log(houses)
 
