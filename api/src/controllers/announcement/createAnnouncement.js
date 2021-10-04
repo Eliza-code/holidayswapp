@@ -20,6 +20,8 @@ module.exports = async (req, res, next) => {
     
     await user.addAnnouncement(announcement.id);
     await announcement.setUser(user.id);
+
+    res.json(announcement);
     
   } catch (err) {
     next(err);
