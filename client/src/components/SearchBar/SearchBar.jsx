@@ -7,6 +7,7 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import './SearchBar.css';
+import { clearPage } from "../../redux/actions/postActions.js";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
@@ -37,7 +38,7 @@ const SearchBar = () => {
           onChange={handleInputChange}
           value={input}
           />
-          <Button 
+          <Button onClick = {(() => dispatch(clearPage())) }
           variant="contained"
           type="submit">Search</Button>
         </Stack>
