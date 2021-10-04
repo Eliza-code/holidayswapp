@@ -1,0 +1,72 @@
+.card2 {
+    border: 3px solid black;
+    border-radius: 15px;
+    margin: 10px;
+    width: 23em;
+    height: 13em;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;  
+    text-decoration: none;
+}
+
+.card2:hover {
+    background-color: gray;
+    transition: 0.7s;
+}
+
+.name {
+    color: black;
+    text-decoration: none;
+    margin: 5px;
+}
+
+.align {
+    text-align: center;
+    margin: 5px;
+}
+
+.list-item {
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  
+  
+  
+}
+
+.h32 {
+    font-size: 15px;
+    align-items: center;
+}
+
+.temperature {
+    display: flex;
+    background: rgb(167, 167, 228);
+    border-radius: 15px;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn {
+    background: red;
+    border-radius: 10px;
+    width: 30px;
+    align-self: flex-end;
+}
+
+.btnwhite {
+    color: white;
+}
+
+.btn:hover {
+    background-color: gray;
+    border-radius: 10px;
+}
+
+a{
+    text-decoration: none;
+ }

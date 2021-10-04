@@ -1,0 +1,33 @@
+.peoples{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+}
+
+.column{
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.person{
+    display: flex;
+    align-items: flex-start;
+    width: 40%;
+    margin: 2%;
+}
+
+.logo>a{
+    margin-right: 5%;
+    
+}
+.logo{
+    margin-top: 2%;
+
+}
+.gdoce{
+    text-align: center;
+
+}

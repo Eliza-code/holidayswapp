@@ -1,0 +1,146 @@
+.all {
+    display: inline;
+}
+.link{
+    text-decoration: none;
+    color: gray;
+    display: contents;
+}
+
+.link:hover{
+    text-decoration: none;
+    color: rgb(99, 97, 97);
+    display: contents;
+}
+
+.container {
+    background-color: transparent;
+    border: 1px black solid;
+    border-radius: 10%;
+    margin: 0.5rem;
+    width:30%;
+    border: 2px solid rgba(255, 255, 255, 0.500);
+    color: white;
+}
+
+.container:hover {
+    background-color: rgb(97, 86, 86);
+}
+
+.user-info {
+    position: absolute;
+    width: 350px;
+    height: 696px;
+    left: 61.5em;
+    top: 230;
+    background: rgb(10, 17, 59);
+    border: 5px solid #0C0D0D;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.users {
+    position: absolute;
+    background-color: #49A0BB;
+    top: 15rem;
+    margin: 1rem;
+    width: 19.5rem;
+    height: 17rem;
+    border-radius: 5%;
+}
+
+
+
+.imgcontainer img{
+    position: absolute;
+    width: 19.5em;
+    height: 14em;
+    border-radius:10%;
+    margin: 1rem;
+}
+
+.imgowner img{
+    width: 115px;
+    height: 59px;
+    border-radius: 400px;
+}
+
+.owner {
+    position: relative;
+    left: 50px;
+    top: -4.5rem;
+    font-family: Caveat;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 1px;
+    text-align: center;
+    color: white;
+}
+
+.lang {
+    position: relative;
+    top: -4.5rem;
+    font-size: 0.57em;
+    line-height: 1px;
+    color: white;
+}
+
+.slang {
+    position: relative;
+    top: -6rem;
+    left: 1.5rem;
+    font-size: 0.57em;
+    line-height: 1px;
+    color: white;
+}
+
+.slang2 {
+    position: relative;
+    left: 1.5rem;
+    top: -7rem;
+    font-size: 0.57em;
+    line-height: 1px;
+    color: white;
+}
+
+.flag1 img{
+    position: relative;
+    top: -4.5rem;
+    width: 19px;
+    height: 21px;
+    border-radius: 118px;
+}
+
+.flag2 img{
+    position: relative;
+    top: -5.5rem;
+    width: 19px;
+    height: 21px;
+    border-radius: 118px;
+}
+
+.buton {
+    color: gray;
+    display: inline-block;
+    padding: 0.5em;
+    margin-top: 5px;
+    border-radius: 1rem;
+    font-family: 'Arial',Arial, Helvetica, sans-serif;
+    font-weight: 350;
+    text-align: center;
+    font-size: larger;
+    color: transparent;
+}
+
+.buton:hover {
+    background-color: gray;
+}
+
+.Activity {
+    margin-right: 18px;
+}
+
+.table {
+    margin: 0.2rem;
+}

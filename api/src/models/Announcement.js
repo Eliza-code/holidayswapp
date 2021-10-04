@@ -2,7 +2,11 @@ const { DataTypes } = require("sequelize");
 
 module.exports = (sequelize) => {
   return sequelize.define("announcement", {
-    
+    id: {
+      type: DataTypes.INTEGER,
+      primaryKey: true,
+      autoIncrement: true,
+    },
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -20,7 +24,6 @@ module.exports = (sequelize) => {
     },
     state: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     city: {
       type: DataTypes.STRING,
@@ -33,84 +36,84 @@ module.exports = (sequelize) => {
     points: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 500
+      defaultValue: 100,
     },
     sleeps: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 1,
     },
     bedrooms: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 1,
     },
     beds: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 1,
     },
     bathrooms: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 1,
     },
     surfaceM2: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 50
+      defaultValue: 50,
     },
     smokersWelcome: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     petsWelcome: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     childremWelcome: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     wifi: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     tv: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     washing_machine: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     fridge: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     a_c: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
     private_parking: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false
+      defaultValue: false,
     },
-    image:{
+    image: {
       type: DataTypes.ARRAY(DataTypes.STRING),
     },
-    rating:{
-      type: DataTypes.BOOLEAN,
-            defaultValue: false,
-    }
+    rating: {
+      type: DataTypes.INTEGER,
+      defaultValue: 0,
+    },
   });
 };

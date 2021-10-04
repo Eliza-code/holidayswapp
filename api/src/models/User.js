@@ -1,11 +1,19 @@
 const { DataTypes } = require("sequelize");
+const user = require("../utils/Users/data/users.data");
+
 
 module.exports = (sequelize) => {
-    return sequelize.define("user", {
+    sequelize.define("user", {
+        id: {
+            type: DataTypes.INTEGER,
+            primaryKey: true,
+            autoIncrement: true,
+        },
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,           
+            unique: true,
+            
         },
         googleId: {
             type: DataTypes.STRING,
@@ -52,5 +60,9 @@ module.exports = (sequelize) => {
             type: DataTypes.INTEGER,
             defaultValue: 500,
         },
+
+        
     });
+
+ 
 };

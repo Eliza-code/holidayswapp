@@ -13,22 +13,28 @@ const NavBar = () => {
       </div>
       <div className="items">
       <div>
+      <Link to="/">
+          <button>HOME</button>
+        </Link>
+      </div>
+      <div>
         <SearchBar />
       </div>
       <div>
-        <Link>
+        <Link to="/aboutus">
           <h4>about us</h4>
         </Link>
       </div>
       <div className="botoncitos">
-      <button>
-          Sing In
-      </button>
+      <Link to="/singin">
+         <button> Sign In </button>
+      </Link>
       <Link to="/register">
          <button> Create Account </button>
       </Link>
       </div>
       </div>
+      <hr/>
     </div>
   );
 };
