@@ -5,8 +5,7 @@ module.exports = (sequelize) => {
         username: {
             type: DataTypes.STRING,
             allowNull: false,
-            unique: true,
-            primaryKey: true
+            unique: true,           
         },
         googleId: {
             type: DataTypes.STRING,
@@ -38,10 +37,10 @@ module.exports = (sequelize) => {
             allowNull: false,
         },
         phoneNumber: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
         },  
         dateOfBirth: {
-            type: DataTypes.DATE,
+            type: DataTypes.DATEONLY,
         },
         nacionality: {
             type: DataTypes.STRING,

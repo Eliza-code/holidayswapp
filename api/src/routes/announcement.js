@@ -1,9 +1,7 @@
 const {Router} = require("express");
 const { Announcement } = require("../db");
-const { User } = require("../db");
+const { User } = require("../db")
 const { Op } = require("sequelize");
-const axios = require("axios");
-const { getInfoAnnoun } = require("../utills/Announcements/preload/announcements.preload")
 const router = Router();
 
 
@@ -32,41 +30,30 @@ router.get("/:id", async (req, res) => {
 
 
 router.get("/", async (req, res) => {
-    const { city } = req.query;
-    const { country}= req.query
+  
+    const { name } = req.query;
+    console.log(name)
     try {
-      if (city) {
-        const announcementCity = await Announcement.findAll({
-          include: {
-                model: User
-          },
-          where: {
-            city: { [Op.iLike]: `%${city}%` },
-          },
-        });
-        announcementCity.length
-          ? res.status(200).json(announcementCity)
-          : res.status(404).send("The country with that name was not found");
+      if (name) {
+        
+          const announcementFound = await Announcement.findAll({
+            where: {
+              [Op.or]: [
+                {city: { [Op.iLike]: `%${name}%`}},
+                {country: { [Op.iLike]: `%${name}%`}},
+              ]
+            }
+          });
+
+          announcementFound.length
+          ? res.status(200).json(announcementFound)
+          : res.status(404).send("The country with that name was not found"); 
       } 
-      if (country) {
-        const announcementCity = await Announcement.findAll({
-            
-          include: {
-            model: User
-            },
-          where: {
-            country: { [Op.iLike]: `%${country}%` },
-          },
-        });
-        announcementCity.length
-          ? res.status(200).json(announcementCity)
-          : res.status(404).send("The country with that name was not found");
-      } 
-      
       else {
         const announcement = await Announcement.findAll({
             include: {
-                model: User
+                as: "dueño",
+                model: User,
             }
         });
         res.send(announcement);

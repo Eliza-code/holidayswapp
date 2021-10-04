@@ -9,7 +9,6 @@ async function getInfoAnnoun (req, res) {
                 owner: el.owner,
             },
             defaults: {
-              /* dueñoId: el.ownerId, */
               title: el.title,
               owner: el.owner,
               country: el.country,
@@ -33,7 +32,6 @@ async function getInfoAnnoun (req, res) {
               a_c: el.amenities.a_c,
               private_parking: el.amenities.private_parking,
               image: el.image?.map(i => i),
-              
             },
           });
           return announcementData;
