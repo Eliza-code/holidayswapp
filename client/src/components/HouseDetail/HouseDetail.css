@@ -1,274 +1,47 @@
-.user-info {
-    position: absolute;
-    width: 350px;
-    height: 696px;
-    left: 61.5em;
-    background: rgb(10, 17, 59);
-    border: 5px solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 20px;
+
+
+.icoUno{
+    display: flex;
+    justify-content: space-around; 
+    margin-top: 5%;
+   text-align: center;
 }
 
-.user-description {
-    color: white;
-    font-size: 2rem;
-    top: -10rem;
-    position: relative;
+.pictures{
+   display: flex;
+   justify-content: space-around;   
+}
+h5{
+    margin-top: -1%;
+    font-family: 'Raleway', sans-serif;
 }
 
-.users {
-    position: absolute;
-    background-color: #49A0BB;
-    top: 15rem;
-    margin: 1rem;
-    width: 19.5rem;
-    height: 17rem;
-    border-radius: 5%;
+.descr{
+    margin-left: 2%;
 }
 
-
-
-.imgcontainer img{
-    position: absolute;
-    width: 19.5em;
-    height: 14em;
-    border-radius:10%;
-    margin: 1rem;
-}
-
-.imgowner img{
-    width: 115px;
-    height: 59px;
-    border-radius: 400px;
-}
-
-.review-user img{
-    position: relative;
-    top: -11.5rem;
-    width: 21.2rem;
-    right: 1rem;
-    height: 9.5rem;
-    border-radius: 1rem;
-}
-
-.owner {
-    position: relative;
-    left: 50px;
-    top: -4.5rem;
-    font-family: Caveat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 1px;
+.houserules{
+    display: flex;
+    justify-content: space-around;
+    margin-top: -1%;
     text-align: center;
-    color: white;
+    }
+
+.Amenities{
+        display: flex;
+        justify-content: space-around;
+        margin-top: -1%;
+        text-align: center;
+        }
+h1{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
 }
 
-.lang {
-    position: relative;
-    top: -4.5rem;
-    font-size: 0.57em;
-    line-height: 0.1rem;
-    color: white;
+h3{
+    font-family: 'Raleway', sans-serif;
 }
 
-.slang {
-    position: relative;
-    top: -6rem;
-    left: 1.5rem;
-    font-size: 0.57em;
-    line-height: 0.01rem;
-    color: white;
-}
-
-.slang2 {
-    position: relative;
-    left: 5.5rem;
-    top: -8.5rem;
-    font-size: 0.57em;
-    line-height: 0.1rem;
-    color: white;
-}
-
-.flag1 img{
-    position: relative;
-    top: -4.5rem;
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.flag2 img{
-    position: relative;
-    top: -7rem;
-    left: 4rem;
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.ratings {
-    position: relative;
-    font-size: 0.55rem;
-    top: -11.28rem;
-    left: 8rem;
-    color: white;
-}
-
-.starY img{
-    position: relative;
-    left: 13.5rem;
-    top: -13.2rem;
-    width: 1em;
-    height: 1em;
-}
-
-.starG img{
-    position: relative;
-    left: 13.5rem;
-    top: -13.2rem;
-    width: 1em;
-    height: 1em;
-}
-
-.announce-title {
-    width: 60em;
-    height: 4em;
-    background-color: rgb(10, 17, 59);
-    border: 0.4em solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 1em;
-}
-
-.announce-owner {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -1rem;
-    color: white;
-}
-
-.announce-rooms img{
-    position: relative;
-    margin: 0.5rem;
-    margin-left: 0.2rem;
-    width: 29.5em;
-    height: 20em;
-}
-
-.announce-description {
-    width: 60em;
-    height: 18.15em;
-    background-color: rgb(10, 17, 59);
-    border: 0.4em solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 1em;
-}
-
-.announce-house-description {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -1rem;
-    color: white;
-}
-
-.announce-house-description-title {
-    display: flex;
-    justify-content: center;
-    position: relative;
-    top: -1rem;
-    color: white;
-}
-
-.announce-house-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: left;
-    top: -2rem;
-    margin: 1px;
-    flex-direction: column;
-    position: relative;
-    color: white;
-}
-
-.rules-calendly {
-    width: 82.9em;
-    margin-top: 1em;
-    height: 24em;
-    background-color: rgb(10, 17, 59);
-    border: 0.4em solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 1em;
-}
-
-.rules-amenities {
-    width: 60em;
-    height: 23em;
-    position: relative;
-    top: -1.2rem;
-    background-color: white;
-    border-radius: 1rem;
-    box-sizing: border-box;
-}
-
-.amenity {
-    display: flex;
-    justify-content: stretch;
-    position: relative;
-    margin: none;
-}
-
-.amenity-logos {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.rules-logos {
-    display: flex;
-    justify-content: space-around;
-}
-
-.logos  {
-    height: 2rem;
-    width: 2rem;
-    border-radius: 1em;
-}
-
-.amenity-descr {
-    margin: 5px;
-    background-color: gray;
-    border: 5px solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 20px;
-}
-
-
-
-.amen-rules-description {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-}
-
-.Agend {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    left: 19rem;
-    top: -16rem;
-    color: white;
-}
-
-.calendar {
-    position: relative;
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    left: 60rem;
-    top: -16rem;
-    width: 22.5rem;
-    height: 17rem;
-    border-radius: 2rem;
+h2{
+    font-family: 'Raleway', sans-serif;
 }
