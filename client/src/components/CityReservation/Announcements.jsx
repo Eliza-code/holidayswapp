@@ -5,7 +5,7 @@ import Houses from "./Houses";
 
 const Announcements = () => {
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     dispatch(getHouses());
   }, [dispatch]);
