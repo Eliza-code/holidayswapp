@@ -21,6 +21,7 @@ async function getInfoUsers (req, res) {
               dateOfBirth: el.dateOfBirth,
               nacionality: el.nacionality,
               languagesSpoken: el.languagesSpoken,
+              description: el.description
             },
             
           });
