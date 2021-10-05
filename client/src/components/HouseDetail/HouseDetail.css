@@ -1,157 +1,9 @@
-<<<<<<< HEAD
-=======
-.user-info {
-    position: absolute;
-    width: 350px;
-    height: 696px;
-    left: 61.5em;
-    background: rgb(10, 17, 59);
-    border: 5px solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 20px;
-}
-
-.user-description {
-    color: white;
-    font-size: 2rem;
-    top: -10rem;
-    position: relative;
-}
-
-.users {
-    position: absolute;
-    background-color: #49A0BB;
-    top: 15rem;
-    margin: 1rem;
-    width: 19.5rem;
-    height: 17rem;
-    border-radius: 5%;
-}
-.headerNav{
-    background-image: url('../images/backgoundtop.jpg') ;
-    background-size: cover;;
-    background-repeat: no-repeat;
-    height: 19em;
-    margin-bottom: 2em;
-}
-
-
-.imgcontainer img{
-    position: absolute;
-    width: 19.5em;
-    height: 14em;
-    border-radius:10%;
-    margin: 1rem;
-}
-
-.imgowner img{
-    width: 115px;
-    height: 59px;
-    border-radius: 400px;
-}
-
-.review-user img{
-    position: relative;
-    top: -11.5rem;
-    width: 21.2rem;
-    right: 1rem;
-    height: 9.5rem;
-    border-radius: 1rem;
-}
-
-.owner {
-    position: relative;
-    left: 50px;
-    top: -4.5rem;
-    font-family: Caveat;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 30px;
-    line-height: 1px;
-    text-align: center;
-    color: white;
-}
-
-.lang {
-    position: relative;
-    top: -4.5rem;
-    font-size: 0.57em;
-    line-height: 0.1rem;
-    color: white;
-}
-
-.slang {
-    position: relative;
-    top: -6rem;
-    left: 1.5rem;
-    font-size: 0.57em;
-    line-height: 0.01rem;
-    color: white;
-}
-
-.slang2 {
-    position: relative;
-    left: 5.5rem;
-    top: -8.5rem;
-    font-size: 0.57em;
-    line-height: 0.1rem;
-    color: white;
-}
-
-.flag1 img{
-    position: relative;
-    top: -4.5rem;
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.flag2 img{
-    position: relative;
-    top: -7rem;
-    left: 4rem;
-    width: 1.25rem;
-    height: 1.25rem;
-}
-
-.ratings {
-    position: relative;
-    font-size: 0.55rem;
-    top: -11.28rem;
-    left: 8rem;
-    color: white;
-}
-
-.starY img{
-    position: relative;
-    left: 13.5rem;
-    top: -13.2rem;
-    width: 1em;
-    height: 1em;
-}
-
-.starG img{
-    position: relative;
-    left: 13.5rem;
-    top: -13.2rem;
-    width: 1em;
-    height: 1em;
-}
-
-.announce-title {
-    width: 60em;
-    height: 4em;
-    background-color: rgb(10, 17, 59);
-    border: 0.4em solid #0C0D0D;
-    box-sizing: border-box;
-    border-radius: 1em;
-}
->>>>>>> 492496a40d61e4693f6520a60e55267ad484e981
 
 
 .icoUno{
     display: flex;
     justify-content: space-around; 
-    margin-top: 5%;
+    margin-top: 2%;
    text-align: center;
 }
 
@@ -192,4 +44,27 @@ h3{
 
 h2{
     font-family: 'Raleway', sans-serif;
+}
+
+.headerNav{
+    background-image: url('../images/backgoundtop.jpg') ;
+    background-size: cover;;
+    background-repeat: no-repeat;
+    height: 19em;
+    margin-bottom: 2em;
+}
+
+.places {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px 10px rgb(44, 44, 44);
+    width: 100%;
+    height: 6rem;
+    color: rgb(255, 255, 255);
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }

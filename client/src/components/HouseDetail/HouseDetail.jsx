@@ -3,16 +3,19 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import { getHouseID } from "../../redux/actions/postActions";
 import Footer from "../Footer/Footer";
-import NavBar from "../NavBar/NavBar";
+
 import "./HouseDetail.css";
 import Announcements from "../CityReservation/Announcements";
 import Header from "../Header/Header";
 
 import House from "../HouseDetail/img/House.jpeg";
+import body from "../HouseDetail/img/body.png"
 import Beds from "../HouseDetail/img/Beds.jpeg";
 import Rooms from "../HouseDetail/img/Rooms.jpeg";
 import Bathrooms from "../HouseDetail/img/Bathrooms.jpeg";
 import Window from "../HouseDetail/img/Window.jpeg";
+
+
 
 import Wifi from "../HouseDetail/img/Wifi.jpeg";
 import Tele from "../HouseDetail/img/Tele.jpeg";
@@ -41,12 +44,12 @@ export default function HomeID() {
   console.log(homeDetailed, "Detalle del Hogar");
   return (
     <div>
-      <div>
+      <div className="headerNav">
         <Header />
       </div>
-      <div>
+      {/* <div>
         <NavBar />
-      </div>
+      </div> */}
       <div>
         {homeDetailed ? (
           <div>
@@ -56,27 +59,32 @@ export default function HomeID() {
               {homeDetailed.image?.map((e) => {
                 return (
                   <div>
-                    <img src={e} alt="img" width="300em" height="300em" />
+                    <img src={e} alt="img" width="350em" height="300em" />
                   </div>
                 );
               })}
             </div>
+            <hr/>
             <div className="icoUno">
               <div>
                 <img src={House} alt="ico" />
                 <h5>{homeDetailed.type}</h5>
               </div>
               <div>
+                <img src={body} alt="ico" />
+                <h5>Sleeps {homeDetailed.sleeps}</h5>
+              </div>
+              <div>
                 <img src={Beds} alt="ico" />
-                <h5>{homeDetailed.beds}</h5>
+                <h5>{homeDetailed.beds} beds</h5>
               </div>
               <div>
                 <img src={Rooms} alt="ico" />
-                <h5>{homeDetailed.bedrooms}</h5>
+                <h5>{homeDetailed.bedrooms} bedrooms</h5>
               </div>
               <div>
                 <img src={Bathrooms} alt="ico" />
-                <h5>{homeDetailed.bathrooms}</h5>
+                <h5>{homeDetailed.bathrooms} bathrooms</h5>
               </div>
               <div>
                 <img src={Window} alt="ico" />
@@ -84,7 +92,7 @@ export default function HomeID() {
               </div>
             </div>
             <div className="descr">
-            
+            <hr/>
             <h2>Description</h2>
               <h3>{`${homeDetailed.description}`}</h3>     
               <hr/>      
@@ -137,6 +145,9 @@ export default function HomeID() {
         ) : (
           "no hay nada"
         )}
+      </div>
+      <div className="places">
+        <h2>Places you may like</h2>
       </div>
       <div>
         <Announcements />
