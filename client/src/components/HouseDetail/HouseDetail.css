@@ -1,42 +1,19 @@
-.all {
-    display: inline;
-}
-.link{
-    text-decoration: none;
-    color: gray;
-    display: contents;
-}
-
-.link:hover{
-    text-decoration: none;
-    color: rgb(99, 97, 97);
-    display: contents;
-}
-
-.container {
-    background-color: transparent;
-    border: 1px black solid;
-    border-radius: 10%;
-    margin: 0.5rem;
-    width:30%;
-    border: 2px solid rgba(255, 255, 255, 0.500);
-    color: white;
-}
-
-.container:hover {
-    background-color: rgb(97, 86, 86);
-}
-
 .user-info {
     position: absolute;
     width: 350px;
     height: 696px;
     left: 61.5em;
-    top: 230;
     background: rgb(10, 17, 59);
     border: 5px solid #0C0D0D;
     box-sizing: border-box;
     border-radius: 20px;
+}
+
+.user-description {
+    color: white;
+    font-size: 2rem;
+    top: -10rem;
+    position: relative;
 }
 
 .users {
@@ -48,7 +25,13 @@
     height: 17rem;
     border-radius: 5%;
 }
-
+.headerNav{
+    background-image: url('../images/backgoundtop.jpg') ;
+    background-size: cover;;
+    background-repeat: no-repeat;
+    height: 19em;
+    margin-bottom: 2em;
+}
 
 
 .imgcontainer img{
@@ -63,6 +46,15 @@
     width: 115px;
     height: 59px;
     border-radius: 400px;
+}
+
+.review-user img{
+    position: relative;
+    top: -11.5rem;
+    width: 21.2rem;
+    right: 1rem;
+    height: 9.5rem;
+    border-radius: 1rem;
 }
 
 .owner {
@@ -82,7 +74,7 @@
     position: relative;
     top: -4.5rem;
     font-size: 0.57em;
-    line-height: 1px;
+    line-height: 0.1rem;
     color: white;
 }
 
@@ -91,56 +83,110 @@
     top: -6rem;
     left: 1.5rem;
     font-size: 0.57em;
-    line-height: 1px;
+    line-height: 0.01rem;
     color: white;
 }
 
 .slang2 {
     position: relative;
-    left: 1.5rem;
-    top: -7rem;
+    left: 5.5rem;
+    top: -8.5rem;
     font-size: 0.57em;
-    line-height: 1px;
+    line-height: 0.1rem;
     color: white;
 }
 
 .flag1 img{
     position: relative;
     top: -4.5rem;
-    width: 19px;
-    height: 21px;
-    border-radius: 118px;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
 .flag2 img{
     position: relative;
-    top: -5.5rem;
-    width: 19px;
-    height: 21px;
-    border-radius: 118px;
+    top: -7rem;
+    left: 4rem;
+    width: 1.25rem;
+    height: 1.25rem;
 }
 
-.buton {
-    color: gray;
-    display: inline-block;
-    padding: 0.5em;
-    margin-top: 5px;
-    border-radius: 1rem;
-    font-family: 'Arial',Arial, Helvetica, sans-serif;
-    font-weight: 350;
+.ratings {
+    position: relative;
+    font-size: 0.55rem;
+    top: -11.28rem;
+    left: 8rem;
+    color: white;
+}
+
+.starY img{
+    position: relative;
+    left: 13.5rem;
+    top: -13.2rem;
+    width: 1em;
+    height: 1em;
+}
+
+.starG img{
+    position: relative;
+    left: 13.5rem;
+    top: -13.2rem;
+    width: 1em;
+    height: 1em;
+}
+
+.announce-title {
+    width: 60em;
+    height: 4em;
+    background-color: rgb(10, 17, 59);
+    border: 0.4em solid #0C0D0D;
+    box-sizing: border-box;
+    border-radius: 1em;
+}
+
+
+.icoUno{
+    display: flex;
+    justify-content: space-around; 
+    margin-top: 5%;
+   text-align: center;
+}
+
+.pictures{
+   display: flex;
+   justify-content: space-around;   
+}
+h5{
+    margin-top: -1%;
+    font-family: 'Raleway', sans-serif;
+}
+
+.descr{
+    margin-left: 2%;
+}
+
+.houserules{
+    display: flex;
+    justify-content: space-around;
+    margin-top: -1%;
     text-align: center;
-    font-size: larger;
-    color: transparent;
+    }
+
+.Amenities{
+        display: flex;
+        justify-content: space-around;
+        margin-top: -1%;
+        text-align: center;
+        }
+h1{
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
 }
 
-.buton:hover {
-    background-color: gray;
+h3{
+    font-family: 'Raleway', sans-serif;
 }
 
-.Activity {
-    margin-right: 18px;
-}
-
-.table {
-    margin: 0.2rem;
+h2{
+    font-family: 'Raleway', sans-serif;
 }

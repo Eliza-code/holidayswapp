@@ -14,10 +14,10 @@ export default function Employee({ name, job, linkedin, github, img }) {
       <h3>{name}</h3>
       <p style={{fontStyle: "italic",marginTop: "-5%"}}>{job}</p>
       <div className="logo">
-      <a href={linkedin}>
+      <a  target="_blank" rel="noopener noreferrer" href={linkedin}>
         <img src={logoLinkedin} alt="logo" />
       </a>
-      <a href={github}>
+      <a target="_blank" rel="noopener noreferrer" href={github}>
         <img src={logogithub} alt="logo" />
       </a>
       </div>

@@ -1,11 +1,10 @@
 import React from 'react';
 import {Switch, Route} from 'react-router-dom';
 import Home from './components/Home/Home';
-import GMap from './components/GoogleMaps/Map.js'
+import GMap from './components/GoogleMaps/Map.js';
 import HouseDetail from './components/HouseDetail/HouseDetail';
 import AboutUs from './components/aboutUs/aboutUs';
 import CityResults from './components/CityReservation/CityResults';
-
 
 //User
 import Signup from './components/SignUp/Signup';
@@ -20,8 +19,8 @@ function App() {
           <Route exact path="/register" component={Signup} />
           <Route exact path = '/googleMap' component={GMap}/>
           <Route exact path = '/announcements/:id' component={HouseDetail}/>
-          <Route exact path = '/announcements/ciudad/:name' component={CityResults} />
-          <Route exact path="/singin" component={SignIn} />
+          <Route exact path = '/announcements/city/:name' component={CityResults} />
+          <Route exact path="/signin" component={SignIn} />
           <Route exact path="/aboutus" component={AboutUs} />
         </Switch>
     </div>

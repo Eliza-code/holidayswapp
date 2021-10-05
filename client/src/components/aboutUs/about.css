@@ -1,7 +1,19 @@
+.containerAbout{
+    background-image: url('../images/backgoundtop.jpg') ;
+    background-size: cover;;
+    background-repeat: no-repeat;
+    height: 15em;
+    margin-bottom: 2em;
+}
+.containPeople{
+    background-color:rgba(255, 255, 255, 0.842);
+}
+
 .peoples{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-family: roboto;
   
 }
 
@@ -25,5 +37,12 @@
 }
 .logo{
     margin-top: 2%;
+
+}
+.gdoce{
+    text-align: center;
+    font-family: roboto;
+    margin: 50px;
+
 
 }

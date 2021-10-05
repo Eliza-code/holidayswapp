@@ -1,3 +1,11 @@
+.singinContainer{
+        background-image: url('../images/backgoundtop.jpg') ;
+        background-size: cover;;
+        background-repeat: no-repeat;
+
+}
+
+
 .mainForm{
     display: flex;
     flex-direction: column;
@@ -8,8 +16,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(3, 21, 82, 0.644);
-    color: rgb(236, 230, 230);
     width:50%;
     padding: 10px;
     margin-top: 20px;

@@ -1,63 +1,47 @@
-const { Router } = require('express');
+const { Router } = require("express");
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const { User } = require('../db');
+const { User } = require("../db");
 const { SECRET_KEY } = process.env;
-var LocalStrategy = require('passport-local').Strategy;
-
+var LocalStrategy = require("passport-local").Strategy;
+require("../utils/auth/passport")(passport);
 
 const router = Router();
 router.use(express.json());
 
-router.post('/login', 
-  passport.authenticate('local', { failureRedirect: '/login' }),
-  async function(req, res) {
-    res.send('logeado');
-  });
 
-  passport.use(
-    new LocalStrategy(
-      {
-        usernameField: 'username', 
-        passwordField: 'password',
-        session: false
-      },
-      async (username, password, done) => {
-        
-        const user = await User.findOne({where:{ username: username }})
-        console.log(user);
-        if (!user) return done(null, false);
-        if (!user.password===password) { return done(null, false); }
-        return done(null, user);      
-        
-      })
-  );
-  
-// Configuración de la persistencia de la sesión autenticada
-
-// Para recuperar los datos de la sesión autenticada Passport necesita dos métodos para
-// serializar y deserializar al usuario de la sesión. Para ello la forma más práctica de hacerlo
-// es serializando el ID del usuario para luego al deserealizar a partir de dicho ID obtener
-// los demás datos de ese usuario. Esto permite que la información almacenada en la sesión sea
-// lo más simple y pequeña posible
-
-passport.serializeUser((username, done) => {
-   
-    done(null, username);
-  });
-
-// Al deserealizar la información del usuario va a quedar almacenada en req.user
-
-passport.deserializeUser(async (username, done) => {
-    try{
-      const user = await User.findOne({ where: { username } })
-      if (user) done(null, user);
-    }catch(err){
-      done(err, null);
+router.post("/login", (req, res, next) => {
+  passport.authenticate("local", async (err, user, info) => {
+    if (err) throw err;
+    if (!user) res.send("No User Exists");
+    else {
+      const token=await jwt.sign(
+        {
+          id: user.id,
+          email: user.email,
+          isAdmin: user.isAdmin,
+          isDeleted: user.isDeleted,
+        },
+        SECRET_KEY,
+        { expiresIn: "24hr" }
+      )
+      console.log(token)
+      return res.send(token);
     }
-  });
- 
+  })(req, res, next);
+});
 
+router.get("/user", (req, res) => {
+  //NO ESTA RESPONDIENDO POR EL MOMENTO..
+  res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
+});
+
+
+router.get("/logout", (req, res, next) => {
+  req.logOut();
+  req.session = null;
+  res.send("Logged out");
+});
 
 module.exports = router;

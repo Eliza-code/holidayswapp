@@ -1,19 +1,35 @@
-.cities {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+
+.headerNav{
+    background-image: url('../images/backgoundtop.jpg') ;
+    background-size: cover;;
+    background-repeat: no-repeat;
+    height: 19em;
+    margin-bottom: 2em;
 }
 
+.citiesCards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    filter: drop-shadow(0 2px 5px rgba(0, 0, 0, 0.7));
+ 
+}
+
+
 .places {
-    border: 1px solid black ;
     display: flex;
     justify-content: center;
-    background-color: darkviolet;
-    margin: 10px;
+    align-items: center;
+    text-shadow: 0px 0px 10px rgb(44, 44, 44);
+    width: 100%;
+    height: 6rem;
+    color: rgb(255, 255, 255);
+    background: rgb(131,58,180);
+    background: linear-gradient(90deg, rgba(131,58,180,1) 0%, rgba(253,29,29,1) 50%, rgba(252,176,69,1) 100%);
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2%;
+    margin-bottom: 2%;
 }
 
 .sms {
@@ -22,14 +38,71 @@
     margin: 10px;
 }
 
+.staticTitle  {
+    background: rgb(0,26,36);
+    background: linear-gradient(125deg, rgba(0,26,36,1) 0%, rgba(59,9,121,1) 26%, rgba(0,255,187,1) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 0px 0px 10px rgb(44, 44, 44);
+    width: 100%;
+    height: 6rem;
+    color: rgb(255, 255, 255);
+    font-family: 'Raleway', sans-serif;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
 .motivation{
     display: flex;
-    border: 1px solid black;
     margin: 10px;
+}
+
+.motivation img {
+    border-radius: 10px;
+   
 }
 
 .prayer{
     display: inline-flex;
     align-items: center;
     
+}
+
+.prayer h5{
+    font-family: roboto;
+}
+
+.cityCard{
+    display: grid;
+    margin: 1%;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.cityCard img {
+    width: 20em;
+    height:15em;
+
+}
+
+.cityCard button {
+    border-color: transparent;
+    filter:none;
+    background-color:rgba(255, 255, 255, 0.63);
+    font-family: roboto;
+    font-size: large;
+    font-weight: bold;
+    position: absolute;
+    border-radius: 5px;
+    width: 8em;
+    height: 2.5em;
+    cursor: pointer;
+    
+}
+
+.icons{
+display: grid;
+margin-top: -1%;
 }

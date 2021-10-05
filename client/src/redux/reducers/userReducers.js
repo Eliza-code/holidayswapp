@@ -2,6 +2,7 @@ import * as types from "../types/userTypes.js";
 
 const initialState =  {
     userInfo: [],
+    signinInfo: []
     
 }
 
@@ -16,7 +17,7 @@ const userReducer = (state=initialState, action) => {
         case types.POST_SIGN_IN :
             return {
                 ...state,
-                
+                signinInfo: action.payload
             }
 
         default: 

@@ -1,17 +1,15 @@
-.titulo {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: flex-end;
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    background-color: darkviolet;
-    margin: 10px;
-}
+
 
 .items {
     display: flex;
+    background-color: rgba(255, 255, 255, 0.849);
+    height: 5.2em;
     justify-content: space-between;
     align-items: center;
-    margin: 10px;
+}
+
+.Buttoms{
+    margin-right: 2em;
+    cursor: pointer;
 }
 

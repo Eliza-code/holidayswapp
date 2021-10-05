@@ -24,7 +24,6 @@ module.exports = (sequelize) => {
     },
     state: {
       type: DataTypes.STRING,
-      allowNull: false,
     },
     city: {
       type: DataTypes.STRING,
@@ -37,7 +36,7 @@ module.exports = (sequelize) => {
     points: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 500,
+      defaultValue: 100,
     },
     sleeps: {
       type: DataTypes.INTEGER,
