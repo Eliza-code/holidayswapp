@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "./Signin.css";
 import { postSignIn } from "../../redux/actions/userActions";
 import Header from "../Header/Header";
@@ -18,8 +18,7 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { validate } from "../SignUp/validate";
-import swal from "sweetalert";
+import { validate } from "../SignIn/validate";
 
 const initialValues = {
   username: "",
@@ -33,10 +32,10 @@ const SignIn = () => {
   const onSubmit = (values) => {
     dispatch(
       postSignIn({
-        username: formik.values.username,
-        password: formik.values.password,
+        username: values.username,
+        password: values.password,
       })
-    );
+    )
   };
 
   const formik = useFormik({
@@ -63,7 +62,7 @@ const SignIn = () => {
                 "& .MuiTextField-root": { m: 2, width: "17rem" },
               }}
               autoComplete="off"
-              onSubmit={onSubmit}
+              onSubmit={formik.handleSubmit}
             >
               <div>
                 <Typography
