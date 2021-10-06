@@ -5,6 +5,7 @@ import GMap from './components/GoogleMaps/Map.js';
 import HouseDetail from './components/HouseDetail/HouseDetail';
 import AboutUs from './components/aboutUs/aboutUs';
 import CityResults from './components/CityReservation/CityResults';
+import UserDetails  from './components/userDetails/UserDetail'
 
 //User
 import Signup from './components/SignUp/Signup';
@@ -22,6 +23,7 @@ function App() {
           <Route exact path = '/announcements/city/:name' component={CityResults} />
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/aboutus" component={AboutUs} />
+          <Route exact path="/user/getUser/:id" component={UserDetails}/>
         </Switch>
     </div>
   );

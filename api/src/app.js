@@ -6,10 +6,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const session = require("express-session");
 const passport = require("passport");
-require('dotenv').config();
 
-
+require("./utils/auth/passport");
 require('./db.js');
+
+require('dotenv').config();
 const { SECRET_KEY, CLIENT_DOMAIN } = process.env;
 
 const server = express();

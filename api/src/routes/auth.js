@@ -2,10 +2,9 @@ const { Router } = require("express");
 const express = require("express");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
-const { User } = require("../db");
+const { User } = require('../db');
 const { SECRET_KEY } = process.env;
-var LocalStrategy = require("passport-local").Strategy;
-require("../utils/auth/passport")(passport);
+
 
 const router = Router();
 router.use(express.json());
@@ -33,12 +32,18 @@ router.post("/login", (req, res, next) => {
 });
 
 
-
-router.get('/user', 
-  passport.authenticate('bearer', { session: false }),
-  function(req, res) {
-    res.json(req.user);
-  });
+router.get('/profile', 
+passport.authenticate('bearer', { session: false }),
+async function(req, res) {
+  try {
+    const user = await User.findOne({
+        where: { id: req.user.id },
+    });
+    res.json(user);
+} catch (error) {
+    res.json(error.message);
+} 
+});
 
 
 router.get("/logout", (req, res, next) => {
