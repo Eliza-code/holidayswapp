@@ -32,10 +32,13 @@ router.post("/login", (req, res, next) => {
   })(req, res, next);
 });
 
-router.get("/user", (req, res) => {
-  //NO ESTA RESPONDIENDO POR EL MOMENTO..
-  res.send(req.user); // The req.user stores the entire user that has been authenticated inside of it.
-});
+
+
+router.get('/user', 
+  passport.authenticate('bearer', { session: false }),
+  function(req, res) {
+    res.json(req.user);
+  });
 
 
 router.get("/logout", (req, res, next) => {
