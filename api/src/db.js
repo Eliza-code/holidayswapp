@@ -43,6 +43,10 @@ Announcement.belongsToMany(User, { through: Review });
 User.belongsToMany(Announcement, { through: Favourite });
 Announcement.belongsToMany(User, { through: Favourite });
 
+Review.belongsTo(User, {
+  foreignKey: 'userId'
+})
+
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');
   conn: sequelize,     // para importart la conexión { conn } = require('./db.js');

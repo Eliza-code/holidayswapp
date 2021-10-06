@@ -61,7 +61,7 @@ module.exports = (sequelize) => {
         },
         points: {
             type: DataTypes.INTEGER,
-            defaultValue: 500,
+            defaultValue: 1000,
         },
 
         
