@@ -1,12 +1,17 @@
 var express = require('express');
+const passport = require("passport");
 const { Router } = require('express');
-const {User} = require('../../db')
+const {User} = require('../../db');
+const jwt = require("jsonwebtoken");
 var LocalStrategy = require('passport-local').Strategy;
+
+require("dotenv").config();
+const { SECRET_KEY} = process.env;
 
 const router = Router();
 router.use(express.json());
 
-module.exports = function (passport) {
+
 // Configuración de estrategia local de Passport.
 
 // Para configurar la estrategia local de Passport es necesario crear una nueva instancia
@@ -58,5 +63,17 @@ passport.deserializeUser((id, done) => {
     });
   });
   
+ 
+const BearerStrategy = require("passport-http-bearer").Strategy;
 
-}  
+passport.use(
+    new BearerStrategy((token, done) => {
+      jwt.verify(token, SECRET_KEY, function (err, usuario) {
+        if (err) return done(err);
+        return done(null, usuario ? usuario : false);
+      });
+    })
+  );
+  
+
+ 

@@ -1,5 +1,5 @@
 let user = [
-  {
+  { //1
     username: "TERRI",
     profilePicture:
       "https://image.freepik.com/foto-gratis/alegre-mujer-mediana-edad-cabello-rizado_1262-20859.jpg",
@@ -14,7 +14,7 @@ let user = [
     description:
       "I am Terri from Miami, United States, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //2
     username: "JAQUELINE",
     profilePicture:
       "https://image.freepik.com/foto-gratis/empresaria-confiada-sonriente-que-presenta-brazos-cruzados_1262-20950.jpg",
@@ -29,7 +29,7 @@ let user = [
     description:
       "I am Jaqueline from Rio de Janeiro, Brazil, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //3
     username: "WHALTHER",
     profilePicture:
       "https://image.freepik.com/foto-gratis/hombre-haciendo-gesto-ok_1149-1143.jpg",
@@ -44,7 +44,7 @@ let user = [
     description:
       "I am Whalther from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //4
     username: "NADINA",
     profilePicture:
       "https://image.freepik.com/foto-gratis/mujer-celebrando-ser-ganador_155003-38247.jpg",
@@ -59,7 +59,7 @@ let user = [
     description:
       "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //5
     username: "MICHAEL",
     profilePicture:
       "https://image.freepik.com/foto-gratis/retrato-joven-apuesto-hace-buen-gesto-demuestra-que-acuerdo-gusta-idea-sonrie-felizmente-usa-gafas-opticas-sombrero-amarillo-camiseta-modelos-interior-bien-gracias-signo-mano_273609-30676.jpg",
@@ -74,7 +74,7 @@ let user = [
     description:
       "I am Michael from Bali, Indonesia, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //6
     username: "GEERT",
     profilePicture:
       "https://image.freepik.com/foto-gratis/mira-captura-recortada-atractivo-joven-apuesto-emocionado-camiseta-azul-que-senala-dedos-arriba-despues-haber-mirado-sorprendido-expresion-alegre-feliz-cara-broadley-sonriendo_176420-10316.jpg",
@@ -89,7 +89,7 @@ let user = [
     description:
       "I am Geert from Brusells, Belgium, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //7
     username: "ANA, VANINA I NEO",
     profilePicture:
       "https://image.freepik.com/foto-gratis/chica-atractiva-curiosa-e-intrigada-encuentra-promocion-interesante-apuntando-esquina-superior-derecha_176420-27738.jpg",
@@ -104,7 +104,8 @@ let user = [
     description:
       "I am Ana from Zagreb, Croatia, I really like to travel and I would like to change houses with you",
   },
-  {
+  { 
+    //8
     username: "IVY",
     profilePicture:
       "https://image.freepik.com/foto-gratis/retrato-hermosa-mujer-joven-sonrisa-blanca-pie-blusa-tocar-pelo-corto-pie-sobre-pared-blanca_176420-34063.jpg",
@@ -119,7 +120,8 @@ let user = [
     description:
       "I am Ivy from Melbourne, Australia, I really like to travel and I would like to change houses with you",
   },
-  {
+  { 
+    //9
     username: "PALOMA",
     profilePicture:
       "https://image.freepik.com/foto-gratis/mujer-joven-mostrando-doble-pulgar-arriba-camisa-verde-mirando-contento-vista-frontal_176474-103360.jpg",
@@ -134,7 +136,8 @@ let user = [
     description:
       "I am Paloma from Ciudad de Mexico, Mexico, I really like to travel and I would like to change houses with you",
   },
-  {
+  { 
+    //10
     username: "YENY",
     profilePicture:
       "https://image.freepik.com/foto-gratis/joven-mujer-pensativa-anteojos-pensando-nuevas-ideas-creativas-mientras-sentado-junto-mesa-cafeteria-u-oficina_274679-5752.jpg",
@@ -149,7 +152,7 @@ let user = [
     description:
       "I am Yeny from Miami, United States, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //11
     username: "ALMA DIAZ",
     profilePicture:
       "https://image.freepik.com/foto-gratis/mujer-levantando-manos-mientras-toma-selfie_23-2148293874.jpghttps://image.freepik.com/foto-gratis/mujer-levantando-manos-mientras-toma-selfie_23-2148293874.jpg",
@@ -164,7 +167,7 @@ let user = [
     description:
       "I am Alma from Madrid, Spain, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //12
     username: "ANDREA",
     profilePicture:
       "https://image.freepik.com/foto-gratis/estudiante-universitario-femenino-feliz-mostrando-pulgares-arriba-aislado_231208-10405.jpg",
@@ -179,7 +182,7 @@ let user = [
     description:
       "I am Andrea from Barcelona, Spain, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //13
     username: "SONJA",
     profilePicture:
       "https://image.freepik.com/foto-gratis/hermosa-joven-apuntando-arriba-sobre-fondo-blanco_1301-7744.jpg",
@@ -194,7 +197,7 @@ let user = [
     description:
       "I am Sonja from Milano, Italy, I really like to travel and I would like to change houses with you",
   },
-  {
+  { //14
     username: "VANESSA",
     profilePicture:
       "https://img.freepik.com/foto-gratis/asistente-rubia-anteojos-sonriendo-dando-poses-profesionales_144627-58758.jpg?size=338&ext=jpg",
