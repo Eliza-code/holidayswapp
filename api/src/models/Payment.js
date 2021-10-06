@@ -2,19 +2,19 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   sequelize.define("payment", {
-    name: {
+    transactionType: {
       type: DataTypes.STRING,
-      allowNull: false
     },
     status: {
         type: DataTypes.ENUM({
           values: ["pending", "cancelled", "completed"],
         }),
-        allowNull: false
+        allowNull: false,
+        defaultValue: "pending"
       },
     payment_id: {
-      type: DataTypes.BIGINT,
-      defaultValue: 0
+      type: DataTypes.UUID,
+      allowNull: false
     }
   })
 };

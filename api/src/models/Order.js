@@ -15,6 +15,9 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    city: {
+      type: DataTypes.STRING,
+    },
     paymentMethod: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -25,8 +28,7 @@ module.exports = (sequelize) => {
       },
     },
     points: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+      type: DataTypes.INTEGER,
     },
     status: {
       type: DataTypes.ENUM({
@@ -35,8 +37,11 @@ module.exports = (sequelize) => {
       allowNull: false
     },
     date: {
-      type: DataTypes.DATEONLY,
+      type: DataTypes.STRING,
       allowNull: false
-    }
+    },
+    profilePicture: {
+      type: DataTypes.STRING,
+    },
   });
 };
