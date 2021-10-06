@@ -266,9 +266,11 @@ let announcements = [
       "We live in the suburbs, its 20 min drive from city center and its surrounded with nature. Sometimes you can see deers, rabbits, foxes and sheep nearby.",
   },
   {
-
     userId: 8,
+    title: "IVY's House",
+    owner: "IVY",
     country: "Australia",
+    state: "Victoria",
     city: "Melbourne",
     adress: "Mont Albert Rd 301",
     type: "House",
