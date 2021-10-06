@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { Link } from "react-router-dom";
 import "../NavBar/navbar.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import AccountMenu from "./AccountMenu";
+import {isAuthenticated} from "../../utils/isAuth";
+
+const user = { username: "Eli", profilePicture: null };
 
 const NavBar = () => {
+ 
+
+  const [isLogged, setIsLogged] = React.useState(false);
+  console.log("isLogged --> ", isLogged)
+
+  useEffect(() => {
+    const isAuth = isAuthenticated();
+    setIsLogged(isAuth);
+  }, []);
+
   return (
     <div className="items">
       <div>
@@ -21,28 +35,33 @@ const NavBar = () => {
           About us
         </Button>
       </div>
-      <div className="Buttoms">
-        <Stack direction="row" spacing={1}>
-          <Button
-            component={Link}
-            to="/signin"
-            sx={{ height: 50 }}
-            variant="contained"
-            type="submit"
-          >
-            Sign In
-          </Button>
-          <Button
-            component={Link}
-            to="/register"
-            sx={{ height: 50 }}
-            variant="contained"
-            type="submit"
-          >
-            Sign Up
-          </Button>
-        </Stack>
-      </div>
+      {isLogged ? (
+        <AccountMenu user={user} />
+      ) : (
+        <div className="Buttoms">
+          <Stack direction="row" spacing={1}>
+            <Button
+              component={Link}
+              to="/signin"
+              sx={{ height: 50 }}
+              variant="contained"
+              type="submit"
+            >
+              Sign In
+            </Button>
+
+            <Button
+              component={Link}
+              to="/register"
+              sx={{ height: 50 }}
+              variant="contained"
+              type="submit"
+            >
+              Sign Up
+            </Button>
+          </Stack>
+        </div>
+      )}
     </div>
   );
 };

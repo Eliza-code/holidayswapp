@@ -42,8 +42,8 @@ export default function Houses() {
           <Grid
             container
             justifyContent="center"
-            aligneItems="center"
-            sx={{ marginTop: 0, marginBottom: 2 }}
+            alignItems="center"
+            sx={{ mt: 0, mb: 2 }}
             spacing={3}
           >
             {filtredHouses?.map((e) => (

@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getHouseID } from "../../redux/actions/postActions";
 import Footer from "../Footer/Footer";
 import NavBar from "../NavBar/NavBar";
@@ -53,13 +53,11 @@ export default function HomeID() {
             <h1>{homeDetailed.title}</h1>
 
             <div className="pictures">
-              {homeDetailed.image?.map((e) => {
-                return (
-                  <div>
+              {homeDetailed.image?.map((e) => (
+                  <div key={e}>
                     <img src={e} alt="img" width="300em" height="300em" />
                   </div>
-                );
-              })}
+              ))}
             </div>
             <div className="icoUno">
               <div>

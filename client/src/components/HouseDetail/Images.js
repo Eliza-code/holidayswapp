@@ -24,7 +24,8 @@ import Calendar from './img/calendar.jpg';
 import Review from './img/Review.png';
 
 
-export default {
+
+const images = {
     'img1': User,
     'img2': USA,
     'img3': MEX,
@@ -50,3 +51,4 @@ export default {
     'img23': Calendar,
     'img24': Review
 }
+export default images;

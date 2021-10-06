@@ -1,9 +1,7 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-    userInfo: [],
-    signinInfo: []
-    
+    userInfo: window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : null,
 }
 
 const userReducer = (state=initialState, action) => {
@@ -12,12 +10,16 @@ const userReducer = (state=initialState, action) => {
         case types.POST_USER:
            return {
                ...state,
-               userInfo: action.payload
-           }
-        case types.POST_SIGN_IN :
+            }
+
+        case types.POST_SIGN_IN:
             return {
                 ...state,
-                signinInfo: action.payload
+            }
+        
+        case types.SIGN_OUT:
+            return {
+                ...state,
             }
 
         default: 

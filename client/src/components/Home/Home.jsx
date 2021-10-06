@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getHouseCity } from "../../redux/actions/postActions";
 import NavBar from "../NavBar/NavBar";
@@ -15,7 +15,6 @@ const Home = () => {
   const history = useHistory();
 
   const handleOnClick = (e, name) => {
-    console.log(e);
     e.preventDefault();
     dispatch(getHouseCity(name.trim()));
     history.push(`/announcements/city/${name}`);
@@ -28,16 +27,14 @@ const Home = () => {
         <NavBar />
       </div>
       <div className="citiesCards">
-        {turisticCities.map((el) => {
-          return (
-            <div key={el.id} className="cityCard">
+        {turisticCities.map((el, i) => (
+            <div key={i} className="cityCard">
               <img src={el.image} alt="city" />
               <button onClick={(e) => handleOnClick(e, el.name)}>
                 {el.name}
               </button>
             </div>
-          );
-        })}
+        ))}
       </div>
       <div className="places">
         <h2>Places you may like</h2>
