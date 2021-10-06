@@ -684,7 +684,7 @@ let announcements = [
     userId: 19,
     title: "JOANA's Home",
     owner: "JOANA",
-    country: "Portugal ",
+    country: "Portugal",
     state: " Lisbon ",
     city: " Lisbon ",
     adress: "R. Amadeu de Sousa Cardoso 18",
@@ -757,7 +757,7 @@ let announcements = [
       "My flat is located on the 20th floor in a nice building. It has a doorman making the building really safe.",
   },
   {
-    // userId: 21,
+    userId: 21,
     title: "Spacious and close to the city center",
     owner: "HECTOR",
     country: "Spain",
@@ -795,7 +795,7 @@ let announcements = [
       "The house is spacious, 140m², 5 rooms and it has been recently renovated (2018).",
   },
   {
-    // userId: 22,
+    userId: 22,
     title: "La casa de Bedani",
     owner: "BEDANI",
     country: "Spain",
@@ -833,7 +833,7 @@ let announcements = [
       "Piso típico del eixample de principios del siglo XX, techos muy altos, parquet de roble, recién reformado.",
   },
   {
-    // userId: 23,
+    userId: 23,
     title: "Jose Manuel Home's",
     owner: "JOSE MANUEL",
     country: "Spain",
@@ -871,7 +871,7 @@ let announcements = [
       "Mi apartamento se encuentra ubicado frente al casco histórico a 5 minutos andando de la plaza de la Virgen, a dos minutos de las Torres de Serrano",
   },
   {
-    // userId: 24,
+    userId: 24,
     title: "Charming flat in the earth of Paris",
     owner: "IVO",
     country: "France",
@@ -909,7 +909,7 @@ let announcements = [
       "Gorgeous apartment totally renovated in a 17th century old building.",
   },
   {
-    // userId: 25,
+    userId: 25,
     title: "Barbara's home",
     owner: "BARBARA",
     country: "Italy",
@@ -947,7 +947,7 @@ let announcements = [
       "Salve, abbiamo piacere nel sapere che sareste interessati a trascorrere del tempo nel nostro bed and breakfast.",
   },
   {
-    // userId: 26,
+    userId: 26,
     title: "Central, spacious home in Reykjavik",
     owner: "BJORN",
     country: "Iceland",
@@ -985,7 +985,7 @@ let announcements = [
       "The house is by the University of Iceland in the Reykjavik city center area only about 8-10 min walk to the center. ",
   },
   {
-    // userId: 27,
+    userId: 27,
     title: "Beautiful Amsterdam vintage apartment",
     owner: "NICO & ERLEND",
     country: "Netherlands",
@@ -1023,7 +1023,7 @@ let announcements = [
       "This cosy apartment is very comfortable for 2 persons.",
   },
   {
-    // userId: 28,
+    userId: 28,
     title: "Condo of 65m2 in the lovely city Amsterdam",
     owner: "CHIEL",
     country: "Netherlands",
@@ -1061,7 +1061,7 @@ let announcements = [
       "The condo is located in a block of 6 condos with a shared entrance and build in the 60s.",
   },
   {
-    // userId: 29,
+    userId: 29,
     title: "SUSAN's House",
     owner: "SUSAN",
     country: "United States",
@@ -1099,7 +1099,7 @@ let announcements = [
       "The apartment is decorated in a combination of furniture styles that gives one a feeling of coziness and comfort.",
   },
   {
-    // userId: 30,
+    userId: 30,
     title: "VALERIIA's Home",
     owner: "VALERIIA",
     country: "Russia",
