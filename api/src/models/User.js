@@ -56,6 +56,9 @@ module.exports = (sequelize) => {
         languagesSpoken: {
             type: DataTypes.STRING,
         },
+        description: {
+            type: DataTypes.STRING,
+        },
         points: {
             type: DataTypes.INTEGER,
             defaultValue: 500,
