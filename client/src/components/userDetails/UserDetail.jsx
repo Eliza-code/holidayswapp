@@ -1,7 +1,7 @@
 import React from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { User_Details } from "../../redux/actions/postActions";
+import { getUserDetails } from "../../redux/actions/userActions";
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import './userDetails.css'
@@ -10,11 +10,12 @@ import Announcements from "../CityReservation/Announcements";
 
 
 export default function UserDetails(props) {
-  const user = useSelector((state) => state.postReducer.userDetails);
   const dispatch = useDispatch();
-  const id = props.match.params.id;
+  const user = useSelector((state) => state.userReducer.userInfo);
+  const { id } = props.match.params;
+
   useEffect(() => {
-    dispatch(User_Details(id));
+    dispatch(getUserDetails(id));
   }, [dispatch, id]);
 
   return (
@@ -38,14 +39,8 @@ export default function UserDetails(props) {
             
           </div>
         ) : (
-          "no hay nada"
+          "User not found"
         )}
-      </div>
-      <div className="places">
-        <h2>Places you may like</h2>
-      </div>
-      <div>
-        <Announcements />
       </div>
       <div>
         <Footer/>

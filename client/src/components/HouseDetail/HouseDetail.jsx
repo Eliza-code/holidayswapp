@@ -50,9 +50,7 @@ export default function HomeID() {
       <div>
         {homeDetailed ? (
           <div>
-            <Link to={`/user/getUser/${homeDetailed.id}`}>
               <h1>{homeDetailed.title}</h1>
-            </Link>
             <div className="pictures">
               {homeDetailed.image?.map((e) => {
                 return (

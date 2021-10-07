@@ -1,11 +1,11 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-    userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("user")) : null,
-    
+   userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null,
+   details: {}
 }
 
-const userReducer = (state=initialState, action) => {
+const userReducer = (state = initialState, action) => {
     switch (action.type){
      
         case types.POST_USER:
@@ -23,10 +23,15 @@ const userReducer = (state=initialState, action) => {
                 ...state,
             }
         
-        case types.SIGN_OUT_SUCCESS:
+        case types.SIGN_OUT_FAILED:
             return {
                 ...state,
             }
+        case types.GET_USER_ID:
+            return {
+                  ...state,
+            details: action.payload,
+            };
 
         default: 
         return state;

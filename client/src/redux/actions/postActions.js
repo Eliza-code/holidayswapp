@@ -44,16 +44,3 @@ export function clearPage() {
   return { type: types.GET_HOUSE_CITY, payload: undefined };
 }
 
-export function User_Details(id) {
-  return async function (dispatch) {
-    try {
-      var json = await axios.get(`http://localhost:3001/user/getUser/${id}`);
-      return dispatch({
-        type: types.GET_USER_ID,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-    }
-  };
-}
