@@ -24,11 +24,7 @@ async function getInfoUsers (req, res) {
               description: el.description
             },
             
-          });
-        
-          //   const hashedPassword = await bcrypt.hash(userData.password, 12) ;     
-          // userData.password = hashedPassword
-            
+          });            
           return userData;
         } catch (error) {
           console.log(error);
