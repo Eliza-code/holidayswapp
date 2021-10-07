@@ -22,7 +22,7 @@ server.use(express.json({ limit: "50mb" }));
 server.use(helmet());
 server.use(cookieParser());
 server.set("trust proxy", 1);
-server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
+server.use(cors({ origin: "*", credentials: true }));
 server.use(passport.initialize());
 server.use(
     session({

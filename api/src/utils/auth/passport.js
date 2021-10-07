@@ -4,7 +4,6 @@ const { Router } = require('express');
 const {User} = require('../../db');
 const jwt = require("jsonwebtoken");
 var LocalStrategy = require('passport-local').Strategy;
-var BearerStrategy = require('passport-http-custom-bearer').Strategy;
 
 require("dotenv").config();
 const { SECRET_KEY} = process.env;

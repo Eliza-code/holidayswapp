@@ -15,7 +15,7 @@ router.post("/login", (req, res, next) => {
     if (err) throw err;
     if (!user) res.send("No User Exists");
     else {
-      const token=await jwt.sign(
+      const token = await jwt.sign(
         {
           id: user.id,
           email: user.email,
