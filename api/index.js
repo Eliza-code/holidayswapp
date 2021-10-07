@@ -20,7 +20,7 @@
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
 const { getInfoAnnoun } = require("./src/utils/Announcements/preload/announcements.preload")
-const { getInfoUsers } = require("./src/utils/Users/preload/users.preload")
+const { getInfoUsers } = require("./src/utils/Users/users.data")
 const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
 const { getInfoOrders } = require("./src/utils/Orders/orders.data")
 
