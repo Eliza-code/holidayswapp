@@ -6,10 +6,10 @@ module.exports = async (req, res) => {
       if (id) {
         const review = await Review.findAll({
           where: { announcementId: id },
-          // include: {
-          //   model: User,
-          //   attributes: ["username"],
-          // },
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
         });
         return res.json(review);
       }
