@@ -1,7 +1,8 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-    userInfo: window.localStorage.getItem("user") ? JSON.parse(window.localStorage.getItem("user")) : null,
+    userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("user")) : null,
+    
 }
 
 const userReducer = (state=initialState, action) => {
@@ -17,7 +18,12 @@ const userReducer = (state=initialState, action) => {
                 ...state,
             }
         
-        case types.SIGN_OUT:
+        case types.SIGN_OUT_SUCCESS:
+            return {
+                ...state,
+            }
+        
+        case types.SIGN_OUT_SUCCESS:
             return {
                 ...state,
             }

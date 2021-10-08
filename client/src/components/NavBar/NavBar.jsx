@@ -5,19 +5,19 @@ import "../NavBar/navbar.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AccountMenu from "./AccountMenu";
-import {isAuthenticated} from "../../utils/isAuth";
+import { isAuthenticated } from "../../utils/isAuth";
 
-const user = { username: "Eli", profilePicture: null };
+//const user = { username: "Eli", profilePicture: null };
 
 const NavBar = () => {
- 
-
   const [isLogged, setIsLogged] = React.useState(false);
-  console.log("isLogged --> ", isLogged)
+  console.log(isLogged)
+
+  const user = window.localStorage.getItem("userInfo");
+  console.log("USER INFO --> ", JSON.parse(user))
 
   useEffect(() => {
-    const isAuth = isAuthenticated();
-    setIsLogged(isAuth);
+    isAuthenticated.then((res)=>setIsLogged(res))
   }, []);
 
   return (
