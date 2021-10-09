@@ -12,12 +12,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
 
-
 const AccountMenu = () => {
-
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userReducer.userInfo)
-  console.log("user info ", user)
+  const user = useSelector((state) => state.userReducer.userInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -31,13 +28,11 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      { user ? (
-        <React.Fragment>
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
             <Avatar sx={{ width: 30, height: 30 }}>
-             
+             {user?.profilePicture || user?.username[0].toUpperCase()}
             </Avatar>
           </IconButton>
         </Tooltip>
@@ -78,12 +73,21 @@ const AccountMenu = () => {
       >
         <MenuItem 
           component={Link}
-          to={`/user/${user.id}`}
+          to="/profile"
         >
           <Avatar /> Profile
         </MenuItem>
         <MenuItem>
           <Avatar /> My favorites
+        </MenuItem>
+        <MenuItem>
+          <Avatar /> My messages
+        </MenuItem>
+        <MenuItem 
+          component={Link}
+          to={'/announcement/'}
+        >
+          <Avatar /> Post your Home
         </MenuItem>
         <Divider />
         <MenuItem  onClick = {() => dispatch(signOut())}>
@@ -93,8 +97,6 @@ const AccountMenu = () => {
           Logout
         </MenuItem>
       </Menu> 
-      </React.Fragment>
-      ) : null }
     </React.Fragment>
   );
 };

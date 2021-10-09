@@ -1,22 +1,19 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getUserDetails } from "../../redux/actions/userActions";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserInfo } from "../../redux/actions/userActions";
+import Typography from "@mui/material/Typography"
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import './userDetails.css'
 import Announcements from "../CityReservation/Announcements";
 
-
-
-export default function UserDetails(props) {
+export default function UserDetails() {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userReducer.userInfo);
-  const { id } = props.match.params;
+  const user = useSelector((state) => state.userReducer.details);
 
-  useEffect(() => {
-    dispatch(getUserDetails(id));
-  }, [dispatch, id]);
+  React.useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
 
   return (
     <div>
@@ -39,7 +36,7 @@ export default function UserDetails(props) {
             
           </div>
         ) : (
-          "User not found"
+          <Typography alignText="center" gutterBottom variant="h5">User not found</Typography>
         )}
       </div>
       <div>

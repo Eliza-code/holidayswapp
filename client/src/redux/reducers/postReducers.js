@@ -26,6 +26,10 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: action.payload,
       };
+    case types.POST_ANNOUNCEMENT: 
+    return {
+      ...state
+    };
    
     default:
       return state;

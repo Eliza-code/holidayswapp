@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as types from "../types/postTypes";
-import { ANNOUNCEMENT_URL, HOUSE_CITY_URL } from '../constants/urls';
+import { ANNOUNCEMENT_URL, HOUSE_CITY_URL, POST_ANNOUNCEMENT_URL } from '../constants/urls';
 
 export function getHouses() {
     return async function (dispatch) {
@@ -44,3 +44,15 @@ export function clearPage() {
   return { type: types.GET_HOUSE_CITY, payload: undefined };
 }
 
+export function postAnnouncements (input) {
+  return async function (dispatch) {
+    try {
+      const {data} = await axios.get( POST_ANNOUNCEMENT_URL, input)
+      dispatch({ type: types.POST_ANNOUNCEMENT });
+      console.log(data)
+
+    } catch (e) {
+      console.error(e)
+    }
+  }
+}

@@ -26,9 +26,6 @@ import Diswasher from "../HouseDetail/img/Diswasher.jpeg";
 import cigar from "../HouseDetail/img/cigar.png";
 import catIcon from "../HouseDetail/img/catIcon.jpg";
 import teddybear from "../HouseDetail/img/teddybear.jpg";
-import {Link} from "react-router-dom";
-
-import UserDetails from "../userDetails/UserDetail";
 
 export default function HomeID() {
   const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
