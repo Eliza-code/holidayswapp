@@ -31,7 +31,7 @@ module.exports = (sequelize) => {
     },
     type: {
       type: DataTypes.ENUM("House", "Apartment"),
-      allowNull: false,
+      allowNull: true,
     },
     points: {
       type: DataTypes.INTEGER,

@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userReducer.userInfo);
+  const user = useSelector((state) => state.userReducer.details);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -31,8 +31,8 @@ const AccountMenu = () => {
       <Box sx={{ display: "flex", alignItems: "center" }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 30, height: 30 }}>
-             {user?.profilePicture || user?.username[0].toUpperCase()}
+            <Avatar sx={{ width: 30, height: 30 }} >
+             { user?.username[0].toUpperCase()}
             </Avatar>
           </IconButton>
         </Tooltip>
