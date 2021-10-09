@@ -12,11 +12,11 @@ const deleteAnnouncement = require('../controllers/announcement/deleteAnnounceme
 const router = Router();
 router.use(express.json());
 
+router.post('/', createAnnouncement);
 router.get('/', getAllOrByLocation);
 router.get('/:id', getAnnouncementById);
-router.post('/', createAnnouncement);
-router.put('/:id', updateAnnouncement);
-router.delete('/:id', deleteAnnouncement);
+router.put('/updateAnnouncement/:id', updateAnnouncement);
+router.delete('/deleteAnnouncement/:id', deleteAnnouncement);
 
 module.exports = router;
 

@@ -10,10 +10,10 @@ const getFavouriteById = require('../controllers/favourite/getFavouriteById');
 const router = Router();
 router.use(express.json());
 
-router.get('/', getAllFavourites);
-router.get('/:id', getFavouriteById);
 router.post('/', createFavourite);
-router.delete('/:id', deleteFavourite);
+router.get('/getAllFavourites', getAllFavourites);
+router.get('/getFavourite/:id', getFavouriteById);
+router.delete('/deleteFavourite/:id', deleteFavourite);
 
 
 

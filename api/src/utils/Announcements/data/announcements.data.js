@@ -8,6 +8,8 @@ let announcements = [
     city: "Miami",
     adress: "Biscayne Boulevard 146",
     type: "House",
+    arrivealDate:"2021-01-01",
+    departureDate:"2021-01-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0b/fd/14/be.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0b/fd/14/95.jpg",
@@ -46,6 +48,8 @@ let announcements = [
     city: "Rio de Janeiro",
     adress: "Av. Nossa Sra. de Copacabana 552",
     type: "Apartment",
+    arrivealDate:"2021-01-01",
+    departureDate:"2021-01-15",
     sleeps: 4,
     beds: 3,
     bedrooms: 2,
@@ -84,6 +88,8 @@ let announcements = [
     city: " Amsterdam",
     adress: "Spuistraat 288",
     type: "Apartment",
+    arrivealDate:"2021-02-01",
+    departureDate:"2021-02-15",
     sleeps: 2,
     beds: 1,
     bedrooms: 1,
@@ -122,6 +128,8 @@ let announcements = [
     city: "Moscow",
     adress: "Tverskaya 903",
     type: "Apartment",
+    arrivealDate:"2021-02-01",
+    departureDate:"2021-02-15",
     sleeps: 5,
     beds: 3,
     bedrooms: 2,
@@ -160,6 +168,8 @@ let announcements = [
     city: "Bali",
     adress: "Baturiti 82191",
     type: "House",
+    arrivealDate:"2021-03-10",
+    departureDate:"2021-03-25",
     sleeps: 6,
     beds: 4,
     bedrooms: 3,
@@ -198,6 +208,8 @@ let announcements = [
     city: "Brusels",
     adress: "Rue Gustave Gilson 150",
     type: "Apartment",
+    arrivealDate:"2021-03-10",
+    departureDate:"2021-03-25",
     sleeps: 6,
     bedrooms: 2,
     beds: 4,
@@ -236,6 +248,8 @@ let announcements = [
     city: "Zagreb",
     adress: "Sisačka cesta 67",
     type: "House",
+    arrivealDate:"2021-04-05",
+    departureDate:"2021-04-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/8b/97/d7.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/8b/98/8f.jpg",
@@ -274,6 +288,8 @@ let announcements = [
     city: "Melbourne",
     adress: "Mont Albert Rd 301",
     type: "House",
+    arrivealDate:"2021-04-05",
+    departureDate:"2021-04-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/02/90/77/73.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/02/90/73/67.jpg",
@@ -312,6 +328,8 @@ let announcements = [
     city: "Ciudad De México",
     adress: "Lago Atabasca 69",
     type: "House",
+    arrivealDate:"2021-05-01",
+    departureDate:"2021-05-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/3e/29/4a.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/3e/2c/c3.jpg",
@@ -350,6 +368,8 @@ let announcements = [
     city: "Miami",
     adress: "NW 3rd Ave 1501",
     type: "Apartment",
+    arrivealDate:"2021-05-01",
+    departureDate:"2021-05-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/3e/b2/59.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/3e/b2/5b.jpg",
@@ -388,6 +408,8 @@ let announcements = [
     city: "Madrid",
     adress: "C. Benita Ávila 33",
     type: "Apartment",
+    arrivealDate:"2021-06-20",
+    departureDate:"2021-07-05",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/be/6c/a5.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/be/6d/2b.jpg",
@@ -426,6 +448,8 @@ let announcements = [
     city: "Barcelona",
     adress: "Carrer de Bartomeu Pi 29",
     type: "Apartment",
+    arrivealDate:"2021-06-20",
+    departureDate:"2021-07-05",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0b/3b/4c/3e.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0b/3b/4c/67.jpg",
@@ -464,6 +488,8 @@ let announcements = [
     city: "Milano",
     adress: "Via Dante 16",
     type: "Apartment",
+    arrivealDate:"2021-07-05",
+    departureDate:"2021-07-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/01/e8/53/67.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/02/43/08/11.jpg",
@@ -501,6 +527,8 @@ let announcements = [
     city: " Zurich",
     adress: "Im Rossweidli 15",
     type: "House",
+    arrivealDate:"2021-07-05",
+    departureDate:"2021-07-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0a/37/b5/22.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0a/37/ba/88.jpg",
@@ -539,6 +567,8 @@ let announcements = [
     city: "Copenhagen",
     adress: "Hollændervej 4",
     type: "House",
+    arrivealDate:"2021-08-01",
+    departureDate:"2021-08-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/96/ac/29.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/e9/e3/3b.jpg",
@@ -577,6 +607,8 @@ let announcements = [
     city: "Montevideo",
     adress: "C. Ramón Ortiz 2952",
     type: "Apartment",
+    arrivealDate:"2021-08-01",
+    departureDate:"2021-08-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/95/b2/f5.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/95/b3/28.jpg",
@@ -615,6 +647,8 @@ let announcements = [
     city: "Asunción",
     adress: "Cap. Victor Manuel Brizuela 355",
     type: "House",
+    arrivealDate:"2021-09-10",
+    departureDate:"2021-09-25",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0a/8c/ca/23.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/0a/8c/c3/aa.jpg",
@@ -653,6 +687,8 @@ let announcements = [
     city: "Oslo",
     adress: "Tollbugata 7",
     type: "Apartment",
+    arrivealDate:"2021-09-10",
+    departureDate:"2021-09-25",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/a2/38/5d.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/07/93/1e/07.jpg",
@@ -691,6 +727,8 @@ let announcements = [
     city: " Lisbon ",
     adress: "R. Amadeu de Sousa Cardoso 18",
     type: "Apartment",
+    arrivealDate:"2021-09-05",
+    departureDate:"2021-09-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/09/51/91/c9.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/09/51/91/cd.jpg",
@@ -729,6 +767,8 @@ let announcements = [
     city: "Santiago",
     adress: "Franklin 566",
     type: "Apartment",
+    arrivealDate:"2021-09-05",
+    departureDate:"2021-09-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/27/f7/44.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/2b/4b/3a.jpg",
@@ -767,6 +807,8 @@ let announcements = [
     city: "Madrid",
     adress: "Enrique Granados  6",
     type: "Apartment",
+    arrivealDate:"2021-08-01",
+    departureDate:"2021-08-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/03/f4/60/50.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-ha-splice-j/03/f4/60/45.jpg",
@@ -805,6 +847,8 @@ let announcements = [
     city: "Barcelona",
     adress: "AV Icaria  136",
     type: "Apartment",
+    arrivealDate:"2021-08-01",
+    departureDate:"2021-08-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/01/43/16/c4.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/01/43/16/bd.jpg",
@@ -843,6 +887,8 @@ let announcements = [
     city: "Valencia",
     adress: "AV Zacarias 198",
     type: "Apartment",
+    arrivealDate:"2021-07-10",
+    departureDate:"2021-07-25",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/78/c2/5d.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/06/78/c2/05.jpg",
@@ -881,6 +927,8 @@ let announcements = [
     city: "Paris",
     adress: "Mignon 18",
     type: "Apartment",
+    arrivealDate:"2021-07-10",
+    departureDate:"2021-07-25",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/02/84/09/0d.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/02/87/b2/aa.jpg",
@@ -919,6 +967,8 @@ let announcements = [
     city: "Rome",
     adress: "Labella 980",
     type: "Apartment",
+    arrivealDate:"2021-06-05",
+    departureDate:"2021-06-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/04/96/20/48.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/04/96/20/37.jpg",
@@ -957,6 +1007,8 @@ let announcements = [
     city: "Reikiavik",
     adress: "Lotbrock 100",
     type: "House",
+    arrivealDate:"2021-06-05",
+    departureDate:"2021-06-20",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/a0/5a/11.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/a0/5a/82.jpg",
@@ -995,6 +1047,8 @@ let announcements = [
     city: " Amsterdam ",
     adress: "De Boer 1350",
     type: "Apartment",
+    arrivealDate:"2021-05-10",
+    departureDate:"2021-05-25",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/83/86/50.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/83/86/65.jpg",
@@ -1033,6 +1087,8 @@ let announcements = [
     city: "Amsterdam",
     adress: "De Ligth 748",
     type: "Apartment",
+    arrivealDate:"2021-05-10",
+    departureDate:"2021-05-25",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/75/38/44.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/05/75/38/46.jpg",
@@ -1071,6 +1127,8 @@ let announcements = [
     city: "Miami",
     adress: "Av 6rd Ave 2983",
     type: "Apartment",
+    arrivealDate:"2021-04-01",
+    departureDate:"2021-04-15",
     image: [
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/09/9c/ae/41.jpg",
       "https://media-cdn.tripadvisor.com/media/vr-splice-j/09/9c/ae/39.jpg",
@@ -1109,6 +1167,8 @@ let announcements = [
     city: "Moscow",
     adress: "Racjaba 541",
     type: "Apartment",
+    arrivealDate:"2021-04-01",
+    departureDate:"2021-04-15",
     sleeps: 7,
     beds: 3,
     bedrooms: 4,
