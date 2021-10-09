@@ -11,6 +11,7 @@ import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
@@ -28,7 +29,7 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center" , marginRight:20  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
             <Avatar sx={{ width: 30, height: 30 }} >
@@ -37,7 +38,7 @@ const AccountMenu = () => {
           </IconButton>
         </Tooltip>
       </Box>
-      <Menu
+      <Menu 
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -75,10 +76,14 @@ const AccountMenu = () => {
           component={Link}
           to="/profile"
         >
-          <Avatar /> Profile
+        <Avatar />Profile
         </MenuItem>
-        <MenuItem>
-          <Avatar /> My favorites
+        <MenuItem >
+        <Avatar />My favorites
+        </MenuItem>
+        <MenuItem component={Link}
+          to="/my-bookings">
+        <Avatar />My Bookings
         </MenuItem>
         <MenuItem>
           <Avatar /> My messages

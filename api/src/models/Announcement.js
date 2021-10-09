@@ -33,6 +33,14 @@ module.exports = (sequelize) => {
       type: DataTypes.ENUM("House", "Apartment"),
       allowNull: true,
     },
+    arrivealDate: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    departureDate: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     points: {
       type: DataTypes.INTEGER,
       allowNull: false,
