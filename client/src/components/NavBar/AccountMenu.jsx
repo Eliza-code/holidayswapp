@@ -11,10 +11,12 @@ import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
+import { deepOrange, deepPurple } from '@mui/material/colors';
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.userReducer.userInfo);
+  // console.log(user,"infoUsuario");
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -28,16 +30,17 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center" , marginRight:20  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 30, height: 30 }}>
-             {user?.profilePicture || user?.username[0].toUpperCase()}
+            <Avatar sx={{ width: 40, height: 40 ,bgcolor: deepOrange[500] }}>
+             {/* {user?.profilePicture || user?.username[0].toUpperCase()} */}
+             U
             </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
-      <Menu
+      <Menu 
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -75,10 +78,14 @@ const AccountMenu = () => {
           component={Link}
           to="/profile"
         >
-          <Avatar /> Profile
+        <Avatar />Profile
         </MenuItem>
-        <MenuItem>
-          <Avatar /> My favorites
+        <MenuItem >
+        <Avatar />My favorites
+        </MenuItem>
+        <MenuItem component={Link}
+          to="/my-bookings">
+        <Avatar />My Bookings
         </MenuItem>
         <MenuItem>
           <Avatar /> My messages
