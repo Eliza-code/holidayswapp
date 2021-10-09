@@ -1,21 +1,19 @@
 import React from "react";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { User_Details } from "../../redux/actions/postActions";
+import { useSelector, useDispatch } from "react-redux";
+import { getUserInfo } from "../../redux/actions/userActions";
+import Typography from "@mui/material/Typography"
 import Footer from "../Footer/Footer";
 import Header from "../Header/Header";
 import './userDetails.css'
 import Announcements from "../CityReservation/Announcements";
 
-
-
-export default function UserDetails(props) {
-  const user = useSelector((state) => state.postReducer.userDetails);
+export default function UserDetails() {
   const dispatch = useDispatch();
-  const id = props.match.params.id;
-  useEffect(() => {
-    dispatch(User_Details(id));
-  }, [dispatch, id]);
+  const user = useSelector((state) => state.userReducer.details);
+
+  React.useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
 
   return (
     <div>
@@ -38,14 +36,8 @@ export default function UserDetails(props) {
             
           </div>
         ) : (
-          "no hay nada"
+          <Typography alignText="center" gutterBottom variant="h5">User not found</Typography>
         )}
-      </div>
-      <div className="places">
-        <h2>Places you may like</h2>
-      </div>
-      <div>
-        <Announcements />
       </div>
       <div>
         <Footer/>
