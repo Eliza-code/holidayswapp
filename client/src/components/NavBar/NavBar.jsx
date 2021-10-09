@@ -1,24 +1,15 @@
-import React, { useEffect } from "react";
-import SearchBar from "../SearchBar/SearchBar";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux"; 
+import SearchBar from "../SearchBar/SearchBar";
 import "../NavBar/navbar.css";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import AccountMenu from "./AccountMenu";
-import { isAuthenticated } from "../../utils/isAuth";
-
-//const user = { username: "Eli", profilePicture: null };
 
 const NavBar = () => {
-  const [isLogged, setIsLogged] = React.useState(false);
-  console.log(isLogged)
 
-  const user = window.localStorage.getItem("userInfo");
-  console.log("USER INFO --> ", JSON.parse(user))
-
-  useEffect(() => {
-    isAuthenticated.then((res)=>setIsLogged(res))
-  }, []);
+  const { isAuth } = useSelector((state) => state.userReducer)
 
   return (
     <div className="items">
@@ -35,8 +26,8 @@ const NavBar = () => {
           About us
         </Button>
       </div>
-      {isLogged ? (
-        <AccountMenu user={user} />
+      {isAuth ? (
+        <AccountMenu />
       ) : (
         <div className="Buttoms">
           <Stack direction="row" spacing={1}>

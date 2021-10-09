@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -10,9 +10,11 @@ import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { signOut } from '../../redux/actions/userActions';
+import { Link } from "react-router-dom";
 
-const AccountMenu = ({ user }) => {
+const AccountMenu = () => {
   const dispatch = useDispatch();
+  const user = useSelector((state) => state.userReducer.userInfo);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -30,7 +32,7 @@ const AccountMenu = ({ user }) => {
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
             <Avatar sx={{ width: 30, height: 30 }}>
-             
+             {user?.profilePicture || user?.username[0].toUpperCase()}
             </Avatar>
           </IconButton>
         </Tooltip>
@@ -69,11 +71,23 @@ const AccountMenu = ({ user }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
+        <MenuItem 
+          component={Link}
+          to="/profile"
+        >
           <Avatar /> Profile
         </MenuItem>
         <MenuItem>
           <Avatar /> My favorites
+        </MenuItem>
+        <MenuItem>
+          <Avatar /> My messages
+        </MenuItem>
+        <MenuItem 
+          component={Link}
+          to={'/announcement/'}
+        >
+          <Avatar /> Post your Home
         </MenuItem>
         <Divider />
         <MenuItem  onClick = {() => dispatch(signOut())}>
@@ -82,7 +96,7 @@ const AccountMenu = ({ user }) => {
           </ListItemIcon>
           Logout
         </MenuItem>
-      </Menu>
+      </Menu> 
     </React.Fragment>
   );
 };
