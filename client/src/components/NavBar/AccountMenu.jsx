@@ -70,10 +70,13 @@ const AccountMenu = ({ user }) => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> Profile
+        Profile
         </MenuItem>
         <MenuItem>
-          <Avatar /> My favorites
+        My favorites
+        </MenuItem>
+        <MenuItem>
+        My Bookings
         </MenuItem>
         <Divider />
         <MenuItem  onClick = {() => dispatch(signOut())}>

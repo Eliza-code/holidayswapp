@@ -10,6 +10,7 @@ import UserDetails  from './components/userDetails/UserDetail'
 //User
 import Signup from './components/SignUp/Signup';
 import SignIn from './components/SignIn/SignIn';
+import Booking from './components/Booking/Booking';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/signin" component={SignIn} />
           <Route exact path="/aboutus" component={AboutUs} />
           <Route exact path="/user/getUser/:id" component={UserDetails}/>
+          <Route exact path="/booking" component={Booking} />
         </Switch>
     </div>
   );
