@@ -47,33 +47,15 @@ const AnnouncementCreation = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    dispatch(postAnnouncements({
-      title: values.title.trim(),
-      owner: values.owner.trim(),
-      description: values.description.trim(),
-      country: values.country.trim(),
-      state: values.state.trim(),
-      city: values.city.trim(),
-      type: values.type.trim(),
-      points: values.points.trim(),
-      sleeps: values.sleeps.trim(),
-      bedrooms: values.bedrooms.trim(),
-      beds: values.beds.trim(),
-      bathrooms: values.title.trim(),
-      surfaceM2: values.title.trim(),
-      smokersWelcome: values.title.trim(),
-      petsWelcome: values.title.trim(),
-      childremWelcome: values.title.trim(),
-      wifi: values.title.trim(),
-      tv: values.title.trim(),
-      washing_machine: values.title.trim(),
-      fridge: values.title.trim(),
-      a_c: values.title.trim(),
-      private_parking: values.title.trim(),
-      image: values.title.trim(),
-      rating: values.title.trim(),
-    }));
+    dispatch(postAnnouncements(values));
   };
+
+  // const handleSelect = (e) => {
+  //   let updateValue = e.currentTarget.value;
+  //   if (updateValue === "true" || updateValue === "false") {
+  //     updateValue = JSON.parse(updateValue);
+  //   }
+  // }
 
   const formik = useFormik({
     initialValues,
@@ -186,7 +168,7 @@ const AnnouncementCreation = () => {
                   <FormControlLabel
                     value="house"
                     control={<Radio />}
-                    label="Houses"
+                    label="House"
                   />
                   <FormControlLabel
                     value="apartment"
@@ -259,9 +241,11 @@ const AnnouncementCreation = () => {
               <FormControl component="fieldset">
               <FormLabel component="legend">Private Parking</FormLabel>
                 <RadioGroup
+                  type="radio"
                   aria-label="private_parking"
                   defaultValue="Yes"
                   name="row-radio-buttons-group"
+                  onChange={formik.handleSelect}
                 >
                   <FormControlLabel
                     value= {true}
