@@ -31,6 +31,6 @@ conn.sync({ force: true }).then(async() => {
     await getInfoUsers();
     await getInfoAnnoun();
     await getInfoReviews();
-    // await getInfoOrders();
+    await getInfoOrders();
   });
 });
