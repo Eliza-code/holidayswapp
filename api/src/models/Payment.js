@@ -4,6 +4,7 @@ module.exports = (sequelize) => {
   sequelize.define("payment", {
     transactionType: {
       type: DataTypes.STRING,
+      defaultValue: "MercadoPago"
     },
     status: {
         type: DataTypes.ENUM({

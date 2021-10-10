@@ -8,14 +8,15 @@ module.exports = (sequelize) => {
       autoIncrement: true,
     },
     description: {
-      type: DataTypes.TEXT,
+      type: DataTypes.STRING,
       allowNull: false,
     },
     status: {
       type: DataTypes.ENUM({
         values: ["pending", "cancelled", "completed"],
       }),
-      allowNull: false
+      allowNull: false,
+      defaultValue: "pending"
     },
     arrivealDate: {
       type: DataTypes.STRING,

@@ -4,10 +4,24 @@ module.exports = async (req, res) => {
 
   try {
       const orders = await Order.findAll({
-          include: {
-              model: User,
-              model: Announcement
-          }
+          include: [{
+              model: User, // Usuario propietario de la casa que se busca reservar
+              attributes: ['id', 
+                           'name', 
+                           'lastName', 
+                           'email', 
+                           'phoneNumber']
+          },
+          { 
+              model: Announcement,
+              attributes: ['id', // Casa o Apartamento que se busca reservar
+                           'country',
+                           'state',
+                           'city',
+                           'adress',
+                           'points',
+                           'description']
+          }]
       });
 
     if(orders) {
