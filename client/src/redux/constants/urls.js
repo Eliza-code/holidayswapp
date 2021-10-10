@@ -10,4 +10,4 @@ export const POST_ANNOUNCEMENT_URL = `${BASE_URL}/announcement`;
 export const POST_FAVOURITE_URL = `${BASE_URL}/favourite/createFavourite`;
 export const FAVOURITE_URL = `${BASE_URL}/favourite/getAllFavourites`;
 export const DELETE_FAVOURITE_URL = `${BASE_URL}/favourite/deleteFavourite`;
-export const FAVOURITE_ID_URL = `${BASE_URL}/favourite/getFavourite`;
+export const REVIEW_ID_URL = `${BASE_URL}/review/getAnnouncement`;
