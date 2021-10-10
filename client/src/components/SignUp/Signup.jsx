@@ -83,10 +83,7 @@ const Signup = () => {
                 "& .MuiTextField-root": { m: 2, width: "17rem" },
               }}
               autoComplete="off"
-              onSubmit={(e, values) => {
-                formik.handleSubmit(values)
-                formik.setSubmitting(false)
-              }}
+              onSubmit={formik.handleSubmit}
             >
               <div>
                 <Typography
@@ -105,7 +102,7 @@ const Signup = () => {
                   label="Username"
                   type="text"
                   name="username"
-                  InputLabelProps={{ shrink: true }}
+                 
                   placeholder="Ej: cori47"
                   value={formik.values.username}
                   onChange={formik.handleChange}
@@ -128,7 +125,7 @@ const Signup = () => {
                     id="password"
                     label="Password"
                     placeholder="Password"
-                    InputLabelProps={{ shrink: true }}
+                    
                     type={formik.values.showPassword ? "text" : "password"}
                     name="password"
                     onChange={formik.handleChange}
@@ -179,7 +176,7 @@ const Signup = () => {
                     }
                     name="confirmpassword"
                     onChange={formik.handleChange}
-                    InputLabelProps={{ shrink: true }}
+                    // InputLabelProps={{ shrink: true }}
                     value={formik.values.confirmpassword}
                     onBlur={formik.handleBlur}
                     endAdornment={
@@ -239,7 +236,7 @@ const Signup = () => {
                   value={formik.values.name}
                   onBlur={formik.handleBlur}
                   helperText={formik.errors.name}
-                  InputLabelProps={{ shrink: true }}
+                  // InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -258,7 +255,7 @@ const Signup = () => {
                   value={formik.values.lastName}
                   onBlur={formik.handleBlur}
                   helperText={formik.errors.lastName}
-                  InputLabelProps={{ shrink: true }}
+                  // InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -275,7 +272,7 @@ const Signup = () => {
                   value={formik.values.email}
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.email && formik.errors.email}
-                  InputLabelProps={{ shrink: true }}
+                  // InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -296,7 +293,7 @@ const Signup = () => {
                   helperText={
                     formik.touched.phoneNumber && formik.errors.phoneNumber
                   }
-                  InputLabelProps={{ shrink: true }}
+                  // InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -319,7 +316,7 @@ const Signup = () => {
                   name="nacionality"
                   label= "Nacionality"
                   options={nationalities}
-                  InputLabelProps={{ shrink: true }}
+                  // InputLabelProps={{ shrink: true }}
                   onChange={(e, value) =>
                     formik.setFieldValue("nacionality", value)
                   }
@@ -344,7 +341,7 @@ const Signup = () => {
                   name="languagesSpoken"
                   label="Choose a language"
                   options={languagesSpoken}
-                  InputLabelProps={{ shrink: true }}
+                  // InputLabelProps={{ shrink: true }}
                   onChange={(e, value) =>
                     formik.setFieldValue("languagesSpoken", value)
                   }

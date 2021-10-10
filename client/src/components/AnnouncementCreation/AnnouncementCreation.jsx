@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { useFormik } from "formik";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,58 +14,66 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import Checkbox from "@mui/material/Checkbox";
 import { postAnnouncements } from "../../redux/actions/postActions";
-
-const initialValues = {
-  title: "",
-  owner: "",
-  description: "",
-  country: "",
-  state: "",
-  city: "",
-  type: "",
-  points: "",
-  sleeps: "",
-  bedrooms: "",
-  beds: "",
-  bathrooms: "",
-  surfaceM2: "",
-  smokersWelcome: "",
-  petsWelcome: "",
-  childremWelcome: "",
-  wifi: "",
-  tv: "",
-  washing_machine: "",
-  fridge: "",
-  a_c: "",
-  private_parking: "",
-  image: [],
-  rating: "",
-};
+import { getUserInfo } from "../../redux/actions/userActions";
 
 const AnnouncementCreation = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.userReducer.details);
 
-  const onSubmit = (values) => {
-    dispatch(postAnnouncements(values));
+  React.useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
+
+  const initialValues = {
+    title: "",
+    description: "",
+    country: "",
+    state: "",
+    city: "",
+    type: "",
+    points: "",
+    sleeps: "",
+    bedrooms: "",
+    beds: "",
+    bathrooms: "",
+    surfaceM2: "",
+    smokersWelcome: false,
+    petsWelcome: false,
+    childremWelcome: false,
+    wifi: false,
+    tv: false,
+    washing_machine: false,
+    fridge: false,
+    a_c: false,
+    private_parking: false,
+    image: [],
+    rating: "",
+    arrivealDate: "",
+    departureDate: ""
   };
 
-  // const handleSelect = (e) => {
-  //   let updateValue = e.currentTarget.value;
-  //   if (updateValue === "true" || updateValue === "false") {
-  //     updateValue = JSON.parse(updateValue);
-  //   }
-  // }
+  const onSubmit = (values) => {
+    const inputs = {
+      ...values,
+      owner_id: user.id,
+      owner: user.username
+    };
+    console.log(inputs)
+    dispatch(postAnnouncements(inputs));
+  };
 
   const formik = useFormik({
     initialValues,
     onSubmit,
-  })
-  console.log(formik.values)
-  
+  });
+
+  // console.log(formik.values)
+
   return (
     <div>
-      <div>
+      <div className="headerNav">
         <Header />
       </div>
       <div>
@@ -103,18 +111,6 @@ const AnnouncementCreation = () => {
                 fullWidth
               />
               <TextField
-                required
-                id="owner"
-                name="owner"
-                label="Owner"
-                type="text"
-                placeholder="Owner"
-                onChange={formik.handleChange}
-                value={formik.values.owner}
-                fullWidth
-              />
-              <TextField
-                required
                 id="description"
                 name="description"
                 label="Description"
@@ -136,7 +132,6 @@ const AnnouncementCreation = () => {
                 fullWidth
               />
               <TextField
-                required
                 id="state"
                 name="state"
                 label="State"
@@ -157,32 +152,13 @@ const AnnouncementCreation = () => {
                 value={formik.values.city}
                 fullWidth
               />
-              <FormControl component="fieldset">
-                <FormLabel component="legend">Type of Home</FormLabel>
-                <RadioGroup
-                  aria-label="type of home"
-                  defaultValue="house"
-                  name="row-radio-buttons-group"
-                  onChange={formik.handleChange}
-                >
-                  <FormControlLabel
-                    value="house"
-                    control={<Radio />}
-                    label="House"
-                  />
-                  <FormControlLabel
-                    value="apartment"
-                    control={<Radio />}
-                    label="Apartment"
-                  />
-                </RadioGroup>
-              </FormControl>
+              
               <TextField
                 required
                 id="points"
                 name="points"
                 label="Points"
-                type="text"
+                type="number"
                 placeholder="Value in Points"
                 onChange={formik.handleChange}
                 value={formik.values.points}
@@ -198,7 +174,7 @@ const AnnouncementCreation = () => {
                 value={formik.values.sleeps}
                 fullWidth
               />
-                 <TextField
+              <TextField
                 required
                 id="bedrooms"
                 name="bedrooms"
@@ -208,7 +184,7 @@ const AnnouncementCreation = () => {
                 value={formik.values.bedrooms}
                 fullWidth
               />
-                 <TextField
+              <TextField
                 required
                 id="beds"
                 name="beds"
@@ -217,8 +193,18 @@ const AnnouncementCreation = () => {
                 onChange={formik.handleChange}
                 value={formik.values.beds}
                 fullWidth
-              />    
-               <TextField
+              />
+              <TextField
+                required
+                id="bathrooms"
+                name="bathrooms"
+                label="Bathrooms"
+                type="number"
+                onChange={formik.handleChange}
+                value={formik.values.bathrooms}
+                fullWidth
+              />
+              <TextField
                 required
                 id="surfaceM2"
                 name="surfaceM2"
@@ -229,180 +215,162 @@ const AnnouncementCreation = () => {
                 fullWidth
               />
               <TextField
-                required
                 id="image"
                 name="image"
-                
                 type="file"
                 onChange={formik.handleChange}
                 value={formik.values.image}
                 fullWidth
               />
               <FormControl component="fieldset">
-              <FormLabel component="legend">Private Parking</FormLabel>
-                <RadioGroup
-                  type="radio"
-                  aria-label="private_parking"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                  onChange={formik.handleSelect}
-                >
-                  <FormControlLabel
-                    value= {true}
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value={false}
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
 
-                <FormLabel component="legend">Smokers Allow</FormLabel>
+                <FormLabel component="legend" />
                 <RadioGroup
-                  aria-label="smokersWelcome"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
+                  row
+                  aria-label="type"
+                  defaultValue="house"
+                  name="type"
+                  value={formik.values.type}
+                  onChange={formik.handleChange}
                 >
                   <FormControlLabel
-                    value="Yes"
+                    value="House"
                     control={<Radio />}
-                    label="Yes"
+                    label="House"
                   />
                   <FormControlLabel
-                    value="No"
+                    value="Apartment"
                     control={<Radio />}
-                    label="No"
+                    label="Apartment"
                   />
                 </RadioGroup>
-             
-                <FormLabel component="legend">Pets Allow</FormLabel>
-                <RadioGroup
-                  aria-label="petsWelcome"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
-           
-                <FormLabel component="legend">Children Allow</FormLabel>
-                <RadioGroup
-                  aria-label="childremWelcome"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
-             
-                <FormLabel component="legend">Wifi</FormLabel>
-                <RadioGroup
-                  aria-label="wifi"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
-             
-                <FormLabel component="legend">Tv</FormLabel>
-                <RadioGroup
-                  aria-label="tv"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
+              
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="private_parking"
+                      checked={formik.values.private_parking}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Private Parking"
+                />
 
-                <FormLabel component="legend">Washing Machine</FormLabel>
-                <RadioGroup
-                  aria-label="washing_machine"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="smokersWelcome"
+                      checked={formik.values.smokersWelcome}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Smokers Allow"
+                />
 
-                <FormLabel component="legend">Fridge</FormLabel>
-                <RadioGroup
-                  aria-label="fridge"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="petsWelcome"
+                      checked={formik.values.petsWelcome}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Pets Allow"
+                />
 
-                <FormLabel component="legend">AC</FormLabel>
-                <RadioGroup
-                  aria-label="a_c"
-                  defaultValue="Yes"
-                  name="row-radio-buttons-group"
-                >
-                  <FormControlLabel
-                    value="Yes"
-                    control={<Radio />}
-                    label="Yes"
-                  />
-                  <FormControlLabel
-                    value="No"
-                    control={<Radio />}
-                    label="No"
-                  />
-                </RadioGroup>                
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="childremWelcome"
+                      checked={formik.values.childremWelcome}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Children Allow"
+                />
+
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="wifi"
+                      checked={formik.values.wifi}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Wifi"
+                />
+
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="tv"
+                      checked={formik.values.tv}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Tv"
+                />
+
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="washing_machine"
+                      checked={formik.values.washing_machine}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Washing Machine"
+                />
+
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="fridge"
+                      checked={formik.values.fridge}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="Fridge "
+                />
+
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      color="primary"
+                      name="a_c"
+                      checked={formik.values.a_c}
+                      onChange={formik.handleChange}
+                    />
+                  }
+                  label="AC "
+                />
               </FormControl>
+              <TextField
+                  id="arrivealDate"
+                  type="date"
+                  label = "Arrival Date"
+                  name="arrivealDate"
+                  onChange={formik.handleChange}
+                  value={formik.values.arrivealDate}
+                  InputLabelProps={{ shrink: true }}
+                />
+                 <TextField
+                  id="departureDate"
+                  type="date"
+                  label = "Departure Date"
+                  name="departureDate"
+                  onChange={formik.handleChange}
+                  value={formik.values.departureDate}
+                  InputLabelProps={{ shrink: true }}
+                />
               <Button
                 sx={{
                   marginTop: 5,

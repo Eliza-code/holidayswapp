@@ -15,8 +15,7 @@ import { deepOrange, deepPurple } from '@mui/material/colors';
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userReducer.userInfo);
-  // console.log(user,"infoUsuario");
+  const user = useSelector((state) => state.userReducer.details);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -30,12 +29,11 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center" , marginRight:20  }}>
+      <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 40, height: 40 ,bgcolor: deepOrange[500] }}>
-             {/* {user?.profilePicture || user?.username[0].toUpperCase()} */}
-             U
+            <Avatar sx={{ width: 30, height: 30 }} >
+             {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
         </Tooltip>

@@ -2,7 +2,7 @@ const { Announcement, User } = require("../../db");
 
 module.exports = async (req, res, next) => {
   const {
-    id,
+    owner_id,
     title,
     owner,
     country,
@@ -28,18 +28,17 @@ module.exports = async (req, res, next) => {
     a_c,
     private_parking,
     image,
-    rating,
+    
   } = req.body;
 
   try {
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(owner_id);
 
     if (!user) {
-      throw new Error(`User with id: ${id} not found`);
+      throw new Error(`User with id: ${owner_id} not found`);
     }
 
     const newAnnouncement = {
-      id,
       title,
       owner,
       country,
@@ -65,7 +64,7 @@ module.exports = async (req, res, next) => {
       a_c,
       private_parking,
       image,
-      rating,
+     
     };
 
     const announcement = await Announcement.create(newAnnouncement);
