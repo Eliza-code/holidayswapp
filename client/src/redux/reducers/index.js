@@ -4,6 +4,6 @@ import { combineReducers } from 'redux';
 
 export default combineReducers({
     userReducer,
-    postReducer
+    postReducer,
 });
 
