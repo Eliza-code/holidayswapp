@@ -1,6 +1,5 @@
 const {
     Order,
-    Payment,
     User,
     Announcement
 } = require("../../db");
@@ -9,20 +8,36 @@ module.exports = async (req, res) => {
     const { userId } = req.params;
 
     try {
-        const order = await Order.findAll({
-            where: {userId},
-            include: [
-                {
-                    model:  Announcement,
-                    // attributes: ['id', 'name', 'username', 'email'],
+        const order = await User.findAll({
+            where: {id : userId}, // Usuario que busca recibe peticion de reserva
+            attributes: ['name', 
+                         'lastName', 
+                         'email', 
+                         'phoneNumber'
+                        ],
+            include:  // Reservas
+                [{
+                    model: Order,
+                    attributes: [ 'id', // id Orden de reserva
+                                  'userId',   // Usuario dueño de la Casa que se busca reservar
+                                  'announcementId', // Casa que se busca reservar
+                                  'status', // estado de la reserva
+                                  'arrivealDate', // Fecha de llegada
+                                  'departureDate', // Fecha de salida
+                                  'type' // Intercambio o Pago por puntos
+                   ],                                                 
                 },
                 {
-                    model: Payment,
-                },
-                {
-                    model: User,
-                },
-            ],
+                    model: Announcement,
+                    attributes: [ 'country',
+                                  'state',
+                                  'city',
+                                  'adress',
+                                  'type',
+                                  'points',
+                                  'description'
+                    ]
+                }],
         });
 
         // console.log(order);

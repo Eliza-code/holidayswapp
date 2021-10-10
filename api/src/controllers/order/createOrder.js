@@ -4,13 +4,11 @@ module.exports = async (req, res) => {
   const {
     userId,
     announcementId,
-    name,
-    lastName,
-    city,
-    paymentMethod,
+    description,
     status,
-    points,
-    date
+    arrivealDate,
+    departureDate,
+    type
   } = req.body;
 
   try {
@@ -22,13 +20,11 @@ module.exports = async (req, res) => {
     }
 
     const newOrder = {
-        name,
-        lastName,
-        city,
-        paymentMethod,
-        status,
-        points,
-        date
+      description,
+      status,
+      arrivealDate,
+      departureDate,
+      type
     };
 
     const order = await Order.create(newOrder);
