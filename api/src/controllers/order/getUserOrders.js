@@ -9,20 +9,24 @@ module.exports = async (req, res) => {
     const { userId } = req.params;
 
     try {
-        const order = await Order.findAll({
-            where: {userId},
-            include: [
-                {
-                    model:  Announcement,
-                    // attributes: ['id', 'name', 'username', 'email'],
+        const order = await User.findAll({
+            where: {id : userId}, // Usuario que busca reservar
+            attributes: ['id', 'name', 'lastName'],
+            include:  // Reservas
+                [{
+                    model: Order,
+                    attributes: ['id', // id Orden de reserva
+                                'userId',   // Usuario dueño de la Casa que se busca reservar
+                                'announcementId' // Casa que se busca reservar
+                   ],                                                 
                 },
                 {
-                    model: Payment,
-                },
-                {
-                    model: User,
-                },
-            ],
+                    model: Announcement,
+                    where: {
+                        model: Order,
+                        where: {userId: userId}
+                    }
+                }],
         });
 
         // console.log(order);

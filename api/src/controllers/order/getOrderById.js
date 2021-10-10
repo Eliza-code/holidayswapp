@@ -11,11 +11,11 @@ module.exports = async (req, res) => {
       },
       include: [{
         model: Announcement,
-      }, {
-        model: Payment
-      }, {
+        attributes: ['id']
+      },
+      {
         model: User,
-        attributes: ['id', 'name', 'username', 'email']
+        attributes: ['id']
       }]
     });
 

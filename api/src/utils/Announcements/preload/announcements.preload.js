@@ -15,6 +15,7 @@ async function getInfoAnnoun (req, res) {
               country: el.country,
               state: el.state,
               city: el.city,
+              adress: el.adress,
               type: el.type,
               points: el.points,
               sleeps: el.sleeps,

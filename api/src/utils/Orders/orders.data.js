@@ -6,7 +6,7 @@ const getInfoOrders = async () => {
       name: "Nadina",
       lastName: "Thunberg",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 4,
       announcementId: 15,
       date: "05-11-2020"    
@@ -15,7 +15,7 @@ const getInfoOrders = async () => {
       name: "Ana",
       lastName: "Kiyulk",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 7,
       announcementId: 2,
       date: "05-11-2020"     
@@ -24,7 +24,7 @@ const getInfoOrders = async () => {
       name: "Terri",
       lastName: "Boswell",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 1,
       announcementId: 12,
       date: "05-11-2020"     
@@ -33,7 +33,7 @@ const getInfoOrders = async () => {
       name: "Yennifer",
       lastName: "Jonhson",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 10,
       announcementId: 8,
       date: "05-11-2020"     
@@ -42,7 +42,7 @@ const getInfoOrders = async () => {
       name: "Sonja",
       lastName: "Boccelli",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 13,
       announcementId: 11,
       date: "05-11-2020"     
@@ -51,7 +51,7 @@ const getInfoOrders = async () => {
       name: "Lonet",
       lastName: "Caucasso",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 15,
       announcementId: 3,
       date: "05-11-2020"    
@@ -60,7 +60,7 @@ const getInfoOrders = async () => {
       name: "Joana",
       lastName: "Da Silva",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 19,
       announcementId: 1,
       date: "05-11-2020"   
@@ -69,7 +69,7 @@ const getInfoOrders = async () => {
       name: "Paula",
       lastName: "Vallejos",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 20,
       announcementId: 2,
       date: "05-11-2020"     
@@ -78,7 +78,7 @@ const getInfoOrders = async () => {
       name: "Michael",
       lastName: "Yakazulu",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 5,
       announcementId: 6,
       date: "05-11-2020"     
@@ -87,12 +87,12 @@ const getInfoOrders = async () => {
       name: "Geerten",
       lastName: "Nutzra",
       paymentMethod: "MercadoPago",
-      status: "created",
+      status: "pending",
       userId: 6,
       announcementId: 7,
       date: "05-11-2020"     
     })
-  } catch (erorr) {
+  } catch (error) {
     console.log(error);
   }
 }
