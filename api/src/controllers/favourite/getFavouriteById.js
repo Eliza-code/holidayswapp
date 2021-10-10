@@ -8,7 +8,7 @@ module.exports = async (req, res, next) => {
     let filter = favourite.filter((e) => e.userId == id);
     
 
-    return res.json(favourite);
+    return res.json(filter);
   } catch (err) {
     return res.send({ error: err.message }).status(409);
   }

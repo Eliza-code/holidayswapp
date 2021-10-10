@@ -19,6 +19,7 @@ router.use('/user', userRoutes);
 router.use("/announcement", announcementRoutes);
 router.use("/review", reviewrRoutes);
 router.use("/favourites", favouriteRoutes);
+router.use("/auth", auth);
 
 module.exports = router  
 

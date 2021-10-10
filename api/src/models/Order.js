@@ -7,28 +7,9 @@ module.exports = (sequelize) => {
       primaryKey: true,
       autoIncrement: true,
     },
-    name: {
-      type: DataTypes.STRING,
+    description: {
+      type: DataTypes.TEXT,
       allowNull: false,
-    },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    city: {
-      type: DataTypes.STRING,
-    },
-    paymentMethod: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        notEmpty: {
-          msg: "Payment method cannot be empty",
-        },
-      },
-    },
-    points: {
-      type: DataTypes.INTEGER,
     },
     status: {
       type: DataTypes.ENUM({
@@ -37,12 +18,19 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: "pending"
     },
-    date: {
+    arrivealDate: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    profilePicture: {
+    departureDate: {
       type: DataTypes.STRING,
+      allowNull: false
     },
+    type: {
+      type:DataTypes.ENUM({
+        values: ["Reciprocal" ,"Pay with points"],        
+      }),
+      allowNull: false
+    }   
   });
 };
