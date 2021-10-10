@@ -1,6 +1,5 @@
 const {
     Order,
-    Payment,
     User,
     Announcement
 } = require("../../db");
@@ -10,22 +9,34 @@ module.exports = async (req, res) => {
 
     try {
         const order = await User.findAll({
-            where: {id : userId}, // Usuario que busca reservar
-            attributes: ['id', 'name', 'lastName'],
+            where: {id : userId}, // Usuario que busca recibe peticion de reserva
+            attributes: ['name', 
+                         'lastName', 
+                         'email', 
+                         'phoneNumber'
+                        ],
             include:  // Reservas
                 [{
                     model: Order,
-                    attributes: ['id', // id Orden de reserva
-                                'userId',   // Usuario dueño de la Casa que se busca reservar
-                                'announcementId' // Casa que se busca reservar
+                    attributes: [ 'id', // id Orden de reserva
+                                  'userId',   // Usuario dueño de la Casa que se busca reservar
+                                  'announcementId', // Casa que se busca reservar
+                                  'status', // estado de la reserva
+                                  'arrivealDate', // Fecha de llegada
+                                  'departureDate', // Fecha de salida
+                                  'type' // Intercambio o Pago por puntos
                    ],                                                 
                 },
                 {
                     model: Announcement,
-                    where: {
-                        model: Order,
-                        where: {userId: userId}
-                    }
+                    attributes: [ 'country',
+                                  'state',
+                                  'city',
+                                  'adress',
+                                  'type',
+                                  'points',
+                                  'description'
+                    ]
                 }],
         });
 
