@@ -8,7 +8,7 @@ export const postUser = (input) => {
     try {
       const { data } = await axios.post(SIGN_UP_URL, input);
       dispatch({ type: types.POST_USER });
-      if( data.length > 20 )  {
+      if( data )  {
         window.localStorage.setItem("user", JSON.stringify(data))
         window.location.href = '/'
       } else {

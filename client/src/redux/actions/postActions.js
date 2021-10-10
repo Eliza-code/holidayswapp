@@ -1,5 +1,6 @@
 import axios from "axios";
 import * as types from "../types/postTypes";
+import swal from "sweetalert";
 import { ANNOUNCEMENT_URL, HOUSE_CITY_URL, POST_ANNOUNCEMENT_URL } from '../constants/urls';
 
 export function getHouses() {
@@ -47,10 +48,16 @@ export function clearPage() {
 export function postAnnouncements (input) {
   return async function (dispatch) {
     try {
-      const {data} = await axios.get( POST_ANNOUNCEMENT_URL, input)
+      const { request } = await axios.post( POST_ANNOUNCEMENT_URL, input)
       dispatch({ type: types.POST_ANNOUNCEMENT });
-      console.log(data)
-
+      if (request.status === 200) {
+        window.location.href = "/profile"
+      } else {
+        swal({
+          title: "Oops! Something went wrong!",
+          icon: "warning",
+        });
+      }
     } catch (e) {
       console.error(e)
     }

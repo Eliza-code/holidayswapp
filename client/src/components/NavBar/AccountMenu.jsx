@@ -29,11 +29,11 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center" , marginRight:20  }}>
+      <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
             <Avatar sx={{ width: 30, height: 30 }} >
-             { user?.username[0].toUpperCase()}
+             {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
         </Tooltip>

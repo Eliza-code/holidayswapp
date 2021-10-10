@@ -16,17 +16,18 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { postAnnouncements } from "../../redux/actions/postActions";
-
-
+import { getUserInfo } from "../../redux/actions/userActions";
 
 const AnnouncementCreation = () => {
+  const dispatch = useDispatch()
+  const user = useSelector((state) => state.userReducer.details);
 
-  const user= useSelector((state) => state.userReducer.userInfo);
+  React.useEffect(() => {
+    dispatch(getUserInfo());
+  }, [dispatch]);
 
   const initialValues = {
-    id: user.id,
     title: "",
-    owner: "",
     description: "",
     country: "",
     state: "",
@@ -49,14 +50,18 @@ const AnnouncementCreation = () => {
     private_parking: false,
     image: [],
     rating: "",
+    arrivealDate: "",
+    departureDate: ""
   };
 
-  const dispatch = useDispatch();
-  
-
-  const onSubmit = ( values) => {
-    console.log(  values)
-    dispatch(postAnnouncements(values));
+  const onSubmit = (values) => {
+    const inputs = {
+      ...values,
+      owner_id: user.id,
+      owner: user.username
+    };
+    console.log(inputs)
+    dispatch(postAnnouncements(inputs));
   };
 
   const formik = useFormik({
@@ -64,10 +69,11 @@ const AnnouncementCreation = () => {
     onSubmit,
   });
 
+  // console.log(formik.values)
 
   return (
     <div>
-      <div>
+      <div className="headerNav">
         <Header />
       </div>
       <div>
@@ -102,17 +108,6 @@ const AnnouncementCreation = () => {
                 placeholder="Title"
                 onChange={formik.handleChange}
                 value={formik.values.title}
-                fullWidth
-              />
-              <TextField
-                required
-                id="owner"
-                name="owner"
-                label="Owner"
-                type="text"
-                placeholder="Owner"
-                onChange={formik.handleChange}
-                value={formik.values.owner}
                 fullWidth
               />
               <TextField
@@ -163,7 +158,7 @@ const AnnouncementCreation = () => {
                 id="points"
                 name="points"
                 label="Points"
-                type="text"
+                type="number"
                 placeholder="Value in Points"
                 onChange={formik.handleChange}
                 value={formik.values.points}
@@ -234,17 +229,17 @@ const AnnouncementCreation = () => {
                   row
                   aria-label="type"
                   defaultValue="house"
-                  name="row-radio-buttons-group"
+                  name="type"
                   value={formik.values.type}
                   onChange={formik.handleChange}
                 >
                   <FormControlLabel
-                    value="house"
+                    value="House"
                     control={<Radio />}
                     label="House"
                   />
                   <FormControlLabel
-                    value="apartment"
+                    value="Apartment"
                     control={<Radio />}
                     label="Apartment"
                   />
@@ -358,6 +353,24 @@ const AnnouncementCreation = () => {
                   label="AC "
                 />
               </FormControl>
+              <TextField
+                  id="arrivealDate"
+                  type="date"
+                  label = "Arrival Date"
+                  name="arrivealDate"
+                  onChange={formik.handleChange}
+                  value={formik.values.arrivealDate}
+                  InputLabelProps={{ shrink: true }}
+                />
+                 <TextField
+                  id="departureDate"
+                  type="date"
+                  label = "Departure Date"
+                  name="departureDate"
+                  onChange={formik.handleChange}
+                  value={formik.values.departureDate}
+                  InputLabelProps={{ shrink: true }}
+                />
               <Button
                 sx={{
                   marginTop: 5,
