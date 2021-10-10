@@ -7,3 +7,7 @@ export const SIGN_OUT_URL = `${BASE_URL}/auth/logout`;
 export const IS_LOGGEDIN_URL = `${BASE_URL}/auth/profile`;
 export const USER_ID_URL = `${BASE_URL}/user/getUser`;
 export const POST_ANNOUNCEMENT_URL = `${BASE_URL}/announcement`;
+export const POST_FAVOURITE_URL = `${BASE_URL}/favourite/createFavourite`;
+export const FAVOURITE_URL = `${BASE_URL}/favourite/getAllFavourites`;
+export const DELETE_FAVOURITE_URL = `${BASE_URL}/favourite/deleteFavourite`;
+export const FAVOURITE_ID_URL = `${BASE_URL}/favourite/getFavourite`;
