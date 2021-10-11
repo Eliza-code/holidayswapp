@@ -3,6 +3,7 @@ import * as types from "../types/userTypes.js";
 const initialState =  {
    userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null,
    details: {},
+   ownerDetails: {},
    isAuth: !!window.localStorage.getItem("user"),
 }
 
@@ -22,7 +23,6 @@ const userReducer = (state = initialState, action) => {
         case types.SIGN_OUT_SUCCESS:
             return {
                 ...state,
-                // isAuth: false,
             }
         
         case types.SIGN_OUT_FAILED:
@@ -47,11 +47,11 @@ const userReducer = (state = initialState, action) => {
                 ...state,
             }
 
-        // case types.GET_USER_ID:
-        //     return {
-        //           ...state,
-        //     details: action.payload,
-        //     };
+        case types.GET_OWNER_ID:
+            return {
+                  ...state,
+                  ownerDetails: action.payload,
+            };
 
         default: 
         return state;

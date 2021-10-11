@@ -16,6 +16,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import BookIcon from '@mui/icons-material/Book';
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
+import { deepPurple } from '@mui/material/colors';
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const AccountMenu = () => {
       <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 30, height: 30 }} >
+            <Avatar  sx={{ bgcolor: deepPurple[500] }} sx={{ width: 30, height: 30 }} >
              {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
