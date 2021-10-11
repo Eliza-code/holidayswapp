@@ -10,7 +10,7 @@ const favouriteReducer = (state = initialState, action) => {
     case types.GET_FAVOURITE:
       return {
         ...state,
-        wishlists: action.payload,
+        favourite: action.payload,
       };
     case types.GET_FAVOURITE_ID:
       return {

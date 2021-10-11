@@ -16,6 +16,7 @@ import Signup from './components/SignUp/Signup';
 import SignIn from './components/SignIn/SignIn';
 import Booking from './components/Booking/Booking';
 import MyBookings from './components/Booking/MyBookings';
+import Favorite from './components/Favorite/Favorite'
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
         <Route exact path="/aboutus" component={AboutUs} />
         <Route exact path="/booking" component={Booking} />
         <Route exact path="/my-bookings" component={MyBookings} />
+        <Route exact path="/my-favorites" component={Favorite} />
       </Switch>
     </div>
   );

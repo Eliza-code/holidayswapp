@@ -11,9 +11,22 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import StarIcon from '@mui/icons-material/Star';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useDispatch, useSelector} from "react-redux";
+import { addAnnouncementFavourite } from "../../redux/actions/favouriteActions";
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
+
+  const user = useSelector((state) => state.userReducer.isAuth);
+  const userLog = useSelector((state) => state.userReducer.details);
+  
+  const dispatch = useDispatch();
+
+  function addFavorite(e) {
+    // e.preventDefault();
+    dispatch(addAnnouncementFavourite())
+  }
 
   return (
     <Card sx={{ width: 300 }}>
@@ -53,9 +66,18 @@ export default function HouseCard(props) {
         </Stack>
       </CardContent>
       <CardActions>
-        <Button component={Link} to={`/announcements/${id}`} size="small">
+        <Button component={Link} to={`/announcements/${id}`} size="small"  onclick={ () => window.scrollTo(0,0) }>
           VIEW DETAILS
         </Button>
+            {user? (
+              <Button onClick={() => addFavorite({       
+               userId: userLog.id,
+               announcementId: id
+              })}>
+                <FavoriteIcon sx={{ height: 20 }}/>
+              </Button>
+            ) : null
+            } 
       </CardActions>
     </Card>
   );

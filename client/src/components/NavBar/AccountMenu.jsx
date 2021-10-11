@@ -78,7 +78,8 @@ const AccountMenu = () => {
         >
         <Avatar />Profile
         </MenuItem>
-        <MenuItem >
+        <MenuItem component={Link}
+          to="/my-favorites">
         <Avatar />My favorites
         </MenuItem>
         <MenuItem component={Link}
