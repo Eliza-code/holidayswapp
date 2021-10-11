@@ -31,7 +31,7 @@ const initial_form_states = {
   userId:"",
   announcementId:"",
   type: "",
-  message: "",
+  description: "",
   status:"",
   arrivealDate: "",
   departureDate: "",
@@ -50,12 +50,14 @@ const Booking = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const options = ["Reciprocal", "Pay with points"];
+  const announID = useSelector(state =>state.postReducer.currentPostId);
+  console.log(announID,"trayendo mi id de anuncio")
 
   const token = window.localStorage.getItem("user");
 
   const handleOnSubmit = (values) => {
     values.userId=id;
-    values.announcementId=1;
+    values.announcementId=announID;
     console.log(values);
     dispatch(postOrder(values))
   };
@@ -96,7 +98,7 @@ const Booking = () => {
                 </Grid>
                 <Grid item xs={12}>
                   <Textfield
-                    name="message"
+                    name="description"
                     label="Message"
                     multiline={true}
                     rows={4}
