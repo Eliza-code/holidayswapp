@@ -4,7 +4,7 @@ const initialState = {
   homeInfo: [],
   searchResults: [],
   houses: [],
- 
+  currentPostId: JSON.parse(window.localStorage.getItem("currentPost"))
 };
 
 const postReducer = (state = initialState, action) => {

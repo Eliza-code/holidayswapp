@@ -32,6 +32,7 @@ const AnnouncementCreation = () => {
     country: "",
     state: "",
     city: "",
+    adress: "",
     type: "",
     points: "",
     sleeps: "",
@@ -150,6 +151,17 @@ const AnnouncementCreation = () => {
                 placeholder="city"
                 onChange={formik.handleChange}
                 value={formik.values.city}
+                fullWidth
+              />
+              <TextField
+                required
+                id="adress"
+                name="adress"
+                label="Address"
+                type="text"
+                placeholder="adress"
+                onChange={formik.handleChange}
+                value={formik.values.adress}
                 fullWidth
               />
               

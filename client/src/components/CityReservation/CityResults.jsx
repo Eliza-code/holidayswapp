@@ -21,7 +21,7 @@ const CityResults = () => {
     } else setCurrentPage(currentPage + 12);
   };
   const prev_Page = () => {
-    if (currentPage < 4) {
+    if (currentPage < 13) {
       setCurrentPage(0);
     } else {
       setCurrentPage(currentPage - 12);
@@ -38,7 +38,7 @@ const CityResults = () => {
     return () => dispatch(clearPage());
   }, [dispatch]);
   
-  const filtredHouses = houses?.slice(currentPage, currentPage + 3);
+  const filtredHouses = houses?.slice(currentPage, currentPage + 12);
   
 
   return (

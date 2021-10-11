@@ -1,7 +1,7 @@
 import axios from "axios";
 import swal from "sweetalert";
 import * as types from "../types/userTypes";
-import { SIGN_IN_URL, SIGN_UP_URL, SIGN_OUT_URL, USER_ID_URL, IS_LOGGEDIN_URL } from '../constants/urls';
+import { SIGN_IN_URL, SIGN_UP_URL, SIGN_OUT_URL, OWNER_ID_URL, IS_LOGGEDIN_URL } from '../constants/urls';
 
 export const postUser = (input) => {
   return async (dispatch) => {
@@ -125,12 +125,12 @@ export const signOut = () => {
   }
 }
 
-export function getUserDetails (id) {
+export function getOwnerDetails (id) {
   return async function (dispatch) {
     try {
-      var { data } = await axios.get(`${USER_ID_URL}/${id}`);
+      const { data } = await axios.get(`${OWNER_ID_URL}/${id}`);
       return dispatch({
-        type: types.GET_USER_ID,
+        type: types.GET_OWNER_ID,
         payload: data,
       });
     } catch (error) {
@@ -138,3 +138,4 @@ export function getUserDetails (id) {
     }
   };
 }
+
