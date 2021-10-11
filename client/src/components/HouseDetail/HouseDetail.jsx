@@ -2,150 +2,335 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getHouseID } from "../../redux/actions/postActions";
+import Carousel from "./Carousel";
 import Footer from "../Footer/Footer";
-
-import "./HouseDetail.css";
-import Announcements from "../CityReservation/Announcements";
+import OwnerDetails from "./OwnerDetail";
 import Header from "../Header/Header";
+import "./HouseDetail.css";
+import Reviews from "../Reviews/Reviews";
 
-import House from "../HouseDetail/img/House.jpeg";
-import body from "../HouseDetail/img/body.png";
-import Beds from "../HouseDetail/img/Beds.jpeg";
-import Rooms from "../HouseDetail/img/Rooms.jpeg";
-import Bathrooms from "../HouseDetail/img/Bathrooms.jpeg";
-import Window from "../HouseDetail/img/Window.jpeg";
-
-import Wifi from "../HouseDetail/img/Wifi.jpeg";
-import Tele from "../HouseDetail/img/Tele.jpeg";
-import wind from "../HouseDetail/img/wind.png";
-import Parking from "../HouseDetail/img/Parking.jpeg";
-import Fridge from "../HouseDetail/img/Fridge.jpeg";
-
-import Diswasher from "../HouseDetail/img/Diswasher.jpeg";
-
-import cigar from "../HouseDetail/img/cigar.png";
-import catIcon from "../HouseDetail/img/catIcon.jpg";
-import teddybear from "../HouseDetail/img/teddybear.jpg";
+import Divider from "@mui/material/Divider";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import Grid from "@mui/material/Grid";
+import CircularProgress from "@mui/material/CircularProgress";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import BedroomParentIcon from "@mui/icons-material/BedroomParent";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
+import BathtubIcon from "@mui/icons-material/Bathtub";
+import SquareFootIcon from "@mui/icons-material/SquareFoot";
+import WifiIcon from "@mui/icons-material/Wifi";
+import ConnectedTvIcon from "@mui/icons-material/ConnectedTv";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
+import KitchenIcon from "@mui/icons-material/Kitchen";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
+import PetsIcon from "@mui/icons-material/Pets";
+import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
+import Button from "@mui/material/Button";
 
 export default function HomeID() {
-  const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
+  const { id } = useParams();
   const dispatch = useDispatch();
-  const { id } = useParams();  
+  const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
+  
+  const handleBook = () => {
+    window.localStorage.setItem("currentPost", JSON.stringify(id));
+  }
+
   useEffect(() => {
     dispatch(getHouseID(id));
   }, [dispatch, id]);
-  console.log(id);
-  console.log(homeDetailed, "Detalle del Hogar");
+
   return (
     <div>
       <div className="headerNav">
         <Header />
       </div>
-      {/* <div>
-        <NavBar />
-      </div> */}
-      <div>
-        {homeDetailed ? (
-          <div>
-              <h1>{homeDetailed.title}</h1>
-            <div className="pictures">
-              {homeDetailed.image?.map((e) => {
-                return (
-                  <div>
-                    <img src={e} alt="img" width="350em" height="300em" />
-                  </div>
-                );
-              })}
-              
-            </div>
-            <hr />
-            <div className="icoUno">
-              <div>
-                <img src={House} alt="ico" />
-                <h5>{homeDetailed.type}</h5>
-              </div>
-              <div>
-                <img src={body} alt="ico" />
-                <h5>Sleeps {homeDetailed.sleeps}</h5>
-              </div>
-              <div>
-                <img src={Beds} alt="ico" />
-                <h5>{homeDetailed.beds} beds</h5>
-              </div>
-              <div>
-                <img src={Rooms} alt="ico" />
-                <h5>{homeDetailed.bedrooms} bedrooms</h5>
-              </div>
-              <div>
-                <img src={Bathrooms} alt="ico" />
-                <h5>{homeDetailed.bathrooms} bathrooms</h5>
-              </div>
-              <div>
-                <img src={Window} alt="ico" />
-                <h5>{homeDetailed.surfaceM2} m2</h5>
-              </div>
-            </div>
-            <div className="descr">
-              <hr />
-              <h2>Description</h2>
-              <h3>{`${homeDetailed.description}`}</h3>
-              <hr />
-              <h2>Amenities</h2>
-              <div className="Amenities">
-                <div>
-                  <img src={Wifi} alt="ico" />
-                  <h5>{homeDetailed.wifi ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={Tele} alt="ico" />
-                  <h5>{homeDetailed.tv ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={wind} alt="ico" />
-                  <h5>{homeDetailed.a_c ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={Parking} alt="ico" />
-                  <h5>{homeDetailed.private_parking ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={Fridge} alt="ico" />
-                  <h5>{homeDetailed.fridge ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={Diswasher} alt="ico" />
-                  <h5>{homeDetailed.washing_machine ? "Yes" : "No"}</h5>
-                </div>
-              </div>
-              <hr />
-              <h2>House rules</h2>
-              <div className="houserules">
-                <div>
-                  <img src={cigar} alt="ico" />
-                  <h5>{homeDetailed.smokersWelcome ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={catIcon} alt="ico" />
-                  <h5>{homeDetailed.petsWelcome ? "Yes" : "No"}</h5>
-                </div>
-                <div>
-                  <img src={teddybear} alt="ico" />
-                  <h5>{homeDetailed.childremWelcome ? "Yes" : "No"}</h5>
-                </div>
-              </div>
-              <hr />
-            </div>
-          </div>
-        ) : (
-          "no hay nada"
-        )}
-      </div>
-      <div className="places">
-        <h2>Places you may like</h2>
-      </div>
-      <div>
-        <Announcements />
-      </div>
+      {Object.keys(homeDetailed).length ? (
+        <Grid>
+          <Typography
+            textAlign="center"
+            variant="h2"
+            component="div"
+            mt={5}
+            mb={7}
+          >
+            {homeDetailed.title
+              .split(" ")
+              .map(
+                (elem) => elem[0].toUpperCase() + elem.substr(1).toLowerCase()
+              )
+              .join(" ")}
+          </Typography>
+          <Grid container justifyContent="center">
+            {/* Carousel and owner card */}
+            <Grid item xs={12}>
+              <Grid container justifyContent="center" spacing={5}>
+                <Grid item xs={6}>
+                  <Carousel width="100vw" images={homeDetailed.image} />
+                </Grid>
+                <Grid item>
+                  <Grid container flexDirection="column">
+                    <OwnerDetails ownerId={homeDetailed.userId} />
+                    <Button variant="contained" onClick={handleBook}>
+                      Book Now!
+                    </Button>
+                  </Grid>
+                </Grid>
+              </Grid>
+            </Grid>
+            {/* Description */}
+            <Grid item xs={8} m={8}>
+              <Grid>
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  alignItems="center"
+                  divider={<Divider orientation="vertical" flexItem />}
+                >
+                  <Typography variant="h6" color="text.primary">
+                    Description
+                  </Typography>
+                  <Typography> {homeDetailed.description} </Typography>
+                </Stack>
+                <hr />
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+                  alignItems="center"
+                  divider={<Divider orientation="vertical" flexItem />}
+                >
+                  <Typography variant="h6" color="text.primary">
+                    Available Dates
+                  </Typography>
+                  <Typography>
+                    {" "}
+                    {homeDetailed.arrivealDate} to {homeDetailed.departureDate}{" "}
+                  </Typography>
+                </Stack>
+                <hr />
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+                  alignItems="center"
+                  divider={<Divider orientation="vertical" flexItem />}
+                >
+                  <Typography variant="h6" color="text.primary">
+                    Address
+                  </Typography>
+                  <Typography> {homeDetailed.adress} </Typography>
+                </Stack>
+                <hr />
+                <Stack
+                  direction="row"
+                  spacing={2}
+                  justifyContent="center"
+                  alignItems="center"
+                  divider={<Divider orientation="vertical" flexItem />}
+                >
+                  <Typography>
+                    {" "}
+                    {homeDetailed.city}, {homeDetailed.country}{" "}
+                  </Typography>
+                </Stack>
+                <hr />
+                <Stack
+                  direction="row"
+                  justifyContent="space-evenly"
+                  spacing={3}
+                >
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <HomeWorkIcon sx={{ height: 40 }} />
+                    <Typography> {homeDetailed.type} </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <BedroomParentIcon sx={{ height: 40 }} />
+                    <Typography> {homeDetailed.beds} Beds </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <EmojiPeopleIcon sx={{ height: 40 }} />
+                    <Typography> {homeDetailed.sleeps} Sleeps </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <MeetingRoomIcon sx={{ height: 40 }} />
+                    <Typography> {homeDetailed.bedrooms} Bedrooms </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <BathtubIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {" "}
+                      {homeDetailed.bathrooms} Bathrooms{" "}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <SquareFootIcon sx={{ height: 40 }} />
+                    <Typography> {homeDetailed.surfaceM2} M2 </Typography>
+                  </Stack>
+                </Stack>
+                <hr />
+                <Stack
+                  alignItems="center"
+                  direction="row"
+                  justifyContent="space-evenly"
+                  spacing={3}
+                >
+                  <Typography variant="h6" color="text.primary">
+                    Amenities:
+                  </Typography>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <WifiIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {" "}
+                      {homeDetailed.wifi ? "Yes" : "No"}{" "}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <ConnectedTvIcon sx={{ height: 40 }} />
+                    <Typography>{homeDetailed.tv ? "Yes" : "No"} </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <AcUnitIcon sx={{ height: 40 }} />
+                    <Typography>{homeDetailed.a_c ? "Yes" : "No"} </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <DirectionsCarIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {homeDetailed.private_parking ? "Yes" : "No"}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <KitchenIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {homeDetailed.fridge ? "Yes" : "No"}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <DryCleaningIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {homeDetailed.washing_machine ? "Yes" : "No"}
+                    </Typography>
+                  </Stack>
+                </Stack>
+                <hr />
+                <Stack
+                  alignItems="center"
+                  direction="row"
+                  justifyContent="space-evenly"
+                  spacing={3}
+                >
+                  <Typography variant="h6" color="text.primary">
+                    House rules:
+                  </Typography>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <SmokingRoomsIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {homeDetailed.smokersWelcome ? "Yes" : "No"}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <PetsIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {homeDetailed.petsWelcome ? "Yes" : "No"}
+                    </Typography>
+                  </Stack>
+                  <Stack
+                    direction="column"
+                    marginBottom={1}
+                    alignItems="center"
+                    spacing={1}
+                  >
+                    <ChildFriendlyIcon sx={{ height: 40 }} />
+                    <Typography>
+                      {homeDetailed.childremWelcome ? "Yes" : "No"}
+                    </Typography>
+                  </Stack>
+                </Stack>
+                <hr />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Grid>
+      ) : (
+        <CircularProgress />
+      )}
+      <Grid>
+        <Reviews announcementId={homeDetailed.id} />
+      </Grid>
       <div>
         <Footer />
       </div>
