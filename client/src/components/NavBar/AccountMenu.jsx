@@ -8,10 +8,15 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import LogoutIcon from "@mui/icons-material/Logout";
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import PersonIcon from '@mui/icons-material/Person';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
+import EmailIcon from '@mui/icons-material/Email';
+import BookIcon from '@mui/icons-material/Book';
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
-import { deepOrange, deepPurple } from '@mui/material/colors';
+import { deepPurple } from '@mui/material/colors';
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
@@ -32,7 +37,7 @@ const AccountMenu = () => {
       <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 30, height: 30 }} >
+            <Avatar  sx={{ bgcolor: deepPurple[500] }} sx={{ width: 30, height: 30 }} >
              {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
@@ -76,7 +81,7 @@ const AccountMenu = () => {
           component={Link}
           to="/profile"
         >
-        <Avatar />Profile
+        <PersonIcon  sx={{ mr: 1 }}/>Profile
         </MenuItem>
         <MenuItem component={Link}
           to="/my-favorites">
@@ -84,21 +89,21 @@ const AccountMenu = () => {
         </MenuItem>
         <MenuItem component={Link}
           to="/my-bookings">
-        <Avatar />My Bookings
+        <BookIcon sx={{ mr: 1 }} />My Bookings
         </MenuItem>
         <MenuItem>
-          <Avatar /> My messages
+          <EmailIcon sx={{ mr: 1 }} /> My messages
         </MenuItem>
         <MenuItem 
           component={Link}
-          to={'/announcement/'}
+          to='/announcement'
         >
-          <Avatar /> Post your Home
+          <PostAddIcon sx={{ mr: 1 }} /> Post your Home
         </MenuItem>
         <Divider />
         <MenuItem  onClick = {() => dispatch(signOut())}>
           <ListItemIcon>
-            <LogoutIcon fontSize="small" />
+            <ExitToAppIcon sx={{ mr: 1 }} />
           </ListItemIcon>
           Logout
         </MenuItem>

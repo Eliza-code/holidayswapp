@@ -21,5 +21,4 @@ router.use("/review", reviewrRoutes);
 router.use("/favourites", favouriteRoutes);
 router.use("/auth", auth);
 
-module.exports = router  
-
+module.exports = router

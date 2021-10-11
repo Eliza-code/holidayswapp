@@ -12,12 +12,17 @@ const favouriteReducer = (state = initialState, action) => {
         ...state,
         favourite: action.payload,
       };
+    // case types.GET_FAVOURITE_ID:
+    //   return {
+    //     ...state,
+    //     filteredFavourite: state.favourite.filter((e) =>
+    //       e.id.includes(action.payload)
+    //     ),
+    //   };
     case types.GET_FAVOURITE_ID:
       return {
         ...state,
-        filteredFavourite: state.favourite.filter((e) =>
-          e.id.includes(action.payload)
-        ),
+        favourite: action.payload        
       };
     case types.ADD_ANNOUNCEMENT_FAVOURITE:
       return {

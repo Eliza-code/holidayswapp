@@ -7,21 +7,13 @@ import {
   POST_FAVOURITE_URL,
 } from "../constants/urls";
 
-export function addAnnouncementFavourite(payload) {
-  
-  return async function (dispatch) {
-    try {
-      const { json } = await axios.post(POST_FAVOURITE_URL, payload);
-      dispatch({ type: types.ADD_ANNOUNCEMENT_FAVOURITE, payload: json.data });      
-      return {
-        type: types.ADD_ANNOUNCEMENT_FAVOURITE,
-        payload: payload
-      };
-    } catch (e) { 
-      console.error(e);
-    }
+export function addAnnouncementFavourite(obj) {
+  console.log('objeto ontherock',obj)
+  return async function() { 
+      await axios.post(POST_FAVOURITE_URL, obj);
   };
 }
+
 
 export function getFavourite() {
   return async function (dispatch) {
@@ -51,7 +43,7 @@ export function getFavouriteId(id) {
       const favourite = await axios.get(`${FAVOURITE_URL}/${id}`);
       return dispatch({
         type: types.GET_FAVOURITE_ID,
-        payload: favourite.data,
+        payload: favourite.data
       });
     } catch (error) {
       console.log(error);

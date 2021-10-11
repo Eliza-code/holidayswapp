@@ -14,6 +14,7 @@ import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { useDispatch, useSelector} from "react-redux";
 import { addAnnouncementFavourite } from "../../redux/actions/favouriteActions";
+import CancelIcon from '@mui/icons-material/Cancel';
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
@@ -23,9 +24,11 @@ export default function HouseCard(props) {
   
   const dispatch = useDispatch();
 
-  function addFavorite(e) {
-    // e.preventDefault();
-    dispatch(addAnnouncementFavourite())
+  function addFavorite() {       
+    dispatch(addAnnouncementFavourite({
+      userId: userLog.id,
+      announcementId: id,      
+    }))
   }
 
   return (
@@ -33,11 +36,18 @@ export default function HouseCard(props) {
       <CardMedia
         component="img"
         sx={{ height: 250 }}
-        image={image[Math.floor(Math.random() * (image.length - 1 - 0) + 0)]}
+        image={
+          image && image[Math.floor(Math.random() * (image.length - 1 - 0) + 0)]
+        }
         alt={title}
       />
       <CardContent>
-        <Typography textAlign="center" gutterBottom variant="h6" component="div">
+        <Typography
+          textAlign="center"
+          gutterBottom
+          variant="h6"
+          component="div"
+        >
           {title
             .split(" ")
             .map((elem) => elem[0].toUpperCase() + elem.substr(1).toLowerCase())
@@ -62,22 +72,38 @@ export default function HouseCard(props) {
           </Typography>
         </Stack>
         <Stack direction="row">
-          {Array.from({ length: rating }, (_, i) => i).map((elem) => <StarIcon key={elem} />)}
+          {Array.from({ length: rating }, (_, i) => i).map((elem) => (
+            <StarIcon key={elem} />
+          ))}
         </Stack>
       </CardContent>
       <CardActions>
-        <Button component={Link} to={`/announcements/${id}`} size="small"  onclick={ () => window.scrollTo(0,0) }>
+        <Button
+          component={Link}
+          to={`/announcements/${id}`}
+          size="small"
+          onclick={() => window.scrollTo(0, 0)}
+        >
           VIEW DETAILS
         </Button>
-            {user? (
-              <Button onClick={() => addFavorite({       
-               userId: userLog.id,
-               announcementId: id
-              })}>
-                <FavoriteIcon sx={{ height: 20 }}/>
-              </Button>
-            ) : null
-            } 
+        {user ? (
+          <>
+          <Button
+            onClick={() =>
+              addFavorite()
+            }
+          >
+            <FavoriteIcon sx={{ height: 20 }} />
+          </Button>
+          {/* <Button>
+          onClick={() =>
+              deleteFavorite()
+            }
+          >
+            <CancelIcon sx={{ height: 20 }} />
+          </Button> */}
+          </>
+        ) : null}
       </CardActions>
     </Card>
   );
