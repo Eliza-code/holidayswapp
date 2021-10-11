@@ -67,13 +67,14 @@ export const login = (status) => {
 }
 
 export const getUserInfo = () => {
+  console.log("entro al action")
   return async (dispatch) => {
     try {
       dispatch({ type: types.USER_AUTH_REQUEST });
-      const TOKEN = JSON.parse(window.localStorage.getItem("user"));
+      const TOKEN = JSON.parse(window.localStorage.getItem("user"));      
       if (TOKEN) {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
-        const response = await axios.get(`${IS_LOGGEDIN_URL}`, config);
+        const response = await axios.get(`${IS_LOGGEDIN_URL}`, config);        
         if (response.request.status === 200) {
           window.localStorage.setItem("userInfo", JSON.stringify(response.data));
           dispatch({ type: types.USER_AUTH_SUCCESS, payload: response.data });

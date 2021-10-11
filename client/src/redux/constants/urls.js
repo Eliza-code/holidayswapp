@@ -11,3 +11,4 @@ export const POST_FAVOURITE_URL = `${BASE_URL}/favourite/createFavourite`;
 export const FAVOURITE_URL = `${BASE_URL}/favourite/getAllFavourites`;
 export const DELETE_FAVOURITE_URL = `${BASE_URL}/favourite/deleteFavourite`;
 export const REVIEW_ID_URL = `${BASE_URL}/review/getAnnouncement`;
+export const ORDERS_GET_BY_ID_URL = `${BASE_URL}/order/getOrderById/:orderId`;

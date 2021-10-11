@@ -1,4 +1,6 @@
-import React from "react";
+import  { React, useEffect } from "react";
+import {getUserInfo } from "../../redux/actions/userActions";
+import {postOrder} from "../../redux/actions/bookingActions"
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import "../Booking/booking.css";
@@ -11,6 +13,7 @@ import Textfield from "../FormUI/Textfield/index";
 import DateTimePicker from "../FormUI/DataTimePicker/index";
 import * as Yup from "yup";
 import { makeStyles } from "@mui/styles";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -25,26 +28,46 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const initial_form_states = {
+  userId:"",
+  announcementId:"",
   type: "",
   message: "",
+  status:"",
   arrivealDate: "",
   departureDate: "",
 };
 
+
 const form_validation = Yup.object().shape({
-  type:Yup.string()
-    .required('Required'),
+  type: Yup.string().required("Required"),
   message: Yup.string(),
-  arrivealDate: Yup.date()
-    .required('Required'),
-  departureDate: Yup.date()
-    .required('Required'),
-  });
-  
+  arrivealDate: Yup.date().required("Required"),
+  departureDate: Yup.date().required("Required"),
+});
 
 const Booking = () => {
+  
   const classes = useStyles();
+  const dispatch = useDispatch();
   const options = ["Reciprocal", "Pay with points"];
+
+  const token = window.localStorage.getItem("user");
+
+  const handleOnSubmit = (values) => {
+    values.userId=id;
+    values.announcementId=1;
+    console.log(values);
+    dispatch(postOrder(values))
+  };
+  
+  useEffect(() => {
+    dispatch(getUserInfo());   
+  }, []);
+
+  const {id} = useSelector(state => state.userReducer.details)
+  
+  
+  
   return (
     <div>
       <div className="headerNav">
@@ -62,10 +85,7 @@ const Booking = () => {
           <Formik
             initialValues={initial_form_states}
             validationSchema={form_validation}
-            onSubmit={values => {
-              console.log(values);
-            }}
-
+            onSubmit={handleOnSubmit}
           >
             {/* {console.log(initialValues.checked)} */}
 

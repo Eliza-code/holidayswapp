@@ -1,8 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getHouseID } from "../../redux/actions/postActions";
 import Footer from "../Footer/Footer";
+import { Button, Grid } from "@mui/material";
 
 import "./HouseDetail.css";
 import Announcements from "../CityReservation/Announcements";
@@ -30,12 +32,12 @@ import teddybear from "../HouseDetail/img/teddybear.jpg";
 export default function HomeID() {
   const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
   const dispatch = useDispatch();
-  const { id } = useParams();  
-  useEffect(() => {
+  const history = useHistory();
+  const { id } = useParams();
+    useEffect(() => {
     dispatch(getHouseID(id));
   }, [dispatch, id]);
-  console.log(id);
-  console.log(homeDetailed, "Detalle del Hogar");
+  let idUser = id;
   return (
     <div>
       <div className="headerNav">
@@ -47,7 +49,7 @@ export default function HomeID() {
       <div>
         {homeDetailed ? (
           <div>
-              <h1>{homeDetailed.title}</h1>
+            <h1>{homeDetailed.title}</h1>
             <div className="pictures">
               {homeDetailed.image?.map((e) => {
                 return (
@@ -56,7 +58,6 @@ export default function HomeID() {
                   </div>
                 );
               })}
-              
             </div>
             <hr />
             <div className="icoUno">
@@ -135,6 +136,18 @@ export default function HomeID() {
               </div>
               <hr />
             </div>
+            <Grid items xs={12} align="center">
+              <Button
+                variant="contained"
+                color="primary"
+                size="large"
+                onClick={() => {              
+                  history.push("/booking")
+                }}
+              >
+                Book Now
+              </Button>
+            </Grid>
           </div>
         ) : (
           "no hay nada"
