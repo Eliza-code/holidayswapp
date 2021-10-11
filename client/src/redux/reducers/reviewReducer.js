@@ -2,6 +2,7 @@ import * as types from "../types/reviewTypes";
 
 const initialState = {
   announcementReviews: [],
+  userDetails: {},
 };
 
 const reviewReducer = (state = initialState, action) => {
@@ -11,6 +12,13 @@ const reviewReducer = (state = initialState, action) => {
         ...state,
         announcementReviews: action.payload,
       };
+
+    case types.GET_USER_REVIEW:
+      return {
+        ...state,
+        userDetails: action.payload
+      }
+    
     default:
       return state;
   }

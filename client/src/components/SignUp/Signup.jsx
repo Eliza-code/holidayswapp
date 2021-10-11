@@ -16,10 +16,10 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import "./Signup.css";
 import { nationalities, validate, languagesSpoken } from "./validate";
 import { postUser } from "../../redux/actions/userActions";
 import Header from "../Header/Header";
+import "./Signup.css";
 
 
 const initialValues = {
@@ -32,6 +32,7 @@ const initialValues = {
   email: "",
   phoneNumber: "",
   dateOfBirth: "",
+  description: "",
   nacionality: "",
   languagesSpoken: "",
   showPassword: false,
@@ -40,7 +41,6 @@ const initialValues = {
 
 const Signup = () => {
   const dispatch = useDispatch();
-  
 
   const onSubmit = (values) => {
     dispatch(
@@ -53,6 +53,7 @@ const Signup = () => {
         email: values.email,
         phoneNumber: parseInt(values.phoneNumber),
         dateOfBirth: values.dateOfBirth,
+        description: values.description,
         nacionality: values.nacionality,
         languagesSpoken: values.languagesSpoken,
       })
@@ -278,7 +279,7 @@ const Signup = () => {
 
               <div>
                 <TextField
-                  required
+                  
                   error={Boolean(
                     formik.touched.phoneNumber && formik.errors.phoneNumber
                   )}
@@ -309,7 +310,18 @@ const Signup = () => {
                   InputLabelProps={{ shrink: true }}
                 />
               </div>
-
+              <div>
+                <TextField
+                  id="description"
+                  type="text"
+                  label = "Descriptionh"
+                  name="description"
+                  onChange={formik.handleChange}
+                  value={formik.values.description}
+                  onBlur={formik.handleBlur}
+                 
+                />
+              </div>
               <div>
                 <Autocomplete
                   id="nacionality"

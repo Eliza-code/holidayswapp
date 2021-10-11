@@ -11,7 +11,7 @@ module.exports = async (req, res) => {
             attributes: ["username"],
           },
         });
-        return res.json(review);
+        return res.status(200).json(review);
       }
     } catch (err) {
       return res.send({ error: err.message }).status(409);
