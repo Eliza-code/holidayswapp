@@ -5,7 +5,7 @@ const getInfoOrders = async () => {
     await Order.create({
       status: "pending",
       userId: 4,
-      announcementId: 4,
+      announcementId: 2,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
       departureDate: "20-11-2020",
@@ -13,7 +13,45 @@ const getInfoOrders = async () => {
     })
     await Order.create({
       status: "pending",
-      userId: 7,
+      userId: 4,
+      announcementId: 23,
+      type: "Reciprocal",
+      arrivealDate: "05-11-2020",
+      departureDate: "20-11-2020",
+      description: "Beautifull and classic Department"    
+    })
+    await Order.create({
+      status: "pending",
+      userId: 4,
+      announcementId: 24,
+      type: "Reciprocal",
+      arrivealDate: "05-11-2020",
+      departureDate: "20-11-2020",
+      description: "Beautifull and classic Department"    
+    })
+    await Order.create({
+      status: "pending",
+      userId: 21,
+      announcementId: 23,
+      type: "Reciprocal",
+      arrivealDate: "05-11-2020",
+      departureDate: "20-11-2020",
+      description: "Beautifull and classic Department"    
+    })
+    await Order.create({
+      status: "pending",
+      userId: 15,
+      announcementId: 23,
+      type: "Reciprocal",
+      arrivealDate: "05-11-2020",
+      departureDate: "20-11-2020",
+      description: "Beautifull and classic Department"    
+    })
+    
+    
+    await Order.create({
+      status: "pending",
+      userId: 17,
       announcementId: 7,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
@@ -22,7 +60,7 @@ const getInfoOrders = async () => {
     })
     await Order.create({
       status: "pending",
-      userId: 1,
+      userId: 11,
       announcementId: 1,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
@@ -32,7 +70,7 @@ const getInfoOrders = async () => {
     await Order.create({
       status: "pending",
       userId: 10,
-      announcementId: 10,
+      announcementId: 20,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
       departureDate: "20-11-2020",
@@ -40,7 +78,7 @@ const getInfoOrders = async () => {
     })
     await Order.create({
       status: "pending",
-      userId: 13,
+      userId: 23,
       announcementId: 13,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
@@ -49,7 +87,7 @@ const getInfoOrders = async () => {
     })
     await Order.create({
       status: "pending",
-      userId: 15,
+      userId: 25,
       announcementId: 15,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
@@ -58,7 +96,7 @@ const getInfoOrders = async () => {
     })
     await Order.create({
       status: "pending",
-      userId: 19,
+      userId: 29,
       announcementId: 19,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
@@ -67,7 +105,7 @@ const getInfoOrders = async () => {
     })
     await Order.create({
       status: "pending",
-      userId: 20,
+      userId: 9,
       announcementId: 20,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
@@ -77,7 +115,7 @@ const getInfoOrders = async () => {
     await Order.create({
       status: "pending",
       userId: 5,
-      announcementId: 5,
+      announcementId: 13,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
       departureDate: "20-11-2020",
@@ -86,7 +124,7 @@ const getInfoOrders = async () => {
     await Order.create({
       status: "pending",
       userId: 6,
-      announcementId: 6,
+      announcementId: 28,
       type: "Reciprocal",
       arrivealDate: "05-11-2020",
       departureDate: "20-11-2020",
