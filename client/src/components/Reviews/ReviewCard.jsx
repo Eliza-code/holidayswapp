@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 import { getUserReviewDetails } from "../../redux/actions/reviewActions";
 
 
-const ReviewUser = ({ review }) => {
+const ReviewCard = ({ review }) => {
   const dispatch = useDispatch();
 
   const user = useSelector((state) => state.reviewReducer.userDetails);
@@ -41,4 +41,4 @@ const ReviewUser = ({ review }) => {
   );
 };
 
-export default ReviewUser;
+export default ReviewCard;
