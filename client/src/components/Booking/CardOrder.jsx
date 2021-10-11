@@ -63,6 +63,7 @@ const CardOrder = (props) => {
         {orders.status==="Pending" && (<Alert severity="success">{orders.status}</Alert>) }
         {orders.status==="Accepted" && (<Alert severity="info">{orders.status}</Alert>) }
         {orders.status==="Cancelled" && (<Alert severity="error">{orders.status}</Alert>) }
+        {orders.status==="Completed" && (<Alert severity="warning">{orders.status}</Alert>) }
         
       </CardContent>
       <CardActions>
