@@ -1,15 +1,25 @@
-const { Favourite } = require("../../db");
+const { Favourite, Announcement } = require("../../db");
+
 
 module.exports = async (req, res, next) => {
-  let { id } = req.query;
+  let { id } = req.params;
   try {
-    let favourite = await Favourite.findAll();
+    let favourite = await Favourite.findAll({
+      where: {
+        userId: id,
+      },
+      include: {
+        model: Announcement,
+        // attributes: ["title"],
+      },
+    });
     
-    let filter = favourite.filter((e) => e.userId == id);
     
-
-    return res.json(filter);
+    return res.json(favourite);
   } catch (err) {
     return res.send({ error: err.message }).status(409);
   }
 };
+
+
+//let filter = favourite.filter((e) => e.userId == id);

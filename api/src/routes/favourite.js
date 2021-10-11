@@ -15,16 +15,4 @@ router.get('/getAllFavourites', getAllFavourites);
 router.get('/getFavourite/:id', getFavouriteById);
 router.delete('/deleteFavourite/:id', deleteFavourite);
 
-
-
-
-
-
-module.exports = router;
-
-
-
-
-
-
-
+module.exports = router
