@@ -6,10 +6,10 @@ const {
 
 module.exports = async (req, res) => {
     const { userId } = req.params;
-
+// Reservas hechas por el usuario
     try {
-        const order = await User.findAll({
-            where: {id : userId}, // Usuario que busca recibe peticion de reserva
+        const user = await User.findAll({
+            where: {id : userId}, // Usuario que busca hacer una reserva
             attributes: ['name', 
                          'lastName', 
                          'email', 
@@ -18,17 +18,16 @@ module.exports = async (req, res) => {
             include:  // Reservas
                 [{
                     model: Order,
-                    attributes: [ 'id', // id Orden de reserva
-                                  'userId',   // Usuario dueño de la Casa que se busca reservar
-                                  'announcementId', // Casa que se busca reservar
-                                  'status', // estado de la reserva
-                                  'arrivealDate', // Fecha de llegada
-                                  'departureDate', // Fecha de salida
-                                  'type' // Intercambio o Pago por puntos
-                   ],                                                 
-                },
-                {
-                    model: Announcement,
+                    attributes: [ 'id', // N° Orden de reserva
+                                  'userId',  
+                                  'announcementId', 
+                                  'status', 
+                                  'arrivealDate',
+                                  'departureDate', 
+                                  'type' 
+                   ],
+                   include: {
+                    model: Announcement, // Casa a reservar
                     attributes: [ 'country',
                                   'state',
                                   'city',
@@ -36,16 +35,23 @@ module.exports = async (req, res) => {
                                   'type',
                                   'points',
                                   'description'
-                    ]
+                    ],
+                    include: {
+                    model: User, // Usuario propietario de la casa a reservar
+                    attributes: [ 
+                                  'name', 
+                                  'lastName', 
+                                  'email', 
+                                  'phoneNumber'
+                                ]
+                  }
+                   },                                                  
                 }],
         });
-
-        // console.log(order);
-
-        if (!order) {
-            throw new Error(`Order with id: ${orderId} not found`);
+        if (!user) {
+            throw new Error(`User with id: ${userId} don't have any reserves created`);
         }
-        return res.status(200).send(order);
+        return res.status(200).send(user);
 
     } catch (error) {
         return res.status(409).send(error);
