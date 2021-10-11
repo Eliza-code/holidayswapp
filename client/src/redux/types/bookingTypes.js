@@ -1,2 +1,4 @@
-export const GET_ORDERS_BY_ID = 'GET_ORDERS_BY_ID';
+export const GET_USER_ORDERS = 'GET_USER_ORDERS';
+export const GET_ORDERS_TO_USER = 'GET_ORDERS_TO_USER';
 export const POST_ORDER = 'POST_ORDER';
+export const UPDATE_ORDER_STATUS = 'UPDATE_ORDER_STATUS'

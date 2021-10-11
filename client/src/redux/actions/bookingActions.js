@@ -5,32 +5,64 @@ import {
   } from "../constants/urls";
 import axios from 'axios';
 
-export function getOrdersById(input) {
+export function getUserOrders(input) {
     return async function (dispatch) {
         try {
-          const orders = await axios.get(`${BASE_URL}/order/getOrderById/${input}`);
+          const orders = await axios.get(`${BASE_URL}/order/getUserOrders/${input}`);
           return dispatch({
-            type: types.GET_ORDERS_BY_ID,
+            type: types.GET_USER_ORDERS,
             payload: orders.data,
           });
         } catch (error) {
           console.log(error);
-          alert("Orders not found");
+          
+        }
+    };
+}
+export function getOrdersToUser (input) {
+    return async function (dispatch) {
+        try {
+          const orders = await axios.get(`${BASE_URL}/order/getOrdersUser/${input}`);
+          return dispatch({
+            type: types.GET_ORDERS_TO_USER,
+            payload: orders.data,
+          });
+        } catch (error) {
+          console.log(error);
+         
         }
     };
 }
 
-export function postOrder(input) {
+export function postOrder(order) {
     return async function (dispatch) {
         try {
-          const order = await axios.post(`${BASE_URL}/order/addOrder`, input);
-          return dispatch({
+          const dato = await axios.post(`${BASE_URL}/order/addOrder`, order);
+          console.log(dato)
+          dispatch({
             type: types.POST_ORDER,
-            payload: order.data,
+            payload: dato,
           });
         } catch (error) {
           console.log(error);
           alert("Order not created");
+        }
+    };
+}
+
+export function updateOrderStatus(input) {
+    return async function (dispatch) {
+        try {
+          const data = await axios.post(`${BASE_URL}/order/updateOrderStatus`,input);
+          console.log(data)
+          dispatch({
+            type: types.UPDATE_ORDER_STATUS,
+            payload: data,
+          });
+         
+        } catch (error) {
+          console.log(error);
+          alert("Not Updated");
         }
     };
 }

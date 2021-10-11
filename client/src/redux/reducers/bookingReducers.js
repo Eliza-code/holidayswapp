@@ -1,21 +1,34 @@
 import * as types from "../types/bookingTypes";
 
 const initialState = {
-  orders:{},
-  orderCreated:undefined,
+    ordersByUser:[],
+    ordersToUser:[],
+    orders:{},
+    orderCreated:[],
+    orderUpdated:undefined
 };
 
 const bookingReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_ORDERS_BY_ID:
+    case types.GET_USER_ORDERS:
       return {
         ...state,
-        orders: action.payload,
+        ordersByUser: action.payload,
+      };
+      case types.GET_ORDERS_TO_USER:
+      return {
+        ...state,
+        ordersToUser: action.payload,
       };
       case types.POST_ORDER:
       return {
         ...state,
-        order: action.payload,
+        orderCreated: action.payload,
+      };
+      case types.POST_ORDER:
+      return {
+        ...state,
+        orderUpdated: action.payload,
       };
     default:
       return state;
