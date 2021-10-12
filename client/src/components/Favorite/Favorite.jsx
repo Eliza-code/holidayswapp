@@ -7,6 +7,7 @@ import { Grid } from "@mui/material";
 import HouseCard from "../CityReservation/HouseCard";
 import { getFavouriteId } from "../../redux/actions/favouriteActions";
 import { getUserInfo } from "../../redux/actions/userActions";
+import '../Favorite/Favorite.css'
 
 const Favorite = () => {
     const dispatch = useDispatch();
@@ -26,8 +27,17 @@ const Favorite = () => {
 <Header/>
 <NavBar/>
 <div>
-    <h1>favorite homes</h1>
-    <ul>
+    <h1>Favorite Homes</h1>
+    <div>
+        <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+          <Grid item xs={12} container spacing={3}>
+            <Grid
+              container
+              justifyContent="center"
+              alignItems="center"
+              sx={{ marginTop: 0, marginBottom: 2 }}
+              spacing={3}
+            >
         {
             favourite?.map((e)=>{
                 return (
@@ -50,7 +60,12 @@ const Favorite = () => {
                 )
             })
         }
-    </ul>
+        </Grid>
+          </Grid>
+        </Grid>
+      </div>
+
+ 
 </div>
 <Footer/>
 </div>
