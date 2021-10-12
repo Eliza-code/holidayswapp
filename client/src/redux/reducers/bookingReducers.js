@@ -2,7 +2,7 @@ import * as types from "../types/bookingTypes";
 
 const initialState = {
   orders:{},
-  orderCreated:[],
+  orderCreated:{},
 };
 
 const bookingReducer = (state = initialState, action) => {

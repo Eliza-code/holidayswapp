@@ -11,13 +11,11 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    
     status: {
       type: DataTypes.ENUM({
         values: ["pending", "cancelled", "completed"],
       }),
       allowNull: false,
-      defaultValue: "pending"
     },
     arrivealDate: {
       type: DataTypes.STRING,
