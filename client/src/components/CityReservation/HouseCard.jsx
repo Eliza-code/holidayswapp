@@ -19,7 +19,6 @@ import { deleteFavourite } from "../../redux/actions/favouriteActions";
 import CancelIcon from '@mui/icons-material/Cancel';
 import { Grid } from "@mui/material";
 
-
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
 
