@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { getHouseID } from "../../redux/actions/postActions";
-import Carousel from "./Carousel";
+import Carousel from "../HouseDetail/Carousel";
 import Footer from "../Footer/Footer";
 import OwnerDetails from "./OwnerDetail";
 import Header from "../Header/Header";
@@ -34,10 +35,12 @@ import Button from "@mui/material/Button";
 export default function HomeID() {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
   
   const handleBook = () => {
     window.localStorage.setItem("currentPost", JSON.stringify(id));
+    history.push("/booking")
   }
 
   useEffect(() => {

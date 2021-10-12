@@ -1,10 +1,11 @@
 import React, { useEffect} from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAnnouncementReviews } from "../../redux/actions/reviewActions";
-import ReviewUser from "./ReviewUser";
+import ReviewCard from "./ReviewCard";
 import Grid from "@mui/material/Grid";
 
 const Reviews = ({ announcementId }) => {
+  
   const dispatch = useDispatch();
 
   const reviews = useSelector(
@@ -20,7 +21,7 @@ const Reviews = ({ announcementId }) => {
     <Grid container justifyContent="center" spacing={2}>
         {reviews.length && reviews.map((review, idx) => (
           <Grid key={idx} item xs={2}>
-            <ReviewUser review={review} />
+            <ReviewCard review={review} />
           </Grid>
       ))}
     </Grid>

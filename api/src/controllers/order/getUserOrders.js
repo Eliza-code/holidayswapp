@@ -22,6 +22,7 @@ module.exports = async (req, res) => {
                                   'userId',  
                                   'announcementId', 
                                   'status', 
+                                  'description',
                                   'arrivealDate',
                                   'departureDate', 
                                   'type' 
