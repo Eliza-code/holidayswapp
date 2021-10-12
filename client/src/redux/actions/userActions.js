@@ -76,22 +76,22 @@ export const getUserInfo = () => {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
         const response = await axios.get(`${BASE_URL}/auth/profile`, config);
         if (response.request.status === 200) {
-          window.localStorage.setItem("userInfo", JSON.stringify(response.data));
+          // window.localStorage.setItem("userInfo", JSON.stringify(response.data));
           dispatch({ type: types.USER_AUTH_SUCCESS, payload: response.data });
         }
       } else {
         dispatch({ type: types.USER_AUTH_FAILED });
-        window.localStorage.removeItem("userInfo");
-        swal({
-          title: "Authentication failed",
-          icon: "warning",
-        });
+        // window.localStorage.removeItem("userInfo");
+        // swal({
+        //   title: "Authentication failed",
+        //   icon: "warning",
+        // });
       }
     } catch (error) {
       dispatch({ type: types.USER_AUTH_FAILED });
       console.log(error);
       window.localStorage.removeItem("user");
-      window.localStorage.removeItem("userInfo");
+      // window.localStorage.removeItem("userInfo");
       swal({
         title: "Internal error server",
         icon: "warning",

@@ -85,7 +85,7 @@ const AccountMenu = () => {
         </MenuItem>
         <MenuItem component={Link}
           to="/my-favorites">
-        <Avatar />My favorites
+        <LoyaltyIcon  sx={{ mr: 1 }}/>My favorites
         </MenuItem>
         <MenuItem component={Link}
           to="/my-bookings">

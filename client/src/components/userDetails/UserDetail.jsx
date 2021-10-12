@@ -77,14 +77,14 @@ export default function UserDetails() {
               </Typography>
             </Grid>
           </Grid>
-          <Grid>
+          {/* <Grid>
             {houses.length ? (
               houses.map((house, idx) => <HouseCard key={idx} house={house} />)
             ) : (
               <CircularProgress />
             )
             }
-            </Grid>
+            </Grid> */}
         </Grid>
       ) : (
         <Typography alignText="center" gutterBottom variant="h5">

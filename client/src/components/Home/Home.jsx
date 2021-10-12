@@ -9,10 +9,15 @@ import { turisticCities } from "./turisticCities";
 import Announcements from "../CityReservation/Announcements";
 import "../Home/home.css";
 import Statics from "./statics";
+import { getUserInfo } from "../../redux/actions/userActions";
 
 const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  React.useEffect(() => {
+    dispatch(getUserInfo())
+  }, [dispatch])
 
   const handleOnClick = (e, name) => {
     e.preventDefault();

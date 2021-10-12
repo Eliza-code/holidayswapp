@@ -1,7 +1,7 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-   userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null,
+//    userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null,
    details:{},  
    ownerDetails: {},
    isAuth: !!window.localStorage.getItem("user"),

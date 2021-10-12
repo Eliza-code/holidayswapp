@@ -82,7 +82,7 @@ export default function HouseCard(props) {
           component={Link}
           to={`/announcements/${id}`}
           size="small"
-          onclick={() => window.scrollTo(0, 0)}
+          onClick={() => window.scrollTo(0, 0)}
         >
           VIEW DETAILS
         </Button>
