@@ -16,8 +16,8 @@ const Favorite = () => {
   console.log('favorties ', favourite)
 
     useEffect(() => {
-        if (userId) dispatch(getFavouriteId(userId))
-       
+        if (userId) return dispatch(getFavouriteId(userId))
+        console.log(userId);
       }, [userId]);
     return(
 <div>

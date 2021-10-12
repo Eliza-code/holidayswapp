@@ -5,7 +5,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {updateOrderStatus} from '../../redux/actions/bookingActions'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { red } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
@@ -26,13 +26,14 @@ const CardOrder = (props) => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
-    console.log(props,"que props tengo")
+  //  const userInf = useSelector(state => state.state)
+    // console.log(props,"que props tengo")
     const { orders, userInfo } = props;
     // console.log(orders,"mis ordenes")
-    console.log(props.userInfo.profilePicture,"mifoto")
+    // console.log(props.userInfo.profilePicture,"mifoto")
     const handleOnclik = (newStatus,orderId)=>{
         const data ={newStatus,orderId}
-        console.log(data)
+        // console.log(data)
       dispatch(updateOrderStatus(data))
       window.location.reload(true)
     }
@@ -50,7 +51,7 @@ const CardOrder = (props) => {
         alt="green iguana"
       />
       <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <Typography gutterBottom variant="h5" component="div" >
           {userInfo.username}
         </Typography>
         <Typography gutterBottom variant="body2" color="text.secondary">
