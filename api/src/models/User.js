@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const user = require("../utils/Users/data/users.data");
+
 
 
 module.exports = (sequelize) => {
@@ -61,7 +61,7 @@ module.exports = (sequelize) => {
         },
         points: {
             type: DataTypes.INTEGER,
-            defaultValue: 500,
+            defaultValue: 1000,
         },
 
         

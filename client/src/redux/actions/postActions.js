@@ -1,11 +1,12 @@
 import axios from "axios";
+import swal from "sweetalert";
 import * as types from "../types/postTypes";
-import { ANNOUNCEMENT_URL, HOUSE_CITY_URL } from '../constants/urls';
+import { BASE_URL } from '../constants/urls';
 
 export function getHouses() {
     return async function (dispatch) {
       try {       
-        const json = await axios.get(ANNOUNCEMENT_URL)   
+        const json = await axios.get(`${BASE_URL}/announcement`)   
         return dispatch({
           type: types.GET_HOUSES, payload: json.data});
       } catch (error) {
@@ -18,7 +19,7 @@ export function getHouses() {
 export function getHouseID(id) {
   return async function (dispatch) {
     try {
-      var json = await axios.get(`${ANNOUNCEMENT_URL}/${id}`);
+      var json = await axios.get(`${BASE_URL}/announcement/${id}`);
       return dispatch({ 
         type: types.GET_HOUSES_ID, payload: json.data})
     } catch(error) {
@@ -31,7 +32,7 @@ export function getHouseID(id) {
 export function getHouseCity(city) {
   return async function(dispatch) {
       try {
-          const json = await axios.get(`${HOUSE_CITY_URL}${city}`);
+          const json = await axios.get(`${BASE_URL}/announcement?name=${city}`);
           return dispatch({ type: types.GET_HOUSE_CITY, payload: json.data})
       } catch(error) {
           console.log(error)
@@ -42,4 +43,23 @@ export function getHouseCity(city) {
 
 export function clearPage() {
   return { type: types.GET_HOUSE_CITY, payload: undefined };
+}
+
+export function postAnnouncements (input) {
+  return async function (dispatch) {
+    try {
+      const { request } = await axios.post(`${BASE_URL}/announcement`, input)
+      dispatch({ type: types.POST_ANNOUNCEMENT });
+      if (request.status === 200) {
+        window.location.href = "/profile"
+      } else {
+        swal({
+          title: "Oops! Something went wrong!",
+          icon: "warning",
+        });
+      }
+    } catch (e) {
+      console.error(e)
+    }
+  }
 }

@@ -6,10 +6,11 @@ const cors = require('cors');
 const helmet = require('helmet');
 const session = require("express-session");
 const passport = require("passport");
-require('dotenv').config();
 
-
+require("./utils/auth/passport");
 require('./db.js');
+
+require('dotenv').config();
 const { SECRET_KEY, CLIENT_DOMAIN } = process.env;
 
 const server = express();
@@ -21,7 +22,7 @@ server.use(express.json({ limit: "50mb" }));
 server.use(helmet());
 server.use(cookieParser());
 server.set("trust proxy", 1);
-// server.use(cors({ origin: CLIENT_DOMAIN, credentials: true }));
+server.use(cors({ origin: "*", credentials: true }));
 server.use(passport.initialize());
 server.use(
     session({

@@ -5,24 +5,14 @@ const express = require('express');
 const createFavourite = require('../controllers/favourite/createFavourite');
 const deleteFavourite = require('../controllers/favourite/deleteFavourite');
 const getAllFavourites = require('../controllers/favourite/getAllFavourites');
+const getFavouriteById = require('../controllers/favourite/getFavouriteById');
 
 const router = Router();
 router.use(express.json());
 
-router.get('/', getAllFavourites);
 router.post('/', createFavourite);
-router.delete('/:id', deleteFavourite);
+router.get('/getAllFavourites', getAllFavourites);
+router.get('/getFavourite/:id', getFavouriteById);
+router.delete('/deleteFavourite/:id', deleteFavourite);
 
-
-
-
-
-
-module.exports = router;
-
-
-
-
-
-
-
+module.exports = router

@@ -30,12 +30,8 @@ const SignIn = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (values) => {
-    dispatch(
-      postSignIn({
-        username: values.username,
-        password: values.password,
-      })
-    )
+    const { showPassword, ...input } = values;
+    dispatch(postSignIn(input));
   };
 
   const formik = useFormik({

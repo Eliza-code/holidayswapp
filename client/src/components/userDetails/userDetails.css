@@ -1,0 +1,14 @@
+.ficha {
+    border: 1px black solid;
+    padding: 1%;
+    margin: 2%;
+    
+    
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,5 +1,5 @@
 import React from "react";
-import {useDispatch} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -8,15 +8,21 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
-import LogoutIcon from "@mui/icons-material/Logout";
-import {signOut} from '../../redux/actions/userActions';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import PostAddIcon from '@mui/icons-material/PostAdd';
+import PersonIcon from '@mui/icons-material/Person';
+import LoyaltyIcon from '@mui/icons-material/Loyalty';
+import EmailIcon from '@mui/icons-material/Email';
+import BookIcon from '@mui/icons-material/Book';
+import { signOut } from '../../redux/actions/userActions';
+import { Link } from "react-router-dom";
+import { deepPurple } from '@mui/material/colors';
 
-const AccountMenu = ({ user }) => {
+const AccountMenu = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.userReducer.details);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
-  const dispatch = useDispatch();
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -28,16 +34,16 @@ const AccountMenu = ({ user }) => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center" }}>
+      <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar sx={{ width: 30, height: 30 }}>
-              {user.username[0].toUpperCase()}
+            <Avatar  sx={{ bgcolor: deepPurple[500] }} sx={{ width: 30, height: 30 }} >
+             {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
-      <Menu
+      <Menu 
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -71,20 +77,37 @@ const AccountMenu = ({ user }) => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <Avatar /> Profile
+        <MenuItem 
+          component={Link}
+          to="/profile"
+        >
+        <PersonIcon  sx={{ mr: 1 }}/>Profile
+        </MenuItem>
+        <MenuItem component={Link}
+          to="/my-favorites">
+        <LoyaltyIcon />My favorites
+        </MenuItem>
+        <MenuItem component={Link}
+          to="/my-bookings">
+        <BookIcon sx={{ mr: 1 }} />My Bookings
         </MenuItem>
         <MenuItem>
-          <Avatar /> My favorites
+          <EmailIcon sx={{ mr: 1 }} /> My messages
+        </MenuItem>
+        <MenuItem 
+          component={Link}
+          to='/announcement'
+        >
+          <PostAddIcon sx={{ mr: 1 }} /> Post your Home
         </MenuItem>
         <Divider />
         <MenuItem  onClick = {() => dispatch(signOut())}>
           <ListItemIcon>
-            <LogoutIcon fontSize="small" />
+            <ExitToAppIcon sx={{ mr: 1 }} />
           </ListItemIcon>
           Logout
         </MenuItem>
-      </Menu>
+      </Menu> 
     </React.Fragment>
   );
 };

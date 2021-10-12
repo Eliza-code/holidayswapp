@@ -6,12 +6,12 @@ module.exports = async (req, res) => {
       if (id) {
         const review = await Review.findAll({
           where: { announcementId: id },
-          // include: {
-          //   model: User,
-          //   attributes: ["username"],
-          // },
+          include: {
+            model: User,
+            attributes: ["username"],
+          },
         });
-        return res.json(review);
+        return res.status(200).json(review);
       }
     } catch (err) {
       return res.send({ error: err.message }).status(409);

@@ -24,14 +24,27 @@ module.exports = (sequelize) => {
     },
     state: {
       type: DataTypes.STRING,
+      allowNull: false,
     },
     city: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    adress: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     type: {
       type: DataTypes.ENUM("House", "Apartment"),
-      allowNull: false,
+      allowNull: true,
+    },
+    arrivealDate: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    departureDate: {
+      type: DataTypes.STRING,
+      allowNull: false
     },
     points: {
       type: DataTypes.INTEGER,
