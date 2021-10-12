@@ -76,7 +76,7 @@ export default function HouseCard(props) {
           variant="h6"
           component="div"
         >
-          {title
+          {title.length && title
             .split(" ")
             .map((elem) => elem[0].toUpperCase() + elem.substr(1).toLowerCase())
             .join(" ")}
