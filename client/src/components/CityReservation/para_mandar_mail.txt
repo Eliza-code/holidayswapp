@@ -1,0 +1,22 @@
+Julian soyHenry, [11.10.21 10:02]
+let transporter = nodemailer.createTransport({
+          host: "smtp.mail.yahoo.com",
+          port: 465,
+          secure: false, // upgrade later with STARTTLS
+          service: "yahoo",
+          auth: {
+            user: "henry.pg@yahoo.com",
+            pass: PASSWORD_EMAIL_NODEMAILER, //acá va el password del correo. no es el que usas para loguearte, hay que crear un password para aplicaciones
+          },
+        });
+
+        let email = await transporter.sendMail({
+          from: '"henry ecommerce" <henry.pg@yahoo.com>', // sender address
+          to: user_email, // list of receivers
+          subject: "aca va el subject",
+          text: "Acá va el cuerpo del email", // plain text body
+          // html: "<div> si queres podes mandar html </div>",
+        });
+
+Julian soyHenry, [11.10.21 10:03]
+obviamente tenes que  instalar el npm i nodemailer e importarlo con import nodemailer from "nodemailer";

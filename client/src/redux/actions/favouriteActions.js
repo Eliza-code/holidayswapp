@@ -16,6 +16,7 @@ export function addAnnouncementFavourite(input) {
   };
 }
 
+
 export function getFavourite() {
   return async function (dispatch) {
     try {
@@ -44,7 +45,7 @@ export function getFavouriteId(id) {
       const favourite = await axios.get(`${BASE_URL}/review/getAnnouncement/${id}`);
       return dispatch({
         type: types.GET_FAVOURITE_ID,
-        payload: favourite.data,
+        payload: favourite.data
       });
     } catch (error) {
       console.log(error);
