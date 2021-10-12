@@ -45,6 +45,7 @@ module.exports = async (req, res) => {
     return res.status(201).send({orderId: order.id});
 
   } catch (error) {
-    return res.status(409).send(error);
+    console.log(error)
+    // return res.status(409).send(error);
   }
 };

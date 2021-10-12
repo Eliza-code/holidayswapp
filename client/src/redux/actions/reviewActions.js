@@ -1,12 +1,12 @@
 import axios from "axios";
 import swal from "sweetalert";
 import * as types from "../types/reviewTypes";
-import { REVIEW_ID_URL, POST_REVIEW_URL, OWNER_ID_URL } from "../constants/urls";
+import { BASE_URL } from "../constants/urls";
 
 export function getAnnouncementReviews(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${REVIEW_ID_URL}/${id}`);
+      const response = await axios.get(`${BASE_URL}/review/getAnnouncement/${id}`);
       if( response.request.status === 200) {
         dispatch({ type: types.GET_ANNOUNCEMENT_REVIEW, payload: response.data });
       } else {
@@ -21,7 +21,7 @@ export function getAnnouncementReviews(id) {
 
 export function createReview(userId, announcementId, stars, description) {
   return async function (dispatch) {
-    const { data } = await axios.post(POST_REVIEW_URL, {
+    const { data } = await axios.post(`${BASE_URL}/review`, {
       announcementId,
       userId,
       stars,
@@ -35,7 +35,7 @@ export function createReview(userId, announcementId, stars, description) {
 export function getUserReviewDetails (id) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${OWNER_ID_URL}/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/user/getUser/${id}`);
       return dispatch({
         type: types.GET_USER_REVIEW,
         payload: data,

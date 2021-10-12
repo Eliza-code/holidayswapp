@@ -1,16 +1,13 @@
 import axios from "axios";
 import * as types from "../types/favouriteTypes";
 import {
-  FAVOURITE_URL,
-  FAVOURITE_ID_URL,
-  DELETE_FAVOURITE_URL,
-  POST_FAVOURITE_URL,
+  BASE_URL,
 } from "../constants/urls";
 
 export function addAnnouncementFavourite(input) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(POST_FAVOURITE_URL, input);
+      const { data } = await axios.post(`${BASE_URL}/favourite/createFavourite`, input);
       dispatch({ type: types.POST_FAVOURITE });
       console.log(data);
     } catch (e) {
@@ -19,10 +16,11 @@ export function addAnnouncementFavourite(input) {
   };
 }
 
+
 export function getFavourite() {
   return async function (dispatch) {
     try {
-      const favourite = await axios.get(FAVOURITE_URL);
+      const favourite = await axios.get(`${BASE_URL}/favourite/getAllFavourites`);
       return dispatch({
         type: types.GET_FAVOURITE,
         payload: favourite.data,
@@ -36,7 +34,7 @@ export function getFavourite() {
 
 export function deleteFavourite(id) {
   return async function (dispatch) {
-    await axios.delete(`${DELETE_FAVOURITE_URL}/${id}`);
+    await axios.delete(`${BASE_URL}/favourite/deleteFavourite/${id}`);
     dispatch({ type: types.DELETE_FAVOURITE, payload: id });
   };
 }
@@ -44,10 +42,10 @@ export function deleteFavourite(id) {
 export function getFavouriteId(id) {
   return async function (dispatch) {
     try {
-      const favourite = await axios.get(`${FAVOURITE_ID_URL}/${id}`);
+      const favourite = await axios.get(`${BASE_URL}/review/getAnnouncement/${id}`);
       return dispatch({
         type: types.GET_FAVOURITE_ID,
-        payload: favourite.data,
+        payload: favourite.data
       });
     } catch (error) {
       console.log(error);

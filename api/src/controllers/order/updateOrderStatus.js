@@ -36,6 +36,7 @@ module.exports = async (req, res) => {
 
     return res.status(200).send(`Order ${orderId} successfully updated`);
   } catch (error) {
-    return res.status(409).send(error);
+    console.log(error)
+    // return res.status(409).send(error);
   }
 };

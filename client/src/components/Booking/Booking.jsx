@@ -32,7 +32,7 @@ const initial_form_states = {
   announcementId:"",
   type: "",
   description: "",
-  status:"",
+  status:"Pending",
   arrivealDate: "",
   departureDate: "",
 };
