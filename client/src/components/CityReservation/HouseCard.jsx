@@ -10,27 +10,35 @@ import Stack from "@mui/material/Stack";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import StarIcon from '@mui/icons-material/Star';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useDispatch, useSelector} from "react-redux";
+import StarIcon from "@mui/icons-material/Star";
+import { useDispatch, useSelector } from "react-redux";
 import { addAnnouncementFavourite } from "../../redux/actions/favouriteActions";
-import CancelIcon from '@mui/icons-material/Cancel';
+import CancelIcon from "@mui/icons-material/Cancel";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
+  const [selectedIndex, setSelectedIndex] = React.useState(false);
 
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
-  
+
   const dispatch = useDispatch();
 
-  function addFavorite() {       
-    dispatch(addAnnouncementFavourite({
-      userId: userLog.id,
-      announcementId: id,      
-    }))
+  function addFavorite() {
+    dispatch(
+      addAnnouncementFavourite({
+        userId: userLog.id,
+        announcementId: id,
+      })
+    );
   }
-
+  const handleListItemClick = (event, index) => {
+    
+    setSelectedIndex(!index);
+  };
+  console.log(selectedIndex)
   return (
     <Card sx={{ width: 300 }}>
       <CardMedia
@@ -83,21 +91,20 @@ export default function HouseCard(props) {
           to={`/announcements/${id}`}
           size="small"
           onClick={() => window.scrollTo(0, 0)}
-         
         >
           VIEW DETAILS
         </Button>
         {user ? (
           <>
-          <Button
-            onClick={() =>
-              addFavorite()
-            }
-             //ACA ESTA MAL ESCRITO onclick...avisaba en navegador el error!!
-          >
-            <FavoriteIcon sx={{ height: 20 }} />
-          </Button>
-          {/* <Button>
+           <Button
+              
+              onClick={(event) => handleListItemClick(event, selectedIndex)}
+            >
+              {selectedIndex === false && <FavoriteIcon sx={{ height: 20 }} />}
+              {selectedIndex === true && <FavoriteBorderIcon sx={{ height: 20 }}></FavoriteBorderIcon> } 
+            </Button>
+
+            {/* <Button>
           onClick={() =>
               deleteFavorite()
             }

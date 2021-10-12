@@ -11,7 +11,6 @@ module.exports = (sequelize) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    
     status: {
       type: DataTypes.ENUM({
         values: ["Pending", "Accepted" ,"Cancelled", "Completed"],
