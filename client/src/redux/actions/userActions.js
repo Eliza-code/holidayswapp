@@ -67,10 +67,11 @@ export const login = (status) => {
 }
 
 export const getUserInfo = () => {
+  console.log("entro al action")
   return async (dispatch) => {
     try {
       dispatch({ type: types.USER_AUTH_REQUEST });
-      const TOKEN = JSON.parse(window.localStorage.getItem("user"));
+      const TOKEN = JSON.parse(window.localStorage.getItem("user"));      
       if (TOKEN) {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
         const response = await axios.get(`${BASE_URL}/auth/profile`, config);
