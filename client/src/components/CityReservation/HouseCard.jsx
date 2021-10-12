@@ -82,7 +82,8 @@ export default function HouseCard(props) {
           component={Link}
           to={`/announcements/${id}`}
           size="small"
-          onclick={() => window.scrollTo(0, 0)}
+          onClick={() => window.scrollTo(0, 0)}
+         
         >
           VIEW DETAILS
         </Button>
@@ -92,6 +93,7 @@ export default function HouseCard(props) {
             onClick={() =>
               addFavorite()
             }
+             //ACA ESTA MAL ESCRITO onclick...avisaba en navegador el error!!
           >
             <FavoriteIcon sx={{ height: 20 }} />
           </Button>
