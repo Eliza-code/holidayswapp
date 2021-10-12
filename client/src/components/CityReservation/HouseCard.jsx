@@ -48,10 +48,10 @@ export default function HouseCard(props) {
   );
     console.log("favouriteList", favouriteList);
 
-  useEffect(() => {}, [favourite]);
-  useEffect(() => {}, [favouriteList]);
+  useEffect(() => {}, [favourite, favouriteList]);
+  
 
-  function removeFavorite() {
+  async function removeFavorite() {
   let toRemoved = favouriteList?.filter(
     (favouriteRemove) => favouriteRemove.id == Number(id))[0];
     console.log("TR:", toRemoved.id);
