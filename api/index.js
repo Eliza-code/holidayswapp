@@ -25,7 +25,7 @@ const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
 const { getInfoOrders } = require("./src/utils/Orders/orders.data")
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async() => {
+conn.sync({ force: true }).then(async() => {
   await server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
     await getInfoUsers();
