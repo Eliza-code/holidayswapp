@@ -12,9 +12,12 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector} from "react-redux";
 import { addAnnouncementFavourite } from "../../redux/actions/favouriteActions";
+import { deleteFavourite } from "../../redux/actions/favouriteActions";
 import CancelIcon from '@mui/icons-material/Cancel';
+import { Grid } from "@mui/material";
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
@@ -29,6 +32,30 @@ export default function HouseCard(props) {
       userId: userLog.id,
       announcementId: id,      
     }))
+  }
+
+  const favouriteList = useSelector(
+    (state) => state.favouriteReducer.favourite
+  );
+  const annId = favouriteList.map((announcement)=> announcement.announcementId)
+  console.log("annID", annId);
+
+  const [favourite, setfavourite] = useState(
+    favouriteList
+      ?.filter((announcement) => announcement.announcementId === Number(id))
+      ?.hasOwnProperty("announcementId")
+  );
+    console.log("favouriteList", favouriteList);
+
+  useEffect(() => {}, [favourite]);
+  useEffect(() => {}, [favouriteList]);
+
+  function removeFavorite() {
+  let toRemoved = favouriteList?.filter(
+    (favouriteRemove) => favouriteRemove.id == Number(id))[0];
+    console.log("TR:", toRemoved.id);
+    console.log("FL:", favouriteList.id);
+  dispatch(deleteFavourite(toRemoved?.id));
   }
 
   return (
@@ -87,22 +114,15 @@ export default function HouseCard(props) {
           VIEW DETAILS
         </Button>
         {user ? (
-          <>
-          <Button
-            onClick={() =>
-              addFavorite()
-            }
-          >
+          <Grid>
+          <Button onClick={() => addFavorite()}>
             <FavoriteIcon sx={{ height: 20 }} />
           </Button>
-          {/* <Button>
-          onClick={() =>
-              deleteFavorite()
-            }
-          >
+
+          <Button onClick={() => removeFavorite()}>
             <CancelIcon sx={{ height: 20 }} />
-          </Button> */}
-          </>
+          </Button>
+        </Grid>
         ) : null}
       </CardActions>
     </Card>
