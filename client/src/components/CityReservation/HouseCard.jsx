@@ -116,13 +116,8 @@ export default function HouseCard(props) {
           VIEW DETAILS
         </Button>
         {user ? (
-          <>
-          <Button
-            onClick={() =>
-              addFavorite()
-            }
-             //ACA ESTA MAL ESCRITO onclick...avisaba en navegador el error!!
-          >
+          <Grid>
+          <Button onClick={() => addFavorite()}>
             <FavoriteIcon sx={{ height: 20 }} />
           </Button>
 
