@@ -1,5 +1,5 @@
 import {React, useEffect} from 'react';
-import {Button, Card, CardActions, CardContent, CardMedia, Typography, IconButton, Alert} from "@mui/material";
+import {Button, Card, CardActions, CardContent, CardMedia, Typography, IconButton, Alert, Grid} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CancelIcon from '@mui/icons-material/Cancel';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
@@ -11,11 +11,11 @@ import { red } from '@mui/material/colors';
 const useStyles = makeStyles((theme) => ({
     
     divider: {},
-    list: {
-      padding: "0 30px",
+    buttons: {
+      justifyContent:"space-around",
     },
     cards:{
-        margin:"10",
+        margin: "20px 30px",
     },
     accepted:{
         backgroundColor: '#0063cc',
@@ -42,7 +42,7 @@ const CardOrder = (props) => {
     
 
     return (
-        <Card sx={{ maxWidth: 200 }} >
+        <Card className={classes.cards} sx={{ maxWidth: 200 }} >
       <CardMedia
         component="img"
         height="140"
@@ -53,7 +53,7 @@ const CardOrder = (props) => {
         <Typography gutterBottom variant="h5" component="div">
           {userInfo.username}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
+        <Typography gutterBottom variant="body2" color="text.secondary">
           {orders.description}
         </Typography>
         {/* <Typography className={classes.accepted} gutterBottom variant="h5" component="div">
@@ -66,7 +66,8 @@ const CardOrder = (props) => {
         {orders.status==="Completed" && (<Alert severity="warning">{orders.status}</Alert>) }
         
       </CardContent>
-      <CardActions>
+      <CardActions className={classes.buttons}>
+          <Grid  className={classes.buttons}></Grid>
         {/* <Button size="small">Share</Button>
         <Button size="small">Learn More</Button> */}
         <IconButton aria-label="" onClick={()=>handleOnclik("Cancelled",orders.id)}>

@@ -28,8 +28,11 @@ const useStyles = makeStyles((theme) => ({
   list: {
     padding: "0 30px",
   },
+//   title:{
+//       marginBottom:30,
+//   },
   cards:{
-      paddingLeft:10
+      paddingLeft:10,
   }
 }));
 
@@ -50,7 +53,7 @@ const MyBookings = () => {
 
   const data = useSelector((state) => state.bookingReducer.ordersByUser);
   const ordersByUser = data[0]?.orders;
-//   console.log(ordersByUser, "datos by user");
+  console.log(ordersByUser, "datos by user");
 
   const data2 = useSelector((state) => state.bookingReducer.ordersToUser);
   const ordersToUsers = data2[1]?.orders;
@@ -68,15 +71,15 @@ const MyBookings = () => {
   };
 
   return (
-    <Grid className="headerNav" container>
+    <Grid className="headerNav" >
       <Grid item xs={12}>
         <Header />
         <NavBar />
       </Grid>
 
       <Grid container>
-        <Grid item xs={12} align="center">
-          <Typography variant="h4">My Bookings</Typography>
+        <Grid item xs={12} align="center" >
+          <Typography className={classes.title} variant="h4">My Bookings</Typography>
         </Grid>
 
         <Grid item className={classes.list}>
