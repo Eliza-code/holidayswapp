@@ -142,6 +142,7 @@ const getInfoOrders = async () => {
     console.log(error);
   }
 };
+
 module.exports = {
   getInfoOrders,
 };
