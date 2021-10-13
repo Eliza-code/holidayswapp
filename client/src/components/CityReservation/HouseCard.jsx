@@ -12,14 +12,21 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import StarIcon from "@mui/icons-material/Star";
 import { useDispatch, useSelector } from "react-redux";
-import { addAnnouncementFavourite } from "../../redux/actions/favouriteActions";
+import { addAnnouncementFavourite, deleteFavourite } from "../../redux/actions/favouriteActions";
 import CancelIcon from "@mui/icons-material/Cancel";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
   const [selectedIndex, setSelectedIndex] = React.useState(false);
+
+  // const estoyenfavoritos = ()=>{
+  //   const favoritos = useSelector((state) =>state.favouriteReducer.favourite)
+  //   dispatch(getFavourite(userLog.id))
+
+  //   const encontre = 
+  // }
 
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
@@ -35,10 +42,22 @@ export default function HouseCard(props) {
     );
   }
   const handleListItemClick = (event, index) => {
-    
     setSelectedIndex(!index);
+    if (selectedIndex === true) {
+      console.log("index True")
+      dispatch(
+        addAnnouncementFavourite({
+          userId: userLog.id,
+          announcementId: id,
+        })
+      );
+    }else if(selectedIndex === false){
+      console.log("index True")
+      console.log(id)
+      dispatch(deleteFavourite(userLog.id))
+    }
   };
-  console.log(selectedIndex)
+  console.log(selectedIndex);
   return (
     <Card sx={{ width: 300 }}>
       <CardMedia
@@ -96,12 +115,13 @@ export default function HouseCard(props) {
         </Button>
         {user ? (
           <>
-           <Button
-              
+            <Button
               onClick={(event) => handleListItemClick(event, selectedIndex)}
             >
               {selectedIndex === false && <FavoriteIcon sx={{ height: 20 }} />}
-              {selectedIndex === true && <FavoriteBorderIcon sx={{ height: 20 }}></FavoriteBorderIcon> } 
+              {selectedIndex === true && (
+                <FavoriteBorderIcon sx={{ height: 20 }}></FavoriteBorderIcon>
+              )}
             </Button>
 
             {/* <Button>
