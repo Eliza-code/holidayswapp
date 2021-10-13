@@ -14,6 +14,7 @@ import DateTimePicker from "../FormUI/DataTimePicker/index";
 import * as Yup from "yup";
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -49,6 +50,7 @@ const Booking = () => {
   
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory ();
   const options = ["Reciprocal", "Pay with points"];
   const announID = useSelector(state =>state.postReducer.currentPostId);
   console.log(announID,"trayendo mi id de anuncio")
@@ -60,6 +62,7 @@ const Booking = () => {
     values.announcementId=announID;
     console.log(values);
     dispatch(postOrder(values))
+    history.push("/my-bookings")
   };
   
   useEffect(() => {

@@ -20,7 +20,7 @@ export function addAnnouncementFavourite(input) {
 export function getFavourite() {
   return async function (dispatch) {
     try {
-      const favourite = await axios.get(`${BASE_URL}/favourite/getAllFavourites`);
+      const favourite = await axios.get(`${BASE_URL}/favourites/getAllFavourites`);
       return dispatch({
         type: types.GET_FAVOURITE,
         payload: favourite.data,
@@ -34,7 +34,7 @@ export function getFavourite() {
 
 export function deleteFavourite(id) {
   return async function (dispatch) {
-    await axios.delete(`${BASE_URL}/favourite/deleteFavourite/${id}`);
+    await axios.delete(`${BASE_URL}/favourites/deleteFavourite/${id}`);
     dispatch({ type: types.DELETE_FAVOURITE, payload: id });
     console.log("Este es el id del actionfavouriteDelete: ",id)
   };

@@ -41,7 +41,7 @@ const MyBookings = () => {
   const dispatch = useDispatch();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  console.log(selectedIndex,"Mi Index")
+  // console.log(selectedIndex,"Mi Index")
 
   const token = window.localStorage.getItem("user");
 //   console.log(token, "usuario del local");
@@ -53,11 +53,13 @@ const MyBookings = () => {
 
   const data = useSelector((state) => state.bookingReducer.ordersByUser);
   const ordersByUser = data[0]?.orders;
-  console.log(ordersByUser, "datos by user");
+  // console.log(ordersByUser, "datos by user");
+  console.log(data,"byUser")
 
   const data2 = useSelector((state) => state.bookingReducer.ordersToUser);
   const ordersToUsers = data2[1]?.orders;
-  console.log( ordersToUsers,"LO NUEVO");
+  console.log(data2,"toUser")
+  // console.log( ordersToUsers,"LO NUEVO");
 //   console.log(ordersToUser, "datos to user");
 
   useEffect(() => {

@@ -7,6 +7,7 @@ import { Grid } from "@mui/material";
 import HouseCard from "../CityReservation/HouseCard";
 import { getFavouriteId } from "../../redux/actions/favouriteActions";
 import { getUserInfo } from "../../redux/actions/userActions";
+import '../Home/home.css'
 
 const Favorite = () => {
     const dispatch = useDispatch();
@@ -18,15 +19,15 @@ const Favorite = () => {
       }, []);
 
     useEffect(() => {
-        if (userId) dispatch(getFavouriteId(userId))
+        if (userId) return dispatch(getFavouriteId(userId))
         console.log(userId);
       }, [userId]);
     return(
-<div>
+<div className="headerNav">
 <Header/>
 <NavBar/>
 <div>
-    <h1>favorite homes</h1>
+    <h1>Favorite Home</h1>
     <ul>
         {
             favourite?.map((e)=>{
