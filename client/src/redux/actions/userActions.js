@@ -6,11 +6,17 @@ import { BASE_URL } from '../constants/urls';
 export const postUser = (input) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/user`, input);
+      const { request } = await axios.post(`${BASE_URL}/user`, input);
       dispatch({ type: types.POST_USER });
-      if( data )  {
-        window.localStorage.setItem("user", JSON.stringify(data))
-        window.location.href = '/'
+      if (request.status === 200)  {
+        const { username, password } = input;
+        const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
+        if (request.status === 200) {
+          window.localStorage.setItem("user", JSON.stringify(data.token));
+          window.location.href = '/';
+        } else {
+          window.location.href = '/signin';
+        }
       } else {
         swal({
           title: "Oops! Something went wrong!",

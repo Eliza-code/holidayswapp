@@ -39,7 +39,6 @@ export default function HomeID() {
   const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
   
   const handleBook = () => {
-    // window.localStorage.setItem("currentPost", JSON.stringify(id));
     history.push("/booking")
   }
 

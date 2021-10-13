@@ -61,7 +61,7 @@ const AnnouncementCreation = () => {
       owner_id: user.id,
       owner: user.username
     };
-    console.log(inputs)
+   
     dispatch(postAnnouncements(inputs));
   };
 
@@ -70,8 +70,7 @@ const AnnouncementCreation = () => {
     onSubmit,
   });
 
-  // console.log(formik.values)
-
+  
   return (
     <div>
       <div className="headerNav">
@@ -112,6 +111,7 @@ const AnnouncementCreation = () => {
                 fullWidth
               />
               <TextField
+                multiline
                 id="description"
                 name="description"
                 label="Description"
@@ -229,9 +229,9 @@ const AnnouncementCreation = () => {
               <TextField
                 id="image"
                 name="image"
-                type="file"
-                onChange={formik.handleChange}
-                value={formik.values.image}
+                type="text"
+                placeholder="Insert image"
+                onChange={(e) =>  formik.setFieldValue("image", [...formik.values.image, e.target.value])}
                 fullWidth
               />
               <FormControl component="fieldset">

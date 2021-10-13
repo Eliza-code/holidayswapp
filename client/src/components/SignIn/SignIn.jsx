@@ -1,6 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import "./Signin.css";
 import { postSignIn } from "../../redux/actions/userActions";
 import Header from "../Header/Header";

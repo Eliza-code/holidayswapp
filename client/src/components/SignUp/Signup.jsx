@@ -16,32 +16,35 @@ import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
+
 import { nationalities, validate, languagesSpoken } from "./validate";
 import { postUser } from "../../redux/actions/userActions";
 import Header from "../Header/Header";
 import "./Signup.css";
 
 
-const initialValues = {
-  username: "",
-  password: "",
-  confirmpassword: "",
-  profilePicture: "",
-  name: "",
-  lastName: "",
-  email: "",
-  phoneNumber: "",
-  dateOfBirth: "",
-  description: "",
-  nacionality: "",
-  languagesSpoken: "",
-  showPassword: false,
-  showConfirmPassword: false,
-};
 
 const Signup = () => {
   const dispatch = useDispatch();
 
+  const initialValues = {
+    username: "",
+    password: "",
+    confirmpassword: "",
+    profilePicture: "",
+    name: "",
+    lastName: "",
+    email: "",
+    phoneNumber: "",
+    dateOfBirth: "",
+    description: "",
+    nacionality: "",
+    languagesSpoken: [],
+    showPassword: false,
+    showConfirmPassword: false,
+  };
+  
   const onSubmit = (values) => {
     dispatch(
       postUser({
@@ -58,6 +61,7 @@ const Signup = () => {
         languagesSpoken: values.languagesSpoken,
       })
     )
+   
   };
 
   const formik = useFormik({
@@ -65,6 +69,8 @@ const Signup = () => {
     onSubmit,
     validate,
   });
+
+   console.log(formik.values)
 
   return (
     <div className="singup">
@@ -214,8 +220,8 @@ const Signup = () => {
               <div>
                 <TextField
                   id="profilePicture"
-                  placeholder=".jpg"
-                  type="file"
+                  placeholder="url"
+                  type="text"
                   name="profilePicture"
                   onChange={formik.handleChange}
                   value={formik.values.profilePicture}
@@ -312,9 +318,10 @@ const Signup = () => {
               </div>
               <div>
                 <TextField
+                multiline
                   id="description"
                   type="text"
-                  label = "Descriptionh"
+                  label = "Description"
                   name="description"
                   onChange={formik.handleChange}
                   value={formik.values.description}
@@ -348,30 +355,20 @@ const Signup = () => {
                   )}
                 />
 
-                <Autocomplete
+                 <Autocomplete
+                  multiple
                   id="languagesSpoken"
+                  options={languagesSpoken}
                   name="languagesSpoken"
                   label="Choose a language"
-                  options={languagesSpoken}
-                  // InputLabelProps={{ shrink: true }}
-                  onChange={(e, value) =>
-                    formik.setFieldValue("languagesSpoken", value)
-                  }
-                  renderOption={(props, option) => (
-                    <Box component="li" {...props}>
-                      {option}
-                    </Box>
-                  )}
+                  getOptionLabel={(option) => option}
+                  onChange={(event, values) => formik.setFieldValue("languagesSpoken", values)}
+                  filterSelectedOptions
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      required
-                      label="Choose a language"
-                      name="languagesSpoken"
-                      margin="normal"
-                    />
+                    <TextField {...params} variant="outlined" name="languagesSpoken" placeholder="Choose a language" />
                   )}
                 />
+
               </div>
               <Button
                 sx={{

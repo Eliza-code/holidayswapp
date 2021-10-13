@@ -38,14 +38,14 @@ export default function HouseCard(props) {
     (state) => state.favouriteReducer.favourite
   );
   const annId = favouriteList.map((announcement)=> announcement.announcementId)
-  console.log("annID", annId);
+
 
   const [favourite, setfavourite] = useState(
     favouriteList
       ?.filter((announcement) => announcement.announcementId === Number(id))
       ?.hasOwnProperty("announcementId")
   );
-    console.log("favouriteList", favouriteList);
+   
 
   useEffect(() => {}, [favourite]);
   useEffect(() => {}, [favouriteList]);
