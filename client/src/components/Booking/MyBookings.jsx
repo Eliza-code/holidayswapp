@@ -51,12 +51,17 @@ const MyBookings = () => {
   const userId = userInfo?.id;
 //   console.log(userId, "dato para despachar");
 
+const userInfo2 = useSelector((state) => state.bookingReducer.ordersToUser.user);
+//   console.log(userInfo, "miuserInfo");
+  const userId2 = userInfo2?.id;
+//   console.log(userId, "dato para despachar");
+
   const data = useSelector((state) => state.bookingReducer.ordersByUser);
   const ordersByUser = data[0]?.orders;
   console.log(ordersByUser, "datos by user");
 
   const data2 = useSelector((state) => state.bookingReducer.ordersToUser);
-  const ordersToUsers = data2[1]?.orders;
+  const ordersToUsers = data2?.user;
   console.log( ordersToUsers,"LO NUEVO");
 //   console.log(ordersToUser, "datos to user");
 
@@ -111,10 +116,11 @@ const MyBookings = () => {
           {selectedIndex===1 && (ordersToUsers?.length
           ? ordersToUsers.map((e, idKey) => (
               <Grid>
-                <CardOrder  key={idKey} orders={e} userInfo={userInfo}></CardOrder>  
+                <CardOrder  key={idKey} orders={e} userInfo={userInfo2}></CardOrder>  
               </Grid>              
             ))
           : "No hay ordenes") }
+          {/* {console.log("Reservas recibidas Info",ordersToUsers[0].userId)} */}
         {/* {ordersByUser
           ? ordersByUser.map((e, idKey) => (
               <Grid>

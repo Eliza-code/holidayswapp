@@ -13,7 +13,8 @@ module.exports = async (req, res) => {
             attributes: ['name', 
                          'lastName', 
                          'email', 
-                         'phoneNumber'
+                         'phoneNumber',
+                         'profilePicture'
                         ],
             include:  // Reservas
                 [{
