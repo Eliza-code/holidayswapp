@@ -17,6 +17,9 @@ const HouseCard = ({ house }) => {
                     <Typography gutterBottom variant="h5">
                         <b>{house.title}</b>
                     </Typography>
+                    <Typography gutterBottom variant="body1">
+                        <b>{house.adress}</b>
+                    </Typography>
                 </Grid>
                 <Button>VIEW DETAILS</Button>
             </Grid>
