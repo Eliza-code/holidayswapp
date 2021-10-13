@@ -8,12 +8,17 @@ import Footer from "../Footer/Footer.jsx";
 import "./CityResults.css";
 import { clearPage } from "../../redux/actions/postActions.js";
 import { Grid } from "@mui/material";
+import OrderByGpNigth from "./OrderByGpNight";
+import OrderByRating from "./OrderbyRating";
+import FilterByType from "./FilterByType";
+import FilterByGuest from "./FilterByGuest";
 
 const CityResults = () => {
   const houses = useSelector((state) => state.postReducer.searchResults);
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
+  const [order, setOrder] = useState("");
 
   const next_Page = () => {
     if (houses.length <= currentPage + 12) {
@@ -37,9 +42,8 @@ const CityResults = () => {
     first_Page();
     return () => dispatch(clearPage());
   }, [dispatch]);
-  
+
   const filtredHouses = houses?.slice(currentPage, currentPage + 12);
-  
 
   return (
     <div>
@@ -47,6 +51,12 @@ const CityResults = () => {
         <Header />
         <NavBar />
       </div>
+      <label>
+        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <OrderByRating setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <FilterByType setCurrentPage={setCurrentPage} />
+        <FilterByGuest setCurrentPage={setCurrentPage} />
+      </label>
       <div>
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
