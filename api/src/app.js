@@ -23,6 +23,7 @@ server.use(helmet());
 server.use(cookieParser());
 server.set("trust proxy", 1);
 server.use(cors({ origin: "*", credentials: true }));
+// server.use(cors);
 server.use(passport.initialize());
 server.use(
     session({

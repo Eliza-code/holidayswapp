@@ -26,11 +26,15 @@ const { getInfoUsers } = require("./src/utils/Users/users.data");
 const { getInfoReviews } = require("./src/utils/Reviews/reviews.data");
 const { getInfoOrders } = require("./src/utils/Orders/orders.data");
 const { User } = require("./src/db");
+require('dotenv').config();
+const {
+  PORT,
+} = process.env;
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async() => {
-  await server.listen(3001, async () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-console
+  await server.listen(PORT, async () => {
+    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
 
     //PUSE UNA CONDICION ASI CARGA SOLO SI ESTA VACIA LA DB ---> YAMILA
     const dbdata = await User.findAll();

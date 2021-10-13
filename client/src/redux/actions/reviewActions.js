@@ -6,7 +6,7 @@ import { BASE_URL } from "../constants/urls";
 export function getAnnouncementReviews(id) {
   return async function (dispatch) {
     try {
-      const response = await axios.get(`${BASE_URL}/review/getAnnouncement/${id}`);
+      const response = await axios.get(`/review/getAnnouncement/${id}`);
       if( response.request.status === 200) {
         dispatch({ type: types.GET_ANNOUNCEMENT_REVIEW, payload: response.data });
       } else {
@@ -21,7 +21,7 @@ export function getAnnouncementReviews(id) {
 
 export function createReview(userId, announcementId, stars, description) {
   return async function (dispatch) {
-    const { data } = await axios.post(`${BASE_URL}/review`, {
+    const { data } = await axios.post(`/review`, {
       announcementId,
       userId,
       stars,
@@ -35,7 +35,7 @@ export function createReview(userId, announcementId, stars, description) {
 export function getUserReviewDetails (id) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${BASE_URL}/user/getUser/${id}`);
+      const { data } = await axios.get(`/user/getUser/${id}`);
       return dispatch({
         type: types.GET_USER_REVIEW,
         payload: data,

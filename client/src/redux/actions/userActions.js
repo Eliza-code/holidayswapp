@@ -6,7 +6,7 @@ import { BASE_URL } from '../constants/urls';
 export const postUser = (input) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/user`, input);
+      const { data } = await axios.post(`/user`, input);
       dispatch({ type: types.POST_USER });
       if( data )  {
         window.localStorage.setItem("user", JSON.stringify(data))
@@ -31,7 +31,7 @@ export const postUser = (input) => {
 export const postSignIn = (input) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/auth/login`, input);
+      const { data } = await axios.post(`/auth/login`, input);
       if (Object.keys(data).length) {
         dispatch({ type: types.POST_SIGN_IN });
         window.localStorage.setItem("user", JSON.stringify(data.token))
@@ -74,7 +74,7 @@ export const getUserInfo = () => {
       const TOKEN = JSON.parse(window.localStorage.getItem("user"));      
       if (TOKEN) {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
-        const response = await axios.get(`${BASE_URL}/auth/profile`, config);
+        const response = await axios.get(`/auth/profile`, config);
         if (response.request.status === 200) {
           window.localStorage.setItem("userInfo", JSON.stringify(response.data));
           dispatch({ type: types.USER_AUTH_SUCCESS, payload: response.data });
@@ -103,7 +103,7 @@ export const getUserInfo = () => {
 export const signOut = () => {
   return async (dispatch) => {
     try{
-      const { data } = await axios.get(`${BASE_URL}/auth/logout`);
+      const { data } = await axios.get(`/auth/logout`);
       if (data) {
         dispatch({ type: types.SIGN_OUT_SUCCESS });
         window.localStorage.removeItem('user')
@@ -128,7 +128,7 @@ export const signOut = () => {
 export function getOwnerDetails (id) {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get( `${BASE_URL}/user/getUser/${id}`);
+      const { data } = await axios.get( `/user/getUser/${id}`);
       return dispatch({
         type: types.GET_OWNER_ID,
         payload: data,
