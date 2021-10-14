@@ -1,10 +1,10 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-//    userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null,
    details:{},  
    ownerDetails: {},
    isAuth: !!window.localStorage.getItem("user"),
+   ownerHouses: {},
 }
 
 const userReducer = (state = initialState, action) => {
@@ -51,7 +51,12 @@ const userReducer = (state = initialState, action) => {
             return {
                   ...state,
                   ownerDetails: action.payload,
-            };
+            }
+        case types.GET_HOUSES_BY_USER_ID:
+            return {
+                ...state,
+                ownerHouses: action.payload,
+            }
 
         default: 
         return state;

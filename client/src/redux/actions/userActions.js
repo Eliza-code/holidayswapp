@@ -145,3 +145,19 @@ export function getOwnerDetails (id) {
   };
 }
 
+export const getHousesByUserId = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/announcement`);
+      if (data.length) {
+        const houses = data.filter((elem) => elem.userId === id);
+        return dispatch({
+          type: types.GET_HOUSES_BY_USER_ID,
+          payload: houses
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}

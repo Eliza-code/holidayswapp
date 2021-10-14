@@ -63,3 +63,21 @@ export function postAnnouncements (input) {
     }
   }
 }
+
+export function deleteAnnouncement(id){
+  return async function (dispatch) {
+    try{
+      const { request } = await axios.delete(`${BASE_URL}/announcement/deleteAnnouncement/${id}`)
+      if(request.status === 200 ){
+        dispatch({ type: types.DELETE_ANNOUNCEMENT });
+      } else {
+        swal({
+          title: "Oops! Something went wrong, try again!",
+          icon: "warning",
+        });
+      }
+    }catch (e) {
+      console.error(e);
+    }
+  }
+}

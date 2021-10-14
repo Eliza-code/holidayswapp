@@ -30,6 +30,10 @@ const postReducer = (state = initialState, action) => {
     return {
       ...state
     };
+    case types.DELETE_ANNOUNCEMENT: 
+      return {
+        ...state
+      }
    
     default:
       return state;
