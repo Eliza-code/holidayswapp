@@ -4,11 +4,11 @@ import {
   BASE_URL,
 } from "../constants/urls";
 
-export function addAnnouncementFavourite({input}) {
+export function addAnnouncementFavourite(input) {
   console.log("++++++", input);
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(`${BASE_URL}/favourites`, {input});
+      const { data } = await axios.post(`${BASE_URL}/favourites`, input);
       dispatch({ type: types.POST_FAVOURITE });
       console.log(".......",data);
     } catch (e) {
@@ -34,6 +34,7 @@ export function getFavourite() {
 }
 
 export function deleteFavourite(id) {
+  console.log(("delId", id));
   return async function (dispatch) {
     await axios.delete(`${BASE_URL}/favourites/deleteFavourite/${id}`);
     dispatch({ type: types.DELETE_FAVOURITE, payload: id });

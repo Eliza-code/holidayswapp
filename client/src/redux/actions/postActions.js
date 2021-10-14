@@ -63,3 +63,33 @@ export function postAnnouncements (input) {
     }
   }
 }
+
+export function orderByPoints(payload){
+  return {
+      type: types.ORDER_BY_POINTS,
+      payload
+  
+      }             
+}
+
+export function orderByRating(payload){
+  return {
+      type: types.ORDER_BY_RATING,
+      payload
+  
+      }             
+}
+export function filterByType(payload){
+  return {
+      type: types.FILTER_BY_TYPE,
+      payload
+
+  } 
+}
+export function filterByGuest(payload){
+  return {
+      type: types.FILTER_BY_GUEST,
+      payload
+
+  } 
+}

@@ -20,7 +20,7 @@ const Favorite = () => {
 
     useEffect(() => {
         if (userId) return dispatch(getFavouriteId(userId))
-        console.log(userId);
+        console.log("iserID", userId);
       }, [userId]);
     return(
 <div className="headerNav">
