@@ -1,8 +1,10 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { filterByGuest } from "../../redux/actions/postActions";
 
 const FilterByGuest = ({ setCurrentPage }) => {
+  const houses = useSelector((state) => state.postReducer.searchResults);
+  console.log("hosesss", houses.sleeps);
   const dispatch = useDispatch();
 
   const handleFilterByGuest = (e) => {
@@ -13,8 +15,15 @@ const FilterByGuest = ({ setCurrentPage }) => {
   return (
     <div>
       <label>Filtered By:</label>
-      <select onChange={(e) => handleFilterByGuest(e)}>
-        <option disabled selected>
+      <select onChange={(e) => handleFilterByGuest(e)}>     
+            {houses?.map((temp) => (
+              <option value={temp.sleeps} key={temp.id}>
+                {" "}
+                {temp.sleeps}{" "}
+              </option>
+            ))}
+          </select>
+        {/* <option disabled selected>
           Guest
         </option>
         <option value="All">All</option>
@@ -31,8 +40,8 @@ const FilterByGuest = ({ setCurrentPage }) => {
         <option value="11">11</option>
         <option value="12">12</option>
         <option value="13">13</option>
-        <option value="14">15</option>
-      </select>
+        <option value="14">15</option> */}
+      {/* </select> */}
     </div>
   );
 };
