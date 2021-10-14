@@ -11,8 +11,7 @@ const FilterBySleeps = ({ houses, setCurrentPage }) => {
   };
 
   return (
-    <div>
-      <label>Filter By:</label>
+    <div>      
       <select onChange={(e) => handleFilteredBySleeps(e)}>
         <option disabled selected>
           Guest

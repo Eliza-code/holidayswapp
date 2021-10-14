@@ -14,7 +14,7 @@ const OrderByRating = ({ setCurrentPage, setOrder }) => {
 
   return (
     <div>
-      <label>Order By:</label>
+      
       <select
         onChange={(e) => {
           handleSortRating(e);

@@ -7,11 +7,16 @@ import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import "./CityResults.css";
 import { clearPage } from "../../redux/actions/postActions.js";
-import { Grid } from "@mui/material";
+import { FormControl, Grid, InputLabel, MenuItem, Select, Stack } from "@mui/material";
 import OrderByGpNigth from "./OrderByGpNight";
 import OrderByRating from "./OrderbyRating";
 import FilterBySleeps from "./FilterBySleeps";
 import FilterByType from "./FilterByType";
+import HomeWorkIcon from "@mui/icons-material/HomeWork";
+import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
+import StarRateIcon from '@mui/icons-material/StarRate';
+import MonetizationOn from "@mui/icons-material/MonetizationOn";
+
 
 const CityResults = () => {
   const houses = useSelector((state) => state.postReducer.searchResults);
@@ -51,12 +56,45 @@ const CityResults = () => {
         <Header />
         <NavBar />
       </div>
-      <label>
-        <FilterByType setCurrentPage={setCurrentPage} />
-        <FilterBySleeps houses= {houses} setCurrentPage={setCurrentPage} />
+
+      <Grid>
+       
+          <FilterByType setCurrentPage={setCurrentPage} />
+        
+
+        <Stack
+          direction="row"
+          marginBottom={1}
+          alignItems="center"
+          spacing={1}
+        >
+          <EmojiPeopleIcon sx={{ height: 40 }} />
+        <FilterBySleeps houses={houses} setCurrentPage={setCurrentPage} />          
+        </Stack>
+
+        <Stack
+          direction="row"
+          marginBottom={1}
+          alignItems="center"
+          spacing={1}
+        >
+        <StarRateIcon sx={{ height: 40 }} />        
         <OrderByRating setCurrentPage={setCurrentPage} setOrder={setOrder} />
-        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />
-      </label>
+        </Stack>
+
+        <Stack
+          direction="row"
+          marginBottom={1}
+          alignItems="center"
+          spacing={1}
+        >
+        <MonetizationOn sx={{ height: 40 }} />        
+        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />        
+        </Stack>
+
+
+      </Grid>
+
       <div>
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>

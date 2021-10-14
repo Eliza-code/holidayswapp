@@ -14,7 +14,7 @@ const OrderByGpNight = ({ setCurrentPage, setOrder }) => {
 
   return (
     <div>
-      <label>Order By:</label>
+      
       <select onChange={(e) => handleSortPoints(e)}>
         <option disabled selected>
           GP/Night
