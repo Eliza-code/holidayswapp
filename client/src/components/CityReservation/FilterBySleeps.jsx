@@ -12,6 +12,9 @@ const FilterBySleeps = ({ houses, setCurrentPage }) => {
     setCurrentPage(0);
   };
 
+  const sleepsHouses = houses?.map((el) => el.sleeps)
+  const sleeps = [...new Set(sleepsHouses)].sort()
+
   return (
     <div>      
       <select onChange={(e) => handleFilteredBySleeps(e)}>
@@ -19,23 +22,9 @@ const FilterBySleeps = ({ houses, setCurrentPage }) => {
           Guest
         </option>
         <option value="All">All</option>
-        {
-                    houses && houses.sort((a, b) => {
-                      if (a.sleeps > b.sleeps) {
-                        return 1;
-                      }
-                      if (a.sleeps < b.sleeps) {
-                        return -1;
-                      }
-                      return 0;
-                    })
-                    .map(el => {
-                        return(
-                        <option value={`${el.sleeps}`}>
-                            {el.sleeps}
-                        </option>
-                    )})
-                }
+        {sleeps.map((el) => {
+          return <option value={`${el}`}>{el}</option>;
+        })}
       </select>
 
 
