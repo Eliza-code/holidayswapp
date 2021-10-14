@@ -10,8 +10,8 @@ import { clearPage } from "../../redux/actions/postActions.js";
 import { Grid } from "@mui/material";
 import OrderByGpNigth from "./OrderByGpNight";
 import OrderByRating from "./OrderbyRating";
+import FilterBySleeps from "./FilterBySleeps";
 import FilterByType from "./FilterByType";
-import FilterByGuest from "./FilterByGuest";
 
 const CityResults = () => {
   const houses = useSelector((state) => state.postReducer.searchResults);
@@ -52,10 +52,10 @@ const CityResults = () => {
         <NavBar />
       </div>
       <label>
-        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />
-        <OrderByRating setCurrentPage={setCurrentPage} setOrder={setOrder} />
         <FilterByType setCurrentPage={setCurrentPage} />
-        <FilterByGuest setCurrentPage={setCurrentPage} />
+        <FilterBySleeps houses= {houses} setCurrentPage={setCurrentPage} />
+        <OrderByRating setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />
       </label>
       <div>
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>

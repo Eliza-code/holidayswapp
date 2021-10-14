@@ -60,28 +60,28 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: sortedRating,
       };
-    case types.FILTER_BY_TYPE:
+    case types.FILTER_BY_SLEEPS:
       const allResults = state.allSearchResults;
-      const typeFiltered =
+      const sleepsFiltered =
         action.payload === "All"
           ? allResults
-          : allResults.filter((el) => el.type === action.payload);
+          : allResults.filter((el) => el.sleeps === Number(action.payload));
+
+      return {
+        ...state,
+        searchResults: sleepsFiltered,
+      };
+
+    case types.FILTER_BY_TYPE:
+      const allResult = state.allSearchResults;
+      const typeFiltered =
+        action.payload === "All"
+          ? allResult
+          : allResult.filter((el) => el.type === action.payload);
 
       return {
         ...state,
         searchResults: typeFiltered,
-      };
-
-    case types.FILTER_BY_GUEST:
-      const allSearch = state.allSearchResults;
-      const guestFiltered =
-        action.payload === "All"
-          ? allSearch
-          : allSearch.filter((el) => el.sleeps === action.payload);
-
-      return {
-        ...state,
-        searchResults: guestFiltered,
       };
     default:
       return state;
