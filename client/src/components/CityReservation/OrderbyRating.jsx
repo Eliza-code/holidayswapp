@@ -20,7 +20,9 @@ const OrderByRating = ({ setCurrentPage, setOrder }) => {
           handleSortRating(e);
         }}
       >
-        <option>-Rating-</option>
+        <option disabled selected>
+          Rating
+        </option>
         <option value="mayor">Higher</option>
         <option value="menor">Lower</option>
       </select>
