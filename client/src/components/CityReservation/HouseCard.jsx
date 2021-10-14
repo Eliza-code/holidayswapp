@@ -26,11 +26,13 @@ export default function HouseCard(props) {
 
   const dispatch = useDispatch();
 
+  //const inFavorite = 
+
   React.useEffect(() => {  }, [dispatch]);
 // hacer funcion q se ejecute en useeffect, esa funcion despacha el getallfavourite y comparar si el id del anuncio esta en favoritos.
-  function addFavorite() {
+   function addFavorite() {
     dispatch(
-      addAnnouncementFavourite({
+       addAnnouncementFavourite({
         userId: userLog.id,
         announcementId: id,
       })
@@ -40,7 +42,10 @@ export default function HouseCard(props) {
     setSelectedIndex(!index);
     if (selectedIndex === false) {
       console.log("soy verd");
-      dispatch(addFavorite(id))
+      dispatch(addFavorite({
+        userId: userLog.id,
+        announcementId: id,
+      }))
     } else if (selectedIndex === true) {
       console.log("soy falso");
       dispatch(deleteFavourite(id));

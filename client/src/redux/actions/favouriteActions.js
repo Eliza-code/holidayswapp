@@ -4,12 +4,13 @@ import {
   BASE_URL,
 } from "../constants/urls";
 
-export function addAnnouncementFavourite(input) {
+export function addAnnouncementFavourite({input}) {
+  console.log("++++++", input);
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(`${BASE_URL}/favourites`, input);
+      const { data } = await axios.post(`${BASE_URL}/favourites`, {input});
       dispatch({ type: types.POST_FAVOURITE });
-      console.log(data);
+      console.log(".......",data);
     } catch (e) {
       console.error(e);
     }
