@@ -242,7 +242,7 @@ let announcements = [
   {
     userId: 7,
     title: "ANA, VANINA I NEO's Home",
-    owner: "ANA, VANINA I NEO",
+    owner: "ANAVANINA",
     country: "Croatia",
     state: "Grad Zagreb",
     city: "Zagreb",
@@ -402,7 +402,7 @@ let announcements = [
   {
     userId: 11,
     title: "ALMA's place",
-    owner: "ALMA DIAZ",
+    owner: "ALMADIAZ",
     country: "Spain",
     state: " Comunidad De Madrid",
     city: "Madrid",
@@ -681,7 +681,7 @@ let announcements = [
   {
     userId: 18,
     title: "LASSE's House",
-    owner: "LASSE & OYVIND",
+    owner: "LASSEOYVIND",
     country: "Norway",
     state: "Oslo",
     city: "Oslo",
@@ -881,7 +881,7 @@ let announcements = [
   {
     userId: 23,
     title: "Jose Manuel Home's",
-    owner: "JOSE MANUEL",
+    owner: "JOSEMANUEL",
     country: "Spain",
     state: "Comunidad Valenciana",
     city: "Valencia",
@@ -1041,7 +1041,7 @@ let announcements = [
   {
     userId: 27,
     title: "Beautiful Amsterdam vintage apartment",
-    owner: "NICO & ERLEND",
+    owner: "NICOERLEND",
     country: "Netherlands",
     state: "Noord-Holland",
     city: " Amsterdam ",

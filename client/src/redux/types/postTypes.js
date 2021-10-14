@@ -1,8 +1,8 @@
-export const GET_HOUSES = 'GET_HOUSES';
-export const GET_HOUSES_ID = 'GET_HOUSES_ID';
-export const GET_HOUSE_CITY = 'GET_HOUSE_CITY';
+export const GET_HOUSES = "GET_HOUSES";
+export const GET_HOUSES_ID = "GET_HOUSES_ID";
+export const GET_HOUSE_CITY = "GET_HOUSE_CITY";
 export const POST_ANNOUNCEMENT = "POST_ANNOUNCEMENT";
-export const ORDER_BY_POINTS = 'ORDER_BY_POINTS';
-export const ORDER_BY_RATING = 'ORDER_BY_RATING';
-export const FILTER_BY_TYPE = 'FILTER_BY_TYPE';
-export const FILTER_BY_GUEST = "FILTER_BY_GUEST";
+export const ORDER_BY_POINTS = "ORDER_BY_POINTS";
+export const ORDER_BY_RATING = "ORDER_BY_RATING";
+export const FILTER_BY_SLEEPS = "FILTER_BY_SLEEPS";
+export const FILTER_BY_TYPE = "FILTER_BY_TYPE";
