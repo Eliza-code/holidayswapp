@@ -44,8 +44,8 @@ const initial_form_states = {
 const form_validation = Yup.object().shape({
   type: Yup.string().required("Required"),
   message: Yup.string(),
-  arrivealDate: Yup.date().required("Required"),
-  departureDate: Yup.date().required("Required"),
+  // arrivealDate: Yup.date().required("Required"),  //ver que tipo de dato le paso para que valide el de datepicker
+  // departureDate: Yup.date().required("Required"),
 });
 
 const Booking = () => {
@@ -115,6 +115,7 @@ const Booking = () => {
                 <Grid item xs={6}>
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
+                     name="arrivealDate"
                       label="Arrival Date"
                       value={value}
                       minDate= {new Date()}
@@ -130,6 +131,7 @@ const Booking = () => {
                 <Grid item xs={6}>
                 <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
+                      name="departureDate"
                       label="Departure Date"
                       value={value2}  
                       minDate= {value}                    
