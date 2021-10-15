@@ -47,7 +47,7 @@ module.exports = async (req, res) => {
       //       id:elem.userId
       //     }
       //   });
-      //   console.log(elem.dataValues,elem.dataValues,"data necesaria");  //IMPRIME ESTO PERO NO SIGUE EL CODIGO..
+      //   console.log(elem.dataValues,user.dataValues,"data necesaria");  //IMPRIME ESTO PERO NO SIGUE EL CODIGO..
       //   let dato = {             
       //     order:elem.dataValues,
       //     user:user.dataValues
