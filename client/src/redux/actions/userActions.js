@@ -81,11 +81,11 @@ export const getUserInfo = () => {
         }
       } else {
         dispatch({ type: types.USER_AUTH_FAILED });
-        window.localStorage.removeItem("userInfo");
-        swal({
-          title: "Authentication failed",
-          icon: "warning",
-        });
+        // window.localStorage.removeItem("userInfo");
+        // swal({
+        //   title: "Authentication failed",
+        //   icon: "warning",
+        // });
       }
     } catch (error) {
       dispatch({ type: types.USER_AUTH_FAILED });

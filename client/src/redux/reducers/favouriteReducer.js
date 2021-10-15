@@ -3,6 +3,7 @@ import * as types from "../types/favouriteTypes";
 const initialState = {
   favourite: [],
   filteredFavourite: [],
+  actionFavourite: 0,
 };
 
 const favouriteReducer = (state = initialState, action) => {
@@ -30,9 +31,11 @@ const favouriteReducer = (state = initialState, action) => {
         favourite: state.favourite,
       };
     case types.DELETE_FAVOURITE:
+      const filFavourite = state.favourite.filter(e =>e.id !== action.payload)
       return {
         ...state,
-        favourite: state.favourite,
+        favourite: filFavourite,
+        actionFavourite: state.actionFavourite + 1
       };
     default:
       return state;

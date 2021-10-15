@@ -5,7 +5,7 @@ const initialState = {
   searchResults: [],
   houses: [],
   currentPostId: JSON.parse(window.localStorage.getItem("currentPost")),
-  allSearchResults: [],
+  allSearchResults: [],  
 };
 
 const postReducer = (state = initialState, action) => {
@@ -61,11 +61,13 @@ const postReducer = (state = initialState, action) => {
         searchResults: sortedRating,
       };
     case types.FILTER_BY_SLEEPS:
-      const allResults = state.allSearchResults;
+      const allResults = state.allSearchResults;      
       const sleepsFiltered =
         action.payload === "All"
           ? allResults
-          : allResults.filter((el) => el.sleeps === Number(action.payload));
+          : allResults.filter((el) => {
+              return el.sleeps === (Number(action.payload));
+            });
 
       return {
         ...state,

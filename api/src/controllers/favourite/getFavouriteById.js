@@ -17,7 +17,8 @@ module.exports = async (req, res, next) => {
     
     return res.json(favourite);
   } catch (err) {
-    return res.send({ error: err.message }).status(409);
+    // console.log(err)
+    // return res.send({ error: err.message }).status(409);
   }
 };
 

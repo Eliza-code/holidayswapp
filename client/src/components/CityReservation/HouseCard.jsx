@@ -10,53 +10,44 @@ import Stack from "@mui/material/Stack";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
-import StarIcon from '@mui/icons-material/Star';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { useState, useEffect } from "react";
-import { useDispatch, useSelector} from "react-redux";
-import { addAnnouncementFavourite } from "../../redux/actions/favouriteActions";
-import { deleteFavourite } from "../../redux/actions/favouriteActions";
-import CancelIcon from '@mui/icons-material/Cancel';
-import { Grid } from "@mui/material";
+import StarIcon from "@mui/icons-material/Star";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addAnnouncementFavourite,
+  deleteFavourite,
+  getFavourite,
+} from "../../redux/actions/favouriteActions";
+
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
+  const dispatch = useDispatch();
 
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
-  
-  const dispatch = useDispatch();
+  const favourites = useSelector((state) => state.favouriteReducer.favourite);
 
-  function addFavorite() {       
-    dispatch(addAnnouncementFavourite({
-      userId: userLog.id,
-      announcementId: id,      
-    }))
-  }
+  const confirm = favourites.find((e) => e.announcementId === id);
 
-  const favouriteList = useSelector(
-    (state) => state.favouriteReducer.favourite
-  );
-  const annId = favouriteList.map((announcement)=> announcement.announcementId)
-  console.log("annID", annId);
+  const [selectedIndex, setSelectedIndex] = React.useState(!!confirm);
 
-  const [favourite, setfavourite] = useState(
-    favouriteList
-      ?.filter((announcement) => announcement.announcementId === Number(id))
-      ?.hasOwnProperty("announcementId")
-  );
-    console.log("favouriteList", favouriteList);
+  React.useEffect(() => {
+    getFavourite();
+  }, [dispatch]);
 
-  useEffect(() => {}, [favourite]);
-  useEffect(() => {}, [favouriteList]);
-
-  function removeFavorite() {
-  let toRemoved = favouriteList?.filter(
-    (favouriteRemove) => favouriteRemove.id == Number(id))[0];
-    console.log("TR:", toRemoved.id);
-    console.log("FL:", favouriteList.id);
-  dispatch(deleteFavourite(toRemoved?.id));
-  }
+  const handleListItemClick = () => {
+    if (selectedIndex === false) {
+      dispatch(
+        addAnnouncementFavourite({
+          userId: userLog.id,
+          announcementId: id,
+        })
+      );
+    } else dispatch(deleteFavourite(confirm.id));
+    setSelectedIndex(!selectedIndex);
+  };
 
   return (
     <Card sx={{ width: 300 }}>
@@ -74,6 +65,7 @@ export default function HouseCard(props) {
           gutterBottom
           variant="h6"
           component="div"
+          noWrap={true}
         >
           {title
             .split(" ")
@@ -109,20 +101,19 @@ export default function HouseCard(props) {
           component={Link}
           to={`/announcements/${id}`}
           size="small"
-          onclick={() => window.scrollTo(0, 0)}
+          onClick={() => window.scrollTo(0, 0)}
         >
           VIEW DETAILS
         </Button>
         {user ? (
-          <Grid>
-          <Button onClick={() => addFavorite()}>
-            <FavoriteIcon sx={{ height: 20 }} />
-          </Button>
-
-          <Button onClick={() => removeFavorite()}>
-            <CancelIcon sx={{ height: 20 }} />
-          </Button>
-        </Grid>
+          <>
+            <Button onClick={() => handleListItemClick()}>
+              {selectedIndex === true && <FavoriteIcon sx={{ height: 20 }} />}
+              {selectedIndex === false && (
+                <FavoriteBorderIcon sx={{ height: 20 }}></FavoriteBorderIcon>
+              )}
+            </Button>
+          </>
         ) : null}
       </CardActions>
     </Card>
