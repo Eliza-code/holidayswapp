@@ -100,7 +100,7 @@ const getInfoUsers = async () => {
       "I am Geert from Brusells, Belgium, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-    username: "ANA, VANINA I NEO",
+    username: "ANAVANINA",
     profilePicture:
       "https://image.freepik.com/foto-gratis/chica-atractiva-curiosa-e-intrigada-encuentra-promocion-interesante-apuntando-esquina-superior-derecha_176420-27738.jpg",
     name: "Ana",
@@ -160,7 +160,7 @@ const getInfoUsers = async () => {
       "I am Yeny from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-    username: "ALMA DIAZ",
+    username: "ALMADIAZ",
     profilePicture:
       "https://image.freepik.com/foto-gratis/mujer-levantando-manos-mientras-toma-selfie_23-2148293874.jpghttps://image.freepik.com/foto-gratis/mujer-levantando-manos-mientras-toma-selfie_23-2148293874.jpg",
     name: "Alma",
@@ -265,7 +265,7 @@ const getInfoUsers = async () => {
       "I am Norma from Asuncion, Paraguay, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-    username: "LASSE",
+    username: "LASSEOYVIND",
     profilePicture:
       "https://image.freepik.com/foto-gratis/cliente-masculino-complacido-muestra-bien-firmar-recomendar-producto_176420-19055.jpg",
     name: "Lasse",
@@ -340,7 +340,7 @@ const getInfoUsers = async () => {
       "I am Bedani from Barcelona, Spain, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-    username: "JOSE MANUEL",
+    username: "JOSEMANUEL",
     profilePicture:
       "https://img.freepik.com/foto-gratis/hombre-negocios-positivo-que-usa-computadora-portatil_23-2147800028.jpg?size=338&ext=jpg",
     name: "Jose Manuel",
@@ -400,7 +400,7 @@ const getInfoUsers = async () => {
       "I am Bjorn from Reikiavik, Iceland, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-    username: "NICO & ERLEND",
+    username: "NICOERLEND",
     profilePicture:
       "https://image.freepik.com/foto-gratis/retrato-pareja-feliz-usando-telefono-movil_23-2147892038.jpg",
     name: "Nicollas",
