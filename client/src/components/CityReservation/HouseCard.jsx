@@ -12,58 +12,43 @@ import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 import StarIcon from "@mui/icons-material/Star";
 import { useDispatch, useSelector } from "react-redux";
-import { addAnnouncementFavourite, deleteFavourite, getFavourite } from "../../redux/actions/favouriteActions";
-import CancelIcon from "@mui/icons-material/Cancel";
+import {
+  addAnnouncementFavourite,
+  deleteFavourite,
+  getFavourite,
+} from "../../redux/actions/favouriteActions";
+
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
- 
+  const dispatch = useDispatch();
 
   
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
   const favourites = useSelector((state) => state.favouriteReducer.favourite);
 
-  const dispatch = useDispatch();
+  const confirm = favourites.find((e) => e.announcementId === id);
 
-  // console.log(id)
-  // const inFavorite = (id) => {
-  //   console.log(id,"id a comparar")
-  //   const find = favourites.some((e) => e.id == id);
-  //   console.log(find,"mi find");
-  //   return find
-  //   // if (find) return true;
-  //   // if (!find) return false;
-  // };
-  // var confirm = inFavorite(id);
-  // console.log(confirm,"dato a llenar")
-  const [selectedIndex, setSelectedIndex] = React.useState(false);
-  console.log(selectedIndex,"seteo bien?")
-  
-  const handleListItemClick = (event, index) => {
-    index=!index;
-    setSelectedIndex(index);
-    if (index === true) {
-      console.log("index True")
+  const [selectedIndex, setSelectedIndex] = React.useState(!!confirm);
+
+  React.useEffect(() => {
+    getFavourite();
+  }, [dispatch]);
+
+  const handleListItemClick = () => {
+    if (selectedIndex === false) {
       dispatch(
         addAnnouncementFavourite({
           userId: userLog.id,
           announcementId: id,
         })
       );
-    }else if(index === false){
-      console.log("index True")
-      console.log(id)
-      dispatch(deleteFavourite(userLog.id))
-    }
-   
+    } else dispatch(deleteFavourite(confirm.id));
+    setSelectedIndex(!selectedIndex);
   };
-  console.log(selectedIndex);
-  React.useEffect(() => {
-    getFavourite();
-  }, [selectedIndex,favourites]);
 
   return (
     <Card sx={{ width: 300 }}>
@@ -81,6 +66,7 @@ export default function HouseCard(props) {
           gutterBottom
           variant="h6"
           component="div"
+          noWrap={true}
         >
           {title
             .split(" ")
@@ -122,23 +108,12 @@ export default function HouseCard(props) {
         </Button>
         {user ? (
           <>
-            <Button  
-              value={selectedIndex}          
-              onClick={(event) => handleListItemClick(event, selectedIndex)}
-            >
+            <Button onClick={() => handleListItemClick()}>
               {selectedIndex === true && <FavoriteIcon sx={{ height: 20 }} />}
               {selectedIndex === false && (
                 <FavoriteBorderIcon sx={{ height: 20 }}></FavoriteBorderIcon>
               )}
             </Button>
-
-            {/* <Button>
-          onClick={() =>
-              deleteFavorite()
-            }
-          >
-            <CancelIcon sx={{ height: 20 }} />
-          </Button> */}
           </>
         ) : null}
       </CardActions>

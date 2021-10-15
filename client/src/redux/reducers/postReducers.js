@@ -5,7 +5,7 @@ const initialState = {
   searchResults: [],
   houses: [],
   currentPostId: JSON.parse(window.localStorage.getItem("currentPost")),
-  allSearchResults: [],
+  allSearchResults: [],  
 };
 
 const postReducer = (state = initialState, action) => {
@@ -46,7 +46,7 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: sortedPoints,
       };
-    case types.ORDER_BY_RATING:
+    case types.ORDER_BY_RATING:      
       let sortedRating =
         action.payload === "mayor"
           ? state.searchResults.sort(function (a, b) {
@@ -60,28 +60,30 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: sortedRating,
       };
-    case types.FILTER_BY_TYPE:
-      const allResults = state.allSearchResults;
-      const typeFiltered =
+    case types.FILTER_BY_SLEEPS:
+      const allResults = state.allSearchResults;      
+      const sleepsFiltered =
         action.payload === "All"
           ? allResults
-          : allResults.filter((el) => el.type === action.payload);
+          : allResults.filter((el) => {
+              return el.sleeps === (Number(action.payload));
+            });
+
+      return {
+        ...state,
+        searchResults: sleepsFiltered,
+      };
+
+    case types.FILTER_BY_TYPE:
+      const allResult = state.allSearchResults;
+      const typeFiltered =
+        action.payload === "All"
+          ? allResult
+          : allResult.filter((el) => el.type === action.payload);
 
       return {
         ...state,
         searchResults: typeFiltered,
-      };
-
-    case types.FILTER_BY_GUEST:
-      const allSearch = state.allSearchResults;
-      const guestFiltered =
-        action.payload === "All"
-          ? allSearch
-          : allSearch.filter((el) => el.sleeps === action.payload);
-
-      return {
-        ...state,
-        searchResults: guestFiltered,
       };
     default:
       return state;
