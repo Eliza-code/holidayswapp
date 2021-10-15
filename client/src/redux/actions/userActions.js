@@ -161,3 +161,37 @@ export const getHousesByUserId = (id) => {
     }
   }
 }
+export const updateHouseForm = (id, input) => {
+  return async (dispatch) => {
+    try{
+      const { request, data } = await axios.put(`${BASE_URL}/announcement/updateAnnouncement/${id}`, input);
+      if (request.status === 200 ){
+        dispatch({ 
+          type: types.UPDATE_HOUSE_SUCCESS,
+          payload: data
+        })
+      }else {
+        swal({
+          title: "Try again",
+          icon: "success",
+        })
+      }
+    }catch (e) {
+      console.log(e);
+    }
+  }
+}
+
+export const updateUserProfile = (userId, input) => {
+  return async (dispatch) => {
+    try {
+      const { data, request } = await axios.put(`${BASE_URL}/user/updateUser/${userId}`, input);
+      return request.status === 200
+        ? dispatch({ type: types.UPDATE_USER_SUCCESS, payload: data })
+        : dispatch({ type: types.UPDATE_USER_FAILED });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: types.UPDATE_USER_FAILED });
+    }
+  }
+}

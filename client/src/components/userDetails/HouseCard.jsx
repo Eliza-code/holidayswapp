@@ -9,7 +9,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
 import Modal from "@mui/material/Modal";
 import Swal from "sweetalert2";
-import EditProfileForm from "./EditProfileForm";
+import EditHouseForm from "./EditHouseForm";
 
 import { deleteAnnouncement } from "../../redux/actions/postActions"
 
@@ -42,9 +42,9 @@ const HouseCard = ({ house }) => {
 
   return (
     <Box component={Paper} sx={{ height: 400, width: 300, borderRadius: 5  }} elevation={5}>
-      {<Modal open={open} onClose={handleClose}>
-          <EditProfileForm />
-       </Modal>}
+      <Modal open={open} onClose={handleClose}>
+          <EditHouseForm house={house}/>
+      </Modal>
       <Grid container direction="column" textAlign="center" spacing={2}>
         <Grid item xs={6}>
           <img src={house.image[0]} alt={house.title} height="150px" />

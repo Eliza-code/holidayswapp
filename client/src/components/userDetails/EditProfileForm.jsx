@@ -2,21 +2,14 @@ import React from "react";
 import { useFormik } from "formik";
 import { profileForm as validate } from "./validate";
 import { nationalities, languagesSpoken } from "../SignUp/validate";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
+import { updateUserProfile } from "../../redux/actions/userActions";
 import Autocomplete from "@mui/material/Autocomplete";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import InputAdornment from "@mui/material/InputAdornment";
-import IconButton from "@mui/material/IconButton";
-import FormControl from "@mui/material/FormControl";
-import OutlinedInput from "@mui/material/OutlinedInput";
-import InputLabel from "@mui/material/InputLabel";
-import Container from "@mui/material/Container";
-import Paper from "@mui/material/Paper";
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Swal from "sweetalert2";
 
 const style = {
     position: 'absolute',
@@ -30,32 +23,49 @@ const style = {
     p: 4,
 }
 
-const initialValues = {
-    username: "",
-    profilePicture: "",
-    name: "",
-    lastName: "",
-    email: "",
-    phoneNumber: "",
-    dateOfBirth: "",
-    description: "",
-    nacionality: "",
-    languagesSpoken: [],
-  };
 
-const EditProfileForm = ({ defaultUser }) => {
-    // const dispatch = useDispatch();
+const EditProfileForm = ({ user, handleOpen }) => {
+    const dispatch = useDispatch();
+
+    const initialValues = {
+      username: user.username,
+      profilePicture: user.profilePicture,
+      name: user.name,
+      lastName: user.lastName,
+      email: user.email,
+      phoneNumber: user.phoneNumber,
+      dateOfBirth: user.dateOfBirth,
+      description: user.description,
+      nacionality: user.nacionality,
+      languagesSpoken: user.languagesSpoken,
+    };
 
     const onSubmit = (values) => {
-        // dispatch(updateUserProfile(values))
-        console.log(values);
+      console.log(values)
+      Swal.fire({
+        title: 'Are you sure?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+            dispatch(updateUserProfile(user.id, values))
+            Swal.fire(
+                'Your profile has been updated!',
+                'success'
+            ).then(() => handleOpen(false))
+        }
+      })
+
     }
 
     const formik = useFormik({
         initialValues,
         onSubmit,
         validate,
-      });
+    });
 
     return (
         <Box style={style}>
@@ -88,7 +98,6 @@ const EditProfileForm = ({ defaultUser }) => {
                   label="Username"
                   type="text"
                   name="username"
-                 
                   placeholder="Ej: cori47"
                   value={formik.values.username}
                   onChange={formik.handleChange}
@@ -126,7 +135,7 @@ const EditProfileForm = ({ defaultUser }) => {
                   value={formik.values.name}
                   onBlur={formik.handleBlur}
                   helperText={formik.errors.name}
-                  // InputLabelProps={{ shrink: true }}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -145,7 +154,7 @@ const EditProfileForm = ({ defaultUser }) => {
                   value={formik.values.lastName}
                   onBlur={formik.handleBlur}
                   helperText={formik.errors.lastName}
-                  // InputLabelProps={{ shrink: true }}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -162,13 +171,12 @@ const EditProfileForm = ({ defaultUser }) => {
                   value={formik.values.email}
                   onBlur={formik.handleBlur}
                   helperText={formik.touched.email && formik.errors.email}
-                  // InputLabelProps={{ shrink: true }}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
 
               <div>
                 <TextField
-                  
                   error={Boolean(
                     formik.touched.phoneNumber && formik.errors.phoneNumber
                   )}
@@ -183,7 +191,7 @@ const EditProfileForm = ({ defaultUser }) => {
                   helperText={
                     formik.touched.phoneNumber && formik.errors.phoneNumber
                   }
-                  // InputLabelProps={{ shrink: true }}
+                  InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -191,7 +199,7 @@ const EditProfileForm = ({ defaultUser }) => {
                 <TextField
                   id="dateOfBirth"
                   type="date"
-                  label = "Date of Birth"
+                  label="Date of Birth"
                   name="dateOfBirth"
                   onChange={formik.handleChange}
                   value={formik.values.dateOfBirth}
@@ -199,9 +207,10 @@ const EditProfileForm = ({ defaultUser }) => {
                   InputLabelProps={{ shrink: true }}
                 />
               </div>
+
               <div>
                 <TextField
-                multiline
+                  multiline
                   id="description"
                   type="text"
                   label = "Description"
@@ -209,7 +218,6 @@ const EditProfileForm = ({ defaultUser }) => {
                   onChange={formik.handleChange}
                   value={formik.values.description}
                   onBlur={formik.handleBlur}
-                 
                 />
               </div>
               <div>
@@ -218,7 +226,8 @@ const EditProfileForm = ({ defaultUser }) => {
                   name="nacionality"
                   label= "Nacionality"
                   options={nationalities}
-                  // InputLabelProps={{ shrink: true }}
+                  defaultValue={user.nacionality}
+                  value={formik.values.nacionality}
                   onChange={(e, value) =>
                     formik.setFieldValue("nacionality", value)
                   }
@@ -244,8 +253,10 @@ const EditProfileForm = ({ defaultUser }) => {
                   options={languagesSpoken}
                   name="languagesSpoken"
                   label="Choose a language"
+                  defaultValue={user.languagesSpoken}
+                  value={formik.values.languagesSpoken}
                   getOptionLabel={(option) => option}
-                  onChange={(event, values) => formik.setFieldValue("languagesSpoken", values)}
+                  onChange={(e, values) => formik.setFieldValue("languagesSpoken", values)}
                   filterSelectedOptions
                   renderInput={(params) => (
                     <TextField {...params} variant="outlined" name="languagesSpoken" placeholder="Choose a language" />
@@ -254,12 +265,7 @@ const EditProfileForm = ({ defaultUser }) => {
 
               </div>
               <Button
-                sx={{
-                  marginTop: 5,
-                  marginBottom: 10,
-                  width: "17rem",
-                  height: "3rem",
-                }}
+                sx={{ mt: 5, mb: 10, width: "17rem", height: "3rem" }}
                 type="submit"
                 variant="contained"
               >

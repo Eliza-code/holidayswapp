@@ -1,7 +1,7 @@
 import * as types from "../types/postTypes";
 
 const initialState = {
-  homeInfo: [],
+  homeInfo: {},
   searchResults: [],
   houses: [],
   currentPostId: JSON.parse(window.localStorage.getItem("currentPost"))

@@ -15,10 +15,9 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { postAnnouncements } from "../../redux/actions/postActions";
-import { getUserInfo } from "../../redux/actions/userActions";
+import { getUserInfo, updateHouseForm } from "../../redux/actions/userActions";
 
-const AnnouncementCreation = () => {
+const AnnouncementUpdate = ({ house }) => {
   const dispatch = useDispatch()
   const user = useSelector((state) => state.userReducer.details);
 
@@ -26,44 +25,41 @@ const AnnouncementCreation = () => {
     dispatch(getUserInfo());
   }, [dispatch]);
 
-  const initialValues = {
-    title: "",
-    description: "",
-    country: "",
-    state: "",
-    city: "",
-    adress: "",
-    type: "",
-    points: "",
-    sleeps: "",
-    bedrooms: "",
-    beds: "",
-    bathrooms: "",
-    surfaceM2: "",
-    smokersWelcome: false,
-    petsWelcome: false,
-    childremWelcome: false,
-    wifi: false,
-    tv: false,
-    washing_machine: false,
-    fridge: false,
-    a_c: false,
-    private_parking: false,
-    image: [],
-    rating: "",
-    arrivealDate: "",
-    departureDate: ""
-  };
+  const initialValues = {...house}
+
+  // const initialValues = {
+  //   title: house.title,
+  //   description: house.description,
+  //   country: house.country,
+  //   state: house.state,
+  //   city: house.city,
+  //   adress: house.adress,
+  //   type: ,
+  //   points: "",
+  //   sleeps: "",
+  //   bedrooms: "",
+  //   beds: "",
+  //   bathrooms: "",
+  //   surfaceM2: "",
+  //   smokersWelcome: false,
+  //   petsWelcome: false,
+  //   childremWelcome: false,
+  //   wifi: false,
+  //   tv: false,
+  //   washing_machine: false,
+  //   fridge: false,
+  //   a_c: false,
+  //   private_parking: false,
+  //   image: [],
+  //   rating: "",
+  //   arrivealDate: "",
+  //   departureDate: ""
+  // };
 
   const onSubmit = (values) => {
-    const inputs = {
-      ...values,
-      owner_id: user.id,
-      owner: user.username
-    };
-   
-    dispatch(postAnnouncements(inputs));
+    dispatch(updateHouseForm(values));
   };
+  
 
   const formik = useFormik({
     initialValues,
@@ -73,9 +69,6 @@ const AnnouncementCreation = () => {
   
   return (
     <div>
-      <div className="headerNav">
-        <Header />
-      </div>
       <div>
         <Container sx={{ marginBottom: 10 }} maxWidth="sm">
           <CssBaseline />
@@ -97,7 +90,7 @@ const AnnouncementCreation = () => {
                 variant="h4"
                 gutterBottom
               >
-                Post your Amazing Home
+                Edit your home
               </Typography>
               <TextField
                 required
@@ -235,7 +228,6 @@ const AnnouncementCreation = () => {
                 fullWidth
               />
               <FormControl component="fieldset">
-
                 <FormLabel component="legend" />
                 <RadioGroup
                   row
@@ -371,7 +363,7 @@ const AnnouncementCreation = () => {
                   label = "Arrival Date"
                   name="arrivealDate"
                   inputProps={{
-                    min: "2021-10-14"
+                    min:  "2021-10-14"
                   }}
                   onChange={formik.handleChange}
                   value={formik.values.arrivealDate}
@@ -381,7 +373,7 @@ const AnnouncementCreation = () => {
                   id="departureDate"
                   type="date"
                   inputProps={{
-                    min: "2021-10-14"
+                    min:  "2021-10-14"
                   }}
                   label = "Departure Date"
                   name="departureDate"
@@ -399,7 +391,7 @@ const AnnouncementCreation = () => {
                 type="submit"
                 variant="contained"
               >
-                Submit
+                SAVE CHANGES
               </Button>
             </Box>
           </Paper>
@@ -409,4 +401,4 @@ const AnnouncementCreation = () => {
   );
 };
 
-export default AnnouncementCreation;
+export default AnnouncementUpdate;

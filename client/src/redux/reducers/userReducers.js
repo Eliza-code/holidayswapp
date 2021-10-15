@@ -4,7 +4,7 @@ const initialState =  {
    details:{},  
    ownerDetails: {},
    isAuth: !!window.localStorage.getItem("user"),
-   ownerHouses: {},
+   ownerHouses: [],
 }
 
 const userReducer = (state = initialState, action) => {
@@ -56,6 +56,17 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 ownerHouses: action.payload,
+            }
+        case types.UPDATE_HOUSE_SUCCESS:
+            return {
+                ...state,
+                // ownerHouses: action.payload,
+            }
+        
+        case types.UPDATE_USER_SUCCESS:
+            return {
+                ...state,
+                details: action.payload
             }
 
         default: 

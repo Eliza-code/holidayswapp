@@ -14,7 +14,7 @@ export function getHouses() {
         alert("City not found");
       }
     };
-  }
+}
 
 export function getHouseID(id) {
   return async function (dispatch) {
@@ -81,3 +81,4 @@ export function deleteAnnouncement(id){
     }
   }
 }
+

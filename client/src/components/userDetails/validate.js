@@ -15,21 +15,21 @@ export const profileForm = (values) => {
     }
   
     // Password
-    if (!values.password) {
-      errors.password = "Required";
-    } else if (
-      !/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(values.password)
-    ) {
-      errors.password =
-        "Must contain letters (Capital and lower case), numbers and between 8 and 16 characters";
-    }
+    // if (!values.password) {
+    //   errors.password = "Required";
+    // } else if (
+    //   !/^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$/.test(values.password)
+    // ) {
+    //   errors.password =
+    //     "Must contain letters (Capital and lower case), numbers and between 8 and 16 characters";
+    // }
   
     // Confirm password
-    if (!values.confirmpassword) {
-      errors.confirmpassword = "Required";
-    } else if (values.password !== values.confirmpassword) {
-      errors.confirmpassword = "Password must be the same";
-    }
+    // if (!values.confirmpassword) {
+    //   errors.confirmpassword = "Required";
+    // } else if (values.password !== values.confirmpassword) {
+    //   errors.confirmpassword = "Password must be the same";
+    // }
   
     // Profile picture
     if (
