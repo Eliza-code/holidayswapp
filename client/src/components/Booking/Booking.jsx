@@ -1,20 +1,24 @@
-import  { React, useEffect } from "react";
-import {getUserInfo } from "../../redux/actions/userActions";
-import {postOrder} from "../../redux/actions/bookingActions"
+import { React, useEffect, useState } from "react";
+import { getUserInfo } from "../../redux/actions/userActions";
+import { postOrder } from "../../redux/actions/bookingActions";
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import "../Booking/booking.css";
 import Footer from "../Footer/Footer";
 import { Field, Form, Formik } from "formik";
 import Button from "../FormUI/Button/index";
-import { Chip, Container, Divider, Grid, Typography } from "@mui/material";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import { Chip, Container, Divider, Grid, Typography, TextField } from "@mui/material";
 import Select from "../FormUI/Select/index";
 import Textfield from "../FormUI/Textfield/index";
-import DateTimePicker from "../FormUI/DataTimePicker/index";
+// import DateTimePicker from "../FormUI/DataTimePicker/index";
 import * as Yup from "yup";
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
+import { getHouseID } from "../../redux/actions/postActions";
 
 const useStyles = makeStyles((theme) => ({
   title: {
@@ -29,14 +33,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const initial_form_states = {
-  userId:"",  
+  userId: "",
   type: "",
   description: "",
-  status:"Pending",
+  status: "Pending",
   arrivealDate: "",
   departureDate: "",
 };
-
 
 const form_validation = Yup.object().shape({
   type: Yup.string().required("Required"),
@@ -46,32 +49,35 @@ const form_validation = Yup.object().shape({
 });
 
 const Booking = () => {
-  
   const classes = useStyles();
   const dispatch = useDispatch();
-  const history = useHistory ();
+  const history = useHistory();
   const options = ["Reciprocal", "Pay with points"];
-  const announID = useSelector(state =>state.postReducer.homeInfo);
-  console.log(announID.id,"trayendo mi id de anuncio")
-
+  
+  const announInfo = useSelector((state) => state.postReducer.homeInfo);
+  console.log(announInfo.id, "trayendo mi id de anuncio");
+  const [value, setValue] = useState(new Date());
+  const [value2, setValue2] = useState(value);
   const token = window.localStorage.getItem("user");
 
+  console.log(announInfo.arrivealDate);
+  console.log(announInfo.departureDate);
+
   const handleOnSubmit = (values) => {
-    values.userId=id;
-    values.announcementId=announID.id;
+    values.userId = id;
+    values.announcementId = announInfo.id;
     console.log(values);
-    dispatch(postOrder(values))
-    history.push("/my-bookings")
+    dispatch(postOrder(values));
+    history.push("/my-bookings");
   };
-  
+
   useEffect(() => {
-    dispatch(getUserInfo());   
+    dispatch(getUserInfo());
+    announInfo.id && dispatch(getHouseID(announInfo.id))
   }, []);
 
-  const {id} = useSelector(state => state.userReducer.details)
-  
-  
-  
+  const { id } = useSelector((state) => state.userReducer.details);
+  console.log(value)
   return (
     <div>
       <div className="headerNav">
@@ -107,11 +113,33 @@ const Booking = () => {
                   />
                 </Grid>
                 <Grid item xs={6}>
-                  <DateTimePicker name="arrivealDate" label="Arrival Date" />
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="Arrival Date"
+                      value={value}
+                      minDate= {new Date()}
+                      onChange={(newValue) => {
+                        setValue(newValue);
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+                  {/* <DateTimePicker name="arrivealDate" label="Arrival Date" /> */}
                 </Grid>
 
                 <Grid item xs={6}>
-                  <DateTimePicker name="departureDate" label="Departure Date" />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <DatePicker
+                      label="Departure Date"
+                      value={value2}  
+                      minDate= {value}                    
+                      onChange={(newValue) => {
+                        setValue2(newValue);
+                      }}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </LocalizationProvider>
+                  {/* <DateTimePicker name="departureDate" label="Departure Date"/> */}
                 </Grid>
 
                 <Grid item xs={12}>
