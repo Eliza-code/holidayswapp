@@ -24,41 +24,30 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
   const dispatch = useDispatch();
-  
+
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
   const favourites = useSelector((state) => state.favouriteReducer.favourite);
-  
-  const inFavorite = (id) => {
-    const find = favourites.find((e) => e.id);
-    if (find) return true;
-    if (!find) return false;
-  };
-  
-  var confirm = inFavorite();
-  
-  const [selectedIndex, setSelectedIndex] = React.useState(confirm);
-  
+
+  const confirm = favourites.find((e) => e.announcementId === id);
+
+  const [selectedIndex, setSelectedIndex] = React.useState(!!confirm);
+
   React.useEffect(() => {
     getFavourite();
   }, [dispatch]);
 
-  const handleListItemClick = async (event, index) => {
-    setSelectedIndex(!index);
+  const handleListItemClick = () => {
     if (selectedIndex === false) {
-      console.log("A-favourites", favourites);
       dispatch(
         addAnnouncementFavourite({
           userId: userLog.id,
           announcementId: id,
         })
       );
-    } else if (selectedIndex === true) {
-      console.log("B-favourites", favourites);
-      dispatch(deleteFavourite(favourites.id));
-    }
+    } else dispatch(deleteFavourite(confirm.id));
+    setSelectedIndex(!selectedIndex);
   };
-  console.log(selectedIndex);
 
   return (
     <Card sx={{ width: 300 }}>
@@ -76,6 +65,7 @@ export default function HouseCard(props) {
           gutterBottom
           variant="h6"
           component="div"
+          noWrap={true}
         >
           {title
             .split(" ")
@@ -117,14 +107,12 @@ export default function HouseCard(props) {
         </Button>
         {user ? (
           <>
-            <Button
-              onClick={(event) => handleListItemClick(event, selectedIndex)}
-            >
+            <Button onClick={() => handleListItemClick()}>
               {selectedIndex === true && <FavoriteIcon sx={{ height: 20 }} />}
               {selectedIndex === false && (
                 <FavoriteBorderIcon sx={{ height: 20 }}></FavoriteBorderIcon>
               )}
-            </Button>           
+            </Button>
           </>
         ) : null}
       </CardActions>

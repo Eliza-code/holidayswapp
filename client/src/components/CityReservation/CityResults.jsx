@@ -7,16 +7,11 @@ import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
 import "./CityResults.css";
 import { clearPage } from "../../redux/actions/postActions.js";
-import { FormControl, Grid, InputLabel, MenuItem, Select, Stack } from "@mui/material";
+import { Grid } from "@mui/material";
 import OrderByGpNigth from "./OrderByGpNight";
 import OrderByRating from "./OrderbyRating";
 import FilterBySleeps from "./FilterBySleeps";
 import FilterByType from "./FilterByType";
-import HomeWorkIcon from "@mui/icons-material/HomeWork";
-import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
-import StarRateIcon from '@mui/icons-material/StarRate';
-import MonetizationOn from "@mui/icons-material/MonetizationOn";
-
 
 const CityResults = () => {
   const houses = useSelector((state) => state.postReducer.searchResults);
@@ -26,29 +21,29 @@ const CityResults = () => {
   const [order, setOrder] = useState("");
 
   const next_Page = () => {
-    if (houses.length <= currentPage + 12) {
+    if (houses.length <= currentPage + 3) {
       setCurrentPage(currentPage);
-    } else setCurrentPage(currentPage + 12);
+    } else setCurrentPage(currentPage + 3);
   };
   const prev_Page = () => {
-    if (currentPage < 13) {
+    if (currentPage < 4) {
       setCurrentPage(0);
     } else {
-      setCurrentPage(currentPage - 12);
+      setCurrentPage(currentPage - 3);
     }
   };
   const first_Page = () => {
     setCurrentPage(0);
   };
   const last_Page = () => {
-    setCurrentPage(houses.length - 12);
+    setCurrentPage(houses.length - 3);
   };
   useEffect(() => {
     first_Page();
     return () => dispatch(clearPage());
   }, [dispatch]);
 
-  const filtredHouses = houses?.slice(currentPage, currentPage + 12);
+  const filtredHouses = houses?.slice(currentPage, currentPage + 3);
 
   return (
     <div>
@@ -57,42 +52,16 @@ const CityResults = () => {
         <NavBar />
       </div>
 
-      <Grid>
-       
-          <FilterByType setCurrentPage={setCurrentPage} />
-        
-
-        <Stack
-          direction="row"
-          marginBottom={1}
-          alignItems="center"
-          spacing={1}
-        >
-          <EmojiPeopleIcon sx={{ height: 40 }} />
-        <FilterBySleeps houses={houses} setCurrentPage={setCurrentPage} />          
-        </Stack>
-
-        <Stack
-          direction="row"
-          marginBottom={1}
-          alignItems="center"
-          spacing={1}
-        >
-        <StarRateIcon sx={{ height: 40 }} />        
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+      >
+        <FilterByType setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <FilterBySleeps setCurrentPage={setCurrentPage} setOrder={setOrder} />
         <OrderByRating setCurrentPage={setCurrentPage} setOrder={setOrder} />
-        </Stack>
-
-        <Stack
-          direction="row"
-          marginBottom={1}
-          alignItems="center"
-          spacing={1}
-        >
-        <MonetizationOn sx={{ height: 40 }} />        
-        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />        
-        </Stack>
-
-
+        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />
       </Grid>
 
       <div>
@@ -129,7 +98,8 @@ const CityResults = () => {
       </div>
 
       <div>
-        {filtredHouses?.length >= 3 ? (
+        {  filtredHouses.length === 0? null :
+          filtredHouses?.length >= 3 ? (
           <div className="arrow">
             <button className="button" onClick={first_Page}>
               {" "}
@@ -148,7 +118,20 @@ const CityResults = () => {
               {">>"}
             </button>
           </div>
-        ) : null}
+        ) : (
+          <div className="arrow">
+            <button className="button" onClick={first_Page}>
+              {" "}
+              {"<<"}
+            </button>
+            <button className="button" onClick={prev_Page}>
+              {" "}
+              {"<"}
+            </button>
+          </div>
+        )
+        
+        }
       </div>
       <div>
         <Footer />
