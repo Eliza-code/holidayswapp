@@ -5,6 +5,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import {updateOrderStatus} from '../../redux/actions/bookingActions'
+import {getOwnerDetails} from '../../redux/actions/userActions'
 import { useDispatch, useSelector } from 'react-redux';
 import { red } from '@mui/material/colors';
 
@@ -37,9 +38,14 @@ const CardOrder = (props) => {
       dispatch(updateOrderStatus(data))
       window.location.reload(true)
     }
-    // useEffect(() => {
-        
-    //   },[]);
+    useEffect(() => {
+       if(userInfo===false){
+          dispatch(getOwnerDetails(orders.userId))
+        }
+      },[]);
+ 
+    const userInfo2 = useSelector(state => state.userReducer.ownerDetails)
+    console.log(userInfo2,"mi usuario real")
     
 
     return (
@@ -47,12 +53,12 @@ const CardOrder = (props) => {
       <CardMedia
         component="img"
         height="140"
-        image={userInfo.profilePicture}
+        image={userInfo===false?(userInfo2.profilePicture):(userInfo.profilePicture)}
         alt="green iguana"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div" >
-          {userInfo.username}
+          {userInfo===false?(userInfo2.username):(userInfo.username)}
         </Typography>
         <Typography gutterBottom variant="body2" color="text.secondary">
           {orders.description}

@@ -25,6 +25,7 @@ export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
   const dispatch = useDispatch();
 
+  
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
   const favourites = useSelector((state) => state.favouriteReducer.favourite);
