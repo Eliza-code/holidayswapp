@@ -46,7 +46,7 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: sortedPoints,
       };
-    case types.ORDER_BY_RATING:
+    case types.ORDER_BY_RATING:      
       let sortedRating =
         action.payload === "mayor"
           ? state.searchResults.sort(function (a, b) {

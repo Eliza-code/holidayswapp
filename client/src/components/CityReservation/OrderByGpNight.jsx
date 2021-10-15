@@ -13,6 +13,7 @@ const OrderByGpNight = ({ setCurrentPage, setOrder }) => {
     dispatch(orderByPoints(e.target.value));
     setCurrentPage(0);
     setType(e.target.value);
+    setOrder(e.target.value)  
   }
 
   return (

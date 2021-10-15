@@ -13,6 +13,7 @@ const OrderByRating = ({ setCurrentPage, setOrder }) => {
     dispatch(orderByRating(e.target.value));
     setCurrentPage(0);
     setType(e.target.value);
+    setOrder(e.target.value)  
   }
 
   return (

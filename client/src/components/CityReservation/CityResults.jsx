@@ -98,7 +98,7 @@ const CityResults = () => {
       </div>
 
       <div>
-        {  filtredHouses.length === 0? null :
+        {   filtredHouses?.length === 0? null :
           filtredHouses?.length >= 3 ? (
           <div className="arrow">
             <button className="button" onClick={first_Page}>
