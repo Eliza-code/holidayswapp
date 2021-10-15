@@ -29,8 +29,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const initial_form_states = {
-  userId:"",
-  announcementId:"",
+  userId:"",  
   type: "",
   description: "",
   status:"Pending",
@@ -52,14 +51,14 @@ const Booking = () => {
   const dispatch = useDispatch();
   const history = useHistory ();
   const options = ["Reciprocal", "Pay with points"];
-  const announID = useSelector(state =>state.postReducer.currentPostId);
-  console.log(announID,"trayendo mi id de anuncio")
+  const announID = useSelector(state =>state.postReducer.homeInfo);
+  console.log(announID.id,"trayendo mi id de anuncio")
 
   const token = window.localStorage.getItem("user");
 
   const handleOnSubmit = (values) => {
     values.userId=id;
-    values.announcementId=announID;
+    values.announcementId=announID.id;
     console.log(values);
     dispatch(postOrder(values))
     history.push("/my-bookings")

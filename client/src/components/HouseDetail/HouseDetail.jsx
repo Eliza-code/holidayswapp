@@ -42,7 +42,7 @@ export default function HomeID() {
     window.localStorage.setItem("currentPost", JSON.stringify(id));
     history.push("/booking")
   }
-
+  console.log(homeDetailed.id,"ID que me llevo")
   useEffect(() => {
     dispatch(getHouseID(id));
   }, [dispatch, id]);

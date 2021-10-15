@@ -51,19 +51,19 @@ const MyBookings = () => {
   const userId = userInfo?.id;
 //   console.log(userId, "dato para despachar");
 
-const userInfo2 = useSelector((state) => state.bookingReducer.ordersToUser.user);
-//   console.log(userInfo, "miuserInfo");
-  const userId2 = userInfo2?.id;
-//   console.log(userId, "dato para despachar");
+// const userInfo2 = useSelector((state) => state.bookingReducer.ordersToUser.user);
+// //   console.log(userInfo, "miuserInfo");
+//   const userId2 = userInfo2?.id;
+// //   console.log(userId, "dato para despachar");
 
-  const data = useSelector((state) => state.bookingReducer.ordersByUser);
-  const ordersByUser = data[0]?.orders;
+  const ordersByUser = useSelector((state) => state.bookingReducer.ordersByUser);
+  // const ordersByUser = data[0]?.orders;
   // console.log(ordersByUser, "datos by user");
-  console.log(data,"byUser")
+  console.log(ordersByUser,"byUser")
 
-  const data2 = useSelector((state) => state.bookingReducer.ordersToUser);
-  const ordersToUsers = data2[1]?.orders;
-  console.log(data2,"toUser")
+  const ordersToUsers = useSelector((state) => state.bookingReducer.ordersToUser);
+  // const ordersToUsers = data2[1]?.orders;
+  console.log(ordersToUsers,"toUser")
   // console.log( ordersToUsers,"LO NUEVO");
 //   console.log(ordersToUser, "datos to user");
 
@@ -77,6 +77,7 @@ const userInfo2 = useSelector((state) => state.bookingReducer.ordersToUser.user)
     setSelectedIndex(index);
   };
 
+ 
   return (
     <Grid className="headerNav" >
       <Grid item xs={12}>
@@ -118,7 +119,7 @@ const userInfo2 = useSelector((state) => state.bookingReducer.ordersToUser.user)
           {selectedIndex===1 && (ordersToUsers?.length
           ? ordersToUsers.map((e, idKey) => (
               <Grid>
-                <CardOrder  key={idKey} orders={e} userInfo={userInfo2}></CardOrder>  
+                <CardOrder  key={idKey} orders={e} userInfo={false}></CardOrder>  
               </Grid>              
             ))
           : "No hay ordenes") }
