@@ -12,7 +12,6 @@
   "dependencies": {
     "axios": "^0.21.4",
     "bcrypt": "^5.0.1",
-    "body-parser": "^1.19.0",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "dotenv": "^8.6.0",
@@ -21,6 +20,7 @@
     "helmet": "^4.6.0",
     "ioredis": "^4.19.2",
     "jsonwebtoken": "^8.5.1",
+    "mercadopago": "^1.5.8",
     "morgan": "^1.10.0",
     "node": "^16.10.0",
     "passport": "^0.5.0",
