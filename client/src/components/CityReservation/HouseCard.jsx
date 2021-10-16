@@ -68,7 +68,7 @@ export default function HouseCard(props) {
           component="div"
           noWrap={true}
         >
-          {title
+          {title.length && title
             .split(" ")
             .map((elem) => elem[0].toUpperCase() + elem.substr(1).toLowerCase())
             .join(" ")}

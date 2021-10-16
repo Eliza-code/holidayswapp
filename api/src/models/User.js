@@ -54,7 +54,7 @@ module.exports = (sequelize) => {
             type: DataTypes.STRING,
         },
         languagesSpoken: {
-            type: DataTypes.STRING,
+            type: DataTypes.ARRAY(DataTypes.STRING),
         },
         description: {
             type: DataTypes.STRING,

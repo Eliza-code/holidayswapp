@@ -6,11 +6,17 @@ import { BASE_URL } from '../constants/urls';
 export const postUser = (input) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/user`, input);
+      const { request } = await axios.post(`${BASE_URL}/user`, input);
       dispatch({ type: types.POST_USER });
-      if( data )  {
-        window.localStorage.setItem("user", JSON.stringify(data))
-        window.location.href = '/'
+      if (request.status === 200)  {
+        const { username, password } = input;
+        const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
+        if (request.status === 200) {
+          window.localStorage.setItem("user", JSON.stringify(data.token));
+          window.location.href = '/';
+        } else {
+          window.location.href = '/signin';
+        }
       } else {
         swal({
           title: "Oops! Something went wrong!",
@@ -76,7 +82,7 @@ export const getUserInfo = () => {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
         const response = await axios.get(`${BASE_URL}/auth/profile`, config);
         if (response.request.status === 200) {
-          window.localStorage.setItem("userInfo", JSON.stringify(response.data));
+          // window.localStorage.setItem("userInfo", JSON.stringify(response.data));
           dispatch({ type: types.USER_AUTH_SUCCESS, payload: response.data });
         }
       } else {
@@ -91,7 +97,7 @@ export const getUserInfo = () => {
       dispatch({ type: types.USER_AUTH_FAILED });
       console.log(error);
       window.localStorage.removeItem("user");
-      window.localStorage.removeItem("userInfo");
+      // window.localStorage.removeItem("userInfo");
       swal({
         title: "Internal error server",
         icon: "warning",
@@ -139,3 +145,54 @@ export function getOwnerDetails (id) {
   };
 }
 
+export const getHousesByUserId = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/announcement`);
+      if (data.length) {
+        const houses = data.filter((elem) => elem.userId === id);
+        return dispatch({
+          type: types.GET_HOUSES_BY_USER_ID,
+          payload: houses
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export const updateHouseForm = (id, input) => {
+  return async (dispatch) => {
+    try{
+      const { request, data } = await axios.put(`${BASE_URL}/announcement/updateAnnouncement/${id}`, input);
+      if (request.status === 200 ){
+        dispatch({ 
+          type: types.UPDATE_HOUSE_SUCCESS,
+          payload: data
+        })
+        window.location.reload();
+      } else {
+        swal({
+          title: "Try again",
+          icon: "success",
+        })
+      }
+    }catch (e) {
+      console.log(e);
+    }
+  }
+}
+
+export const updateUserProfile = (userId, input) => {
+  return async (dispatch) => {
+    try {
+      const { data, request } = await axios.put(`${BASE_URL}/user/updateUser/${userId}`, input);
+      return request.status === 200
+        ? dispatch({ type: types.UPDATE_USER_SUCCESS, payload: data })
+        : dispatch({ type: types.UPDATE_USER_FAILED });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: types.UPDATE_USER_FAILED });
+    }
+  }
+}

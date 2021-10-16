@@ -8,16 +8,14 @@ module.exports = async (req, res, next) => {
 		if(user.email) { user.email = user.email.toLowerCase();}
 		if(user.password) {	user.password = await bcrypt.hash(user.password, 12);}
 		else{
-			const old = await User.findOne({
-				where: {id}
-			});
+			const old = await User.findByPk(id);
 			user.password = old.password;
 		}
-		await User.update({...user},
-		{where: 
-			{id}
+		const updatedUser = await User.update({...user}, {
+			where: { id }
 		});
-		return res.json({success: true}).status(200);
+		// return res.json({success: true}).status(200);
+		return res.status(200).json(updatedUser)
 	} catch (err) {
         next(error);
 		// return res.send(err.message).status(409);

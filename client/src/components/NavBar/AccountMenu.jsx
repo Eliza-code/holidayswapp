@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -14,13 +14,14 @@ import PersonIcon from '@mui/icons-material/Person';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
 import EmailIcon from '@mui/icons-material/Email';
 import BookIcon from '@mui/icons-material/Book';
+
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
 import { deepPurple } from '@mui/material/colors';
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.userReducer.details);
+  // const user = useSelector((state) => state.userReducer.details);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
 
@@ -37,7 +38,7 @@ const AccountMenu = () => {
       <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar  sx={{ bgcolor: deepPurple[500] }} sx={{ width: 30, height: 30 }} >
+            <Avatar  sx={{ bgcolor: deepPurple[500] , width: 30, height: 30 }} >
              {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
@@ -85,7 +86,7 @@ const AccountMenu = () => {
         </MenuItem>
         <MenuItem component={Link}
           to="/my-favorites">
-        <LoyaltyIcon />My favorites
+        <LoyaltyIcon  sx={{ mr: 1 }}/>My favorites
         </MenuItem>
         <MenuItem component={Link}
           to="/my-bookings">

@@ -1,7 +1,7 @@
 import * as types from "../types/postTypes";
 
 const initialState = {
-  homeInfo: [],
+  homeInfo: {},
   searchResults: [],
   houses: [],
   currentPostId: JSON.parse(window.localStorage.getItem("currentPost")),
@@ -85,6 +85,12 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: typeFiltered,
       };
+    
+    case types.DELETE_ANNOUNCEMENT: 
+      return {
+        ...state
+      }
+   
     default:
       return state;
   }
