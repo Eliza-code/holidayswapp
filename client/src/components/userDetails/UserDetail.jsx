@@ -45,7 +45,7 @@ export default function UserDetails() {
   const handleCloseHouse = () => setOpenHouse(false);
 
   return (
-    <div>
+    <div style={{ background: "linear-gradient(90deg, #4b6cb7 0%, #182848 100%)" }}>
       <div className="headerNav">
         <Header />
         <NavBar />
@@ -72,7 +72,6 @@ export default function UserDetails() {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                // bgcolor: "#e3f2fd"
               }}
             >
               <Typography
@@ -120,7 +119,6 @@ export default function UserDetails() {
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      background: "rgb(2,0,36)",
                       background:
                         "linear-gradient(82deg, rgba(2,0,36,1) 0%, rgba(9,73,121,0.9948354341736695) 76%, rgba(0,212,255,1) 100%)",
                       p: 10,

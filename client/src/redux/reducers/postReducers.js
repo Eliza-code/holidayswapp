@@ -85,10 +85,7 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: typeFiltered,
       };
-    case types.POST_ANNOUNCEMENT: 
-    return {
-      ...state
-    };
+    
     case types.DELETE_ANNOUNCEMENT: 
       return {
         ...state

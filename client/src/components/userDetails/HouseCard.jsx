@@ -39,10 +39,9 @@ const HouseCard = ({ house, handleOpen, handleCurrentHouse }) => {
 
   return (
     <Box component={Paper} sx={{ height: 400, width: 300, borderRadius: 5  }} elevation={5}>
-          {/* { open && <EditHouseForm house={house} handleOpen={setOpen} /> } */}
       <Grid container direction="column" textAlign="center" spacing={2}>
-        <Grid item xs={6}>
-          <img src={house.image[0]} alt={house.title} height="150px" />
+        <Grid item xs={6} sx={{ m:2}}>
+          <img src={house.image[0]} alt={house.title} height="180px" />
         </Grid>
         <Grid item xs={8}>
           <Typography gutterBottom variant="h5">
