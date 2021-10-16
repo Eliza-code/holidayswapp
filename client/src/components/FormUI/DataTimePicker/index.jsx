@@ -7,13 +7,17 @@ const DateTimePicker = ({
   ...otherProps
 }) => {
   const [field, meta] = useField(name);
+  
+  const date = new Date;
+  var today = date.getDate() + '-' + ( date.getMonth() + 1 ) + '-' + date.getFullYear();
 
   const configDateTimePicker = {
     ...field,
-    ...otherProps,
+    ...otherProps,    
     type: 'date',
     variant: 'outlined',
     fullWidth: true,
+    minDateTime:new Date(),    
     InputLabelProps: {
       shrink: true
     }

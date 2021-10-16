@@ -28,11 +28,6 @@ const { getInfoOrders } = require("./src/utils/Orders/orders.data");
 const { User } = require("./src/db");
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async () => {
-  await server.listen(3001, async () => {
-    console.log("%s listening at 3001"); // eslint-disable-line no-console
-
-    //PUSE UNA CONDICION ASI CARGA SOLO SI ESTA VACIA LA DB ---> YAMILA
     const dbdata = await User.findAll();
     if (dbdata.length === 0) {
       try {
