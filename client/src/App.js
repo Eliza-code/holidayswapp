@@ -32,9 +32,9 @@ function App() {
         <Route exact path = '/announcements/:id' component={HouseDetail}/>
         <Route exact path = '/announcements/city/:name' component={CityResults} />
         <Route exact path="/aboutus" component={AboutUs} />
-        <Route exact path="/booking" component={Booking} />
-        <Route exact path="/my-bookings" component={MyBookings} />
-        <Route exact path="/my-favorites" component={Favorite} />
+        <PrivateRoute exact path="/booking" component={Booking} />
+        <PrivateRoute exact path="/my-bookings" component={MyBookings} />
+        <PrivateRoute exact path="/my-favorites" component={Favorite} />
       </Switch>
     </div>
   );

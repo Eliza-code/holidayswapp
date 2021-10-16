@@ -4,18 +4,16 @@ import * as types from "../types/postTypes";
 import { BASE_URL } from "../constants/urls";
 
 export function getHouses() {
-  return async function (dispatch) {
-    try {
-      const json = await axios.get(`${BASE_URL}/announcement`);
-      return dispatch({
-        type: types.GET_HOUSES,
-        payload: json.data,
-      });
-    } catch (error) {
-      console.log(error);
-      alert("City not found");
-    }
-  };
+    return async function (dispatch) {
+      try {       
+        const json = await axios.get(`${BASE_URL}/announcement`)   
+        return dispatch({
+          type: types.GET_HOUSES, payload: json.data});
+      } catch (error) {
+        console.log(error);
+        alert("City not found");
+      }
+    };
 }
 
 export function getHouseID(id) {
@@ -94,3 +92,22 @@ export function filterByType(payload) {
     payload,
   };
 }
+
+export function deleteAnnouncement(id){
+  return async function (dispatch) {
+    try{
+      const { request } = await axios.delete(`${BASE_URL}/announcement/deleteAnnouncement/${id}`)
+      if(request.status === 200 ){
+        dispatch({ type: types.DELETE_ANNOUNCEMENT });
+      } else {
+        swal({
+          title: "Oops! Something went wrong, try again!",
+          icon: "warning",
+        });
+      }
+    }catch (e) {
+      console.error(e);
+    }
+  }
+}
+

@@ -15,7 +15,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478965321,
     dateOfBirth: 20 / 10 / 1960,
     nacionality: "Usa",
-    languagesSpoken: "English",
+    languagesSpoken: ["English"],
     description:
       "I am Terri from Miami, United States, I really like to travel and I would like to change houses with you",
     });
@@ -31,7 +31,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478965322,
     dateOfBirth: 04 / 12 / 1980,
     nacionality: "Brazilian",
-    languagesSpoken: "Portuguese",
+    languagesSpoken: ["Portuguese"],
     description:
       "I am Jaqueline from Rio de Janeiro, Brazil, I really like to travel and I would like to change houses with you",
     });
@@ -47,7 +47,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478968821,
     dateOfBirth: 29 / 10 / 1969,
     nacionality: "Dutch",
-    languagesSpoken: "Dutch",
+    languagesSpoken: ["Dutch"],
     description:
       "I am Whalther from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
@@ -63,7 +63,7 @@ const getInfoUsers = async () => {
     phoneNumber: 978965321,
     dateOfBirth: 20 / 10 / 1984,
     nacionality: "Russian",
-    languagesSpoken: "Russian",
+    languagesSpoken: ["Russian"],
     description:
       "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
     });
@@ -79,7 +79,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478985321,
     dateOfBirth: 15 / 11 / 1986,
     nacionality: "Indonesian",
-    languagesSpoken: "Indonesian",
+    languagesSpoken: ["Indonesian"],
     description:
       "I am Michael from Bali, Indonesia, I really like to travel and I would like to change houses with you",
     });
@@ -95,7 +95,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478888321,
     dateOfBirth: 20 / 04 / 1989,
     nacionality: "Belgium",
-    languagesSpoken: "Dutch",
+    languagesSpoken: ["Dutch"],
     description:
       "I am Geert from Brusells, Belgium, I really like to travel and I would like to change houses with you",
     });
@@ -110,7 +110,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478965321,
     dateOfBirth: 20 / 10 / 1984,
     nacionality: "Croatian",
-    languagesSpoken: "Croatian",
+    languagesSpoken: ["Croatian"],
     description:
       "I am Ana from Zagreb, Croatia, I really like to travel and I would like to change houses with you",
     });
@@ -125,7 +125,7 @@ const getInfoUsers = async () => {
     phoneNumber: 471234321,
     dateOfBirth: 20 / 04 / 1980,
     nacionality: "Australian",
-    languagesSpoken: "English",
+    languagesSpoken: ["English"],
     description:
       "I am Ivy from Melbourne, Australia, I really like to travel and I would like to change houses with you",
     });
@@ -140,7 +140,7 @@ const getInfoUsers = async () => {
     phoneNumber: 4789653421,
     dateOfBirth: 02 / 11 / 1984,
     nacionality: "Mexican",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Paloma from Ciudad de Mexico, Mexico, I really like to travel and I would like to change houses with you",
     });
@@ -155,7 +155,7 @@ const getInfoUsers = async () => {
     phoneNumber: 98478965321,
     dateOfBirth: 20 / 10 / 1980,
     nacionality: "Usa",
-    languagesSpoken: "English",
+    languagesSpoken: ["English"],
     description:
       "I am Yeny from Miami, United States, I really like to travel and I would like to change houses with you",
     });
@@ -170,7 +170,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478525321,
     dateOfBirth: 20 / 01 / 1958,
     nacionality: "Spanish",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Alma from Madrid, Spain, I really like to travel and I would like to change houses with you",
     });
@@ -185,7 +185,7 @@ const getInfoUsers = async () => {
     phoneNumber: 4789265321,
     dateOfBirth: 17 / 09 / 1984,
     nacionality: "Spanish",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Andrea from Barcelona, Spain, I really like to travel and I would like to change houses with you",
     });
@@ -200,7 +200,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478965321,
     dateOfBirth: 30 / 04 / 1981,
     nacionality: "Italian",
-    languagesSpoken: "Italian",
+    languagesSpoken: ["Italian"],
     description:
       "I am Sonja from Milano, Italy, I really like to travel and I would like to change houses with you",
     });
@@ -215,7 +215,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478968721,
     dateOfBirth: 20 / 06 / 1983,
     nacionality: "Swiss",
-    languagesSpoken: "Romansh",
+    languagesSpoken: ["Romansh"],
     description:
       "I am Vanessa from Zurich, Switzerland, I really like to travel and I would like to change houses with you",
     });
@@ -230,7 +230,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478968721,
     dateOfBirth: 20 / 02 / 1988,
     nacionality: "Danish",
-    languagesSpoken: "Danish",
+    languagesSpoken: ["Danish"],
     description:
       "I am Lone from Copenhagen, Denmark, I really like to travel and I would like to change houses with you",
     });
@@ -245,7 +245,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478696721,
     dateOfBirth: 05 / 01 / 1985,
     nacionality: "Uruguayan",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Diego from Montevideo, Uruguay, I really like to travel and I would like to change houses with you",
     });
@@ -260,7 +260,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478968721,
     dateOfBirth: 20 / 08 / 1970,
     nacionality: "Paraguayan",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Norma from Asuncion, Paraguay, I really like to travel and I would like to change houses with you",
     });
@@ -275,7 +275,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478518721,
     dateOfBirth: 23 / 02 / 1988,
     nacionality: "Norwegian",
-    languagesSpoken: "Norwegian",
+    languagesSpoken: ["Norwegian"],
     description:
       "I am Lasee from Oslo, Norway, I really like to travel and I would like to change houses with you",
     });
@@ -290,7 +290,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478518721,
     dateOfBirth: 93 / 08 / 1986,
     nacionality: "Portuguese",
-    languagesSpoken: "Portuguese",
+    languagesSpoken: ["Portuguese"],
     description:
       "I am Joana from Lisbon, Portugal, I really like to travel and I would like to change houses with you",
     });
@@ -305,7 +305,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478518721,
     dateOfBirth: 24 / 08 / 1989,
     nacionality: "Chilean",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Paula from Santiago, Chile, I really like to travel and I would like to change houses with you",
     });
@@ -320,7 +320,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478405321,
     dateOfBirth: 21 / 11 / 1961,
     nacionality: "Spanish",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Hector from Madrid, Spain, I really like to travel and I would like to change houses with you",
     });
@@ -335,7 +335,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478965390,
     dateOfBirth: 04 / 01 / 1981,
     nacionality: "Spanish",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Bedani from Barcelona, Spain, I really like to travel and I would like to change houses with you",
     });
@@ -350,7 +350,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478966621,
     dateOfBirth: 20 / 02 / 1975,
     nacionality: "Spanish",
-    languagesSpoken: "Spanish",
+    languagesSpoken: ["Spanish"],
     description:
       "I am Jose Manuel from Valencia, Spain, I really like to travel and I would like to change houses with you",
     });
@@ -365,7 +365,7 @@ const getInfoUsers = async () => {
     phoneNumber: 978965321,
     dateOfBirth: 20 / 10 / 1984,
     nacionality: "French",
-    languagesSpoken: "French",
+    languagesSpoken: ["French"],
     description:
       "I am Ivo from Paris, France, I really like to travel and I would like to change houses with you",
     });
@@ -380,7 +380,7 @@ const getInfoUsers = async () => {
     phoneNumber: 256985321,
     dateOfBirth: 15 / 06 / 1982,
     nacionality: "Italian",
-    languagesSpoken: "Italian",
+    languagesSpoken:[ "Italian"],
     description:
       "I am Barbara from Rome, Italy, I really like to travel and I would like to change houses with you",
     });
@@ -395,7 +395,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478888321,
     dateOfBirth: 23 / 08 / 1986,
     nacionality: "Icelander",
-    languagesSpoken: "Islandic",
+    languagesSpoken: ["Islandic"],
     description:
       "I am Bjorn from Reikiavik, Iceland, I really like to travel and I would like to change houses with you",
     });
@@ -410,7 +410,7 @@ const getInfoUsers = async () => {
     phoneNumber: 478965321,
     dateOfBirth: 09 / 07 / 1983,
     nacionality: "Dutch",
-    languagesSpoken: "Dutch",
+    languagesSpoken: ["Dutch"],
     description:
       "I am Nicollas from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
@@ -425,7 +425,7 @@ const getInfoUsers = async () => {
     phoneNumber: 471234321,
     dateOfBirth: 18 / 06 / 1984,
     nacionality: "Dutch",
-    languagesSpoken: "Dutch",
+    languagesSpoken: ["Dutch"],
     description:
       "I am Ivy from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
@@ -440,7 +440,7 @@ const getInfoUsers = async () => {
     phoneNumber: 1117896532,
     dateOfBirth: 16 / 05 / 1962,
     nacionality: "Usa",
-    languagesSpoken: "English",
+    languagesSpoken: ["English"],
     description:
       "I am Susan from Miami, United States, I really like to travel and I would like to change houses with you",
     });
@@ -455,7 +455,7 @@ const getInfoUsers = async () => {
     phoneNumber: 8529653421,
     dateOfBirth: 06 / 11 / 1981,
     nacionality: "Russian",
-    languagesSpoken: "Russian",
+    languagesSpoken: ["Russian"],
     description:
       "I am Valeriia from Moscow, Russia, I really like to travel and I would like to change houses with you",
     });

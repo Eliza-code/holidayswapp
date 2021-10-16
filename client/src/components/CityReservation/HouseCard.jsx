@@ -25,6 +25,7 @@ export default function HouseCard(props) {
   const { id, title, image, country, city, points, rating } = props;
   const dispatch = useDispatch();
 
+  
   const user = useSelector((state) => state.userReducer.isAuth);
   const userLog = useSelector((state) => state.userReducer.details);
   const favourites = useSelector((state) => state.favouriteReducer.favourite);
@@ -67,7 +68,7 @@ export default function HouseCard(props) {
           component="div"
           noWrap={true}
         >
-          {title
+          {title.length && title
             .split(" ")
             .map((elem) => elem[0].toUpperCase() + elem.substr(1).toLowerCase())
             .join(" ")}
