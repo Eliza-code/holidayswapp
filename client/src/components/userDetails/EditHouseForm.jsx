@@ -1,11 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector} from "react-redux";
+import { useDispatch } from "react-redux";
 import { useFormik } from "formik";
 import Container from "@mui/material/Container";
 import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import Header from "../Header/Header";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
@@ -15,49 +14,32 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { getUserInfo, updateHouseForm } from "../../redux/actions/userActions";
+import Swal from "sweetalert2";
+import {  updateHouseForm } from "../../redux/actions/userActions";
 
-const AnnouncementUpdate = ({ house }) => {
+const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
   const dispatch = useDispatch()
-  const user = useSelector((state) => state.userReducer.details);
-
-  React.useEffect(() => {
-    dispatch(getUserInfo());
-  }, [dispatch]);
 
   const initialValues = {...house}
 
-  // const initialValues = {
-  //   title: house.title,
-  //   description: house.description,
-  //   country: house.country,
-  //   state: house.state,
-  //   city: house.city,
-  //   adress: house.adress,
-  //   type: ,
-  //   points: "",
-  //   sleeps: "",
-  //   bedrooms: "",
-  //   beds: "",
-  //   bathrooms: "",
-  //   surfaceM2: "",
-  //   smokersWelcome: false,
-  //   petsWelcome: false,
-  //   childremWelcome: false,
-  //   wifi: false,
-  //   tv: false,
-  //   washing_machine: false,
-  //   fridge: false,
-  //   a_c: false,
-  //   private_parking: false,
-  //   image: [],
-  //   rating: "",
-  //   arrivealDate: "",
-  //   departureDate: ""
-  // };
-
   const onSubmit = (values) => {
-    dispatch(updateHouseForm(values));
+    Swal.fire({
+      title: 'Are you sure?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(updateHouseForm(house.id, values));
+          Swal.fire(
+              'Your home has been updated!',
+              'success'
+          ).then(() => handleOpen(false))
+      }
+    })
+    
   };
   
 
@@ -70,7 +52,7 @@ const AnnouncementUpdate = ({ house }) => {
   return (
     <div>
       <div>
-        <Container sx={{ marginBottom: 10 }} maxWidth="sm">
+        <Container sx={{ marginBottom: 10 }} maxWidth="md">
           <CssBaseline />
           <Paper elevation={3}>
             <Box
@@ -79,19 +61,36 @@ const AnnouncementUpdate = ({ house }) => {
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                "& .MuiTextField-root": { m: 2, width: "17rem" },
+                "& .MuiTextField-root": { m: 2, width: "25rem" },
               }}
               onSubmit={formik.handleSubmit}
               autoComplete="off"
             >
-              <Typography
-                sx={{ marginTop: 5 }}
-                align="center"
-                variant="h4"
-                gutterBottom
+              <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+              }}
               >
-                Edit your home
-              </Typography>
+                <Button
+               
+                  sx={{ height: "2rem", width:"2rem", margin: 4}}
+                  variant="contained"
+                  onClick={handleClose}
+                >
+                  X
+                </Button>
+                <Typography
+                  // sx={{ marginTop: 4 }}
+                  align="center"
+                  variant="h4"
+                  gutterBottom
+                >
+                  Edit your home
+                </Typography>
+                
+              </Box>
               <TextField
                 required
                 id="title"

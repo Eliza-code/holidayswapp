@@ -7,19 +7,17 @@ import IconButton from "@mui/material/IconButton";
 import Grid from "@mui/material/Grid";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import Modal from "@mui/material/Modal";
 import Swal from "sweetalert2";
-import EditHouseForm from "./EditHouseForm";
+
 
 import { deleteAnnouncement } from "../../redux/actions/postActions"
 
-const HouseCard = ({ house }) => {
+const HouseCard = ({ house, handleOpen, handleCurrentHouse }) => {
   const dispatch = useDispatch();
 
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  React.useEffect(() => {
+    handleCurrentHouse(house);
+  }, [])
 
   const handleDelete = () => {
     Swal.fire({
@@ -33,18 +31,15 @@ const HouseCard = ({ house }) => {
         if (result.isConfirmed) {
             dispatch(deleteAnnouncement(house.id))
             Swal.fire(
-                'Your post has been deleted!',
-                'success'
-            )
+                'Your post has been deleted!'
+            ).then(() => window.location.reload())
         }
       })
   }
 
   return (
     <Box component={Paper} sx={{ height: 400, width: 300, borderRadius: 5  }} elevation={5}>
-      <Modal open={open} onClose={handleClose}>
-          <EditHouseForm house={house}/>
-      </Modal>
+          {/* { open && <EditHouseForm house={house} handleOpen={setOpen} /> } */}
       <Grid container direction="column" textAlign="center" spacing={2}>
         <Grid item xs={6}>
           <img src={house.image[0]} alt={house.title} height="150px" />

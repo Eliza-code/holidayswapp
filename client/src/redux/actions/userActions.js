@@ -170,7 +170,8 @@ export const updateHouseForm = (id, input) => {
           type: types.UPDATE_HOUSE_SUCCESS,
           payload: data
         })
-      }else {
+        window.location.reload();
+      } else {
         swal({
           title: "Try again",
           icon: "success",

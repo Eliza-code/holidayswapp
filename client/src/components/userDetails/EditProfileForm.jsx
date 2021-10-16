@@ -10,35 +10,14 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Swal from "sweetalert2";
-
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-}
+import Container from "@mui/material/Container";
+import Paper from "@mui/material/Paper";
 
 
-const EditProfileForm = ({ user, handleOpen }) => {
+const EditProfileForm = ({ user, handleOpen, handleClose }) => {
     const dispatch = useDispatch();
 
-    const initialValues = {
-      username: user.username,
-      profilePicture: user.profilePicture,
-      name: user.name,
-      lastName: user.lastName,
-      email: user.email,
-      phoneNumber: user.phoneNumber,
-      dateOfBirth: user.dateOfBirth,
-      description: user.description,
-      nacionality: user.nacionality,
-      languagesSpoken: user.languagesSpoken,
-    };
+    const initialValues = {...user};
 
     const onSubmit = (values) => {
       console.log(values)
@@ -48,14 +27,13 @@ const EditProfileForm = ({ user, handleOpen }) => {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: 'Yes!'
       }).then((result) => {
         if (result.isConfirmed) {
             dispatch(updateUserProfile(user.id, values))
             Swal.fire(
-                'Your profile has been updated!',
-                'success'
-            ).then(() => handleOpen(false))
+                'Your profile has been updated!'
+            ).then(() => handleClose())
         }
       })
 
@@ -68,20 +46,35 @@ const EditProfileForm = ({ user, handleOpen }) => {
     });
 
     return (
-        <Box style={style}>
+        <Container sx={{ marginBottom: 10 }} maxWidth="md" >
+          <Paper elevation={3}>
+
             <Box
               component="form"
               sx={{
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                bgcolor: "white",
-                "& .MuiTextField-root": { m: 2, width: "17rem" },
+                
+                "& .MuiTextField-root": { m: 2, width: "25rem" },
               }}
               autoComplete="off"
               onSubmit={formik.handleSubmit}
             >
-              <div>
+              <Box
+               sx={{
+                display: "flex",
+                flexDirection: "column",
+                width: "100%",
+              }}
+              >
+              <Button
+                sx={{ height: "2rem", width:"2rem", margin: 4}}
+                variant="contained"
+                onClick={handleClose}
+              >
+                X
+              </Button>
                 <Typography
                   sx={{ marginTop: 5 }}
                   align="center"
@@ -90,7 +83,7 @@ const EditProfileForm = ({ user, handleOpen }) => {
                 >
                   Edit your profile
                 </Typography>
-              </div>
+              </Box>
               <div>
                 <TextField
                   required
@@ -266,13 +259,15 @@ const EditProfileForm = ({ user, handleOpen }) => {
               </div>
               <Button
                 sx={{ mt: 5, mb: 10, width: "17rem", height: "3rem" }}
-                type="submit"
+                type="submit"NM
                 variant="contained"
               >
                 SAVE CHANGES
               </Button>
+              
             </Box>
-        </Box>
+            </Paper>
+        </Container>
     )
 }
 
