@@ -36,6 +36,7 @@ export default function UserDetails() {
       dispatch(getHousesByUserId(user.id));
     }
     dispatch(getUserInfo());
+    // eslint-disable-next-line
   }, [dispatch, user.id]);
 
   const handleOpenProfile = () => setOpenProfile(true);

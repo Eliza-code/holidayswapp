@@ -32,6 +32,7 @@ import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
 import PetsIcon from "@mui/icons-material/Pets";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
 import Button from "@mui/material/Button";
+import NavBar from "../NavBar/NavBar";
 
 export default function HomeID() {
   const { id } = useParams();
@@ -53,6 +54,7 @@ export default function HomeID() {
     <div>
       <div className="headerNav">
         <Header />
+        <NavBar />
       </div>
       {Object.keys(homeDetailed).length ? (
         <Grid>
@@ -86,8 +88,15 @@ export default function HomeID() {
                       </Button>
                       ) : (
                         <Box display="flex" flexDirection="column" textAlign="center">
-                          <Typography gutterBottom variant="h6"><b>To book now, please sign in!</b></Typography>
-                          <Button variant="outlined" onClick={() => history.push("/signin")}>Sign In</Button>
+                          <Typography gutterBottom variant="h6">
+                            <b>To book now, please sign in!</b>
+                          </Typography>
+                          <Button
+                            variant="outlined"
+                            onClick={() => history.push("/signin")}
+                          >
+                            Sign In
+                          </Button>
                         </Box>
                     )}
                   </Grid>

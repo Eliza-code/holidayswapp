@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import Header from "../Header/Header";
@@ -12,7 +11,6 @@ import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { postAnnouncements } from "../../redux/actions/postActions";
@@ -79,7 +77,6 @@ const AnnouncementCreation = () => {
       </div>
       <div>
         <Container sx={{ marginBottom: 10 }} maxWidth="lg">
-          {/* <CssBaseline /> */}
           <Paper elevation={3}>
             <Typography
               sx={{ marginTop: 5 }}
@@ -499,6 +496,7 @@ const AnnouncementCreation = () => {
                 <TextField
                   id="departureDate"
                   type="date"
+                  
                   inputProps={{
                     min: "2021-10-14",
                   }}

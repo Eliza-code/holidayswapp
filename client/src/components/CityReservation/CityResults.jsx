@@ -18,6 +18,7 @@ const CityResults = () => {
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
+  // eslint-disable-next-line
   const [order, setOrder] = useState("");
 
   const next_Page = () => {

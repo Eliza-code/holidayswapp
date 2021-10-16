@@ -259,7 +259,7 @@ const EditProfileForm = ({ user, handleOpen, handleClose }) => {
               </div>
               <Button
                 sx={{ mt: 5, mb: 10, width: "17rem", height: "3rem" }}
-                type="submit"NM
+                type="submit"
                 variant="contained"
               >
                 SAVE CHANGES

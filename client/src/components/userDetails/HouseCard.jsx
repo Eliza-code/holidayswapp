@@ -17,6 +17,7 @@ const HouseCard = ({ house, handleOpen, handleCurrentHouse }) => {
 
   React.useEffect(() => {
     handleCurrentHouse(house);
+    // eslint-disable-next-line
   }, [])
 
   const handleDelete = () => {
