@@ -55,8 +55,8 @@ const AnnouncementCreation = () => {
     private_parking: false,
     image: [],
     rating: "",
-    arrivealDate: "",
-    departureDate: "",
+    arrivealDate: undefined,
+    departureDate: undefined,
   };
 
   const onSubmit = (values) => {
@@ -64,6 +64,8 @@ const AnnouncementCreation = () => {
       ...values,
       owner_id: user.id,
       owner: user.username,
+      arrivealDate: value,
+      departureDate: value2,
     };
 
     dispatch(postAnnouncements(inputs));

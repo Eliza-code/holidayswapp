@@ -20,7 +20,6 @@ import {
 } from "@mui/material";
 import Select from "../FormUI/Select/index";
 import Textfield from "../FormUI/Textfield/index";
-// import DateTimePicker from "../FormUI/DataTimePicker/index";
 import * as Yup from "yup";
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -63,7 +62,7 @@ const Booking = () => {
 
   const announInfo = useSelector((state) => state.postReducer.homeInfo);
   console.log(announInfo.id, "trayendo mi id de anuncio");
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(announInfo.arrivealDate);
   const [value2, setValue2] = useState(value);
   const token = window.localStorage.getItem("user");
 
@@ -120,7 +119,8 @@ const Booking = () => {
                       name="arrivealDate"
                       label="Arrival Date"
                       value={value}
-                      minDate={new Date()}
+                      minDate={new Date(announInfo.arrivealDate)} 
+                      maxDate={new Date(announInfo.departureDate)}                                           
                       onChange={(newValue) => {
                         setValue(newValue);
                       }}
@@ -134,8 +134,9 @@ const Booking = () => {
                     <DatePicker
                       name="departureDate"
                       label="Departure Date"
-                      value={value2}
-                      minDate={value}
+                      value={value2}                      
+                      minDate={new Date(value)}
+                      maxDate={new Date(announInfo.departureDate)}
                       onChange={(newValue) => {
                         setValue2(newValue);
                       }}
