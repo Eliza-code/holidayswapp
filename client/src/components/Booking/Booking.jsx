@@ -10,10 +10,16 @@ import Button from "../FormUI/Button/index";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-import { Chip, Container, Divider, Grid, Typography, TextField } from "@mui/material";
+import {
+  Chip,
+  Container,
+  Divider,
+  Grid,
+  Typography,
+  TextField,
+} from "@mui/material";
 import Select from "../FormUI/Select/index";
 import Textfield from "../FormUI/Textfield/index";
-// import DateTimePicker from "../FormUI/DataTimePicker/index";
 import * as Yup from "yup";
 import { makeStyles } from "@mui/styles";
 import { useDispatch, useSelector } from "react-redux";
@@ -37,15 +43,15 @@ const initial_form_states = {
   type: "",
   description: "",
   status: "Pending",
-  arrivealDate: "",
-  departureDate: "",
+  arrivealDate: new Date(),
+  departureDate: new Date(),
 };
 
 const form_validation = Yup.object().shape({
   type: Yup.string().required("Required"),
   message: Yup.string(),
-  // arrivealDate: Yup.date().required("Required"),  //ver que tipo de dato le paso para que valide el de datepicker
-  // departureDate: Yup.date().required("Required"),
+  arrivealDate: Yup.date().required("Required"), //ver que tipo de dato le paso para que valide el de datepicker
+  departureDate: Yup.date().required("Required"),
 });
 
 const Booking = () => {
@@ -53,19 +59,18 @@ const Booking = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const options = ["Reciprocal", "Pay with points"];
-  
+
   const announInfo = useSelector((state) => state.postReducer.homeInfo);
   console.log(announInfo.id, "trayendo mi id de anuncio");
-  const [value, setValue] = useState(new Date());
+  const [value, setValue] = useState(announInfo.arrivealDate);
   const [value2, setValue2] = useState(value);
   const token = window.localStorage.getItem("user");
-
-  console.log(announInfo.arrivealDate);
-  console.log(announInfo.departureDate);
 
   const handleOnSubmit = (values) => {
     values.userId = id;
     values.announcementId = announInfo.id;
+    values.arrivealDate = value;
+    values.departureDate = value2;
     console.log(values);
     dispatch(postOrder(values));
     history.push("/my-bookings");
@@ -73,11 +78,11 @@ const Booking = () => {
 
   useEffect(() => {
     dispatch(getUserInfo());
-    announInfo.id && dispatch(getHouseID(announInfo.id))
+    announInfo.id && dispatch(getHouseID(announInfo.id));
   }, []);
 
   const { id } = useSelector((state) => state.userReducer.details);
-  console.log(value)
+
   return (
     <div>
       <div className="headerNav">
@@ -88,17 +93,13 @@ const Booking = () => {
         <Grid item xs={12}>
           <Typography className={classes.title}>Booking Form</Typography>
         </Grid>
-        <Divider className={classes.divider}>
-          {/* <Chip label="Booking Form" /> */}
-        </Divider>
+        <Divider className={classes.divider}></Divider>
         <div className="form_booking_container">
           <Formik
             initialValues={initial_form_states}
             validationSchema={form_validation}
             onSubmit={handleOnSubmit}
           >
-            {/* {console.log(initialValues.checked)} */}
-
             <Form>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -115,33 +116,33 @@ const Booking = () => {
                 <Grid item xs={6}>
                   <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
-                     name="arrivealDate"
+                      name="arrivealDate"
                       label="Arrival Date"
                       value={value}
-                      minDate= {new Date()}
+                      minDate={new Date(announInfo.arrivealDate)} 
+                      maxDate={new Date(announInfo.departureDate)}                                           
                       onChange={(newValue) => {
                         setValue(newValue);
                       }}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </LocalizationProvider>
-                  {/* <DateTimePicker name="arrivealDate" label="Arrival Date" /> */}
                 </Grid>
 
                 <Grid item xs={6}>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <LocalizationProvider dateAdapter={AdapterDateFns}>
                     <DatePicker
                       name="departureDate"
                       label="Departure Date"
-                      value={value2}  
-                      minDate= {value}                    
+                      value={value2}                      
+                      minDate={new Date(value)}
+                      maxDate={new Date(announInfo.departureDate)}
                       onChange={(newValue) => {
                         setValue2(newValue);
                       }}
                       renderInput={(params) => <TextField {...params} />}
                     />
                   </LocalizationProvider>
-                  {/* <DateTimePicker name="departureDate" label="Departure Date"/> */}
                 </Grid>
 
                 <Grid item xs={12}>
