@@ -3,14 +3,15 @@ import swal from "sweetalert";
 import * as types from "../types/userTypes";
 import { BASE_URL } from '../constants/urls';
 
-export const postUser = (input) => {
+export const postUser = (input) => {  
   return async (dispatch) => {
     try {
       const { request } = await axios.post(`${BASE_URL}/user`, input);
       dispatch({ type: types.POST_USER });
       if (request.status === 200)  {
-        const { username, password } = input;
+        const { username, password, email } = input;
         const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
+        //await axios.post(`${BASE_URL}/mails/confirmAuth`, { email });
         if (request.status === 200) {
           window.localStorage.setItem("user", JSON.stringify(data.token));
           window.location.href = '/';

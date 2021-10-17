@@ -7,7 +7,7 @@ require("dotenv").config();
 const { PASSWORD_EMAIL_NODEMAILER, USUARIO_EMAIL } = process.env;
 
 router.post("/confirmAuth", async (req, res) => {
-  const {userMail, subject, text} = req.body
+  const { userMail } = req.body
 
   let transporter = nodemailer.createTransport({
     host: "smtp.mail.yahoo.com",
@@ -24,8 +24,8 @@ router.post("/confirmAuth", async (req, res) => {
     let email = await transporter.sendMail({
       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
       to: userMail,
-      subject: subject,
-      text: text,
+      subject: "Creacion de usuario",
+      text: "usuario creado con exito",
       // html: "<div> si queres podes mandar html </div>",
     });
     console.log("email enviado!");
