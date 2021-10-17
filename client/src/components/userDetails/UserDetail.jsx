@@ -222,7 +222,7 @@ export default function UserDetails() {
                 <Typography variant="h5" color="text.primary">
                   <b>My places</b>
                 </Typography>
-                <Box display="flex" flexWrap="wrap" gap={5} mb={5}>
+                <Box display="flex"  flexWrap="wrap" justifyContent="center" gap={5} mb={5}>
                   {ownerHouses?.length ? (
                     ownerHouses.map((house, idx) => (
                       <HouseCard

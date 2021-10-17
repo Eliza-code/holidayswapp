@@ -32,12 +32,12 @@ export const validate = (values) => {
     }
   
     // Profile picture
-    if (
-      values.profilePicture !== "" &&
-      !/^(ftp|http|https):\/\/[^ "]+$/.test(values.profilePicture)
-    ) {
-      errors.profilePicture = "Must be an url";
-    }
+    // if (
+    //   values.profilePicture !== "" &&
+    //   !/^(ftp|http|https):\/\/[^ "]+$/.test(values.profilePicture)
+    // ) {
+    //   errors.profilePicture = "Must be an url";
+    // }
   
     // Name
     if (!values.name) {

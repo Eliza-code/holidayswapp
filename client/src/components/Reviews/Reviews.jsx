@@ -18,9 +18,9 @@ const Reviews = ({ announcementId }) => {
   console.log(announcementId)
 
   return (
-    <Grid container justifyContent="center" spacing={2}>
+    <Grid container justifyContent="center"  spacing={2}>
         {reviews.length && reviews.map((review, idx) => (
-          <Grid key={idx} item xs={2}>
+          <Grid key={idx} item xs={3}>
             <ReviewCard review={review} />
           </Grid>
       ))}
