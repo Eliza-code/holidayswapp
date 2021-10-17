@@ -76,21 +76,23 @@ const Signup = () => {
       postUser({
         ...input,
         username: input.username.trim(),
-        password: values.password.trim(),
-        name: values.name.trim(),
-        lastName: values.lastName.trim(),
-        email: values.email.trim(),
-        phoneNumber: parseInt(values.phoneNumber),
+        password: input.password.trim(),
+        name: input.name.trim(),
+        lastName: input.lastName.trim(),
+        email: input.email.trim(),
+        phoneNumber: parseInt(input.phoneNumber),
         profilePicture: image,
       })
     );
   };
 
+ 
   const formik = useFormik({
     initialValues,
     onSubmit,
     validate,
   });
+  console.log(formik.values)
 
   return (
     <div className="singup">
@@ -363,7 +365,7 @@ const Signup = () => {
                 renderInput={(params) => (
                   <TextField
                   {...params}
-                  required
+                  
                     label="Choose a language"
                     name="languagesSpoken"
                     placeholder="Choose a language"
