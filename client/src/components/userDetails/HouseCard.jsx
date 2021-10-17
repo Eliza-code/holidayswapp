@@ -42,7 +42,7 @@ const HouseCard = ({ house, handleOpen, handleCurrentHouse }) => {
     <Box component={Paper} sx={{ height: 400, width: 300, borderRadius: 5  }} elevation={5}>
       <Grid container direction="column" textAlign="center" spacing={2}>
         <Grid item xs={6} sx={{ m:2}}>
-          <img src={house.image[0]} alt={house.title} height="180px" />
+          <img src={house.image[0]} alt={house.title} style={{ height: 180, width: 200, objectFit: "cover", borderRadius: 5 }} />
         </Grid>
         <Grid item xs={8}>
           <Typography gutterBottom variant="h5">
@@ -50,9 +50,6 @@ const HouseCard = ({ house, handleOpen, handleCurrentHouse }) => {
           </Typography>
           <Typography gutterBottom variant="body1">
             <b>{house.adress}</b>
-          </Typography>
-          <Typography gutterBottom variant="body1">
-            <b>{house.description}</b>
           </Typography>
         </Grid>
         <Grid>

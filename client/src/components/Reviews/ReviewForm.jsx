@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
@@ -6,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import { createReview } from '../../redux/actions/reviewActions';
 
 const initialValues = {
   stars: 0,
@@ -14,18 +16,19 @@ const initialValues = {
 
 const validate = (values) => {
   const errors = {};
-
   if (!values.description) {
     errors.description = "Required";
-  } else if (values.description.length < 20) {
-    errors.description = "Must contain more than 20 characters";
+  } else if (values.description.length < 10) {
+    errors.description = "Must contain more than 10 characters";
   }
-
   return errors;
 };
 
 const ReviewForm = () => {
+  const dispatch = useDispatch();
+
   const handleSubmit = (values) => {
+    dispatch(createReview(values))
     console.log(values);
   };
 

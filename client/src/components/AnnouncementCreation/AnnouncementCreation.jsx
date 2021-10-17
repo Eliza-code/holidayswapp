@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
 import { useFormik } from "formik";
 import Container from "@mui/material/Container";
@@ -7,12 +9,15 @@ import Typography from "@mui/material/Typography";
 import Header from "../Header/Header";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import IconButton from "@mui/material/IconButton";
 import TextField from "@mui/material/TextField";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
+import CircularProgress from "@mui/material/CircularProgress";
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { postAnnouncements } from "../../redux/actions/postActions";
 import { getUserInfo } from "../../redux/actions/userActions";
 import NavBar from "../NavBar/NavBar";
@@ -22,6 +27,9 @@ import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
 const AnnouncementCreation = () => {
   const dispatch = useDispatch();
+  const [loading, setLoading] = React.useState(false);
+  const [images, setImages] = React.useState([]);
+
   const user = useSelector((state) => state.userReducer.details);
   const [value, setValue] = useState(new Date());
   const [value2, setValue2] = useState(value);
@@ -53,11 +61,37 @@ const AnnouncementCreation = () => {
     fridge: false,
     a_c: false,
     private_parking: false,
-    image: [],
     rating: "",
     arrivealDate: undefined,
     departureDate: undefined,
   };
+
+  const handleUpload = async (e) => {
+    try {
+      const files = e.target.files;
+      for (let img of files) {
+        const formData = new FormData();
+        formData.append("file", img);
+        formData.append("upload_preset", "holidayswapp");
+        setLoading(true);
+        const { data } = await axios.post("https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload", formData);
+        const file = data.secure_url;
+        setImages((prevState) => [...prevState, file]);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Upload failed. Please, try again",
+      });
+    }
+  }
+
+  const handleDeleteImg = (elem) => {
+    setImages((prevState) => prevState.filter((img) => img !== elem))
+  }
 
   const onSubmit = (values) => {
     const inputs = {
@@ -66,8 +100,8 @@ const AnnouncementCreation = () => {
       owner: user.username,
       arrivealDate: value,
       departureDate: value2,
+      image: images
     };
-
     dispatch(postAnnouncements(inputs));
   };
 
@@ -83,7 +117,7 @@ const AnnouncementCreation = () => {
         <NavBar />
       </div>
       <div>
-        <Container sx={{ marginBottom: 10 }} maxWidth="lg">
+        <Container sx={{ mb: 10 }} maxWidth="lg">
           <Paper elevation={3}>
             <Typography
               sx={{ marginTop: 5 }}
@@ -297,24 +331,39 @@ const AnnouncementCreation = () => {
               <Box
                 sx={{
                   display: "flex",
+                  flexDirection: "column",
                   justifyContent: "center",
                   alignItems: "center",
                   width: "60%",
                 }}
               >
-                <TextField
-                  id="image"
-                  name="image"
-                  type="text"
-                  placeholder="Insert image"
-                  onChange={(e) =>
-                    formik.setFieldValue("image", [
-                      ...formik.values.image,
-                      e.target.value,
-                    ])
-                  }
-                  fullWidth
-                />
+                <div style={{ margin: 10 }}>
+                  <input
+                    id="image"
+                    name="image"
+                    type="file"
+                    multiple
+                    accept="image/*"
+                    onChange={(e) => handleUpload(e)}
+                  />
+                </div>
+                {
+                  images.length ? (
+                    <Paper sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 1, p: 3 }} variant="outlined">
+                      {images?.map((elem, idx) => (
+                        <div key={idx}>
+                        <IconButton
+                          style={{ position: "absolute", margin: 1, borderRadius: 10 }}
+                          onClick={() => handleDeleteImg(elem)}>
+                            <HighlightOffTwoToneIcon color="primary" />
+                        </IconButton>
+                        <img src={elem} alt="Not found"  style={{ width: 150, height: 150, borderRadius: 4 }} />
+                      </div>
+                      ))}
+                    </Paper>
+                  ) : null
+                }
+                {loading && <CircularProgress />}
               </Box>
               <Box
                 sx={{

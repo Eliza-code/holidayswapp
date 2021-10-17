@@ -18,8 +18,13 @@ const ReviewCard = ({ review }) => {
   }, [dispatch, review.userId]);
 
   return (
-      <Grid component={Paper} elevation={3} sx={{ p: 2 }}>
-        <Grid container>
+      <Grid
+        container
+        justifyContent="center"
+        component={Paper}
+        elevation={3}
+        sx={{ p: 2 }}
+      >
           <Grid item>
             <Avatar sx={{ width: 100, height: 100 }} src={user.profilePicture} alt={user.username} />
           </Grid>
@@ -36,7 +41,6 @@ const ReviewCard = ({ review }) => {
                 {review.description}
               </Typography>
           </Grid>
-        </Grid>
       </Grid>
   );
 };

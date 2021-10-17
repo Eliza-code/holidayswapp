@@ -349,7 +349,7 @@ export default function HomeID() {
       ) : (
         <CircularProgress />
       )}
-      <Grid>
+      <Grid >
         <Reviews announcementId={homeDetailed.id} />
       </Grid>
       <div>

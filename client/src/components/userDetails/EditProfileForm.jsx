@@ -1,5 +1,6 @@
 import React from "react";
 import { useFormik } from "formik";
+import axios from "axios";
 import { profileForm as validate } from "./validate";
 import { nationalities, languagesSpoken } from "../SignUp/validate";
 import { useDispatch } from "react-redux";
@@ -12,15 +13,43 @@ import Typography from "@mui/material/Typography";
 import Swal from "sweetalert2";
 import Container from "@mui/material/Container";
 import Paper from "@mui/material/Paper";
+import CircularProgress from "@mui/material/CircularProgress";
+import Avatar from "@mui/material/Avatar";
 
 
-const EditProfileForm = ({ user, handleOpen, handleClose }) => {
+const EditProfileForm = ({ user,  handleClose }) => {
     const dispatch = useDispatch();
+    const [loading, setLoading] = React.useState(false);
+    const [image, setImage] = React.useState(user.profilePicture);
 
     const initialValues = {...user};
 
+    const handleUpload = async (e) => {
+      try {
+        const files = e.target.files;
+        const data = new FormData();
+        data.append("file", files[0]);
+        data.append("upload_preset", "holidayswapp");
+        setLoading(true);
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload", data);
+        setImage( response.data.secure_url );
+        setLoading(false);
+
+      }catch (e) {
+        console.error(e);
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Upload failed. Please, try again",
+        });
+      }
+    }
+
     const onSubmit = (values) => {
-      console.log(values)
+      const inputs = {
+        ...values,
+        profilePicture: image
+      }
       Swal.fire({
         title: 'Are you sure?',
         icon: 'warning',
@@ -30,7 +59,7 @@ const EditProfileForm = ({ user, handleOpen, handleClose }) => {
         confirmButtonText: 'Yes!'
       }).then((result) => {
         if (result.isConfirmed) {
-            dispatch(updateUserProfile(user.id, values))
+            dispatch(updateUserProfile(user.id, inputs))
             Swal.fire(
                 'Your profile has been updated!'
             ).then(() => handleClose())
@@ -103,18 +132,24 @@ const EditProfileForm = ({ user, handleOpen, handleClose }) => {
               </div>
 
               <div>
+                {
+                  loading ? (
+                    <CircularProgress />
+                  ) : (
+                    <Avatar src={image} sx={{ width: "5rem", height: "5rem" }} />
+                  )}
                 <TextField
                   id="profilePicture"
-                  placeholder="url"
-                  type="text"
+                  placeholder="Upload an image"
+                  type="file"
                   name="profilePicture"
-                  onChange={formik.handleChange}
-                  value={formik.values.profilePicture}
-                  onBlur={formik.handleBlur}
-                  helperText={formik.errors.profilePicture}
+                  onChange={e => handleUpload(e)}
+                  // value={image}
+                  // onBlur={formik.handleBlur}
+                  // helperText={formik.errors.profilePicture}
                 />
               </div>
-
+    
               <div>
                 <TextField
                   required
