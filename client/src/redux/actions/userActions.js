@@ -74,7 +74,7 @@ export const login = (status) => {
 }
 
 export const getUserInfo = () => {
-  console.log("entro al action")
+ 
   return async (dispatch) => {
     try {
       dispatch({ type: types.USER_AUTH_REQUEST });
