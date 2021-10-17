@@ -65,7 +65,7 @@ const AnnouncementCreation = () => {
     arrivealDate: undefined,
     departureDate: undefined,
   };
-
+    
   const handleUpload = async (e) => {
     try {
       const files = e.target.files;
