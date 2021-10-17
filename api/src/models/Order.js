@@ -19,11 +19,11 @@ module.exports = (sequelize) => {
       // defaultValue: "Pending"
     },
     arrivealDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     departureDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     type: {

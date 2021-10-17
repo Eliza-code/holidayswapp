@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { useDispatch, useSelector } from "react-redux";
@@ -21,6 +21,9 @@ import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import { postAnnouncements } from "../../redux/actions/postActions";
 import { getUserInfo } from "../../redux/actions/userActions";
 import NavBar from "../NavBar/NavBar";
+import LocalizationProvider from "@mui/lab/LocalizationProvider";
+import DatePicker from "@mui/lab/DatePicker";
+import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
 const AnnouncementCreation = () => {
   const dispatch = useDispatch();
@@ -28,6 +31,8 @@ const AnnouncementCreation = () => {
   const [images, setImages] = React.useState([]);
 
   const user = useSelector((state) => state.userReducer.details);
+  const [value, setValue] = useState(new Date());
+  const [value2, setValue2] = useState(value);
 
   React.useEffect(() => {
     dispatch(getUserInfo());
@@ -57,10 +62,10 @@ const AnnouncementCreation = () => {
     a_c: false,
     private_parking: false,
     rating: "",
-    arrivealDate: "",
-    departureDate: "",
+    arrivealDate: undefined,
+    departureDate: undefined,
   };
-
+    
   const handleUpload = async (e) => {
     try {
       const files = e.target.files;
@@ -93,6 +98,8 @@ const AnnouncementCreation = () => {
       ...values,
       owner_id: user.id,
       owner: user.username,
+      arrivealDate: value,
+      departureDate: value2,
       image: images
     };
     dispatch(postAnnouncements(inputs));
@@ -418,7 +425,7 @@ const AnnouncementCreation = () => {
                   }
                   label="Smokers Allow"
                 />
-             
+
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -446,7 +453,7 @@ const AnnouncementCreation = () => {
               <Box
                 sx={{
                   display: "flex",
-                   alignItems: "center",
+                  alignItems: "center",
                   justifyContent: "space-evenly",
                   width: "60%",
                 }}
@@ -474,8 +481,7 @@ const AnnouncementCreation = () => {
                   }
                   label="Tv"
                 />
-              
-             
+
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -499,8 +505,8 @@ const AnnouncementCreation = () => {
                   }
                   label="Fridge "
                 />
-                </Box>
-                 <Box
+              </Box>
+              <Box
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -508,7 +514,6 @@ const AnnouncementCreation = () => {
                   width: "60%",
                 }}
               >
-
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -529,31 +534,30 @@ const AnnouncementCreation = () => {
                   alignItems: "center",
                 }}
               >
-                <TextField
-                  id="arrivealDate"
-                  type="date"
-                  label="Arrival Date"
-                  name="arrivealDate"
-                  inputProps={{
-                    min: "2021-10-14",
-                  }}
-                  onChange={formik.handleChange}
-                  value={formik.values.arrivealDate}
-                  InputLabelProps={{ shrink: true }}
-                />
-                <TextField
-                  id="departureDate"
-                  type="date"
-                  
-                  inputProps={{
-                    min: "2021-10-14",
-                  }}
-                  label="Departure Date"
-                  name="departureDate"
-                  onChange={formik.handleChange}
-                  value={formik.values.departureDate}
-                  InputLabelProps={{ shrink: true }}
-                />
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    name="arrivealDate"
+                    label="Arrival Date"
+                    value={value}
+                    minDate={new Date()}
+                    onChange={(newValue) => {
+                      setValue(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
+                <LocalizationProvider dateAdapter={AdapterDateFns}>
+                  <DatePicker
+                    name="departureDate"
+                    label="Departure Date"
+                    value={value2}
+                    minDate={value}
+                    onChange={(newValue) => {
+                      setValue2(newValue);
+                    }}
+                    renderInput={(params) => <TextField {...params} />}
+                  />
+                </LocalizationProvider>
               </Box>
 
               <Box sx={{ display: "flex", justifyContent: "center" }}>
