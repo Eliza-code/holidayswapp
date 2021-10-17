@@ -14,15 +14,46 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
+import IconButton from "@mui/material/IconButton";
+import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
 import Swal from "sweetalert2";
 import {  updateHouseForm } from "../../redux/actions/userActions";
+import axios from 'axios';
 
 const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
   const dispatch = useDispatch()
 
+  const [images, setImages] = React.useState(house.image);
+  
+
   const initialValues = {...house}
 
+  const handleUpload = async (e) => {
+    try{
+      const files = e.target.files;
+      const data = new FormData();
+      for (let img of files) {
+        data.append('file', img);
+        data.append('upload_preset', 'holidayswapp');
+        const response = await axios.post("https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload", data)
+        setImages([...images, response.data.secure_url])
+        
+      }
+    } catch (err) {
+      console.log(err);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Upload failed. Please, try again",
+      });
+    }
+  }
+  const handleDeleteImg = (elem) => {
+    setImages( images.filter( img => img !== elem))
+  }
+
   const onSubmit = (values) => {
+    const input = { ...values, image: images }
     Swal.fire({
       title: 'Are you sure?',
       icon: 'warning',
@@ -32,7 +63,7 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
       confirmButtonText: 'Yes!'
     }).then((result) => {
       if (result.isConfirmed) {
-        dispatch(updateHouseForm(house.id, values));
+        dispatch(updateHouseForm(house.id, input));
           Swal.fire(
               'Your home has been updated!',
               'success'
@@ -218,14 +249,27 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
                 value={formik.values.surfaceM2}
                 fullWidth
               />
-              <TextField
+              <input
                 id="image"
                 name="image"
-                type="text"
+                type="file"
+                multiple
+                accept='image/*'
                 placeholder="Insert image"
-                onChange={(e) =>  formik.setFieldValue("image", [...formik.values.image, e.target.value])}
-                fullWidth
+                onChange={(e) => handleUpload(e)}
               />
+              <Paper sx={{ display: 'flex', flexWrap:'wrap' , alignContent:'center', p:3, gap:2}} variant='outlined'>
+                {images?.map( (elem, i)  => (
+                  <div key={i}>
+                    <IconButton
+                          style={{ position: "absolute", margin: 1, borderRadius: 10 }}
+                          onClick={() => handleDeleteImg(elem)}>
+                            <HighlightOffTwoToneIcon color="primary" />
+                        </IconButton>
+                    <img  src={elem} alt="Not found" style={{ width: 100, height: 100, borderRadius: 4 }}/>
+                  </div>
+                ))}
+              </Paper>
               <FormControl component="fieldset">
                 <FormLabel component="legend" />
                 <RadioGroup
