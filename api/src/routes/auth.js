@@ -52,4 +52,18 @@ router.get("/logout", (req, res, next) => {
   res.send("Logged out");
 });
 
+//Ruta para comprobar si un usuario es admin o no y hacer la Ruta de front privada para admin
+router.post("/admin", async (req, res, next) => {
+  let token = req.body;
+  try {
+      let email = jwt.verify(token, SECRET_KEY).email.toLowerCase();
+      let isAdmin = await User.findOne({
+          where: { email: email, isAdmin: true },
+      });
+      isAdmin ? res.json(true) : res.json(false);
+  } catch (e) {
+      return res.json({ error: e.message });
+  }
+});
+
 module.exports = router;
