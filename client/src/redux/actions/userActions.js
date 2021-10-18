@@ -7,11 +7,13 @@ export const postUser = (input) => {
   return async (dispatch) => {
     try {
       const { request } = await axios.post(`${BASE_URL}/user`, input);
+      console.log("input login:", input);
       dispatch({ type: types.POST_USER });
       if (request.status === 200)  {
         const { username, password, email } = input;
+        console.log("emailfont:" , email);
         const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
-        //await axios.post(`${BASE_URL}/mails/confirmAuth`, { email });
+        await axios.post(`${BASE_URL}/mails/confirmAuth`, { email });
         if (request.status === 200) {
           window.localStorage.setItem("user", JSON.stringify(data.token));
           window.location.href = '/';
