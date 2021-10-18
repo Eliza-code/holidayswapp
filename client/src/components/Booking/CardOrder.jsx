@@ -93,10 +93,10 @@ const CardOrder = (props) => {
         </Typography>
 
         {orders.status === "Pending" && (
-          <Alert severity="success">{orders.status}</Alert>
+          <Alert severity="info">{orders.status}</Alert>
         )}
         {orders.status === "Accepted" && (
-          <Alert severity="info">{orders.status}</Alert>
+          <Alert severity="success">{orders.status}</Alert>
         )}
         {orders.status === "Cancelled" && (
           <Alert severity="error">{orders.status}</Alert>
@@ -110,12 +110,14 @@ const CardOrder = (props) => {
           {type === "sent" && orders.status !== "Completed" && (
             <>
               <IconButton
+                color='error'
                 aria-label=""
                 onClick={() => handleOnclik("Cancelled", orders.id)}
               >
                 <CancelIcon></CancelIcon>
               </IconButton>
               <IconButton
+              color='warning'
                 aria-label=""
                 onClick={() => handleOnclik("Completed", orders.id)}
               >
@@ -127,13 +129,15 @@ const CardOrder = (props) => {
           {type === "received" && orders.status !== "Completed" && (
             <>
               <IconButton
-                aria-label=""
+                color='error'
+                aria-label=""                
                 onClick={() => handleOnclik("Cancelled", orders.id)}
               >
                 <CancelIcon></CancelIcon>
               </IconButton>
 
               <IconButton
+                color='success'
                 aria-label=""
                 onClick={() => handleOnclik("Accepted", orders.id)}
               >
