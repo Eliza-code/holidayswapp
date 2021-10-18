@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Rating from "@mui/material/Rating";
+import Typography from "@mui/material/Typography";
 import { createReview } from '../../redux/actions/reviewActions';
 
 const initialValues = {
@@ -24,14 +25,21 @@ const validate = (values) => {
   return errors;
 };
 
-const ReviewForm = () => {
+const ReviewForm = ({ userId, announcementId, handleClose }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    dispatch(createReview(values))
-    console.log(values);
+    console.log('soy handle submit review', values);
+    const review = {
+      announcementId,
+      userId,
+      stars: parseInt(values.stars),
+      description: values.description
+    }
+    dispatch(createReview(review))
+    handleClose();
   };
-
+   
   return (
     <Grid
       container
@@ -39,10 +47,10 @@ const ReviewForm = () => {
       component="main"
       sx={{ height: "50vh" }}
     >
-      <Grid item component={Paper} xs={12} sm={8} md={5} elevation={4}>
+      <Grid item component={Paper} xs={12} sm={8}  elevation={4}>
         <Box
           sx={{
-            my: 10,
+            my: 5,
             mx: 10,
             display: "flex",
             flexDirection: "column",
@@ -58,15 +66,21 @@ const ReviewForm = () => {
               values,
               handleChange,
               handleSubmit,
-              handleBlur,
-              touched,
-              errors,
+              // handleBlur,
+              // touched,
+              // errors,
               isSubmitting,
             }) => (
-              <Box component="form" onSubmit={handleSubmit}>
+             
+              <Box 
+              component="form" 
+              onSubmit={handleSubmit}
+              direction="column" textAlign="center" 
+              >
+                <Typography gutterBottom variant="h5" >Leave a review</Typography>
                 <Rating
                   name="stars"
-                  value={values.stars}
+                  value={parseInt(values.stars)}
                   onChange={handleChange}
                 />
                 <TextField
@@ -81,13 +95,13 @@ const ReviewForm = () => {
                   placeholder="Add your review"
                   value={values.description}
                   onChange={handleChange}
-                  handleBlur={handleBlur}
-                  errors={Boolean(
-                    errors.description &&
-                      touched.description &&
-                      errors.description
-                  )}
-                  helperText={errors.description}
+                  // handleBlur={handleBlur}
+                  // errors={Boolean(
+                  //   errors.description &&
+                  //     touched.description &&
+                  //     errors.description
+                  // )}
+                  // helperText={errors.description}
                 />
                 <Button
                   type="submit"
