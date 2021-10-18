@@ -18,7 +18,9 @@ import Signup from './components/SignUp/Signup';
 import SignIn from './components/SignIn/SignIn';
 import Booking from './components/Booking/Booking';
 import MyBookings from './components/Booking/MyBookings';
-import Favorite from './components/Favorite/Favorite'
+import Favorite from './components/Favorite/Favorite';
+import MercadoPago from './components/MercadoPago/MercadoPago';
+
 
 function App() {
   return (
@@ -30,6 +32,7 @@ function App() {
         <PrivateRoute exact path="/profile" component={UserDetail} />
         <PrivateRoute exact path = '/announcement' component={AnnouncementCreation} />
         <PrivateRoute exact path = '/reviews/create' component={ReviewForm} />
+        <PrivateRoute exact path="/mercadopago" component={MercadoPago}/>
         <Route exact path = '/announcements/:id' component={HouseDetail}/>
         <Route exact path = '/announcements/city/:name' component={CityResults} />
         <Route exact path="/aboutus" component={AboutUs} />

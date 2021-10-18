@@ -90,6 +90,10 @@ const AccountMenu = () => {
         <LoyaltyIcon  sx={{ mr: 1 }}/>My favorites
         </MenuItem>
         <MenuItem component={Link}
+          to="/mercadopago">
+        <BookIcon sx={{ mr: 1 }} /> Buy Points
+        </MenuItem>
+        <MenuItem component={Link}
           to="/my-bookings">
         <BookIcon sx={{ mr: 1 }} />My Bookings
         </MenuItem>
