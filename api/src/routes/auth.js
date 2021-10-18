@@ -61,8 +61,8 @@ router.post("/admin", async (req, res, next) => {
           where: { email: email, isAdmin: true },
       });
       isAdmin ? res.json(true) : res.json(false);
-  } catch (e) {
-      return res.json({ error: e.message });
+  } catch (error) {
+     console.log(error)
   }
 });
 
