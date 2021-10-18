@@ -11,11 +11,12 @@ const Reviews = ({ announcementId }) => {
   const reviews = useSelector(
     (state) => state.reviewReducer.announcementReviews
   );
+  console.log('Reviews', reviews)
 
   useEffect(() => {
     dispatch(getAnnouncementReviews(announcementId));
   }, [dispatch, announcementId]);
-  console.log(announcementId)
+  console.log('announcementid', announcementId)
 
   return (
     <Grid container justifyContent="center"  spacing={2}>
