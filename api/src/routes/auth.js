@@ -25,7 +25,7 @@ router.post("/login", (req, res, next) => {
         SECRET_KEY,
         { expiresIn: "24hr" }
       )
-      console.log(token)
+
       return res.json({id:user.id,isAdmin:user.isAdmin,isDeleted:user.isDeleted,token});
     }
   })(req, res, next);

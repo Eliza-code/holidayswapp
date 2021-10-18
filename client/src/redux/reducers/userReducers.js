@@ -5,19 +5,23 @@ const initialState =  {
    ownerDetails: {},
    isAuth: !!window.localStorage.getItem("user"),
    ownerHouses: [],
+   isAdmin: false
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type){
      
         case types.POST_USER:
-           return {
-               ...state,
-            }
-
-        case types.POST_SIGN_IN:
             return {
                 ...state,
+                
+            }
+            
+            case types.POST_SIGN_IN:
+            console.log('post sing in', action.payload)
+            return {
+                ...state,
+                isAdmin: action.payload
             }
         
         case types.SIGN_OUT_SUCCESS:

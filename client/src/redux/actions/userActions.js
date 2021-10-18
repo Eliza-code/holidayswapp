@@ -39,9 +39,11 @@ export const postSignIn = (input) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/auth/login`, input);
       if (Object.keys(data).length) {
-        dispatch({ type: types.POST_SIGN_IN });
+        dispatch({ type: types.POST_SIGN_IN, payload: data.isAdmin });
+
         window.localStorage.setItem("user", JSON.stringify(data.token))
         window.location.href = '/';
+        
       } else {
         swal({
           title: "User or password incorrect",
