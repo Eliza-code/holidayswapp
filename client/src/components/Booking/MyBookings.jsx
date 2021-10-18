@@ -168,6 +168,7 @@ const MyBookings = () => {
                       key={idKey}
                       orders={e}
                       userInfo={userInfo}
+                      type="sent"
                     ></CardOrder>
                   ))
                 : "No hay ordenes")}
@@ -178,6 +179,7 @@ const MyBookings = () => {
                       key={idKey}
                       orders={e}
                       userInfo={false}
+                      type="received"
                     ></CardOrder>
                   ))
                 : "No hay ordenes")}
