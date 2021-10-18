@@ -47,7 +47,7 @@ User.hasMany(Payment)
 Payment.belongsTo(User)
 
 Payment.hasMany(Payment_detail); 
-Points.hasMany(Payment); 
+Points.hasMany(Payment_detail); 
 Payment_detail.belongsTo(Points);
 
 User.belongsToMany(Announcement, { through: Review });

@@ -19,9 +19,7 @@ server.get("/", (req, res, next) => {
 
   //Cargamos el carrido de la bd
   const carrito = [
-    {title: "Points", quantity: 1500, price: 1},
-    {title: "Points", quantity: 1100, price: 1},
-    {title: "Points", quantity: 600, price: 1}
+    {title: "Points", quantity: 111, price: 1}
   ]
   
   const items_ml = carrito.map(i => ({
@@ -75,13 +73,13 @@ server.get("/pagos", (req, res)=>{
 
   //Aquí edito el status de mi orden
   Payment.findByPk(external_reference)
-  .then((p) => {
-    p.payment_id= payment_id
-    p.payment_status= payment_status
-    p.merchant_order_id = merchant_order_id
-    p.status = "completed"
+  .then((order) => {
+    order.payment_id= payment_id
+    order.payment_status= payment_status
+    order.merchant_order_id = merchant_order_id
+    order.status = "completed"
     console.info('Salvando order')
-    p.save()
+    order.save()
     .then((_) => {
       console.info('redirect success')
       

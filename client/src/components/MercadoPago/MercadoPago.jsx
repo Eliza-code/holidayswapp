@@ -18,15 +18,14 @@ function MercadoPago() {
 
 
   const productos = [
-    {title: "Points", quantity: 1500, price: 1},
-    {title: "Points", quantity: 1100, price: 1},
-    {title: "Points", quantity: 600, price: 1}
+    {title: "Points", quantity: 111, price: 1}
   ]
   return (
     <div className="App">
       { 
         <Checkout productos={productos} data={datos}/>
       }
+    
     </div>
   );
 }

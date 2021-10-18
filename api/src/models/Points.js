@@ -11,12 +11,12 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 1
     },
     stock: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
-      defaultValue: 0
+      defaultValue: 1000000
     },
     img:{
       type: DataTypes.TEXT,
