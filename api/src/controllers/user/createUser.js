@@ -1,4 +1,4 @@
-const { User } = require('../../db');
+const { User, Payment } = require('../../db');
 const bcrypt = require('bcrypt');
 
 module.exports = async (req,res,next) => {
@@ -13,6 +13,13 @@ module.exports = async (req,res,next) => {
             ...user,
             password: hashedPassword,
             email: user.email.toLowerCase()
+        }).then( user => {
+            Payment.create({
+                status: "created",
+                price: 0,
+                quantity: 0,
+                userId: user.dataValues.id    
+            })
         })
         return res.json(createdUser);
 
