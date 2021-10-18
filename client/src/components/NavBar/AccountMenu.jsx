@@ -12,8 +12,9 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import PostAddIcon from '@mui/icons-material/PostAdd';
 import PersonIcon from '@mui/icons-material/Person';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
-import EmailIcon from '@mui/icons-material/Email';
+// import EmailIcon from '@mui/icons-material/Email';
 import BookIcon from '@mui/icons-material/Book';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 import { signOut } from '../../redux/actions/userActions';
 import { Link } from "react-router-dom";
@@ -92,8 +93,10 @@ const AccountMenu = () => {
           to="/my-bookings">
         <BookIcon sx={{ mr: 1 }} />My Bookings
         </MenuItem>
-        <MenuItem>
-          <EmailIcon sx={{ mr: 1 }} /> My messages
+        <MenuItem component={Link}
+          to="/checkout"
+        >
+          <ShoppingCartIcon sx={{ mr: 1 }} /> Buy Points
         </MenuItem>
         <MenuItem 
           component={Link}

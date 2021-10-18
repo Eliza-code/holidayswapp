@@ -11,6 +11,7 @@ import CityResults from './components/CityReservation/CityResults';
 import UserDetail  from './components/userDetails/UserDetail'
 import AnnouncementCreation from './components/AnnouncementCreation/AnnouncementCreation';
 import ReviewForm from './components/Reviews/ReviewForm';
+import Checkout  from './components/Checkout/Checkout';
 
 // User
 import Signup from './components/SignUp/Signup';
@@ -35,6 +36,7 @@ function App() {
         <PrivateRoute exact path="/booking" component={Booking} />
         <PrivateRoute exact path="/my-bookings" component={MyBookings} />
         <PrivateRoute exact path="/my-favorites" component={Favorite} />
+        <PrivateRoute exact path="/checkout"  component={Checkout} />
       </Switch>
     </div>
   );
