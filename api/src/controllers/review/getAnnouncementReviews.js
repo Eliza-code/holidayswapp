@@ -8,7 +8,7 @@ module.exports = async (req, res) => {
           where: { announcementId: id },
           include: {
             model: User,
-            attributes: ["username"],
+            attributes: ["username", "profilePicture"],
           },
         });
         return res.status(200).json(review);
