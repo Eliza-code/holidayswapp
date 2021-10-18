@@ -8,16 +8,18 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import PostAddIcon from '@mui/icons-material/PostAdd';
-import PersonIcon from '@mui/icons-material/Person';
-import LoyaltyIcon from '@mui/icons-material/Loyalty';
-import EmailIcon from '@mui/icons-material/Email';
-import BookIcon from '@mui/icons-material/Book';
+import ExitToAppIcon from "@mui/icons-material/ExitToApp";
+import PostAddIcon from "@mui/icons-material/PostAdd";
+import PersonIcon from "@mui/icons-material/Person";
+import LoyaltyIcon from "@mui/icons-material/Loyalty";
+// import EmailIcon from '@mui/icons-material/Email';
+import BookIcon from "@mui/icons-material/Book";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
 
-import { signOut } from '../../redux/actions/userActions';
+import { signOut } from "../../redux/actions/userActions";
 import { Link } from "react-router-dom";
-import { deepPurple } from '@mui/material/colors';
+import { deepPurple } from "@mui/material/colors";
 
 const AccountMenu = () => {
   const dispatch = useDispatch();
@@ -35,16 +37,16 @@ const AccountMenu = () => {
 
   return (
     <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center" , marginRight:10  }}>
+      <Box sx={{ display: "flex", alignItems: "center", marginRight: 10 }}>
         <Tooltip title="My profile">
           <IconButton onClick={handleClick} size="small" sx={{ ml: 2 }}>
-            <Avatar  sx={{ bgcolor: deepPurple[500] , width: 30, height: 30 }} >
-             {/* { user?.username[0].toUpperCase() || null} */}
+            <Avatar sx={{ bgcolor: deepPurple[500], width: 30, height: 30 }}>
+              {/* { user?.username[0].toUpperCase() || null} */}
             </Avatar>
           </IconButton>
         </Tooltip>
       </Box>
-      <Menu 
+      <Menu
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
@@ -78,37 +80,36 @@ const AccountMenu = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem 
-          component={Link}
-          to="/profile"
-        >
-        <PersonIcon  sx={{ mr: 1 }}/>Profile
+        <MenuItem component={Link} to="/profile">
+          <PersonIcon sx={{ mr: 1 }} />
+          Profile
         </MenuItem>
-        <MenuItem component={Link}
-          to="/my-favorites">
-        <LoyaltyIcon  sx={{ mr: 1 }}/>My favorites
+        <MenuItem component={Link} to="/my-favorites">
+          <LoyaltyIcon sx={{ mr: 1 }} />
+          My favorites
         </MenuItem>
-        <MenuItem component={Link}
-          to="/my-bookings">
-        <BookIcon sx={{ mr: 1 }} />My Bookings
+        <MenuItem component={Link} to="/mercadopago">
+          <ShoppingCartIcon sx={{ mr: 1 }} /> Buy Points
         </MenuItem>
-        <MenuItem>
-          <EmailIcon sx={{ mr: 1 }} /> My messages
+        <MenuItem component={Link} to="/my-bookings">
+          <BookIcon sx={{ mr: 1 }} />
+          My Bookings
         </MenuItem>
-        <MenuItem 
-          component={Link}
-          to='/announcement'
-        >
+        <MenuItem component={Link} to="/announcement">
           <PostAddIcon sx={{ mr: 1 }} /> Post your Home
         </MenuItem>
+        <MenuItem component={Link} to="/admin">
+          <AdminPanelSettingsIcon sx={{ mr: 1 }} /> Admin Panel
+        </MenuItem>
+
         <Divider />
-        <MenuItem  onClick = {() => dispatch(signOut())}>
+        <MenuItem onClick={() => dispatch(signOut())}>
           <ListItemIcon>
             <ExitToAppIcon sx={{ mr: 1 }} />
           </ListItemIcon>
           Logout
         </MenuItem>
-      </Menu> 
+      </Menu>
     </React.Fragment>
   );
 };

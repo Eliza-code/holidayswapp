@@ -5,9 +5,9 @@ module.exports = async (req, res) => {
     console.log("-----------", userId, announcementId);
     try {
       if (userId && announcementId) {
-        await Favourite.create({ userId, announcementId });
-  
-        return res.json({ success: "Favourite added successfully" });
+       const favorite = await Favourite.create({ userId, announcementId });
+
+        return res.status(200).json(favorite);
       }
     } catch (err) {
       return res.send({ error: err.message }).status(409);
