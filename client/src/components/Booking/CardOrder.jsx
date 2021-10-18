@@ -1,15 +1,5 @@
 import { React, useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  IconButton,
-  Alert,
-  Grid,
-} from "@mui/material";
+import { Button, Card,CardActions,CardContent,CardMedia,Typography,IconButton,Alert,Grid,Dialog} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -17,10 +7,6 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { updateOrderStatus } from "../../redux/actions/bookingActions";
 import { getOwnerDetails } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { red } from "@mui/material/colors";
-
-// for reviews
-import Dialog from "@mui/material/Dialog";
 import ReviewForm from "../Reviews/ReviewForm";
 import { orderByPoints } from "../../redux/actions/postActions";
 
@@ -62,7 +48,7 @@ const CardOrder = (props) => {
     if (userInfo === false) {
       dispatch(getOwnerDetails(orders.userId));
     }
-  }, []);
+  },[orders]);
 
   // reviews
   const [open, setOpen] = useState(false);
