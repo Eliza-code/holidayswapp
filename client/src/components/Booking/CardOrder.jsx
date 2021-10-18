@@ -1,15 +1,5 @@
 import { React, useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  IconButton,
-  Alert,
-  Grid,
-} from "@mui/material";
+import { Button, Card,CardActions,CardContent,CardMedia,Typography,IconButton,Alert,Grid,Dialog} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -17,13 +7,14 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { updateOrderStatus } from "../../redux/actions/bookingActions";
 import { getOwnerDetails } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { red } from "@mui/material/colors";
-
-// for reviews
-import Dialog from "@mui/material/Dialog";
 import ReviewForm from "../Reviews/ReviewForm";
+import { orderByPoints } from "../../redux/actions/postActions";
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    alignItems: "center",
+    alignContent: "center",
+  },
   divider: {},
   buttons: {
     justifyContent: "space-around",
@@ -41,9 +32,12 @@ const CardOrder = (props) => {
   const dispatch = useDispatch();
   //  const userInf = useSelector(state => state.state)
   // console.log(props,"que props tengo")
-  const { orders, userInfo } = props;
+  const { orders, userInfo, type } = props;
   // console.log(orders,"mis ordenes")
   // console.log(props.userInfo.profilePicture,"mifoto")
+
+  // console.log(type,"tipo de card")
+
   const handleOnclik = (newStatus, orderId) => {
     const data = { newStatus, orderId };
     // console.log(data)
@@ -54,13 +48,12 @@ const CardOrder = (props) => {
     if (userInfo === false) {
       dispatch(getOwnerDetails(orders.userId));
     }
-  }, []);
+  },[orders]);
 
   // reviews
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-  
 
   const userInfo2 = useSelector((state) => state.userReducer.ownerDetails);
   console.log(userInfo2, "mi usuario real");
@@ -84,15 +77,12 @@ const CardOrder = (props) => {
         <Typography gutterBottom variant="body2" color="text.secondary">
           {orders.description}
         </Typography>
-        {/* <Typography className={classes.accepted} gutterBottom variant="h5" component="div">
-          {orders.status}
-        </Typography> */}
-        {/* <Button  className={classes.accepted}  disableElevation variant="contained">{orders.status}</Button> */}
+
         {orders.status === "Pending" && (
-          <Alert severity="success">{orders.status}</Alert>
+          <Alert severity="info">{orders.status}</Alert>
         )}
         {orders.status === "Accepted" && (
-          <Alert severity="info">{orders.status}</Alert>
+          <Alert severity="success">{orders.status}</Alert>
         )}
         {orders.status === "Cancelled" && (
           <Alert severity="error">{orders.status}</Alert>
@@ -102,41 +92,74 @@ const CardOrder = (props) => {
         )}
       </CardContent>
       <CardActions className={classes.buttons}>
-        <Grid className={classes.buttons}></Grid>
-        {/* <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button> */}
-        <IconButton
-          aria-label=""
-          onClick={() => handleOnclik("Cancelled", orders.id)}
-        >
-          <CancelIcon></CancelIcon>
-        </IconButton>
-        <IconButton
-          aria-label=""
-          onClick={() => handleOnclik("Accepted", orders.id)}
-        >
-          <CheckCircleIcon></CheckCircleIcon>
-        </IconButton>
-        <IconButton
-          aria-label=""
-          onClick={() => handleOnclik("Completed", orders.id)}
-        >
-          <ThumbUpAltIcon></ThumbUpAltIcon>
-        </IconButton>
+        <Grid className={classes.buttons}>
+          {type === "sent" &&
+            orders.status !== "Completed" &&
+            orders.status !== "Cancelled" && (
+              <>
+                <IconButton
+                  color="error"
+                  aria-label=""
+                  onClick={() => handleOnclik("Cancelled", orders.id)}
+                >
+                  <CancelIcon></CancelIcon>
+                </IconButton>
+                {orders.status === "Accepted" && (
+                  <IconButton
+                    color="warning"
+                    aria-label=""
+                    onClick={() => handleOnclik("Completed", orders.id)}
+                  >
+                    <ThumbUpAltIcon></ThumbUpAltIcon>
+                  </IconButton>
+                )}
+              </>
+            )}
+
+          {type === "received" &&
+            orders.status !== "Completed" &&
+            orders.status !== "Cancelled" && (
+              <>
+                <IconButton
+                  color="error"
+                  aria-label=""
+                  onClick={() => handleOnclik("Cancelled", orders.id)}
+                >
+                  <CancelIcon></CancelIcon>
+                </IconButton>
+
+                {orders.status !== "Accepted" && (
+                  <IconButton
+                    color="success"
+                    aria-label=""
+                    onClick={() => handleOnclik("Accepted", orders.id)}
+                  >
+                    <CheckCircleIcon></CheckCircleIcon>
+                  </IconButton>
+                )}
+              </>
+            )}
+        </Grid>
+        {orders?.status === "Completed" && (
+          <Grid container>
+            <Grid item>
+              <Button size="small" variant="contained" onClick={handleOpen}>
+                Leave a Review
+              </Button>
+            </Grid>
+
+            <Dialog open={open} onClose={handleClose}>
+              <ReviewForm
+                userId={userInfo.id}
+                handleClose={handleClose}
+                announcementId={orders.announcementId}
+              />
+            </Dialog>
+          </Grid>
+        )}
       </CardActions>
 
       {/* review form  */}
-        <div>
-      <Button variant="contained" onClick={handleOpen}>
-        Leave a Review
-      </Button>
-      <Dialog
-        open={open}
-        onClose={handleClose}
-      >
-          <ReviewForm userId={userInfo.id} handleClose={handleClose} announcementId={orders.announcementId}/>
-      </Dialog>
-      </div>
     </Card>
   );
 };

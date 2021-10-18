@@ -76,11 +76,14 @@ const MyBookings = () => {
   //   console.log(ordersToUser, "datos to user");
 
   useEffect(() => {
-    first_Page();
-    dispatch(getUserInfo());
+    first_Page();    
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-  }, [userId]);
+  },[selectedIndex]);
+
+  useEffect(()=>{
+    dispatch(getUserInfo());
+  },[])
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -168,6 +171,7 @@ const MyBookings = () => {
                       key={idKey}
                       orders={e}
                       userInfo={userInfo}
+                      type="sent"
                     ></CardOrder>
                   ))
                 : "No hay ordenes")}
@@ -178,6 +182,7 @@ const MyBookings = () => {
                       key={idKey}
                       orders={e}
                       userInfo={false}
+                      type="received"
                     ></CardOrder>
                   ))
                 : "No hay ordenes")}
