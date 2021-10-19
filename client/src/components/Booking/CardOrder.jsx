@@ -60,7 +60,7 @@ const CardOrder = (props) => {
         dispatch(getOwnerDetails(orders.userId));
       }
     };
-  }, [orders]);
+  }, [orders.userId]);
 
   // reviews
   const [open, setOpen] = useState(false);
