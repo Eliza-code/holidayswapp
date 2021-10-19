@@ -55,11 +55,11 @@ const CardOrder = (props) => {
     window.location.reload(true);
   };
   useEffect(() => {
-    return () => {
+    
       if (userInfo === false) {
         dispatch(getOwnerDetails(orders.userId));
       }
-    };
+    
   }, [orders.userId]);
 
   // reviews
