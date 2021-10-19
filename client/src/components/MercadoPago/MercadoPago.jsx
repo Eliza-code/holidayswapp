@@ -6,9 +6,9 @@ import axios from 'axios'
 function MercadoPago() {
   const [datos, setDatos] = useState("")
 
+
   useEffect(()=>{
-    axios
-    .get("http://localhost:3001/mercadopago")
+    axios.get("http://localhost:3001/mercadopago"/* {quantity: input} */)
     .then((data)=>{
       setDatos(data.data)
       console.info('Contenido de data:', data)
@@ -17,13 +17,16 @@ function MercadoPago() {
   },[])
 
 
-  const productos = [
+
+  /* const productos = [
     {title: "Points", quantity: 111, price: 1}
-  ]
+  ] */
+  // input (onChange) guardar info en estado local 
   return (
     <div className="App">
+       
       { 
-        <Checkout productos={productos} data={datos}/>
+        <Checkout /* productos={productos} */ data={datos}/>
       }
     
     </div>

@@ -14,7 +14,7 @@ mercadopago.configure({
 
 //Ruta que genera la URL de MercadoPago
 server.get("/", (req, res, next) => {
-
+  
   const id_payment= 1
 
   //Cargamos el carrido de la bd
@@ -30,7 +30,11 @@ server.get("/", (req, res, next) => {
 
   // Crea un objeto de preferencia
   let preference = {
-    items: items_ml,
+    items: [{
+      title: items_ml.title,
+      unit_price: items_ml.price,
+      quantity: items_ml.quantity,
+    }],
     external_reference : `${id_payment}`,
     payment_methods: {
       excluded_payment_types: [
@@ -61,6 +65,50 @@ server.get("/", (req, res, next) => {
   })
 }) 
 
+
+
+server.post('/', (req, res) => {
+   
+  const { quantity }  = req.body
+  console.log("req.body ", req.body)
+  /* const arreglo =  cartProducts.map ((item)  => ({ 
+         title: item.name,
+         unit_price: Number(item.price),
+         quantity: Number(item.quantity), 
+ })) */
+ 
+ console.log('arreglo que viene por body', req.body)
+ 
+   let preference = {
+     
+     items: [{
+      title: "Points",
+      unit_price: 1,
+      quantity: Number(quantity),
+     }],
+    /*  shipments:{
+       cost: shipping
+     }, */
+     back_urls: {
+      success: 'http://localhost:3000/mercadopago/',
+      failure: 'http://localhost:3000/mercadopago/',
+      pending: 'http://localhost:3000/mercadopago/',
+     },
+     auto_return: 'approved',
+     
+   };
+ 
+   mercadopago.preferences.create(preference)
+     .then(function (response) {
+       //trabajar con la respuesta de MP
+       console.log(response.body)
+       global.id = response.body.id;
+       res.send(response.body.init_point)
+     }).catch(function (error) {
+       console.log(error);
+     });
+     
+ }) 
 
 //Ruta que recibe la información del pago
 server.get("/pagos", (req, res)=>{

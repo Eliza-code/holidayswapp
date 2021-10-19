@@ -2,10 +2,10 @@ const server = require('express').Router();
 const { Payment , Payment_detail, Points, User } = require('../db');
 
 server.post('/', (req, res, next) => {
-    const { userId, orderlines, status } = req.body
+    const { userId, status, quantity } = req.body
     console.log("userId", userId)
     console.log("status", status)
-    console.log("orderlines", orderlines)
+    
 
     Payment.create({
         userId: userId,
@@ -21,7 +21,7 @@ server.post('/', (req, res, next) => {
                 return Payment_detail.create({
                     paymentId: paymentId,
                     pointId: producto.id,
-                    quantity: elem.quantity,
+                    quantity: Number(quantity),
                     price: producto.price
                 })
               })
