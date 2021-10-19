@@ -1,15 +1,11 @@
-import {
-  BottomNavigation,
+import {  
   Divider,
   Grid,
   List,
   ListItemButton,
   ListItemText,
-  Typography,
-  Pagination,
+  Typography,  
 } from "@mui/material";
-import Stack from "@mui/material/Stack";
-import { Box } from "@mui/system";
 import { React, useEffect, useState } from "react";
 import { getUserInfo } from "../../redux/actions/userActions";
 import {
@@ -75,15 +71,20 @@ const MyBookings = () => {
   // console.log( ordersToUsers,"LO NUEVO");
   //   console.log(ordersToUser, "datos to user");
 
-  useEffect(() => {
-    first_Page();    
+ 
+  useEffect(() => {    
+    return () => {   
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
+    };      
   },[selectedIndex]);
 
   useEffect(()=>{
-    dispatch(getUserInfo());
-  },[])
+    dispatch(getUserInfo()); 
+    first_Page();  
+    dispatch(getUserOrders(userId));
+    dispatch(getOrdersToUser(userId));     
+  },[userId])
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
