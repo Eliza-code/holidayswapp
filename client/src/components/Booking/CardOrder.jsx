@@ -19,7 +19,6 @@ import { updateOrderStatus } from "../../redux/actions/bookingActions";
 import { getOwnerDetails } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewForm from "../Reviews/ReviewForm";
-import { orderByPoints } from "../../redux/actions/postActions";
 
 const useStyles = makeStyles((theme) => ({
   root: {
