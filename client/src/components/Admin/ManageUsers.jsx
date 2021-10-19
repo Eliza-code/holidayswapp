@@ -113,7 +113,7 @@ const ManageUsers = ({ handleUpdate }) => {
   }));
 
   return (
-    <Container sx={{ height: 420 }}>
+    <Container sx={{ height: 420, width:850 }}>
       {allUsers.length && (
         <DataGrid rowHeight={60} rows={rows} columns={columns} pageSize={5} />
       )}
