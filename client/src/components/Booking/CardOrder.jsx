@@ -1,15 +1,5 @@
 import { React, useEffect, useState } from "react";
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Typography,
-  IconButton,
-  Alert,
-  Grid,
-} from "@mui/material";
+import { Button, Card,CardActions,CardContent,CardMedia,Typography,IconButton,Alert,Grid,Dialog} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -17,17 +7,13 @@ import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { updateOrderStatus } from "../../redux/actions/bookingActions";
 import { getOwnerDetails } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import { red } from "@mui/material/colors";
-
-// for reviews
-import Dialog from "@mui/material/Dialog";
 import ReviewForm from "../Reviews/ReviewForm";
 import { orderByPoints } from "../../redux/actions/postActions";
 
 const useStyles = makeStyles((theme) => ({
-  root:{
-    alignItems:"center",
-    alignContent:"center"
+  root: {
+    alignItems: "center",
+    alignContent: "center",
   },
   divider: {},
   buttons: {
@@ -62,7 +48,7 @@ const CardOrder = (props) => {
     if (userInfo === false) {
       dispatch(getOwnerDetails(orders.userId));
     }
-  }, []);
+  },[orders]);
 
   // reviews
   const [open, setOpen] = useState(false);
@@ -107,66 +93,73 @@ const CardOrder = (props) => {
       </CardContent>
       <CardActions className={classes.buttons}>
         <Grid className={classes.buttons}>
-          {type === "sent" && orders.status !== "Completed" && (
-            <>
-              <IconButton
-                color='error'
-                aria-label=""
-                onClick={() => handleOnclik("Cancelled", orders.id)}
-              >
-                <CancelIcon></CancelIcon>
-              </IconButton>
-              <IconButton
-              color='warning'
-                aria-label=""
-                onClick={() => handleOnclik("Completed", orders.id)}
-              >
-                <ThumbUpAltIcon></ThumbUpAltIcon>
-              </IconButton>
-            </>
-          )}
+          {type === "sent" &&
+            orders.status !== "Completed" &&
+            orders.status !== "Cancelled" && (
+              <>
+                <IconButton
+                  color="error"
+                  aria-label=""
+                  onClick={() => handleOnclik("Cancelled", orders.id)}
+                >
+                  <CancelIcon></CancelIcon>
+                </IconButton>
+                {orders.status === "Accepted" && (
+                  <IconButton
+                    color="warning"
+                    aria-label=""
+                    onClick={() => handleOnclik("Completed", orders.id)}
+                  >
+                    <ThumbUpAltIcon></ThumbUpAltIcon>
+                  </IconButton>
+                )}
+              </>
+            )}
 
-          {type === "received" && orders.status !== "Completed" && (
-            <>
-              <IconButton
-                color='error'
-                aria-label=""                
-                onClick={() => handleOnclik("Cancelled", orders.id)}
-              >
-                <CancelIcon></CancelIcon>
-              </IconButton>
+          {type === "received" &&
+            orders.status !== "Completed" &&
+            orders.status !== "Cancelled" && (
+              <>
+                <IconButton
+                  color="error"
+                  aria-label=""
+                  onClick={() => handleOnclik("Cancelled", orders.id)}
+                >
+                  <CancelIcon></CancelIcon>
+                </IconButton>
 
-              <IconButton
-                color='success'
-                aria-label=""
-                onClick={() => handleOnclik("Accepted", orders.id)}
-              >
-                <CheckCircleIcon></CheckCircleIcon>
-              </IconButton>
-            </>
-          )}
+                {orders.status !== "Accepted" && (
+                  <IconButton
+                    color="success"
+                    aria-label=""
+                    onClick={() => handleOnclik("Accepted", orders.id)}
+                  >
+                    <CheckCircleIcon></CheckCircleIcon>
+                  </IconButton>
+                )}
+              </>
+            )}
         </Grid>
         {orders?.status === "Completed" && (
-        <Grid container>
-          <Grid item >
-             <Button size="small" variant="contained" onClick={handleOpen}>
-            Leave a Review
-          </Button>
+          <Grid container>
+            <Grid item>
+              <Button size="small" variant="contained" onClick={handleOpen}>
+                Leave a Review
+              </Button>
+            </Grid>
+
+            <Dialog open={open} onClose={handleClose}>
+              <ReviewForm
+                userId={userInfo.id}
+                handleClose={handleClose}
+                announcementId={orders.announcementId}
+              />
+            </Dialog>
           </Grid>
-         
-          <Dialog open={open} onClose={handleClose}>
-            <ReviewForm
-              userId={userInfo.id}
-              handleClose={handleClose}
-              announcementId={orders.announcementId}
-            />
-          </Dialog>
-        </Grid>
-      )}
+        )}
       </CardActions>
 
       {/* review form  */}
-     
     </Card>
   );
 };

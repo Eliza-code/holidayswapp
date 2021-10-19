@@ -1,16 +1,21 @@
 import axios from "axios";
+import swal from "sweetalert";
 import * as types from "../types/favouriteTypes";
-import {
-  BASE_URL,
-} from "../constants/urls";
+import { BASE_URL } from "../constants/urls";
 
 export function addAnnouncementFavourite(input) {
-  console.log("++++++", input);
   return async function (dispatch) {
     try {
-      const { data } = await axios.post(`${BASE_URL}/favourites`, input);
-      dispatch({ type: types.POST_FAVOURITE });
-      console.log(".......",data);
+      const { data, request } = await axios.post(`${BASE_URL}/favourites`, input);
+      if (request.status === 200) {
+        dispatch({ type: types.POST_FAVOURITE });
+        dispatch(getFavouriteId(input.userId));
+      } else {
+        return data?.error && swal({
+            title: "Upsss! Something went wrong, please try again",
+            icon: "warning",
+        });
+      }
     } catch (e) {
       console.error(e);
     }
@@ -18,20 +23,20 @@ export function addAnnouncementFavourite(input) {
 }
 
 
-export function getFavourite() {
-  return async function (dispatch) {
-    try {
-      const favourite = await axios.get(`${BASE_URL}/favourites/getAllFavourites`);
-      return dispatch({
-        type: types.GET_FAVOURITE,
-        payload: favourite.data,
-      });
-    } catch (error) {
-      console.log(error);
-      alert("Favourite not found");
-    }
-  };
-}
+// export function getFavourite() {
+//   return async function (dispatch) {
+//     try {
+//       const favourite = await axios.get(`${BASE_URL}/favourites/getAllFavourites`);
+//       return dispatch({
+//         type: types.GET_FAVOURITE,
+//         payload: favourite.data,
+//       });
+//     } catch (error) {
+//       console.log(error);
+//       alert("Favourite not found");
+//     }
+//   };
+// }
 
 export function deleteFavourite(id) {
   console.log(("delId", id));
@@ -45,10 +50,10 @@ export function deleteFavourite(id) {
 export function getFavouriteId(id) {
   return async function (dispatch) {
     try {
-      const favourite = await axios.get(`${BASE_URL}/favourites/getFavourite/${id}`);
+      const { data } = await axios.get(`${BASE_URL}/favourites/getFavourite/${id}`);
       return dispatch({
         type: types.GET_FAVOURITE_ID,
-        payload: favourite.data
+        payload: data
       });
     } catch (error) {
       console.log(error);

@@ -64,6 +64,7 @@ const getInfoUsers = async () => {
     dateOfBirth: 20 / 10 / 1984,
     nacionality: "Russian",
     languagesSpoken: ["Russian"],
+    isAdmin:true,
     description:
       "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
     });

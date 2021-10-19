@@ -3,7 +3,7 @@ import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
-import { Grid } from "@mui/material";
+import Grid from "@mui/material/Grid";
 import HouseCard from "../CityReservation/HouseCard";
 import { getFavouriteId } from "../../redux/actions/favouriteActions";
 import { getUserInfo } from "../../redux/actions/userActions";
@@ -51,7 +51,7 @@ const Favorite = () => {
   };
   useEffect(() => {
     first_Page();
-  }, [favourite]);
+  }, []);
 
   const filterFavorite = favourite?.slice(currentPage, currentPage + 3);
 
@@ -60,7 +60,7 @@ const Favorite = () => {
       <Header />
       <NavBar />
       <div>
-        <h1>Favorite Home</h1>
+        <h1>Favorite Homes</h1>
         <Grid sx={{ flexGrow: 1 }} >
           <Grid item xs={12}>
             <Grid
@@ -70,12 +70,11 @@ const Favorite = () => {
               alignItems="center"
               spacing={2}
               sx={{ marginTop: 0, marginBottom: 2 }}
-            >
-              {filterFavorite ? (
-                filterFavorite?.map((e) => {
-                  return (
-                    <div>
-                      <Grid key={e.id} item>
+            > 
+              {filterFavorite.length ? (
+                filterFavorite.map((e) => (
+                    <div key={e.id}>
+                      <Grid item>
                         <HouseCard
                           key={e.announcement.id}
                           id={e.announcement.id}
@@ -88,8 +87,7 @@ const Favorite = () => {
                         />
                       </Grid>
                     </div>
-                  );
-                })
+                ))
               ) : (
                 <h1>You have not added homes to favorites yet</h1>
               )}
@@ -99,7 +97,7 @@ const Favorite = () => {
 
         <div>
           {
-            filterFavorite?.length === 0? null :
+            filterFavorite?.length === 0 ? null :
             filterFavorite?.length >= 3 ? (
             <div className="arrow">
               <button className="button" onClick={first_Page}>

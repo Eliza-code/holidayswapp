@@ -76,11 +76,14 @@ const MyBookings = () => {
   //   console.log(ordersToUser, "datos to user");
 
   useEffect(() => {
-    first_Page();
-    dispatch(getUserInfo());
+    first_Page();    
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-  }, [userId]);
+  },[selectedIndex]);
+
+  useEffect(()=>{
+    dispatch(getUserInfo());
+  },[])
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
