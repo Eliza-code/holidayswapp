@@ -1,68 +1,42 @@
-const server = require('express').Router();
-const { Payment , Payment_detail, Points, User } = require('../db');
+const { Router } = require('express');
+const express = require('express');
 
-server.post('/', (req, res, next) => {
-    const { userId, orderlines, status } = req.body
-    console.log("userId", userId)
-    console.log("status", status)
-    console.log("orderlines", orderlines)
+const createPayment = require('../controllers/payment/createPayment.js');
+const deleteOrder = require('../controllers/order/deleteOrder.js');
+const getPayments = require('../controllers/payment/getPayments.js');
+// const updateOrderStatus = require('../controllers/order/updateOrderStatus.js');
+// const getOrderById = require('../controllers/order/getOrderById.js');
+// const getUserOrders = require('../controllers/order/getUserOrders.js');
+// const getOrdersUser = require('../controllers/order/getOrdersUser.js');
 
-    Payment.create({
-        userId: userId,
-        status: status
-    })
-    .then(response => {
-        Promise.all(
-        orderlines.map(elem => {
-            Points.findByPk( elem.id)
-              .then(producto =>{
-                const paymentId = response.dataValues.id //nos da el id de payment
-                console.log("PaymentId", paymentId)    
-                return Payment_detail.create({
-                    paymentId: paymentId,
-                    pointId: producto.id,
-                    quantity: elem.quantity,
-                    price: producto.price
-                })
-              })
-                .then(secondResponse => { //nos da el arreglo creado
-                    const cant = secondResponse.dataValues.quantity
-                    const pointId = secondResponse.dataValues.pointId
-                    Points.decrement(
-                        {stock: cant},
-                        { where: { id: pointId } }
-                    )
-                    User.increment(
-                        {points: cant},
-                        { where: { id: userId } }
-                    )
-                })
-            })
-        )
-        .then( _ => res.send("OK"))
-        .catch(err => next(err))
-    })
-});
+const router = Router();
+router.use(express.json());
 
+router.post('/', createPayment);
+router.get('/getPayments', getPayments);
+// router.get('/getOrders', getOrders);
+// router.get('/getOrderById/:orderId', getOrderById);
+// router.get('/getUserOrders/:userId', getUserOrders);
+// router.get('/getOrdersUser/:userId', getOrdersUser);
 
-server.get('/detalle/:id', (req, res, next) => {
-    const id = req.params.id
+module.exports = router
 
-    Payment.findOne({
-        where: {
-          id: id,
-        },
-        include: {
-            model: Payment_detail,
-            where: { orderId: id }
-        }
-    })
-    .then(obj => {
-        res.send(obj)
-    })
-    .catch(next)
-});
+// server.get("/detalle/:id", (req, res, next) => {
+//   const id = req.params.id;
 
+//   Payment.findOne({
+//     where: {
+//       id: id,
+//     },
+//     include: {
+//       model: Payment_detail,
+//       where: { paymentId: id },
+//     },
+//   })
+//     .then((obj) => {
+//       res.send(obj);
+//     })
+//     .catch(next);
+// });
 
-
-module.exports = server;
+// module.exports = server;
