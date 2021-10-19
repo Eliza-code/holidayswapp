@@ -27,7 +27,7 @@ const NavBar = () => {
         </Button>
       </div>
       {isAuth ? (
-        <AccountMenu />
+        <AccountMenu  />
       ) : (
         <div className="Buttoms">
           <Stack direction="row" spacing={1}>
