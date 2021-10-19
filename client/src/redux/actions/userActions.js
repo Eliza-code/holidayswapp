@@ -13,7 +13,7 @@ export const postUser = (input) => {
         const { username, password, email } = input;
         console.log("emailfont:" , email);
         const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
-        await axios.post(`${BASE_URL}/mails/confirmAuth`, { email });
+        await axios.post(`${BASE_URL}/mails/confirmAuth`, {  username, email });
         if (request.status === 200) {
           window.localStorage.setItem("user", JSON.stringify(data.token));
           window.location.href = '/';
