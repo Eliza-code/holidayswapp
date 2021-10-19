@@ -1,5 +1,16 @@
 import { React, useEffect, useState } from "react";
-import { Button, Card,CardActions,CardContent,CardMedia,Typography,IconButton,Alert,Grid,Dialog} from "@mui/material";
+import {
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Typography,
+  IconButton,
+  Alert,
+  Grid,
+  Dialog,
+} from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
@@ -45,10 +56,12 @@ const CardOrder = (props) => {
     window.location.reload(true);
   };
   useEffect(() => {
-    if (userInfo === false) {
-      dispatch(getOwnerDetails(orders.userId));
-    }
-  },[orders]);
+    return () => {
+      if (userInfo === false) {
+        dispatch(getOwnerDetails(orders.userId));
+      }
+    };
+  }, [orders]);
 
   // reviews
   const [open, setOpen] = useState(false);
