@@ -16,12 +16,20 @@ const userReducer = (state = initialState, action) => {
                 ...state,
                 
             }
-            
-            case types.POST_SIGN_IN:
-            console.log('post sing in', action.payload)
+        case types.ADMIN_AUTH_SUCCESS: 
             return {
                 ...state,
                 isAdmin: action.payload
+            }
+        case types.ADMIN_AUTH_FAILED:
+            return {
+            ...state,
+            isAdmin: action.payload
+        }
+            
+            case types.POST_SIGN_IN:
+            return {
+                ...state,
             }
         
         case types.SIGN_OUT_SUCCESS:

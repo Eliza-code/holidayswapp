@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
 import Menu from "@mui/material/Menu";
@@ -26,6 +26,8 @@ const AccountMenu = () => {
   // const user = useSelector((state) => state.userReducer.details);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
+  const { isAdmin } = useSelector((state) => state.userReducer);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -98,10 +100,11 @@ const AccountMenu = () => {
         <MenuItem component={Link} to="/announcement">
           <PostAddIcon sx={{ mr: 1 }} /> Post your Home
         </MenuItem>
-        <MenuItem component={Link} to="/admin">
-          <AdminPanelSettingsIcon sx={{ mr: 1 }} /> Admin Panel
-        </MenuItem>
-
+        {isAdmin && (
+          <MenuItem component={Link} to="/admin">
+            <AdminPanelSettingsIcon sx={{ mr: 1 }} /> Admin Panel
+          </MenuItem>
+        )}
         <Divider />
         <MenuItem onClick={() => dispatch(signOut())}>
           <ListItemIcon>

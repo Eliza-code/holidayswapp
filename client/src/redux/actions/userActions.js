@@ -39,9 +39,9 @@ export const postSignIn = (input) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/auth/login`, input);
       if (Object.keys(data).length) {
-        dispatch({ type: types.POST_SIGN_IN, payload: data.isAdmin });
-
+        dispatch({ type: types.POST_SIGN_IN });
         window.localStorage.setItem("user", JSON.stringify(data.token))
+
         window.location.href = '/';
         
       } else {
@@ -74,6 +74,24 @@ export const login = (status) => {
   }
 }
 
+export const isAdmin =() => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(window.localStorage.getItem("user"))
+      if (token) {
+        const { data, request } = await axios.post(`${BASE_URL}/auth/admin`, { token });
+        return request.status === 200
+          ? dispatch({ type: types.ADMIN_AUTH_SUCCESS, payload: data })
+          : dispatch({ type: types.ADMIN_AUTH_FAILED, payload: data });
+      }
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+}
+
+
 export const getUserInfo = () => {
  
   return async (dispatch) => {
@@ -82,24 +100,18 @@ export const getUserInfo = () => {
       const TOKEN = JSON.parse(window.localStorage.getItem("user"));      
       if (TOKEN) {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
-        const response = await axios.get(`${BASE_URL}/auth/profile`, config);
-        if (response.request.status === 200) {
-          // window.localStorage.setItem("userInfo", JSON.stringify(response.data));
-          dispatch({ type: types.USER_AUTH_SUCCESS, payload: response.data });
+        const { request, data } = await axios.get(`${BASE_URL}/auth/profile`, config);
+        if (request.status === 200) {
+          dispatch({ type: types.USER_AUTH_SUCCESS, payload: data });
+          dispatch(isAdmin());
         }
       } else {
         dispatch({ type: types.USER_AUTH_FAILED });
-        // window.localStorage.removeItem("userInfo");
-        // swal({
-        //   title: "Authentication failed",
-        //   icon: "warning",
-        // });
       }
     } catch (error) {
       dispatch({ type: types.USER_AUTH_FAILED });
       console.log(error);
       window.localStorage.removeItem("user");
-      // window.localStorage.removeItem("userInfo");
       swal({
         title: "Internal error server",
         icon: "warning",

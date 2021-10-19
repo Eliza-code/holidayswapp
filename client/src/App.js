@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from './routes/PrivateRoute';
 import PublicRoute from './routes/PublicRoute';
+import AdminRoute from './routes/AdminRoute';
 
 import Home from './components/Home/Home';
 import HouseDetail from './components/HouseDetail/HouseDetail';
@@ -39,7 +40,7 @@ function App() {
         <PrivateRoute exact path="/booking" component={Booking} />
         <PrivateRoute exact path="/my-bookings" component={MyBookings} />
         <PrivateRoute exact path="/my-favorites" component={Favorite} />
-        <PrivateRoute exact path="/admin"  component={Admin} />
+        <AdminRoute exact path="/admin"  component={Admin} />
       </Switch>
     </div>
   );
