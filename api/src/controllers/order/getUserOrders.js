@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
     try {
         const orders = await Order.findAll({
             where: {userId: userId}, 
+            order:[['createdAt', 'DESC']]
         });
               
         return res.status(200).json(orders); //MANDO SOLO LAS ORDENES, BUSCO EL ID USUARIO FRONT
