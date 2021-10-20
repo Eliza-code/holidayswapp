@@ -6,7 +6,7 @@ import { BASE_URL } from "../constants/urls";
 export function getAllUsers() {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${BASE_URL}/user/getAll`);
+      const { data } = await axios.get(`/user/getAll`);
       return dispatch({
         type: types.GET_ALL_USERS,
         payload: data,
@@ -20,7 +20,7 @@ export function getAllUsers() {
 export function deleteUser(id) {
     return async function (dispatch) {
         try{
-            const { request } = await axios.delete(`${BASE_URL}/user/deleteUser/${id}`)
+            const { request } = await axios.delete(`/user/deleteUser/${id}`)
             if(request.status === 200 ){
                 dispatch({ type: types.DELETE_USER });
               } else {
@@ -38,7 +38,7 @@ export function deleteUser(id) {
 export function getAllAnnouncements() {
   return async function (dispatch) {
     try {
-      const { data } = await axios.get(`${BASE_URL}/announcement`);
+      const { data } = await axios.get(`/announcement`);
       return dispatch({
         type: types.GET_ALL_ANNOUNCEMENTS,
         payload: data,
@@ -53,7 +53,7 @@ export function getAllAnnouncements() {
 export function deleteAnnouncement(id){
     return async function (dispatch) {
       try{
-        const { request } = await axios.delete(`${BASE_URL}/announcement/deleteAnnouncement/${id}`)
+        const { request } = await axios.delete(`/announcement/deleteAnnouncement/${id}`)
         if(request.status === 200 ){
           dispatch({ type: types.DELETE_ANNOUNCEMENT });
         } else {
