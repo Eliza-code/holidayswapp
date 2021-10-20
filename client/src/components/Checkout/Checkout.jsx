@@ -4,7 +4,7 @@ import { getUserInfo } from "../../redux/actions/userActions";
 import { useSelector, useDispatch } from "react-redux";
 import s from './Checkout.module.css';
 
-export default function Checkout({ /* productos, */ data }) {
+export default function Checkout(/* { productos, data } */) {
 
   const [input, setInput] = useState({
     quantity: ""
@@ -39,38 +39,30 @@ export default function Checkout({ /* productos, */ data }) {
 
   const handleCheckout = (e) => {
     let quantity = input.quantity
-    e.preventDefault()
-    axios.post(`http://localhost:3001/mercadopago/payment`, { userId: userId, quantity })
-      .then((response) => window.location = response.data)
-      .catch((err) => console.log(err))
-
     console.log("input.quantity", input.quantity)
+
+    e.preventDefault()
+    console.log("input.quantity", input.quantity)
+    console.log("userId usuario logueado", userId)
    
-    axios.post(`http://localhost:3001/mercadopago`, { quantity })
+    axios.post(`http://localhost:3001/mercadopago`, { quantity, userId: userId })
       .then((response) => window.location = response.data)
       .catch((err) => console.log(err))
   }
 
   const handleChangeQuantity = e => {
-    /* const { value } = e.target; */
     setInput({ [e.target.name]: e.target.value });
-    /*  dispatch(changeQuantity(product, e.target.value, userId)); */
   };
 
-  const handleSubmit = e => {
-    const { value } = e.target;
-
-    /*  dispatch(changeQuantity(product, e.target.value, userId)); */
-  };
   return (
     <div>
 
-      <form id='form1' onSubmit={handleSubmit}>
+      {/* <form id='form1' onSubmit={handleSubmit}>
 
         <h4>Checkout</h4>
         <div className={s.gridContainer} >
 
-          {/* productos.map((producto, i) => {
+          productos.map((producto, i) => {
             return(
                 <div className={s.products} key={i}>
                   <ul className={s.ul} >
@@ -80,10 +72,11 @@ export default function Checkout({ /* productos, */ data }) {
                   </ul>
                 </div>   
             )
-          }) */}
+          })
 
-        </div>
-      </form>
+          </div>
+      </form> */}
+
       <form onSubmit={handleCheckout}>
 
         <input type="number" onChange={handleChangeQuantity} value={input.quantity} name="quantity" />

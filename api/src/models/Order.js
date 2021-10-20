@@ -18,6 +18,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       // defaultValue: "Pending"
     },
+    pointsOrder: {
+      type: DataTypes.BIGINT,
+      // defaultValue: 0
+    },
     arrivealDate: {
       type: DataTypes.STRING,
       allowNull: false

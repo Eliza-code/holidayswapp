@@ -23,6 +23,7 @@ const { getInfoAnnoun } = require("./src/utils/Announcements/preload/announcemen
 const { getInfoUsers } = require("./src/utils/Users/users.data")
 const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
 const { getInfoOrders } = require("./src/utils/Orders/orders.data")
+const { getInfoPoints } = require("./src/utils/Points/pointsData")
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async() => {
@@ -32,5 +33,6 @@ conn.sync({ force: true }).then(async() => {
     await getInfoAnnoun();
     await getInfoReviews();
     await getInfoOrders();
+    await getInfoPoints();
   });
 });
