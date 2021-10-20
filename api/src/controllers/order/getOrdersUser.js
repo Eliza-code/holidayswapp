@@ -43,7 +43,7 @@ module.exports = async (req, res) => {
       },
     });
 
-    console.log(orders)
+    // console.log(orders)
     // const data = []                //ESTO ES LO QUE INTENTE HACER PARA TRAERME EL USUARIO DESDE BACK
     // orders.map(async(elem) =>{
 
