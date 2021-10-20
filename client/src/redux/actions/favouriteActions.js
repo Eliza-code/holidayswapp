@@ -39,11 +39,11 @@ export function addAnnouncementFavourite(input) {
 // }
 
 export function deleteFavourite(id) {
-  console.log(("delId", id));
+  //console.log(("delId", id));
   return async function (dispatch) {
     await axios.delete(`/favourites/deleteFavourite/${id}`);
     dispatch({ type: types.DELETE_FAVOURITE, payload: id });
-    console.log("Este es el id del actionfavouriteDelete: ",id)
+    //console.log("Este es el id del actionfavouriteDelete: ",id)
   };
 }
 

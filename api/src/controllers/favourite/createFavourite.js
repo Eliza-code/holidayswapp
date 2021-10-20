@@ -2,7 +2,7 @@ const { Favourite } = require('../../db');
 
 module.exports = async (req, res) => {
     let { userId, announcementId } = req.body;
-    console.log("-----------", userId, announcementId);
+    //console.log("-----------", userId, announcementId);
     try {
       if (userId && announcementId) {
        const favorite = await Favourite.create({ userId, announcementId });

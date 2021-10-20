@@ -61,7 +61,7 @@ const Booking = () => {
   const options = ["Reciprocal", "Pay with points"];
 
   const announInfo = useSelector((state) => state.postReducer.homeInfo);
-  console.log(announInfo.id, "trayendo mi id de anuncio");
+  //console.log(announInfo.id, "trayendo mi id de anuncio");
   const [value, setValue] = useState(announInfo.arrivealDate);
   const [value2, setValue2] = useState(value);
   const token = window.localStorage.getItem("user");
@@ -71,7 +71,7 @@ const Booking = () => {
     values.announcementId = announInfo.id;
     values.arrivealDate = value;
     values.departureDate = value2;
-    console.log(values);
+    //console.log(values);
     dispatch(postOrder(values));
     history.push("/my-bookings");
   };

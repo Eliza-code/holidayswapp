@@ -4,14 +4,17 @@ import * as types from "../types/userTypes";
 
 
 
-export const postUser = (input) => {
+export const postUser = (input) => {  
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`/user`, input);
+      const { request } = await axios.post(`/user`, input);
+      //console.log("input login:", input);
       dispatch({ type: types.POST_USER });
-      if (data)  {
-        const { username, password } = input;
+      if (request.status === 200)  {
+        const { username, password, email } = input;
+        //console.log("emailfont:" , email);
         const { data, request } = await axios.post(`/auth/login`, { username, password });
+        await axios.post(`/mails/confirmAuth`, {  username, email });
         if (request.status === 200) {
           window.localStorage.setItem("user", JSON.stringify(data.token));
           window.location.href = '/';

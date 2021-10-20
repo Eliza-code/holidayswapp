@@ -92,7 +92,7 @@ const Signup = () => {
     onSubmit,
     validate,
   });
-  console.log(formik.values)
+  //console.log(formik.values)
 
   return (
     <div className="singup">

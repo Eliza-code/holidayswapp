@@ -1,8 +1,4 @@
 import * as types from '../types/bookingTypes';
-import {
-    BASE_URL,
-    ORDERS_GET_BY_ID_URL,
-  } from "../constants/urls";
 import axios from 'axios';
 
 export function getUserOrders(input) {
@@ -35,10 +31,12 @@ export function getOrdersToUser (input) {
 }
 
 export function postOrder(order) {
+  //console.log("order--:", order);
     return async function (dispatch) {
         try {
           const dato = await axios.post(`/order/addOrder`, order);
-          console.log(dato)
+          await axios.post(`/mails/reservationconfirmed`, order);
+          //console.log(dato)
           dispatch({
             type: types.POST_ORDER,
             payload: dato,

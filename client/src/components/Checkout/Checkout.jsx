@@ -18,11 +18,11 @@ export default function Checkout(/* { productos, data } */) {
 
   const handleCheckout = (e) => {
     let quantity = input.quantity
-    console.log("input.quantity", input.quantity)
+    //console.log("input.quantity", input.quantity)
 
     e.preventDefault()
-    console.log("input.quantity", input.quantity)
-    console.log("userId usuario logueado", userId)
+    //console.log("input.quantity", input.quantity)
+    //console.log("userId usuario logueado", userId)
    
     axios.post(`http://localhost:3001/mercadopago`, { quantity, userId: userId })
       .then((response) => window.location = response.data)
