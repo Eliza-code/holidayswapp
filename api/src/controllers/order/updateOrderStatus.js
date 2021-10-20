@@ -28,8 +28,7 @@ module.exports = async (req, res) => {
         include: [User]
       })
       
-      // console.log("------------estoy en el back ORDEr: ", order.user.email);
-      // console.log("status en el back: ", newStatus);
+      
 
 
       // transporter.sendMail({
