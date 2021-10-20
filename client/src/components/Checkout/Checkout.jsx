@@ -20,6 +20,7 @@ export default function Checkout(/* { productos, data } */) {
   }, [dispatch]);
 
   const handleCheckout = (e) => {
+<<<<<<< HEAD
     let quantity = input.quantity;
     console.log("input.quantity", input.quantity);
 
@@ -32,6 +33,19 @@ export default function Checkout(/* { productos, data } */) {
       .then((response) => (window.location = response.data))
       .catch((err) => console.log(err));
   };
+=======
+    let quantity = input.quantity
+    //console.log("input.quantity", input.quantity)
+
+    e.preventDefault()
+    //console.log("input.quantity", input.quantity)
+    //console.log("userId usuario logueado", userId)
+   
+    axios.post(`http://localhost:3001/mercadopago`, { quantity, userId: userId })
+      .then((response) => window.location = response.data)
+      .catch((err) => console.log(err))
+  }
+>>>>>>> eef3f53f737b7ff298fec8d9da4cf42e71d8eb38
 
   const handleChangeQuantity = (e) => {
     setInput({ [e.target.name]: e.target.value });

@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 module.exports = async (req, res, next) => {
   const { name } = req.query;
-  console.log(name);
+  //console.log(name);
   if (name) {
       try {
       const announcementLocation = await Announcement.findAll({

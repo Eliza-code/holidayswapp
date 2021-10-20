@@ -18,7 +18,7 @@ const Home = () => {
 
   const user = useSelector((state) => state.userReducer.details);
   const { isAdmin } = useSelector((state) => state.userReducer)
-  console.log('is admin', isAdmin);
+  //console.log('is admin', isAdmin);
 
   React.useEffect(() => {
     dispatch(getUserInfo());

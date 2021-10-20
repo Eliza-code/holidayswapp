@@ -32,7 +32,7 @@ passport.use(
       async (username, password, done) => {
         
         const user = await User.findOne({where:{ username: username }})
-        console.log(user);
+        //console.log(user);
         if (!user) return done(null, false);
         if (!user.password===password) { return done(null, false); }
         return done(null, user);      

@@ -3,7 +3,7 @@ const { Order } = require("../../db");
 const getInfoOrders = async () => {
   try {
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 1,
       announcementId: 2,
       type: "Reciprocal",
@@ -12,7 +12,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 3,
       announcementId: 4,
       type: "Reciprocal",
@@ -21,7 +21,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 5,
       announcementId: 6,
       type: "Reciprocal",
@@ -30,7 +30,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 7,
       announcementId: 8,
       type: "Reciprocal",
@@ -39,7 +39,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 9,
       announcementId: 10,
       type: "Reciprocal",
@@ -49,7 +49,7 @@ const getInfoOrders = async () => {
     });
 
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 11,
       announcementId: 12,
       type: "Reciprocal",
@@ -58,7 +58,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 13,
       announcementId: 14,
       type: "Reciprocal",
@@ -67,7 +67,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 15,
       announcementId: 16,
       type: "Reciprocal",
@@ -76,7 +76,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 17,
       announcementId: 18,
       type: "Reciprocal",
@@ -85,7 +85,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 19,
       announcementId: 20,
       type: "Reciprocal",
@@ -94,7 +94,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 21,
       announcementId: 22,
       type: "Reciprocal",
@@ -103,7 +103,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 23,
       announcementId: 24,
       type: "Reciprocal",
@@ -112,7 +112,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 25,
       announcementId: 26,
       type: "Reciprocal",
@@ -121,7 +121,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 27,
       announcementId: 28,
       type: "Reciprocal",
@@ -130,7 +130,7 @@ const getInfoOrders = async () => {
       description: "Beautifull and classic Department",
     });
     await Order.create({
-      status: "Pending",
+      status: "Completed",
       userId: 29,
       announcementId: 30,
       type: "Reciprocal",
