@@ -87,14 +87,15 @@ router.post("/setAdmin", async (req, res, next) => {
       });
       if (userData) {
         userData.isAdmin = !userData.isAdmin;
+        await userData.save({ fields: ["isAdmin"] });
         return res.status(200).json(userData);
       }
-      return res.send("Cannot find user data with the id provided");
+      return res.status(400).send("Cannot find user data with the id provided");
     } else {
-      return res.send("You must be logged as Admin to do this action");
+      return res.status(400).send("You must be logged as Admin to do this action");
     }
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 

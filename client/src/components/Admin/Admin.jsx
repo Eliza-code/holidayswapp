@@ -13,12 +13,13 @@ const Admin = () => {
   const dispatch = useDispatch();
   const [active, setActive] = React.useState(false);
   const [currentId, setCurrentId] = React.useState(null);
+  const { adminChangeStatus } = useSelector((state) => state.adminReducer);
 
   React.useEffect(() => {
     dispatch(getUserInfo());
     dispatch(actions.getAllUsers());
     dispatch(actions.getAllAnnouncements());
-  }, [dispatch, currentId]);
+  }, [dispatch, currentId, adminChangeStatus]);
 
   const handleActive = () => {
     setActive(!active);
@@ -38,7 +39,11 @@ const Admin = () => {
         </Button>
       </Grid>
       <Grid item sx={{ height: 300 }}>
-        {active ? <ManageAnnouncements handleUpdate={setCurrentId} /> : <ManageUsers handleUpdate={setCurrentId} />}
+        {active ? (
+          <ManageAnnouncements handleUpdate={setCurrentId} />
+        ) : (
+          <ManageUsers handleUpdate={setCurrentId} />
+        )}
       </Grid>
     </Grid>
   );

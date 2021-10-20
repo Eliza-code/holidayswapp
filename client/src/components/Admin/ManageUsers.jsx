@@ -35,11 +35,17 @@ const ManageUsers = ({ handleUpdate }) => {
   const handleChangeStatus = (e, params) => {
     e.stopPropagation();
     const { id, isAdmin } = params.row;
-    if (isAdmin) {
-      // dispatch()
-    } else {
-      // dispatch()
-    }
+    Swal.fire({
+      title: "Do you want to change status of this user?",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        dispatch(actions.setNewAdmin(id));
+        handleUpdate(id);
+      }
+    });
   };
 
   const columns = [
