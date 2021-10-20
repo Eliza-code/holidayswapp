@@ -26,31 +26,36 @@ router.post("/confirmAuth", async (req, res) => {
     let sendEmail = await transporter.sendMail({
       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
       to: email,
-      subject: "User Creation 007",
+      subject: "User Creation",
       //text: "Welcome, the user has been created successfully!",
       html: `<div>
       <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
-		<tr>
-			<td style="padding: 0">
-				<img style="padding: 0; display: block"
-					src='https://lh3.googleusercontent.com/qdKEZVC8QOewlgkLYaGSdfueSvMROpW0-zmwoNMWPtPk0Wfnryov9_tm6_zPn092VxTMR14Y2TPf9ElXfmBKU9R_TDUSd5eWmylzCOmKZdrdKLcGmtNCCsh5mVFIaQD2hZvHQdbulCjulKFDqKj2PAkN451q3ALxorf01w-JKiZC_DN0T2T0mjT8SB9rBJ-6wUTeThfczxb2_GhpRE4XrXDNmge5KCSgdGwScgyMe8jAWe9QX2n7zXGoT03SSHTcQlxiST9RjcUGmTibfzxgbBVpI9XsoF6ORPwLlELWqVgIeEUtCaNz-qSw92Chcy20UC5yb9bnVmVLRfopgTPeHikDiZTFdzaFPS69thTJhEAb6kdGkhbKX_ZOQ6-bfG-uTXdTwZ2CsN1qtpiLVemf7rO0R3qOJxx49cc3tf8APPPdbFmHPGvWu2O3pZ3J1WOrsy1ZXEHRPEdc49L0QLPAa8GaU8LGoLRzLyhr5AmiFyu4zYOSCuiptLex1hLSgodAj3XFk3daQsalJV8Qop25LunQ3gfGH8N3L4WoPKNc5DemPgLT0qoWzvgXLFxCmk0nbcLb-2cWGcLsAqMwKFyVV63cgNcxiRwxwBGbGy615DSVfvCDl_fSyqz3qCaS2yr9d9RKwno3o4IuCRplK5Ku4LLfr7nWZNH9tvwm4GZDyEr9tI4ptraZUqIMrlE7yy_ofGynQICYbYhESRPvYGtVM_fT=w1280-h226-no?authuser=0'
-					width="100%">
-			</td>
-		</tr>
-		<tr>
-			<td style="background-color: #ecf0f1">
-				<div style="color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
-					<h2 style="color: #e67e22; margin: 0 0 7px">Hi ${username}!</h2>
-					<p style="margin: 2px; font-size: 15px">
-						We are the largest home exchange community in the world.
-						We send you this email as a thank you for joining our team ... enjoy it !!</p>
-					<div style="width: 100%;margin:10px 0; display: inline-block;text-align: center">
-						<img style="padding: 0; width: 100%; margin: 0px"
-							src='https://lh3.googleusercontent.com/pNexJ0trT2PBJS75D0SiHkZyFdc476gixrdPQFWj4CIz_-zeFeq_16VlLM2_IdJ8F_ToaSWQ0bfVWLPLFbKapxg9mQEGowP4rZ20_XDTVMwVbqHf9vO4Su7Jy2VL-KCUtcuV7F7ql3tiW7lfELy-gPDHFT5IrUwQsgIhEfEpXrd4dCVYVG0LNAvcTZ_0R3FBsEBuuyP6z3nWLZTPF-Vv1RI2SLcKkRmXg0Qi3jxfHJpC1qq-AKFB41nmGn2U-jR30oIOr__CssD64YsNJUFKGE5weRKsiOXYkyak3lekXUvD5im5BdEEX3O8IGBJWDGUhbFZH7PsIHpW4LBkP3GKJrpg1NuZizatHN6Mi8KKQSYFVmppOY4nJglk-fvSCLwObGSCZHItmGO4L6WN-OvrpqGTM96NTX_O5uRQj1E6XKm-ix0e7uvBlPYhwZaN_T3zZILj6JnsmwsmcU2HpGjHzVzc4GZalBWD-GpePawiOQu2r5D0hfNiu9wgVb52gaNe9sauZq9OhcbsyrtG3L6Q2v1luqufbXqXgc1Kbjs1Fj0HM_lwZfFD7WWZHXseS3Y5hFMFpdywpO44QjgFHDGdp1ItIWrybk3oNlG_PeAcERPT1qsj8QJokL2Sv9YUIu6xU4rbL-rLbqmxcMhhjd0pN0bfOWIRe_qVUTTZgt8kK1KgCcStsO8bEQxdus4Oh9AfQnYPZXMcg2kfYuHJ9d9tdW_a=w1280-h92-no?authuser=0'>
-					</div>
-			</td>
-		</tr>
-	</table>
+      <tr>
+        <td style="padding: 0">
+          <a href='https://www.google.com.ar '>
+            <img style="padding: 0; display: block"
+            src='https://scontent.fsfn4-1.fna.fbcdn.net/v/t1.6435-9/245173308_10223868478132527_3967212138842875001_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0debeb&_nc_ohc=t1bvGe2HAnIAX8IYz7K&_nc_ht=scontent.fsfn4-1.fna&oh=c13476a3994bd48877c7e4617adf7420&oe=6192EB53'
+            width="100%">
+          </a>
+          </td>
+      </tr>
+      <tr>
+        <td style="background-color: #ecf0f1">
+          <div style="color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
+            <h2 style="color: #e67e22; margin: 0 0 7px">Hi ${username}!</h2>
+            <p style="margin: 2px; font-size: 15px">
+              We are the largest home exchange community in the world.
+              We send you this email as a thank you for joining our team ... enjoy it !!</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 0">
+              <img style="padding: 0; display: block"
+              src='https://scontent.fsfn4-1.fna.fbcdn.net/v/t1.6435-9/245162659_10223868478052525_7443222450681142250_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=0debeb&_nc_ohc=YAnef74H8zoAX9DESjk&_nc_ht=scontent.fsfn4-1.fna&oh=5bd680a88565b66f724a5e5f6163be37&oe=61964D27'
+              width="100%">
+            </td>
+          </tr>
+        </table>
       </div>`,
     });
     console.log("email enviado!");
@@ -62,7 +67,7 @@ router.post("/confirmAuth", async (req, res) => {
 });
 
 router.post("/reservationconfirmed", async (req, res) => {
-  const { userMail, subject, text } = req.body;
+  const { userId } = req.body;
 
   let transporter = nodemailer.createTransport({
     host: "smtp.mail.yahoo.com",
@@ -148,7 +153,7 @@ router.post("/reviewemail", async (req, res) => {
   }
 });
 
-module.exports = router;
+module.exports = router
 
 // let transporter = nodemailer.createTransport({
 //   host: "smtp.mail.yahoo.com",

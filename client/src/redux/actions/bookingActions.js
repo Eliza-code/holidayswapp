@@ -35,9 +35,11 @@ export function getOrdersToUser (input) {
 }
 
 export function postOrder(order) {
+  console.log("order--:", order);
     return async function (dispatch) {
         try {
           const dato = await axios.post(`${BASE_URL}/order/addOrder`, order);
+          //await axios.post(`${BASE_URL}/mails/reservationconfirmed`, order);
           console.log(dato)
           dispatch({
             type: types.POST_ORDER,
