@@ -68,7 +68,7 @@ const CardOrder = (props) => {
   const handleClose = () => setOpen(false);
 
   const userInfo2 = useSelector((state) => state.userReducer.ownerDetails);
-  console.log(userInfo2, "mi usuario real");
+  //console.log(userInfo2, "mi usuario real");
 
   return (
     <Card className={classes.cards} sx={{ maxWidth: 200 }}>

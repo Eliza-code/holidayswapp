@@ -80,7 +80,7 @@ export function orderByRating(payload) {
   };
 }
 export function filterBySleeps(payload) {
-  console.log(payload);
+  //console.log(payload);
   return {
     type: types.FILTER_BY_SLEEPS,
     payload,

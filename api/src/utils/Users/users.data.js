@@ -5,7 +5,6 @@ const getInfoUsers = async () => {
   const hashedPassword = await bcrypt.hash("Password123", 12);
   try {
     await User.create({
-<<<<<<< HEAD
     username: "TERRI",
     profilePicture:
       "https://image.freepik.com/foto-gratis/alegre-mujer-mediana-edad-cabello-rizado_1262-20859.jpg",
@@ -19,21 +18,6 @@ const getInfoUsers = async () => {
     languagesSpoken: ["English"],
     description:
       "I am Terri from Miami, United States, I really like to travel and I would like to change houses with you",
-=======
-      username: "TERRI",
-      profilePicture:
-        "https://image.freepik.com/foto-gratis/alegre-mujer-mediana-edad-cabello-rizado_1262-20859.jpg",
-      name: "Terri",
-      lastName: "Shiavo",
-      email: "terrishiavo@gmail.com",
-      password: hashedPassword,
-      phoneNumber: 478965321,
-      dateOfBirth: 20 / 10 / 1960,
-      nacionality: "Usa",
-      languagesSpoken: ["English"],
-      description:
-        "I am Terri from Miami, United States, I really like to travel and I would like to change houses with you",
->>>>>>> dc99f8f1eead091152c7b1a19e189d6a186b4ec5
     });
     await User.create({
       //2
@@ -68,7 +52,6 @@ const getInfoUsers = async () => {
         "I am Whalther from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-<<<<<<< HEAD
     //4
     username: "NADINA",
     profilePicture:
@@ -84,23 +67,6 @@ const getInfoUsers = async () => {
     isAdmin:true,
     description:
       "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
-=======
-      //4
-      username: "NADINA",
-      profilePicture:
-        "https://image.freepik.com/foto-gratis/mujer-celebrando-ser-ganador_155003-38247.jpg",
-      name: "Nadina",
-      lastName: "Shiapov",
-      email: "nadishiapov@gmail.com",
-      password: hashedPassword,
-      phoneNumber: 978965321,
-      dateOfBirth: 20 / 10 / 1984,
-      nacionality: "Russian",
-      languagesSpoken: ["Russian"],
-      isAdmin: true,
-      description:
-        "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
->>>>>>> dc99f8f1eead091152c7b1a19e189d6a186b4ec5
     });
     await User.create({
       //5
