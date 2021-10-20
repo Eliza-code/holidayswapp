@@ -16,7 +16,6 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import { updateOrderStatus } from "../../redux/actions/bookingActions";
-import { getOwnerDetails } from "../../redux/actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewForm from "../Reviews/ReviewForm";
 
@@ -40,27 +39,16 @@ const useStyles = makeStyles((theme) => ({
 const CardOrder = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  //  const userInf = useSelector(state => state.state)
-  // console.log(props,"que props tengo")
   const { orders, userInfo, type } = props;
-  // console.log(orders,"mis ordenes")
-  // console.log(props.userInfo.profilePicture,"mifoto")
-
-  // console.log(type,"tipo de card")
 
   const handleOnclik = (newStatus, orderId) => {
     const data = { newStatus, orderId };
-    // console.log(data)
     dispatch(updateOrderStatus(data));
-    window.location.reload(true);
   };
+  
   useEffect(() => {
-    return () => {
-      if (userInfo === false) {
-        dispatch(getOwnerDetails(orders.userId));
-      }
-    };
-  }, [orders.userId]);
+    
+  }, [dispatch]);
 
   // reviews
   const [open, setOpen] = useState(false);
@@ -170,8 +158,6 @@ const CardOrder = (props) => {
           </Grid>
         )}
       </CardActions>
-
-      {/* review form  */}
     </Card>
   );
 };
