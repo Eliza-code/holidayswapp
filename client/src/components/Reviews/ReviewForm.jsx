@@ -29,7 +29,7 @@ const ReviewForm = ({ userId, announcementId, handleClose }) => {
   const dispatch = useDispatch();
 
   const handleSubmit = (values) => {
-    console.log('soy handle submit review', values);
+    //console.log('soy handle submit review', values);
     const review = {
       announcementId,
       userId,

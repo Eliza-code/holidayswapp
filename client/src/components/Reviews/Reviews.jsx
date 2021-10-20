@@ -16,7 +16,7 @@ const Reviews = ({ announcementId }) => {
   useEffect(() => {
     dispatch(getAnnouncementReviews(announcementId));
   }, [dispatch, announcementId]);
-  console.log('announcementid', announcementId)
+  //console.log('announcementid', announcementId)
 
   return (
     <Grid container justifyContent="center"  spacing={2}>
