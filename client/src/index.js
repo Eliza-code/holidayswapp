@@ -8,8 +8,11 @@ import {BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
 import dotenv from "dotenv";
 dotenv.config();
+const {
+  REACT_APP_API,
+} = process.env;
 
-axios.defaults.baseURL = "https://holidayswapp.herokuapp.com" || "http://localhost:3001";
+axios.defaults.baseURL = REACT_APP_API || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>
