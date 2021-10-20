@@ -17,14 +17,13 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require("./src/app.js");
-const { conn } = require("./src/db.js");
-const {
-  getInfoAnnoun,
-} = require("./src/utils/Announcements/preload/announcements.preload");
-const { getInfoUsers } = require("./src/utils/Users/users.data");
-const { getInfoReviews } = require("./src/utils/Reviews/reviews.data");
-const { getInfoOrders } = require("./src/utils/Orders/orders.data");
+const server = require('./src/app.js');
+const { conn } = require('./src/db.js');
+const { getInfoAnnoun } = require("./src/utils/Announcements/preload/announcements.preload")
+const { getInfoUsers } = require("./src/utils/Users/users.data")
+const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
+const { getInfoOrders } = require("./src/utils/Orders/orders.data")
+const { getInfoPoints } = require("./src/utils/Points/pointsData")
 const { User } = require("./src/db");
 require('dotenv').config();
 const {
@@ -44,6 +43,7 @@ conn.sync({ force: false }).then(async() => {
         await getInfoAnnoun();
         await getInfoReviews();
         await getInfoOrders();
+        await getInfoPoints();
       } catch (error) {
         console.log(error);
       }

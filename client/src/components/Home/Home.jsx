@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getHouseCity } from "../../redux/actions/postActions";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
@@ -9,10 +9,23 @@ import { turisticCities } from "./turisticCities";
 import Announcements from "../CityReservation/Announcements";
 import "../Home/home.css";
 import Statics from "./statics";
+import { getUserInfo } from "../../redux/actions/userActions";
+import { getFavouriteId } from "../../redux/actions/favouriteActions";
 
 const Home = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+
+  const user = useSelector((state) => state.userReducer.details);
+  const { isAdmin } = useSelector((state) => state.userReducer)
+  console.log('is admin', isAdmin);
+
+  React.useEffect(() => {
+    dispatch(getUserInfo());
+    if (user.id) {
+      dispatch(getFavouriteId(user.id));
+    }
+  }, [dispatch, user.id]);
 
   const handleOnClick = (e, name) => {
     e.preventDefault();

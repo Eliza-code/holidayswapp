@@ -24,8 +24,9 @@ const bookingReducer = (state = initialState, action) => {
       return {
         ...state,
         orderCreated: action.payload,
+        
       };
-      case types.POST_ORDER:
+      case types.UPDATE_ORDER_STATUS:
       return {
         ...state,
         orderUpdated: action.payload,

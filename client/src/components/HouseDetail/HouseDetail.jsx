@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
@@ -10,6 +10,7 @@ import Header from "../Header/Header";
 import "./HouseDetail.css";
 import Reviews from "../Reviews/Reviews";
 
+import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
@@ -31,18 +32,20 @@ import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
 import PetsIcon from "@mui/icons-material/Pets";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
 import Button from "@mui/material/Button";
+import NavBar from "../NavBar/NavBar";
 
 export default function HomeID() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
   const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
-  
+  const { isAuth } = useSelector((state) => state.userReducer);
+
   const handleBook = () => {
     window.localStorage.setItem("currentPost", JSON.stringify(id));
     history.push("/booking")
   }
-
+  console.log(homeDetailed.id,"ID que me llevo")
   useEffect(() => {
     dispatch(getHouseID(id));
   }, [dispatch, id]);
@@ -51,6 +54,7 @@ export default function HomeID() {
     <div>
       <div className="headerNav">
         <Header />
+        <NavBar />
       </div>
       {Object.keys(homeDetailed).length ? (
         <Grid>
@@ -76,11 +80,25 @@ export default function HomeID() {
                   <Carousel width="100vw" images={homeDetailed.image} />
                 </Grid>
                 <Grid item>
-                  <Grid container flexDirection="column">
+                  <Grid container flexDirection="column" gap={4}>
                     <OwnerDetails ownerId={homeDetailed.userId} />
-                    <Button variant="contained" onClick={handleBook}>
-                      Book Now!
-                    </Button>
+                    {isAuth ? (
+                      <Button variant="contained" onClick={handleBook}>
+                        Book Now!
+                      </Button>
+                      ) : (
+                        <Box display="flex" flexDirection="column" textAlign="center">
+                          <Typography gutterBottom variant="h6">
+                            <b>To book now, please sign in!</b>
+                          </Typography>
+                          <Button
+                            variant="outlined"
+                            onClick={() => history.push("/signin")}
+                          >
+                            Sign In
+                          </Button>
+                        </Box>
+                    )}
                   </Grid>
                 </Grid>
               </Grid>
@@ -331,7 +349,7 @@ export default function HomeID() {
       ) : (
         <CircularProgress />
       )}
-      <Grid>
+      <Grid >
         <Reviews announcementId={homeDetailed.id} />
       </Grid>
       <div>

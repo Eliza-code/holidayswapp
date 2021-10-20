@@ -51,7 +51,7 @@ export default function OwnerDetails({ ownerId }) {
             </Grid>
             <Grid item>
               <Typography variant="body2" color="text.primary">
-                <b>Languages Spoken:</b> {owner.languagesSpoken}
+                <b>Languages Spoken:</b> {owner.languagesSpoken?.join(', ')}
               </Typography>
             </Grid>
           </Grid>

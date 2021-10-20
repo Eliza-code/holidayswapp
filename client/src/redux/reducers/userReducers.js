@@ -1,21 +1,33 @@
 import * as types from "../types/userTypes.js";
 
 const initialState =  {
-   userInfo: window.localStorage.getItem("userInfo") ? JSON.parse(window.localStorage.getItem("userInfo")) : null,
    details:{},  
    ownerDetails: {},
    isAuth: !!window.localStorage.getItem("user"),
+   ownerHouses: [],
+   isAdmin: false
 }
 
 const userReducer = (state = initialState, action) => {
     switch (action.type){
      
         case types.POST_USER:
-           return {
-               ...state,
+            return {
+                ...state,
+                
             }
-
-        case types.POST_SIGN_IN:
+        case types.ADMIN_AUTH_SUCCESS: 
+            return {
+                ...state,
+                isAdmin: action.payload
+            }
+        case types.ADMIN_AUTH_FAILED:
+            return {
+            ...state,
+            isAdmin: action.payload
+        }
+            
+            case types.POST_SIGN_IN:
             return {
                 ...state,
             }
@@ -51,7 +63,23 @@ const userReducer = (state = initialState, action) => {
             return {
                   ...state,
                   ownerDetails: action.payload,
-            };
+            }
+        case types.GET_HOUSES_BY_USER_ID:
+            return {
+                ...state,
+                ownerHouses: action.payload,
+            }
+        case types.UPDATE_HOUSE_SUCCESS:
+            return {
+                ...state,
+                // ownerHouses: action.payload,
+            }
+        
+        case types.UPDATE_USER_SUCCESS:
+            return {
+                ...state,
+                details: action.payload
+            }
 
         default: 
         return state;

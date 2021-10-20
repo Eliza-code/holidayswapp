@@ -1,21 +1,25 @@
 const { DataTypes } = require('sequelize');
-
+// Exportamos una funcion que define el modelo
+// Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
-  sequelize.define("payment", {
-    transactionType: {
-      type: DataTypes.STRING,
-      defaultValue: "MercadoPago"
-    },
-    status: {
-        type: DataTypes.ENUM({
-          values: ["pending", "cancelled", "completed"],
-        }),
-        allowNull: false,
-        defaultValue: "pending"
-      },
-    payment_id: {
-      type: DataTypes.UUID,
-      allowNull: false
-    }
-  })
+
+    sequelize.define('payment', {
+        status:{  
+            type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
+            allowNull: false,
+            defaultValue: "created"
+        },
+        payment_id:{
+            type: DataTypes.BIGINT,
+            defaultValue: 0
+        },
+        payment_status:{
+            type: DataTypes.STRING,
+            defaultValue: ""
+        },
+        merchant_order_id: {
+            type: DataTypes.BIGINT,
+            defaultValue: 0
+        }
+    });
 };

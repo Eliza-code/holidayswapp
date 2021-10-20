@@ -1,5 +1,4 @@
 import {
-  BottomNavigation,
   Divider,
   Grid,
   List,
@@ -7,7 +6,6 @@ import {
   ListItemText,
   Typography,
 } from "@mui/material";
-import { Box } from "@mui/system";
 import { React, useEffect, useState } from "react";
 import { getUserInfo } from "../../redux/actions/userActions";
 import {
@@ -24,16 +22,18 @@ import CardOrder from "./CardOrder";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
-  divider: {},
-  list: {
-    padding: "0 30px",
+  divider: {
+    paddingLeft: "30px",
   },
-//   title:{
-//       marginBottom:30,
-//   },
-  cards:{
-      paddingLeft:10,
-  }
+  list: {
+    paddingLeft: "20px",
+  },
+  title: {
+    padding: "15px 0",
+  },
+  cards: {
+    // paddingLeft: 10,
+  },
 }));
 
 const MyBookings = () => {
@@ -41,50 +41,81 @@ const MyBookings = () => {
   const dispatch = useDispatch();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  // console.log(selectedIndex,"Mi Index")
 
   const token = window.localStorage.getItem("user");
-//   console.log(token, "usuario del local");
 
   const userInfo = useSelector((state) => state.userReducer.details);
-//   console.log(userInfo, "miuserInfo");
+
   const userId = userInfo?.id;
-//   console.log(userId, "dato para despachar");
 
-  const data = useSelector((state) => state.bookingReducer.ordersByUser);
-  const ordersByUser = data[0]?.orders;
-  // console.log(ordersByUser, "datos by user");
-  console.log(data,"byUser")
+  const ordersByUser = useSelector(
+    (state) => state.bookingReducer.ordersByUser
+  );
 
-  const data2 = useSelector((state) => state.bookingReducer.ordersToUser);
-  const ordersToUsers = data2[1]?.orders;
-  console.log(data2,"toUser")
-  // console.log( ordersToUsers,"LO NUEVO");
-//   console.log(ordersToUser, "datos to user");
+  const ordersToUsers = useSelector(
+    (state) => state.bookingReducer.ordersToUser
+  );
+
+  useEffect(() => {
+    return () => {
+      dispatch(getUserOrders(userId));
+      dispatch(getOrdersToUser(userId));
+    };
+  }, [selectedIndex]);
 
   useEffect(() => {
     dispatch(getUserInfo());
+    first_Page();
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
   }, [userId]);
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+    first_Page();
+  };
+  //-----------------PAGINADO-----------------------------
+  const [currentPage, setCurrentPage] = useState(0);
+
+  const next_Page = () => {
+    if (ordersByUser.length <= currentPage + 3) {
+      setCurrentPage(currentPage);
+    } else setCurrentPage(currentPage + 3);
+  };
+  const prev_Page = () => {
+    if (currentPage < 4) {
+      setCurrentPage(0);
+    } else {
+      setCurrentPage(currentPage - 3);
+    }
+  };
+  const first_Page = () => {
+    setCurrentPage(0);
+  };
+  const last_Page = () => {
+    setCurrentPage(ordersByUser.length - 3);
   };
 
+  const filteredOrders =
+    selectedIndex === 0
+      ? ordersByUser?.slice(currentPage, currentPage + 3)
+      : ordersToUsers?.slice(currentPage, currentPage + 3);
+
   return (
-    <Grid className="headerNav" >
+    <Grid className="headerNav">
       <Grid item xs={12}>
         <Header />
         <NavBar />
       </Grid>
 
       <Grid container>
-        <Grid item xs={12} align="center" >
-          <Typography className={classes.title} variant="h4">My Bookings</Typography>
+        <Grid item xs={12} align="center">
+          <Typography className={classes.title} variant="h4">
+            My Bookings
+          </Typography>
         </Grid>
 
-        <Grid item className={classes.list}>
+        <Grid item xs={2} className={classes.list}>
           <List>
             <ListItemButton
               selected={selectedIndex === 0}
@@ -100,30 +131,76 @@ const MyBookings = () => {
             </ListItemButton>
           </List>
         </Grid>
-        <Divider className={classes.divider} orientation="vertical" />
 
-        <Grid item xs={3 / 4}></Grid>
-        {selectedIndex===0 && (ordersByUser?.length
-          ? ordersByUser.map((e, idKey) => (
-              <Grid>
-                <CardOrder key={idKey} orders={e} userInfo={userInfo}></CardOrder>  
-              </Grid>              
-            ))
-          : "No hay ordenes") }
-          {selectedIndex===1 && (ordersToUsers?.length
-          ? ordersToUsers.map((e, idKey) => (
-              <Grid>
-                <CardOrder  key={idKey} orders={e} userInfo={userInfo}></CardOrder>  
-              </Grid>              
-            ))
-          : "No hay ordenes") }
-        {/* {ordersByUser
-          ? ordersByUser.map((e, idKey) => (
-              <Grid>
-                <CardOrder key={idKey} orders={e} userInfo={userInfo}></CardOrder>  
-              </Grid>              
-            ))
-          : "No hay ordenes"} */}
+        <Grid item>
+          <Divider
+            className={classes.divider}
+            orientation="vertical"
+            variant="middle"
+          />
+        </Grid>
+
+        <Grid item xs={9}>
+          <Grid container>
+            {selectedIndex === 0 &&
+              (filteredOrders?.length
+                ? filteredOrders.map((e, idKey) => (
+                    <CardOrder
+                      key={idKey}
+                      orders={e}
+                      userInfo={userInfo}
+                      type="sent"
+                    ></CardOrder>
+                  ))
+                : "No hay ordenes")}
+            {selectedIndex === 1 &&
+              (filteredOrders?.length
+                ? filteredOrders.map((e, idKey) => (
+                    <CardOrder
+                      key={idKey}
+                      orders={e}
+                      userInfo={e.user}
+                      type="received"
+                    ></CardOrder>
+                  ))
+                : "No hay ordenes")}
+          </Grid>
+          <div>
+            {filteredOrders.length === 0 ? null : filteredOrders?.length >=
+              3 ? (
+              <div className="arrow">
+                <button className="button" onClick={first_Page}>
+                  {" "}
+                  {"<<"}
+                </button>
+                <button className="button" onClick={prev_Page}>
+                  {" "}
+                  {"<"}
+                </button>
+                <button className="button" onClick={next_Page}>
+                  {" "}
+                  {">"}
+                </button>
+
+                <button className="button" onClick={last_Page}>
+                  {" "}
+                  {">>"}
+                </button>
+              </div>
+            ) : (
+              <div className="arrow">
+                <button className="button" onClick={first_Page}>
+                  {" "}
+                  {"<<"}
+                </button>
+                <button className="button" onClick={prev_Page}>
+                  {" "}
+                  {"<"}
+                </button>
+              </div>
+            )}
+          </div>
+        </Grid>
       </Grid>
 
       <Grid item xs={12}>

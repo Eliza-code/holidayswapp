@@ -10,7 +10,7 @@ export function getAnnouncementReviews(id) {
       if( response.request.status === 200) {
         dispatch({ type: types.GET_ANNOUNCEMENT_REVIEW, payload: response.data });
       } else {
-        console.log( "rompi todo")
+        console.log("rompi todo")
       }
       
     } catch (e) {
@@ -19,16 +19,20 @@ export function getAnnouncementReviews(id) {
   };
 }
 
-export function createReview(userId, announcementId, stars, description) {
+export function createReview({ userId, announcementId, stars, description }) {
   return async function (dispatch) {
-    const { data } = await axios.post(`/review`, {
-      announcementId,
-      userId,
-      stars,
-      description,
-    });
-    await dispatch(getAnnouncementReviews(announcementId));
-    data.success ? swal(data.success) : swal(data.error);
+    try {
+      const { data } = await axios.post(`/review`, {
+        announcementId,
+        userId,
+        stars,
+        description,
+      });
+      await dispatch(getAnnouncementReviews(announcementId));
+      return data.success ? swal(data.success) : swal(data.error);
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 
