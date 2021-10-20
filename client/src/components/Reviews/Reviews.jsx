@@ -11,16 +11,17 @@ const Reviews = ({ announcementId }) => {
   const reviews = useSelector(
     (state) => state.reviewReducer.announcementReviews
   );
+  console.log('Reviews', reviews)
 
   useEffect(() => {
     dispatch(getAnnouncementReviews(announcementId));
   }, [dispatch, announcementId]);
-  console.log(announcementId)
+  console.log('announcementid', announcementId)
 
   return (
-    <Grid container justifyContent="center" spacing={2}>
+    <Grid container justifyContent="center"  spacing={2}>
         {reviews.length && reviews.map((review, idx) => (
-          <Grid key={idx} item xs={2}>
+          <Grid key={idx} item xs={3}>
             <ReviewCard review={review} />
           </Grid>
       ))}

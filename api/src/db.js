@@ -59,6 +59,7 @@ Announcement.belongsToMany(User, { through: Favourite });
 Review.belongsTo(User, {
   foreignKey: 'userId'
 })
+
 Favourite.belongsTo(Announcement, {
   foreignKey: 'announcementId'
 })

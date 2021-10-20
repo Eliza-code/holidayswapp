@@ -10,6 +10,7 @@ module.exports = async (req, res) => {
     departureDate,
     type
   } = req.body;
+  
   console.log( userId,
     announcementId,
     description,
@@ -17,6 +18,8 @@ module.exports = async (req, res) => {
     arrivealDate,
     departureDate,
     type)
+
+
 
   try {
     const user = await User.findByPk(userId);

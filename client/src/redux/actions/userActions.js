@@ -7,11 +7,17 @@ import { accordionSummaryClasses } from "@mui/material";
 export const postUser = (input) => {
   return async (dispatch) => {
     try {
-      const { data } = await axios.post(`${BASE_URL}/user`, input);
+      const { request } = await axios.post(`${BASE_URL}/user`, input);
       dispatch({ type: types.POST_USER });
-      if( data )  {
-        window.localStorage.setItem("user", JSON.stringify(data))
-        window.location.href = '/'
+      if (request.status === 200)  {
+        const { username, password } = input;
+        const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
+        if (request.status === 200) {
+          window.localStorage.setItem("user", JSON.stringify(data.token));
+          window.location.href = '/';
+        } else {
+          window.location.href = '/signin';
+        }
       } else {
         swal({
           title: "Oops! Something went wrong!",
@@ -36,7 +42,9 @@ export const postSignIn = (input) => {
       if (Object.keys(data).length) {
         dispatch({ type: types.POST_SIGN_IN });
         window.localStorage.setItem("user", JSON.stringify(data.token))
+
         window.location.href = '/';
+        
       } else {
         swal({
           title: "User or password incorrect",
@@ -67,32 +75,44 @@ export const login = (status) => {
   }
 }
 
+export const isAdmin =() => {
+  return async (dispatch) => {
+    try {
+      const token = JSON.parse(window.localStorage.getItem("user"))
+      if (token) {
+        const { data, request } = await axios.post(`${BASE_URL}/auth/admin`, { token });
+        return request.status === 200
+          ? dispatch({ type: types.ADMIN_AUTH_SUCCESS, payload: data })
+          : dispatch({ type: types.ADMIN_AUTH_FAILED, payload: data });
+      }
+    } catch(err){
+      console.log(err);
+    }
+  }
+
+}
+
+
 export const getUserInfo = () => {
-  console.log("entro al action")
+ 
   return async (dispatch) => {
     try {
       dispatch({ type: types.USER_AUTH_REQUEST });
       const TOKEN = JSON.parse(window.localStorage.getItem("user"));      
       if (TOKEN) {
         const config = { headers: { Authorization: `Bearer ${TOKEN}` } };
-        const response = await axios.get(`${BASE_URL}/auth/profile`, config);
-        if (response.request.status === 200) {
-          window.localStorage.setItem("userInfo", JSON.stringify(response.data));
-          dispatch({ type: types.USER_AUTH_SUCCESS, payload: response.data });
+        const { request, data } = await axios.get(`${BASE_URL}/auth/profile`, config);
+        if (request.status === 200) {
+          dispatch({ type: types.USER_AUTH_SUCCESS, payload: data });
+          dispatch(isAdmin());
         }
       } else {
         dispatch({ type: types.USER_AUTH_FAILED });
-        window.localStorage.removeItem("userInfo");
-        swal({
-          title: "Authentication failed",
-          icon: "warning",
-        });
       }
     } catch (error) {
       dispatch({ type: types.USER_AUTH_FAILED });
       console.log(error);
       window.localStorage.removeItem("user");
-      window.localStorage.removeItem("userInfo");
       swal({
         title: "Internal error server",
         icon: "warning",
@@ -140,3 +160,54 @@ export function getOwnerDetails (id) {
   };
 }
 
+export const getHousesByUserId = (id) => {
+  return async (dispatch) => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/announcement`);
+      if (data.length) {
+        const houses = data.filter((elem) => elem.userId === id);
+        return dispatch({
+          type: types.GET_HOUSES_BY_USER_ID,
+          payload: houses
+        })
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
+}
+export const updateHouseForm = (id, input) => {
+  return async (dispatch) => {
+    try{
+      const { request, data } = await axios.put(`${BASE_URL}/announcement/updateAnnouncement/${id}`, input);
+      if (request.status === 200 ){
+        dispatch({ 
+          type: types.UPDATE_HOUSE_SUCCESS,
+          payload: data
+        })
+        window.location.reload();
+      } else {
+        swal({
+          title: "Try again",
+          icon: "success",
+        })
+      }
+    }catch (e) {
+      console.log(e);
+    }
+  }
+}
+
+export const updateUserProfile = (userId, input) => {
+  return async (dispatch) => {
+    try {
+      const { data, request } = await axios.put(`${BASE_URL}/user/updateUser/${userId}`, input);
+      return request.status === 200
+        ? dispatch({ type: types.UPDATE_USER_SUCCESS, payload: data })
+        : dispatch({ type: types.UPDATE_USER_FAILED });
+    } catch (error) {
+      console.log(error);
+      dispatch({ type: types.UPDATE_USER_FAILED });
+    }
+  }
+}

@@ -39,11 +39,11 @@ module.exports = (sequelize) => {
       allowNull: true,
     },
     arrivealDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     departureDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     points: {

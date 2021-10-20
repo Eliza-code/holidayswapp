@@ -8,38 +8,43 @@ import Footer from "../Footer/Footer.jsx";
 import "./CityResults.css";
 import { clearPage } from "../../redux/actions/postActions.js";
 import { Grid } from "@mui/material";
+import OrderByGpNigth from "./OrderByGpNight";
+import OrderByRating from "./OrderbyRating";
+import FilterBySleeps from "./FilterBySleeps";
+import FilterByType from "./FilterByType";
 
 const CityResults = () => {
   const houses = useSelector((state) => state.postReducer.searchResults);
   const dispatch = useDispatch();
 
   const [currentPage, setCurrentPage] = useState(0);
+  // eslint-disable-next-line
+  const [order, setOrder] = useState("");
 
   const next_Page = () => {
-    if (houses.length <= currentPage + 12) {
+    if (houses.length <= currentPage + 3) {
       setCurrentPage(currentPage);
-    } else setCurrentPage(currentPage + 12);
+    } else setCurrentPage(currentPage + 3);
   };
   const prev_Page = () => {
-    if (currentPage < 13) {
+    if (currentPage < 4) {
       setCurrentPage(0);
     } else {
-      setCurrentPage(currentPage - 12);
+      setCurrentPage(currentPage - 3);
     }
   };
   const first_Page = () => {
     setCurrentPage(0);
   };
   const last_Page = () => {
-    setCurrentPage(houses.length - 12);
+    setCurrentPage(houses.length - 3);
   };
   useEffect(() => {
     first_Page();
     return () => dispatch(clearPage());
   }, [dispatch]);
-  
-  const filtredHouses = houses?.slice(currentPage, currentPage + 12);
-  
+
+  const filtredHouses = houses?.slice(currentPage, currentPage + 3);
 
   return (
     <div>
@@ -47,6 +52,19 @@ const CityResults = () => {
         <Header />
         <NavBar />
       </div>
+
+      <Grid
+        container
+        direction="row"
+        justifyContent="space-evenly"
+        alignItems="center"
+      >
+        <FilterByType setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <FilterBySleeps setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <OrderByRating setCurrentPage={setCurrentPage} setOrder={setOrder} />
+        <OrderByGpNigth setCurrentPage={setCurrentPage} setOrder={setOrder} />
+      </Grid>
+
       <div>
         <Grid sx={{ flexGrow: 1 }} container spacing={2}>
           <Grid item xs={12}>
@@ -81,7 +99,8 @@ const CityResults = () => {
       </div>
 
       <div>
-        {filtredHouses?.length >= 3 ? (
+        {   filtredHouses?.length === 0? null :
+          filtredHouses?.length >= 3 ? (
           <div className="arrow">
             <button className="button" onClick={first_Page}>
               {" "}
@@ -100,7 +119,20 @@ const CityResults = () => {
               {">>"}
             </button>
           </div>
-        ) : null}
+        ) : (
+          <div className="arrow">
+            <button className="button" onClick={first_Page}>
+              {" "}
+              {"<<"}
+            </button>
+            <button className="button" onClick={prev_Page}>
+              {" "}
+              {"<"}
+            </button>
+          </div>
+        )
+        
+        }
       </div>
       <div>
         <Footer />

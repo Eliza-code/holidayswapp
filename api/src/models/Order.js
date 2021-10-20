@@ -23,11 +23,11 @@ module.exports = (sequelize) => {
       // defaultValue: 0
     },
     arrivealDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     departureDate: {
-      type: DataTypes.STRING,
+      type: DataTypes.DATEONLY,
       allowNull: false
     },
     type: {

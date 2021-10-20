@@ -24,15 +24,25 @@ const { getInfoUsers } = require("./src/utils/Users/users.data")
 const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
 const { getInfoOrders } = require("./src/utils/Orders/orders.data")
 const { getInfoPoints } = require("./src/utils/Points/pointsData")
+const { User } = require("./src/db");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async() => {
   await server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
-    await getInfoUsers();
-    await getInfoAnnoun();
-    await getInfoReviews();
-    await getInfoOrders();
-    await getInfoPoints();
+    
+    //PUSE UNA CONDICION ASI CARGA SOLO SI ESTA VACIA LA DB ---> YAMILA
+    const dbdata = await User.findAll();
+    if (dbdata.length === 0) {
+      try {
+        await getInfoUsers();
+        await getInfoAnnoun();
+        await getInfoReviews();
+        await getInfoOrders();
+        await getInfoPoints();
+      } catch (error) {
+        console.log(error);
+      }
+    }
   });
 });
