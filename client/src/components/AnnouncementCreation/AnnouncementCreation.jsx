@@ -25,6 +25,7 @@ import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 
+
 const AnnouncementCreation = () => {
   const dispatch = useDispatch();
   const [loading, setLoading] = React.useState(false);
@@ -111,7 +112,7 @@ const AnnouncementCreation = () => {
   });
 
   return (
-    <div>
+    <div >
       <div className="headerNav">
         <Header />
         <NavBar />
@@ -578,6 +579,7 @@ const AnnouncementCreation = () => {
           </Paper>
         </Container>
       </div>
+     
     </div>
   );
 };

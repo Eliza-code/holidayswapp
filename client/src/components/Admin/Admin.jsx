@@ -8,6 +8,7 @@ import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import Footer from "../Footer/Footer";
 
 const Admin = () => {
   const dispatch = useDispatch();
@@ -45,6 +46,9 @@ const Admin = () => {
           <ManageUsers handleUpdate={setCurrentId} />
         )}
       </Grid>
+      <div style={{ bottom: 0, width: "100%", position: "absolute" }}>
+        <Footer />
+      </div>
     </Grid>
   );
 };
