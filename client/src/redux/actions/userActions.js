@@ -9,7 +9,7 @@ export const postUser = (input) => {
     try {
       const { data } = await axios.post(`/user`, input);
       dispatch({ type: types.POST_USER });
-      if (request.status === 200)  {
+      if (data)  {
         const { username, password } = input;
         const { data, request } = await axios.post(`/auth/login`, { username, password });
         if (request.status === 200) {

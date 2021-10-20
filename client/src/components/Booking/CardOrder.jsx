@@ -45,10 +45,8 @@ const CardOrder = (props) => {
     const data = { newStatus, orderId };
     dispatch(updateOrderStatus(data));
   };
-  
-  useEffect(() => {
-    
-  }, [dispatch]);
+
+  useEffect(() => {}, [dispatch]);
 
   // reviews
   const [open, setOpen] = useState(false);
@@ -63,16 +61,12 @@ const CardOrder = (props) => {
       <CardMedia
         component="img"
         height="140"
-        image={
-          userInfo === false
-            ? userInfo2.profilePicture
-            : userInfo.profilePicture
-        }
-        alt="green iguana"
+        image={userInfo?.profilePicture}
+        alt="Profile img"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {userInfo === false ? userInfo2.username : userInfo.username}
+          {userInfo.username}
         </Typography>
         <Typography gutterBottom variant="body2" color="text.secondary">
           {orders.description}
