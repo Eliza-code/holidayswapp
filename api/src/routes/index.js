@@ -23,7 +23,7 @@ router.use("/announcement", announcementRoutes);
 router.use("/review", reviewrRoutes);
 router.use("/favourites", favouriteRoutes);
 router.use("/mercadopago", mercadopagoRoutes);
-router.use('/payment', paymentRoutes);
+router.use('/mercadopago/payment', paymentRoutes);
 router.use('/points', pointsRoutes);
 router.use("/auth", auth);
 

@@ -18,10 +18,5 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: 1000000
     },
-    img:{
-      type: DataTypes.TEXT,
-      allowNull: false,
-      defaultValue: 0
-    }
   });
 };
