@@ -1,10 +1,10 @@
-import {  
+import {
   Divider,
   Grid,
   List,
   ListItemButton,
   ListItemText,
-  Typography,  
+  Typography,
 } from "@mui/material";
 import { React, useEffect, useState } from "react";
 import { getUserInfo } from "../../redux/actions/userActions";
@@ -23,14 +23,14 @@ import CardOrder from "./CardOrder";
 const useStyles = makeStyles((theme) => ({
   root: {},
   divider: {
-    paddingLeft: "30px"
+    paddingLeft: "30px",
   },
   list: {
     paddingLeft: "20px",
   },
-    title:{
-        padding:"15px 0",
-    },
+  title: {
+    padding: "15px 0",
+  },
   cards: {
     // paddingLeft: 10,
   },
@@ -41,50 +41,34 @@ const MyBookings = () => {
   const dispatch = useDispatch();
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  // console.log(selectedIndex,"Mi Index")
 
   const token = window.localStorage.getItem("user");
-  //   console.log(token, "usuario del local");
 
   const userInfo = useSelector((state) => state.userReducer.details);
-  //   console.log(userInfo, "miuserInfo");
-  const userId = userInfo?.id;
-  //   console.log(userId, "dato para despachar");
 
-  // const userInfo2 = useSelector((state) => state.bookingReducer.ordersToUser.user);
-  // //   console.log(userInfo, "miuserInfo");
-  //   const userId2 = userInfo2?.id;
-  // //   console.log(userId, "dato para despachar");
+  const userId = userInfo?.id;
 
   const ordersByUser = useSelector(
     (state) => state.bookingReducer.ordersByUser
   );
-  // const ordersByUser = data[0]?.orders;
-  // console.log(ordersByUser, "datos by user");
-  console.log(ordersByUser, "byUser");
 
   const ordersToUsers = useSelector(
     (state) => state.bookingReducer.ordersToUser
   );
-  // const ordersToUsers = data2[1]?.orders;
-  console.log(ordersToUsers, "toUser");
-  // console.log( ordersToUsers,"LO NUEVO");
-  //   console.log(ordersToUser, "datos to user");
 
- 
-  useEffect(() => {    
-    return () => {   
+  useEffect(() => {
+    return () => {
+      dispatch(getUserOrders(userId));
+      dispatch(getOrdersToUser(userId));
+    };
+  }, [selectedIndex]);
+
+  useEffect(() => {
+    dispatch(getUserInfo());
+    first_Page();
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-    };      
-  },[selectedIndex]);
-
-  useEffect(()=>{
-    dispatch(getUserInfo()); 
-    first_Page();  
-    dispatch(getUserOrders(userId));
-    dispatch(getOrdersToUser(userId));     
-  },[userId])
+  }, [userId]);
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -117,17 +101,6 @@ const MyBookings = () => {
       ? ordersByUser?.slice(currentPage, currentPage + 3)
       : ordersToUsers?.slice(currentPage, currentPage + 3);
 
-  // const pages = [];
-  // for (let i = 1; i <= Math.ceil(ordersByUser.length / 3); i++) {
-  //   pages.push(i);
-  // }
-
-  // console.log(pages);
-  // const handlePagination = (e, nro) => {
-  //   e.preventDefault();
-  //   setCurrentPage(nro);
-  // };
-
   return (
     <Grid className="headerNav">
       <Grid item xs={12}>
@@ -159,8 +132,12 @@ const MyBookings = () => {
           </List>
         </Grid>
 
-        <Grid item >
-          <Divider className={classes.divider} orientation="vertical" variant="middle" />
+        <Grid item>
+          <Divider
+            className={classes.divider}
+            orientation="vertical"
+            variant="middle"
+          />
         </Grid>
 
         <Grid item xs={9}>
@@ -182,7 +159,7 @@ const MyBookings = () => {
                     <CardOrder
                       key={idKey}
                       orders={e}
-                      userInfo={false}
+                      userInfo={e.user}
                       type="received"
                     ></CardOrder>
                   ))
@@ -204,18 +181,7 @@ const MyBookings = () => {
                   {" "}
                   {">"}
                 </button>
-                {/* <ul className="pagination">
-                  {pages.map((number) => (
-                    <li key={number} className="page-number">
-                      <button
-                        onClick={(e) => handlePagination(e, number)}
-                        className="page-link"
-                      >
-                        {number}
-                      </button>
-                    </li>
-                  ))}
-                </ul> */}
+
                 <button className="button" onClick={last_Page}>
                   {" "}
                   {">>"}
