@@ -6,7 +6,8 @@ module.exports = (sequelize) => {
     sequelize.define('payment', {
         status:{  
             type: DataTypes.ENUM('created', 'processing', 'cancelled', 'completed'),
-            allowNull: false
+            allowNull: false,
+            defaultValue: "created"
         },
         payment_id:{
             type: DataTypes.BIGINT,
