@@ -2,7 +2,8 @@ import * as types from "../types/adminTypes.js";
 
 const initialState = {
     allUsers: [],
-    allAnnouncements: []
+    allAnnouncements: [],
+    adminChangeStatus: null
 }
 
 const adminReducer = ( state = initialState, action ) => {
@@ -25,6 +26,11 @@ const adminReducer = ( state = initialState, action ) => {
         case types.DELETE_ANNOUNCEMENT:
             return {
                 ...state,
+            }
+        case types.ADMIN_CHANGE_STATUS_SUCCESS:
+            return{
+                ...state,
+                adminChangeStatus: action.payload
             }
             
         default:
