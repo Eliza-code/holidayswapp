@@ -9,10 +9,13 @@ const router = Router();
 router.use(express.json());
 
 router.post("/login", (req, res, next) => {
-  passport.authenticate("local", async (err, user, info) => {
+  passport.authenticate("local", async (err, user) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
-    else {
+
+    console.log(user,"datos usuario")
+    if (!user) {
+      res.status(400).send("No User Exists");
+    } else {
       const token = await jwt.sign(
         {
           id: user.id,
@@ -24,7 +27,7 @@ router.post("/login", (req, res, next) => {
         { expiresIn: "24hr" }
       );
 
-      return res.json({
+      return res.status(200).json({
         id: user.id,
         isAdmin: user.isAdmin,
         isDeleted: user.isDeleted,
@@ -87,14 +90,17 @@ router.post("/setAdmin", async (req, res, next) => {
       });
       if (userData) {
         userData.isAdmin = !userData.isAdmin;
+        await userData.save({ fields: ["isAdmin"] });
         return res.status(200).json(userData);
       }
-      return res.send("Cannot find user data with the id provided");
+      return res.status(400).send("Cannot find user data with the id provided");
     } else {
-      return res.send("You must be logged as Admin to do this action");
+      return res
+        .status(400)
+        .send("You must be logged as Admin to do this action");
     }
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 });
 

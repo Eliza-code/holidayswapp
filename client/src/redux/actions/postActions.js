@@ -11,7 +11,7 @@ export function getHouses() {
           type: types.GET_HOUSES, payload: json.data});
       } catch (error) {
         console.log(error);
-        alert("City not found");
+       
       }
     };
 }
@@ -26,7 +26,7 @@ export function getHouseID(id) {
       });
     } catch (error) {
       console.log(error);
-      alert("Place not found");
+     
     }
   };
 }
@@ -37,8 +37,7 @@ export function getHouseCity(city) {
       const json = await axios.get(`/announcement?name=${city}`);
       return dispatch({ type: types.GET_HOUSE_CITY, payload: json.data });
     } catch (error) {
-      console.log(error);
-      // alert("There's not houses avalaible on this city")
+      console.log(error);      
     }
   };
 }

@@ -28,7 +28,7 @@ module.exports = async (req, res, next) => {
     a_c,
     private_parking,
     image,
-    
+    description
   } = req.body;
 
   try {
@@ -64,7 +64,7 @@ module.exports = async (req, res, next) => {
       a_c,
       private_parking,
       image,
-     
+      description
     };
 
     const announcement = await Announcement.create(newAnnouncement);

@@ -1,4 +1,4 @@
-//import './MercadoPago.css'
+// import './MercadoPago.css'
 import Checkout from '../Checkout/Checkout'
 
 function MercadoPago() {
