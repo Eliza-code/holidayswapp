@@ -30,10 +30,8 @@ export default function Houses() {
   useEffect(() => {
     first_Page();
   }, [houses]);
- 
 
   const filtredHouses = houses?.slice(currentPage, currentPage + 3);
- 
 
   return (
     <div>
@@ -64,8 +62,7 @@ export default function Houses() {
         </Grid>
       </Grid>
       <div>
-        {  filtredHouses.length === 0? null :
-          filtredHouses?.length >= 3 ? (
+        {houses?.length <= 3 ? null : houses?.length > 3 ? (
           <div className="arrow">
             <button className="button" onClick={first_Page}>
               {" "}

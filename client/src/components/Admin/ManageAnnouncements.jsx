@@ -74,7 +74,7 @@ const ManageAnnouncements = ({ handleUpdate }) => {
   }));
 
   return (
-    <Container sx={{ height: 420, width: 850 }}>
+    <Container sx={{ height: 400, width: 850 }}>
       {allAnnouncements.length && (
         <DataGrid rowHeight={60} rows={rows} columns={columns} pageSize={5} />
       )}

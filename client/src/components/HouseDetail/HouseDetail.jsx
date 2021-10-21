@@ -1,14 +1,15 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
-import { useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { getHouseID } from "../../redux/actions/postActions";
+import { getUserInfo } from "../../redux/actions/userActions";
 import Carousel from "../HouseDetail/Carousel";
 import Footer from "../Footer/Footer";
 import OwnerDetails from "./OwnerDetail";
 import Header from "../Header/Header";
-import "./HouseDetail.css";
 import Reviews from "../Reviews/Reviews";
+import NavBar from "../NavBar/NavBar";
+import "./HouseDetail.css";
 
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
@@ -32,23 +33,22 @@ import SmokingRoomsIcon from "@mui/icons-material/SmokingRooms";
 import PetsIcon from "@mui/icons-material/Pets";
 import ChildFriendlyIcon from "@mui/icons-material/ChildFriendly";
 import Button from "@mui/material/Button";
-import NavBar from "../NavBar/NavBar";
 
 export default function HomeID() {
-  const { id } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const homeDetailed = useSelector((state) => state.postReducer.homeInfo); //userReducer.homeInfo
+  const { id } = useParams();
+  
+  const homeDetailed = useSelector((state) => state.postReducer.homeInfo);
   const { isAuth } = useSelector((state) => state.userReducer);
-
-  const handleBook = () => {
-    window.localStorage.setItem("currentPost", JSON.stringify(id));
-    history.push("/booking")
-  }
-  //console.log(homeDetailed.id,"ID que me llevo")
-  useEffect(() => {
+  const user = useSelector((state) => state.userReducer.details);
+  
+  React.useEffect(() => {
+    dispatch(getUserInfo());
     dispatch(getHouseID(id));
   }, [dispatch, id]);
+  
+  const handleBook = () => history.push("/booking");
 
   return (
     <div>
@@ -82,22 +82,27 @@ export default function HomeID() {
                 <Grid item>
                   <Grid container flexDirection="column" gap={4}>
                     <OwnerDetails ownerId={homeDetailed.userId} />
-                    {isAuth ? (
+                    {isAuth && user.id !== homeDetailed.userId && (
                       <Button variant="contained" onClick={handleBook}>
                         Book Now!
                       </Button>
-                      ) : (
-                        <Box display="flex" flexDirection="column" textAlign="center">
-                          <Typography gutterBottom variant="h6">
-                            <b>To book now, please sign in!</b>
-                          </Typography>
-                          <Button
-                            variant="outlined"
-                            onClick={() => history.push("/signin")}
-                          >
-                            Sign In
-                          </Button>
-                        </Box>
+                    )}
+                    {!isAuth && (
+                      <Box
+                        display="flex"
+                        flexDirection="column"
+                        textAlign="center"
+                      >
+                        <Typography gutterBottom variant="h6">
+                          <b>To book now, please sign in!</b>
+                        </Typography>
+                        <Button
+                          variant="outlined"
+                          onClick={() => history.push("/signin")}
+                        >
+                          Sign In
+                        </Button>
+                      </Box>
                     )}
                   </Grid>
                 </Grid>
@@ -349,7 +354,7 @@ export default function HomeID() {
       ) : (
         <CircularProgress />
       )}
-      <Grid >
+      <Grid>
         <Reviews announcementId={homeDetailed.id} />
       </Grid>
       <div>

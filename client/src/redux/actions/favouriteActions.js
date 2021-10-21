@@ -56,8 +56,7 @@ export function getFavouriteId(id) {
         payload: data
       });
     } catch (error) {
-      console.log(error);
-      alert("Favourite not found");
+      console.log(error);      
     }
   };
 }
