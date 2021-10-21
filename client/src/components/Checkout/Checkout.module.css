@@ -1,76 +1,70 @@
 body {
-    margin: 0;
+  margin: 0;
 }
 
-/* .products{
-    border-radius: 5px;
-    border: 1px solid rgb(209, 203, 200);
-    height: 130px;
-    width: 130px;
-    background-color: rgb(209, 203, 200);
-    margin: 25px;
-    display: inline-block;
-} */
-
-.gridContainer{
-    text-align: center; 
+.gridContainer {
+  text-align: center;
+  background-image: url("./travel.jpg");
+  height: 50rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 100%;
 }
-
-/* .ul{
-    list-style-type: none;
-    padding-right: 50px;
-}  */
 
 .checkOutContainer {
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    width: 500px;
-    
+  margin: 0 auto;
+  margin-top: 7em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-self: center;
+  align-items: center;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.487);
+  width: 500px;
 }
 
 .titleImg {
-    align-self: center;
+  align-self: center;
 }
 
 .bottom {
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    margin:10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px;
 }
 
 .bottom button {
-    height: 50px;
-    width: 200px;
-    font-size: 20px;
-    border-radius: 5px;
+  height: 50px;
+  width: 80px;
+  font-size: 20px;
+  border-radius: 5px;
+  border-color: transparent;
 }
 
 .bottom button:hover {
-    background-color: rgb(8, 57, 73);
-    color: white;
-    cursor: pointer;
+  background-color: rgb(8, 57, 73);
+  color: white;
+  cursor: pointer;
 }
 
 .footerCheckout {
-    position: absolute;
-    bottom: 0;
-    width: 100vw;
+  
+  bottom: 0;
+  width: 100vw;
 }
 
-.pointInput{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    
+.pointInput {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 input[type="number"] {
-    width: 100px;
-    height: 30px;
-    margin: 10px;
-    border-radius: 5px;
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  border-color: transparent;
 }

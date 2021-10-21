@@ -11,7 +11,7 @@ module.exports = async (req,res,next) => {
         // const hashedPassword = await bcrypt.hash(user.password, 12);
         const createdUser = await User.create({
             ...user,
-            // password: hashedPassword,
+            password: user.password,
             email: user.email.toLowerCase()
         }).then( user => {
             Payment.create({
