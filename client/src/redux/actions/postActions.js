@@ -11,7 +11,7 @@ export function getHouses() {
           type: types.GET_HOUSES, payload: json.data});
       } catch (error) {
         console.log(error);
-        alert("City not found");
+       
       }
     };
 }
@@ -26,7 +26,7 @@ export function getHouseID(id) {
       });
     } catch (error) {
       console.log(error);
-      alert("Place not found");
+     
     }
   };
 }

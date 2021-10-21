@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React, { useState } from "react";
+import pointsImg from "./puntos.png";
+import axios from "axios";
 import { getUserInfo } from "../../redux/actions/userActions";
 import { useSelector, useDispatch } from "react-redux";
-import s from './Checkout.module.css';
+import s from "./Checkout.module.css";
+import Header from "../Header/Header";
+import NavBar from "../NavBar/NavBar";
+import Footer from "../Footer/Footer";
 
 export default function Checkout(/* { productos, data } */) {
-
   const [input, setInput] = useState({
-    quantity: ""
-  })
+    quantity: "",
+  });
   const userId = useSelector((state) => state.userReducer.details);
 
   const dispatch = useDispatch();
@@ -29,39 +32,41 @@ export default function Checkout(/* { productos, data } */) {
       .catch((err) => console.log(err))
   }
 
-  const handleChangeQuantity = e => {
+  const handleChangeQuantity = (e) => {
     setInput({ [e.target.name]: e.target.value });
   };
 
   return (
-    <div>
-
-      {/* <form id='form1' onSubmit={handleSubmit}>
-
-        <h4>Checkout</h4>
-        <div className={s.gridContainer} >
-
-          productos.map((producto, i) => {
-            return(
-                <div className={s.products} key={i}>
-                  <ul className={s.ul} >
-                    <li>{producto.title}</li>
-                    <li>{'$' + producto.price}</li> 
-                    <li>{producto.quantity}</li>
-                  </ul>
-                </div>   
-            )
-          })
-
-          </div>
-      </form> */}
-
-      <form onSubmit={handleCheckout}>
-
-        <input type="number" onChange={handleChangeQuantity} value={input.quantity} name="quantity" />
-        <button type='submit'>BUY!</button>
-      </form>
-
-     </div>
-    )
+    <div className={s.gridContainer}>
+      <div className="headerNav">
+        <Header />
+        <NavBar />
+      </div>
+      <div className={s.checkOutContainer}>
+        <div className={s.titleImg}>
+          <h1>Buy your points</h1>
+          <img src={pointsImg} alt="Points" />
+        </div>
+        <div>
+          <form onSubmit={handleCheckout}>
+            <div className={s.pointInput}>
+              <h2>Points</h2>
+              <input
+                type="number"
+                onChange={handleChangeQuantity}
+                value={input.quantity}
+                name="quantity"
+              />
+            </div>
+            <div className={s.bottom}>
+              <button type="submit">BUY!</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div className={s.footerCheckout}>
+        <Footer />
+      </div>
+    </div>
+  );
 }
