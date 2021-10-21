@@ -1,6 +1,6 @@
 const { Payment, Payment_detail, Points, User } = require('../db.js');
 const server = require('express').Router();
-//const {transporter, emailer } = require('../config/email')
+const { transporter } = require( "../utils/emails/nodemailer" );
 
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
@@ -12,74 +12,11 @@ mercadopago.configure({
   access_token: ACCESS_TOKEN
 });
 
-
-//Ruta que genera la URL de MercadoPago
-server.get("/", (req, res, next) => {
-
-  const id_payment = 1
-
-  //Cargamos el carrido de la bd
-  const carrito = [
-    { title: "Points", quantity: 111, price: 1 }
-  ]
-
-  const items_ml = carrito.map(i => ({
-    title: i.title,
-    unit_price: i.price,
-    quantity: i.quantity,
-  }))
-
-  // Crea un objeto de preferencia
-  let preference = {
-    items: [{
-      title: items_ml.title,
-      unit_price: items_ml.price,
-      quantity: items_ml.quantity,
-    }],
-    external_reference: `${id_payment}`,
-    payment_methods: {
-      excluded_payment_types: [
-        {
-          id: "atm"
-        }
-      ],
-      installments: 3  //Cantidad máximo de cuotas
-    },
-    back_urls: {
-      success: 'http://localhost:3001/mercadopago/pagos',
-      failure: 'http://localhost:3001/mercadopago/pagos',
-      pending: 'http://localhost:3001/mercadopago/pagos',
-    },
-  };
-
-  mercadopago.preferences.create(preference)
-
-    .then(function (response) {
-      console.info('respondio')
-      //Este valor reemplazará el string"<%= global.id %>" en tu HTML
-      global.id = response.body.id;
-      console.log(response.body)
-      res.json({ id: global.id });
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-})
-
-
-
 server.post('/', async (req, res) => {
   
   const { quantity, userId } = req.body
   const id = 1;
   const price = 1;
-
-  console.log("req.body.QUANTITY ", quantity)
-  console.log("req.body.USERID ", userId)
-  console.log("req.body.STATUS")
-
-  console.log('arreglo que viene por body', req.body)
-
   const payment = await Payment.create({ userId: userId.id })
   const pointsId = await Points.findByPk(id)
   console.log("POINTS", pointsId)
@@ -96,10 +33,7 @@ server.post('/', async (req, res) => {
       const pointId = secondResponse.dataValues.pointId;
       Points.decrement({ stock: quantity }, { where: { id: pointId } });
       User.increment({ points: quantity }, { where: { id: userId.id } });
-    })
-
-   /*  .then((_) => res.send("OK")) */
-    .catch((err) => next(err));
+    }).catch((err) => next(err));
 
 
   let preference = {
@@ -109,16 +43,11 @@ server.post('/', async (req, res) => {
       unit_price: 1,
       quantity: Number(quantity),
     }],
-    /*  shipments:{
-       cost: shipping
-     }, */
     back_urls: {
       failure: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
       success: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
       pending: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
     },
-    /* auto_return: 'approved', */
-
   };
   mercadopago.preferences.create(preference)
 
@@ -134,18 +63,63 @@ server.post('/', async (req, res) => {
 })
 
 //Ruta que recibe la información del pago
-server.get("/pagos", (req, res) => {
+server.get("/pagos", async (req, res) => {
   const{ paymentId, quantity, userEmail }= req.query
-//transporter.sendMail(emailer(userEmail))
 
-
-  console.info("EN LA RUTA PAGOS ", req)
+ console.info("EN LA RUTA PAGOS ", req)
   const payment_id = req.query.payment_id
   const payment_status = req.query.status
   const merchant_order_id = req.query.merchant_order_id
   const quantityP = req.query.quantity
   const emailUser = req.query.userEmail
-
+  
+  console.log("payment_status ", payment_status)
+  console.log("emailUser ", userEmail)
+  if (payment_status === 'approved') {
+    let email = await transporter.sendMail({
+      from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
+      to: userEmail,
+      subject: "online purchases",
+      html: `<div>
+       <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
+		<tr>
+			<td style="padding: 0">
+				<a href='https://www.google.com.ar '>
+					<img style="padding: 0; display: block"
+						src='https://scontent.fsfn4-1.fna.fbcdn.net/v/t1.6435-9/245173308_10223868478132527_3967212138842875001_n.jpg?_nc_cat=104&ccb=1-5&_nc_sid=0debeb&_nc_ohc=t1bvGe2HAnIAX8IYz7K&_nc_ht=scontent.fsfn4-1.fna&oh=c13476a3994bd48877c7e4617adf7420&oe=6192EB53'
+						width="100%">
+				</a>
+			</td>
+		</tr>
+		<tr>
+			<td style="background-color: #ecf0f1">
+				<div style="color: #34495e; margin: 4% 10% 2%; text-align: justify;font-family: sans-serif">
+					<h2 style="color: #e67e22; margin: 0 0 7px">Everything is a success!</h2>
+					<p style="margin: 2px; font-size: 15px">
+						As part of our commitment to generating social well-being in the communities where we operate,
+						we promote healthy exchanges by combining a beautiful experience and activities that you
+						remember at all stages of your life.
+						We do this in order to improve the quality of our communities, generating more and more users
+						happy with your service.
+					</p>
+					<P style="text-align: center">
+						THANK YOU VERY MUCH REALLY!
+					</P>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding: 0">
+				<img style="padding: 0; display: block"
+					src='https://scontent.fsfn4-1.fna.fbcdn.net/v/t1.6435-9/245162659_10223868478052525_7443222450681142250_n.jpg?_nc_cat=103&ccb=1-5&_nc_sid=0debeb&_nc_ohc=YAnef74H8zoAX9DESjk&_nc_ht=scontent.fsfn4-1.fna&oh=5bd680a88565b66f724a5e5f6163be37&oe=61964D27'
+					width="100%">
+			</td>
+		</tr>
+	</table>
+       </div>`, 
+    });
+  } else {
+    console.log('El email no se envio')
+  }
   //Aquí edito el status de mi orden
   Payment.findByPk(paymentId)
     .then((order) => {
@@ -169,7 +143,6 @@ server.get("/pagos", (req, res) => {
       console.error('error al buscar', err)
       return res.redirect(`http://localhost:3000/?error=${err}&where=al+buscar`)
     })
-
   //proceso los datos del pago 
   //redirijo de nuevo a react con mensaje de exito, falla o pendiente
 })
