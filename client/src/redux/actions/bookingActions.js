@@ -34,7 +34,7 @@ export function postOrder(order) {
   //console.log("order--:", order);
     return async function (dispatch) {
         try {
-          const dato = await axios.post(`${BASE_URL}/order/addOrder`, order);         
+          const dato = await axios.post(`/order/addOrder`, order);         
           dispatch({
             type: types.POST_ORDER,
             payload: dato,
