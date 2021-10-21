@@ -97,8 +97,8 @@ const Favorite = () => {
 
         <div>
           {
-            filterFavorite?.length === 0 ? null :
-            filterFavorite?.length >= 3 ? (
+            filterFavorite?.length <= 3 ? null :
+            filterFavorite?.length > 3 ? (
             <div className="arrow">
               <button className="button" onClick={first_Page}>
                 {" "}

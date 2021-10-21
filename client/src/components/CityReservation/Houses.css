@@ -1,19 +1,23 @@
-.arrow{
-    display: flex;
-    position: relative;
-    justify-content: center;
+.arrow {
+  display: flex;
+  position: relative;
+  justify-content: center;
 }
 
 .arrow button {
-    display: inline-block;
-    padding: 0.35em 1.2em;
-    border-color: transparent;
-    font-size: larger;
-    color: rgb(14, 13, 13);
-    margin: 3PX;
+  display: inline-block;
+  padding: 0.35em 1.2em;
+  border-color: transparent;
+  background-color: transparent;
+  font-size: larger;
+  color: rgb(14, 13, 13);
+  margin: 3px;
+  border-radius: 10px;
+  transition: background-color 0.4s;
 }
 
 .arrow button:hover {
-    color: black;
-    background-color: rgba(131, 168, 250, 0.774);
+  color: white;
+  background-color: rgba(4, 19, 53, 0.774);
+  cursor: pointer;
 }
