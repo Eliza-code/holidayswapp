@@ -6,20 +6,20 @@ const { transporter } = require( "../../utils/emails/nodemailer" );
 // const { FRONT, GMAIL_APP_EMAIL } = process.env;
 
 
-const howMuchDays = (arrivealDate, departureDate) => {
-  arrivealDate = arrivealDate.toString();
-  departureDate = departureDate.toString();
+// const howMuchDays = (arrivealDate, departureDate) => {
+//   arrivealDate = arrivealDate.toString();
+//   departureDate = departureDate.toString();
 
-  const f1 = arrivealDate.split("-");
-  const f2 = departureDate.split("-");
+//   const f1 = arrivealDate.split("-");
+//   const f2 = departureDate.split("-");
 
-  arrivealDate = Date.UTC(f1[0], f1[1], f1[2]);
-  departureDate = Date.UTC(f2[0], f2[1], f2[2]);
+//   arrivealDate = Date.UTC(f1[0], f1[1], f1[2]);
+//   departureDate = Date.UTC(f2[0], f2[1], f2[2]);
 
-  const dif = departureDate - arrivealDate;
-  var days = Math.floor(dif / (1000 * 60 * 60 * 24));
-  return days;
-};
+//   const dif = departureDate - arrivealDate;
+//   var days = Math.floor(dif / (1000 * 60 * 60 * 24));
+//   return days;
+// };
 
 module.exports = async (req, res) => {
   const { orderId, newStatus } = req.body;
@@ -52,16 +52,16 @@ module.exports = async (req, res) => {
     } else {
       if (order.dataValues.type === "Pay with points") {
         console.log(order, "datos de orden");
-        const days = howMuchDays(
-          order.dataValues.arrivealDate,
-          order.dataValues.departureDate
-        );
-        console.log(days, "dias de alquiler");
-        const pointsOrder = days * announc.dataValues.points; //Hasta aca todo bien
-        console.log(pointsOrder, "puntos");
+        // const days = howMuchDays(
+        //   order.dataValues.arrivealDate,
+        //   order.dataValues.departureDate
+        // );
+        // console.log(days, "dias de alquiler");
+        // const pointsOrder = days * announc.dataValues.points; //Hasta aca todo bien
+        // console.log(pointsOrder, "puntos");
 
         const userDecrPoints = await User.update(
-          { points: order.user.dataValues.points - pointsOrder },
+          { points: parseInt(order.user.dataValues.points) - parseInt(order.dataValues.pointsOrder) },
           {
             where: {
               id: order.dataValues.userId,
@@ -74,8 +74,9 @@ module.exports = async (req, res) => {
             id: announc.dataValues.userId,
           },
         });
+        
         const userAddPoints = await User.update(
-          { points: user2.dataValues.points + pointsOrder },
+          { points: parseInt(user2.dataValues.points) + parseInt(order.dataValues.pointsOrder) },
           {
             where: {
               id: announc.dataValues.userId,

@@ -46,8 +46,7 @@ export function postOrder(order) {
             payload: dato,
           });
         } catch (error) {
-          console.log(error);
-          alert("Order not created");
+          console.log(error);          
         }
     };
 }
@@ -63,8 +62,7 @@ export function updateOrderStatus(input) {
           });
          
         } catch (error) {
-          console.log(error);
-          alert("Not Updated");
+          console.log(error);         
         }
     };
 }
