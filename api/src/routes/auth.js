@@ -11,11 +11,8 @@ router.use(express.json());
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", async (err, user) => {
     if (err) throw err;
-
-    console.log(user,"datos usuario")
-    if (!user) {
-      res.status(400).send("No User Exists");
-    } else {
+    if (!user) res.status(400).send("No User Exists");
+    else {
       const token = await jwt.sign(
         {
           id: user.id,
