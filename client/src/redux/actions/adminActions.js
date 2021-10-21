@@ -97,7 +97,7 @@ export function setNewAdmin(id) {
     } catch (e) {
       console.log(e);
       dispatch({ type: types.ADMIN_CHANGE_STATUS_FAILED });
-      Swal.fire("Something went wrong!", "", "error");
+     
     }
   };
 }

@@ -103,7 +103,13 @@ const AnnouncementCreation = () => {
       departureDate: value2,
       image: images
     };
-    dispatch(postAnnouncements(inputs));
+    if (!images.length) {
+      Swal.fire("Must contain an image");
+    } else if (values.type === "") {
+      Swal.fire("Select type of home");
+    } else {
+      dispatch(postAnnouncements(inputs));
+    }
   };
 
   const formik = useFormik({
@@ -114,7 +120,7 @@ const AnnouncementCreation = () => {
   return (
     <div >
       <div className="headerNav">
-        <Header />
+        <Header /> 
         <NavBar />
       </div>
       <div>
@@ -135,6 +141,7 @@ const AnnouncementCreation = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 "& .MuiTextField-root": { m: 2 },
+                "& input[type='number']": { width: "100%", height: 10 }
               }}
               onSubmit={formik.handleSubmit}
               autoComplete="off"
@@ -376,14 +383,16 @@ const AnnouncementCreation = () => {
               >
                 <FormLabel component="legend" />
                 <RadioGroup
+                  required
                   row
                   aria-label="type"
-                  defaultValue="house"
+                  defaultValue="House"
                   name="type"
                   value={formik.values.type}
                   onChange={formik.handleChange}
                 >
                   <FormControlLabel
+                  
                     value="House"
                     control={<Radio />}
                     label="House"

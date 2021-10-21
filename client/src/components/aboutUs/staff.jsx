@@ -1,11 +1,10 @@
 import Matias from "./imgs/Matias.jpg";
 import Maximiliano from "./imgs/maxi.jpg";
-import luisdaniel from "./imgs/luisdaniel.jpg";
 import yami from "./imgs/yami.jpg";
 import eliza from "./imgs/eliza.jpg";
 import mauri from "./imgs/mauri.jpg";
 import sele from "./imgs/sele.jpg";
-import diego from "./imgs/diego.jpg";
+
 
 const staff = [
   {
@@ -41,26 +40,13 @@ const staff = [
     github: "https://github.com/Bellantra",
   },
   {
-    name: "Luis Daniel Arciniegas Barco",
-    img: luisdaniel,
-    linkedin: "https://www.linkedin.com/in/danius98/",
-    github: "https://github.com/Danius98",
-  },
-
-  {
     name: "Selene Bruno ",
     img: sele,
     job: "Technical Leader",
     linkedin: "https://www.linkedin.com/in/selene-bruno-409ab0ba/",
     github: "https://github.com/selebruno",
   },
-  {
-    name: "Diego Rodríguez",
-    img: diego,
-    job: "Product Owner",
-    linkedin: "https://www.linkedin.com/in/dierodz/",
-    github: "https://github.com/dierodz",
-  },
+
 ];
 
 export default staff;
