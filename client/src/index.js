@@ -12,7 +12,7 @@ const {
   REACT_APP_API,
 } = process.env;
 
-axios.defaults.baseURL = REACT_APP_API || "http://localhost:3001";
+axios.defaults.baseURL = "https://holidayswapp.herokuapp.com/" || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>
