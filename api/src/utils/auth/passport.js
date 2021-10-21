@@ -4,6 +4,8 @@ const { Router } = require('express');
 const {User} = require('../../db');
 const jwt = require("jsonwebtoken");
 var LocalStrategy = require('passport-local').Strategy;
+const bcrypt = require('bcrypt');
+
 
 require("dotenv").config();
 const { SECRET_KEY} = process.env;
@@ -30,11 +32,17 @@ passport.use(
         session: false
       },
       async (username, password, done) => {
+        // const hashedPassword = await bcrypt.hash('Password123', 12);
+        // console.log(password, 'password front')
         
         const user = await User.findOne({where:{ username: username }})
-        //console.log(user);
+        // console.log('user',user.dataValues.password);
         if (!user) return done(null, false);
-        if (!user.password===password) { return done(null, false); }
+        
+        if (!(password === user.dataValues.password)) {
+                return done(null, false);
+              }
+
         return done(null, user);      
         
       })

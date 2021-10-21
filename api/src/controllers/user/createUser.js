@@ -8,10 +8,10 @@ module.exports = async (req,res,next) => {
     try {
         if(typeof(user.password) === 'undefined' || user.password.length < 8){
             throw new Error("Validation error: invalid password")}
-        const hashedPassword = await bcrypt.hash(user.password, 12);
+        // const hashedPassword = await bcrypt.hash(user.password, 12);
         const createdUser = await User.create({
             ...user,
-            password: hashedPassword,
+            password: user.password,
             email: user.email.toLowerCase()
         }).then( user => {
             Payment.create({

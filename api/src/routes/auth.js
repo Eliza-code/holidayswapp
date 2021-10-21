@@ -11,7 +11,7 @@ router.use(express.json());
 router.post("/login", (req, res, next) => {
   passport.authenticate("local", async (err, user, info) => {
     if (err) throw err;
-    if (!user) res.send("No User Exists");
+    if (!user) res.status(400).send("No User Exists");
     else {
       const token = await jwt.sign(
         {
@@ -24,7 +24,7 @@ router.post("/login", (req, res, next) => {
         { expiresIn: "24hr" }
       );
 
-      return res.json({
+      return res.status(200).json({
         id: user.id,
         isAdmin: user.isAdmin,
         isDeleted: user.isDeleted,
