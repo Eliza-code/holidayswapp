@@ -5,19 +5,19 @@ const getInfoUsers = async () => {
   const hashedPassword = await bcrypt.hash("Password123", 12);
   try {
     await User.create({
-    username: "TERRI",
-    profilePicture:
-      "https://image.freepik.com/foto-gratis/alegre-mujer-mediana-edad-cabello-rizado_1262-20859.jpg",
-    name: "Terri",
-    lastName: "Shiavo",
-    email: "terrishiavo01@gmail.com",
-    password: hashedPassword,
-    phoneNumber: 478965321,
-    dateOfBirth: 20 / 10 / 1960,
-    nacionality: "Usa",
-    languagesSpoken: ["English"],
-    description:
-      "I am Terri from Miami, United States, I really like to travel and I would like to change houses with you",
+      username: "TERRI",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/alegre-mujer-mediana-edad-cabello-rizado_1262-20859.jpg",
+      name: "Terri",
+      lastName: "Shiavo",
+      email: "terrishiavo01@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478965321,
+      dateOfBirth: 20 / 10 / 1960,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Terri from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
       //2
@@ -52,21 +52,21 @@ const getInfoUsers = async () => {
         "I am Whalther from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-    //4
-    username: "NADINA",
-    profilePicture:
-      "https://image.freepik.com/foto-gratis/mujer-celebrando-ser-ganador_155003-38247.jpg",
-    name: "Nadina",
-    lastName: "Shiapov",
-    email: "nadinashiapov@gmail.com",
-    password: hashedPassword,
-    phoneNumber: 978965321,
-    dateOfBirth: 20 / 10 / 1984,
-    nacionality: "Russian",
-    languagesSpoken: ["Russian"],
-    isAdmin:true,
-    description:
-      "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
+      //4
+      username: "NADINA",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/mujer-celebrando-ser-ganador_155003-38247.jpg",
+      name: "Nadina",
+      lastName: "Shiapov",
+      email: "nadinashiapov@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 978965321,
+      dateOfBirth: 20 / 10 / 1984,
+      nacionality: "Russian",
+      languagesSpoken: ["Russian"],
+      isAdmin: true,
+      description:
+        "I am Nadina from Moscow, Russia, I really like to travel and I would like to change houses with you",
     });
     await User.create({
       //5
@@ -155,7 +155,7 @@ const getInfoUsers = async () => {
       password: hashedPassword,
       phoneNumber: 98478965321,
       dateOfBirth: 20 / 10 / 1980,
-      nacionality: "Usa",
+      nacionality: "American",
       languagesSpoken: ["English"],
       description:
         "I am Yeny from Miami, United States, I really like to travel and I would like to change houses with you",
@@ -440,7 +440,7 @@ const getInfoUsers = async () => {
       password: hashedPassword,
       phoneNumber: 1117896532,
       dateOfBirth: 16 / 05 / 1962,
-      nacionality: "Usa",
+      nacionality: "American",
       languagesSpoken: ["English"],
       description:
         "I am Susan from Miami, United States, I really like to travel and I would like to change houses with you",
@@ -459,6 +459,143 @@ const getInfoUsers = async () => {
       languagesSpoken: ["Russian"],
       description:
         "I am Valeriia from Moscow, Russia, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "JESSE",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/joven-confiado_1098-20868.jpg",
+      name: "Jesse",
+      lastName: "Mc Donald",
+      email: "jessemc01@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478967896,
+      dateOfBirth: 20 / 11 / 1986,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Jesse from Miami, United States, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "JOAN",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/tengo-excelente-idea-atractiva-mujer-alegre-pelo-rizado-levantar-dedo-indice-eureka-gesto-sonriendo-ampliamente-decision-tomada-pensar-buen-plan-compartir-pensamiento-sonriendo-emboscado-fondo-purpura_1258-56829.jpg",
+      name: "Joan",
+      lastName: "Martin",
+      email: "joanmartin@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478967485,
+      dateOfBirth: 04 / 08 / 1988,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Joan from Miami, United States, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "MICK",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/retrato-joven-sonriente-gafas_171337-4842.jpg",
+      name: "Mick",
+      lastName: "Label",
+      email: "micklabel@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478968525,
+      dateOfBirth: 20 / 09 / 1984,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Mick from Miami, United States, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "LAURIE",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/feliz-joven-sentada-suelo-ordenador-portatil-pared-gris_231208-11472.jpg",
+      name: "Laurie",
+      lastName: "Gordon",
+      email: "Laurieg@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478967896,
+      dateOfBirth: 28 / 01 / 1985,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Laurie from Miami, United States, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "CARL",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/escuchar-musica-retrato-joven-caucasico-aislado-pared-azul-estudio_155003-40470.jpg",
+      name: "Carl",
+      lastName: "Logan",
+      email: "carlogan@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478962589,
+      dateOfBirth: 08 / 07 / 1983,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Carl from Miami, United States, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "MARIE",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/retrato-mujer-feliz-telefono-movil_171337-13105.jpg",
+      name: "Marie",
+      lastName: "Young",
+      email: "marieyoung@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478962147,
+      dateOfBirth: 20 / 09 / 1982,
+      nacionality: "American",
+      languagesSpoken: ["English"],
+      description:
+        "I am Marie from Miami, United States, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      username: "JUANA",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/chica_23-2148168127.jpg",
+      name: "Juana",
+      lastName: "Paez",
+      email: "juanapaez@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478522581,
+      dateOfBirth: 20 / 01 / 1985,
+      nacionality: "Spanish",
+      languagesSpoken: ["Spanish"],
+      description:
+        "I am Juana from Madrid, Spain, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      //3
+      username: "MEMPHIS",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/apuesto-joven-afroamericano-camiseta-caqui_176420-32046.jpg",
+      name: "Memphis",
+      lastName: "Depay",
+      email: "memphisdepay@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478968821,
+      dateOfBirth: 29 / 10 / 1980,
+      nacionality: "Dutch",
+      languagesSpoken: ["Dutch"],
+      description:
+        "I am Memphis from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
+    });
+    await User.create({
+      //3
+      username: "DANY",
+      profilePicture:
+        "https://image.freepik.com/foto-gratis/primer-disparo-hombre-guapo-sonriendo_181624-41237.jpg",
+      name: "Dany",
+      lastName: "Blind",
+      email: "danyblind@gmail.com",
+      password: hashedPassword,
+      phoneNumber: 478968821,
+      dateOfBirth: 29 / 10 / 1981,
+      nacionality: "Dutch",
+      languagesSpoken: ["Dutch"],
+      description:
+        "I am Dany from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
   } catch (e) {
     console.log(e);
