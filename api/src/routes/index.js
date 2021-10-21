@@ -16,6 +16,7 @@ const mercadopagoRoutes = require('./mercadopago')
 const paymentRoutes = require('./payment');
 const pointsRoutes = require('./points');
 const auth = require("./auth")
+const emails = require("./sendMails.jsx")
 
 router.use('/order', orderRoutes);
 router.use('/user', userRoutes);
@@ -26,5 +27,6 @@ router.use("/mercadopago", mercadopagoRoutes);
 router.use('/mercadopago/payment', paymentRoutes);
 router.use('/points', pointsRoutes);
 router.use("/auth", auth);
+router.use("/mails", emails)
 
 module.exports = router

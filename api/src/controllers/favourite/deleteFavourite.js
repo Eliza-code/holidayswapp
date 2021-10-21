@@ -2,7 +2,7 @@ const { Favourite } = require('../../db');
 
 module.exports = async (req , res) => {
     const { id } = req.params
-   console.log(id)
+   //console.log(id)
     try {
       await Favourite.destroy({
         where: {

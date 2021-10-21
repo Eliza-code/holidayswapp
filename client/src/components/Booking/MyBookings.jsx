@@ -51,10 +51,25 @@ const MyBookings = () => {
   const ordersByUser = useSelector(
     (state) => state.bookingReducer.ordersByUser
   );
+  // const ordersByUser = data[0]?.orders;
+  // console.log(ordersByUser, "datos by user");
+  //console.log(ordersByUser, "byUser");
 
   const ordersToUsers = useSelector(
     (state) => state.bookingReducer.ordersToUser
   );
+  // const ordersToUsers = data2[1]?.orders;
+  //console.log(ordersToUsers, "toUser");
+  // console.log( ordersToUsers,"LO NUEVO");
+  //   console.log(ordersToUser, "datos to user");
+
+ 
+  useEffect(() => {    
+    return () => {   
+    dispatch(getUserOrders(userId));
+    dispatch(getOrdersToUser(userId));
+    };      
+  },[selectedIndex]);
 
   useEffect(() => {
     return () => {

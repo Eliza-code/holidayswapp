@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
     type
   } = req.body;
   
-  console.log( userId,
+  console.log( "*************createOrder: ", userId,
     announcementId,
     description,
     status,

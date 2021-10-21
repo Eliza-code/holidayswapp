@@ -1,7 +1,10 @@
-// const { howMuchDays } = require("../../../../client/src/utils/howMuchDays");
+
 const { Order, User, Announcement } = require("../../db");
+const nodemailer = require("nodemailer");
+const { transporter } = require( "../../utils/emails/nodemailer" );
+
 // const { FRONT, GMAIL_APP_EMAIL } = process.env;
-// const { transporter } = require("../../utils/nodemailer");
+
 
 const howMuchDays = (arrivealDate, departureDate) => {
   arrivealDate = arrivealDate.toString();

@@ -4,14 +4,17 @@ import * as types from "../types/userTypes";
 import { BASE_URL } from '../constants/urls';
 import { accordionSummaryClasses } from "@mui/material";
 
-export const postUser = (input) => {
+export const postUser = (input) => {  
   return async (dispatch) => {
     try {
       const { request } = await axios.post(`${BASE_URL}/user`, input);
+     
       dispatch({ type: types.POST_USER });
       if (request.status === 200)  {
-        const { username, password } = input;
+        const { username, password, email } = input;
+     
         const { data, request } = await axios.post(`${BASE_URL}/auth/login`, { username, password });
+        await axios.post(`${BASE_URL}/mails/confirmAuth`, {  username, email });
         if (request.status === 200) {
           window.localStorage.setItem("user", JSON.stringify(data.token));
           window.location.href = '/';
@@ -39,24 +42,20 @@ export const postSignIn = (input) => {
   return async (dispatch) => {
     try {
       const { data } = await axios.post(`${BASE_URL}/auth/login`, input);
-      if (Object.keys(data).length) {
+      if (data.token) {
         dispatch({ type: types.POST_SIGN_IN });
         window.localStorage.setItem("user", JSON.stringify(data.token))
-
         window.location.href = '/';
-        
       } else {
         swal({
           title: "User or password incorrect",
           icon: "warning",
         });
+        window.location.href = '/signin'
+        
       }
     } catch (error) {
       console.log(error);
-      swal({
-        title: "System failed. Please, try again",
-        icon: "warning",
-      });
     }
   };
 };
@@ -113,10 +112,6 @@ export const getUserInfo = () => {
       dispatch({ type: types.USER_AUTH_FAILED });
       console.log(error);
       window.localStorage.removeItem("user");
-      swal({
-        title: "Internal error server",
-        icon: "warning",
-      });
     }
   }
 }
@@ -138,10 +133,7 @@ export const signOut = () => {
     } catch (error) {
       console.log(error);
       dispatch({ type: types.SIGN_OUT_FAILED });
-      swal({
-        title: "Try again",
-        icon: "success",
-      })
+    
     }
   }
 }
