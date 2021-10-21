@@ -6,11 +6,7 @@ import {Provider} from 'react-redux'
 import store from './redux/store/index';
 import {BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
-import dotenv from "dotenv";
-dotenv.config();
-const {
-  REACT_APP_API,
-} = process.env;
+
 
 axios.defaults.baseURL = "https://holidayswapp.herokuapp.com/" || "http://localhost:3001";
 
