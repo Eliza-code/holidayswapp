@@ -36,28 +36,7 @@ export default function Checkout(/* { productos, data } */) {
   return (
     <div>
 
-      {/* <form id='form1' onSubmit={handleSubmit}>
-
-        <h4>Checkout</h4>
-        <div className={s.gridContainer} >
-
-          productos.map((producto, i) => {
-            return(
-                <div className={s.products} key={i}>
-                  <ul className={s.ul} >
-                    <li>{producto.title}</li>
-                    <li>{'$' + producto.price}</li> 
-                    <li>{producto.quantity}</li>
-                  </ul>
-                </div>   
-            )
-          })
-
-          </div>
-      </form> */}
-
       <form onSubmit={handleCheckout}>
-
         <input type="number" onChange={handleChangeQuantity} value={input.quantity} name="quantity" />
         <button type='submit'>BUY!</button>
       </form>
