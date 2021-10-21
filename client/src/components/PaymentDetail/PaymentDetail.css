@@ -1,0 +1,48 @@
+.detailDiv{
+    margin-bottom: 25px;
+   }
+   .success{
+       background-color: rgb(108, 216, 0);;
+       color: white;
+       text-align: center;
+       justify-content: center;
+       align-items: center;
+       display: flex;
+       border: 2px;
+       width: 100%;
+       height: 66px;
+   }
+   .ul{
+        background-color: beige;
+        margin: 20px;
+        border-radius: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        border: 15px;
+    }
+   .congratulations{
+        background-color: rgb(108, 216, 0);
+        color: white;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        border: 2px;
+        width: 100%;
+        height: 66px;
+   }
+   .detailH3{
+       font-size: 15px;
+       margin-bottom: 3px;
+   }
+   .footerMail{
+       font-size: 15px;
+       margin-top: 3px;
+       background-color: black;
+       color: white;
+       padding: 5px;
+       padding-left: 15px;
+       align-items: center;
+       justify-content: center;
+       text-align: center;
+   }

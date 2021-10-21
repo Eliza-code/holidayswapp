@@ -1,5 +1,6 @@
 const { Payment, Payment_detail, Points, User } = require('../db.js');
 const server = require('express').Router();
+//const {transporter, emailer } = require('../config/email')
 
 // SDK de Mercado Pago
 const mercadopago = require('mercadopago');
@@ -68,7 +69,7 @@ server.get("/", (req, res, next) => {
 
 
 server.post('/', async (req, res) => {
-
+  
   const { quantity, userId } = req.body
   const id = 1;
   const price = 1;
@@ -112,9 +113,9 @@ server.post('/', async (req, res) => {
        cost: shipping
      }, */
     back_urls: {
-      failure: `http://localhost:3001/mercadopago/pagos/${paymentId}`,
-      success: `http://localhost:3001/mercadopago/pagos/${paymentId}`,
-      pending: `http://localhost:3001/mercadopago/pagos/${paymentId}`,
+      failure: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      success: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      pending: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
     },
     /* auto_return: 'approved', */
 
@@ -133,14 +134,17 @@ server.post('/', async (req, res) => {
 })
 
 //Ruta que recibe la información del pago
-server.get("/pagos/:id", (req, res) => {
-  const paymentId = req.params.id
+server.get("/pagos", (req, res) => {
+  const{ paymentId, quantity, userEmail }= req.query
+//transporter.sendMail(emailer(userEmail))
+
 
   console.info("EN LA RUTA PAGOS ", req)
   const payment_id = req.query.payment_id
   const payment_status = req.query.status
   const merchant_order_id = req.query.merchant_order_id
-  
+  const quantityP = req.query.quantity
+  const emailUser = req.query.userEmail
 
   //Aquí edito el status de mi orden
   Payment.findByPk(paymentId)
@@ -154,7 +158,7 @@ server.get("/pagos/:id", (req, res) => {
         .then((_) => {
           console.info('redirect success')
 
-          return res.redirect("http://localhost:3000/paymentdetail")
+          return res.redirect(`http://localhost:3000/paymentdetail?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`)
         })
         .catch((err) => {
           console.error('error al salvar', err)
