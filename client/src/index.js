@@ -8,7 +8,7 @@ import {BrowserRouter} from 'react-router-dom';
 import axios from 'axios';
 
 
-axios.defaults.baseURL = "http://holidayswapp.herokuapp.com/" || "http://localhost:3001";
+axios.defaults.baseURL = "https://holidayswapp.herokuapp.com/" || "http://localhost:3001";
 
 ReactDOM.render(
   <Provider store={store}>
