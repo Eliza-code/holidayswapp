@@ -4,8 +4,8 @@ const { Order, User, Announcement } = require("../../db");
 // const { transporter } = require("../../utils/nodemailer");
 
 const howMuchDays = (arrivealDate, departureDate) => {
-  arrivealDate = arrivealDate.toString()
-  departureDate = departureDate.toString()
+  arrivealDate = arrivealDate.toString();
+  departureDate = departureDate.toString();
 
   const f1 = arrivealDate.split("-");
   const f2 = departureDate.split("-");
@@ -20,87 +20,90 @@ const howMuchDays = (arrivealDate, departureDate) => {
 
 module.exports = async (req, res) => {
   const { orderId, newStatus } = req.body;
-  
+
   //busco datos de la orden y usuario que la genero
   const order = await Order.findOne({
-    where:{
-      id:orderId
+    where: {
+      id: orderId,
     },
-    include:[User]
-  })
-  
+    include: [User],
+  });
+
   //busco datos del anuncio a quien esta destinada la orden
   const announc = await Announcement.findOne({
-    where:{
-      id: order.dataValues.announcementId
-    }
-  })
+    where: {
+      id: order.dataValues.announcementId,
+    },
+  });
 
   try {
-    if(newStatus !== "Completed"){
-       const [ updated ] = await Order.update({status: newStatus}, { 
-      where: {
-        id: parseInt(orderId)
+    if (newStatus !== "Completed") {
+      const [updated] = await Order.update(
+        { status: newStatus },
+        {
+          where: {
+            id: parseInt(orderId),
+          },
+        }
+      );
+    } else {
+      if (order.dataValues.type === "Pay with points") {
+        console.log(order, "datos de orden");
+        const days = howMuchDays(
+          order.dataValues.arrivealDate,
+          order.dataValues.departureDate
+        );
+        console.log(days, "dias de alquiler");
+        const pointsOrder = days * announc.dataValues.points; //Hasta aca todo bien
+        console.log(pointsOrder, "puntos");
+
+        const userDecrPoints = await User.update(
+          { points: order.user.dataValues.points - pointsOrder },
+          {
+            where: {
+              id: order.dataValues.userId,
+            },
+          }
+        );
+
+        const user2 = await User.findOne({
+          where: {
+            id: announc.dataValues.userId,
+          },
+        });
+        const userAddPoints = await User.update(
+          { points: user2.dataValues.points + pointsOrder },
+          {
+            where: {
+              id: announc.dataValues.userId,
+            },
+          }
+        );
+        //Aca deberia mandar mail que los puntos fueron transferidos
+
+        const [updated] = await Order.update(
+          { status: newStatus },
+          {
+            where: {
+              id: parseInt(orderId),
+            },
+          }
+        );
+      } else {
+        const [updated] = await Order.update(
+          { status: newStatus },
+          {
+            where: {
+              id: parseInt(orderId),
+            },
+          }
+        );
       }
-    });
-    }else{
-     if(order.dataValues.type === "Pay with points"){
-        console.log(order,"datos de orden") 
-      const days = howMuchDays(order.dataValues.arrivealDate,order.dataValues.departureDate)
-      console.log(days,"dias de alquiler")
-      const pointsOrder = days * announc.dataValues.points //Hasta aca todo bien
-      console.log(pointsOrder,"puntos")
-
-      const userDecrPoints = await User.update({points: order.user.dataValues.points - pointsOrder},{
-        where:{
-          id: order.dataValues.userId
-        }
-      })
-
-      const user2 = await User.findOne({
-        where:{
-          id:announc.dataValues.userId
-        }
-      })
-      const userAddPoints = await User.update({points: user2.dataValues.points + pointsOrder},{
-        where:{
-          id: announc.dataValues.userId
-        }
-      })
-      //Aca deberia mandar mail que los puntos fueron transferidos
-
-      const [ updated ] = await Order.update({status: newStatus}, { 
-        where: {
-          id: parseInt(orderId)
-        }
-      });
-     }else{
-      const [ updated ] = await Order.update({status: newStatus}, { 
-        where: {
-          id: parseInt(orderId)
-        }
-      });
-     }     
-     
-
-      //tengo que restar puntos al usuario que genero la orden
-
     }
-   
-    // console.log(updated,"updated")
 
     // if(!updated) {
     //   throw new Error(`Order ${orderId} not found / has not been modified`)
     // }
-
-    // if(newStatus === 'completed') {
-
-    //   const order = await Order.findOne({
-    //     where: {
-    //       id: parseInt(orderId)
-    //     },
-    //     include: [User]
-    //   })
 
     //   transporter.sendMail({
     //     from: `"On The Rocks" <${GMAIL_APP_EMAIL}>`, // sender address
@@ -110,10 +113,10 @@ module.exports = async (req, res) => {
     //     html: `<b>click on the link to see your order: <a href="${FRONT}/order/${orderId}"> HERE </a> </b>`, // html body
     //   });
     // }
-   
+
     return res.status(200).send(`Order ${orderId} successfully updated`);
   } catch (error) {
-    console.log(error)
+    console.log(error);
     // return res.status(409).send(error);
   }
 };
