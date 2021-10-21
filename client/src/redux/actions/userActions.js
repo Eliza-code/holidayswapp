@@ -2,7 +2,6 @@ import axios from "axios";
 import swal from "sweetalert";
 import * as types from "../types/userTypes";
 import { BASE_URL } from '../constants/urls';
-// import { accordionSummaryClasses } from "@mui/material";
 
 export const postUser = (input) => {  
   return async (dispatch) => {

@@ -9,7 +9,7 @@ const router = Router();
 router.use(express.json());
 
 router.post("/login", (req, res, next) => {
-  passport.authenticate("local", async (err, user, info) => {
+  passport.authenticate("local", async (err, user) => {
     if (err) throw err;
     if (!user) res.status(400).send("No User Exists");
     else {
@@ -92,7 +92,9 @@ router.post("/setAdmin", async (req, res, next) => {
       }
       return res.status(400).send("Cannot find user data with the id provided");
     } else {
-      return res.status(400).send("You must be logged as Admin to do this action");
+      return res
+        .status(400)
+        .send("You must be logged as Admin to do this action");
     }
   } catch (error) {
     next(error);

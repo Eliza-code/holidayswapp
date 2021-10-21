@@ -1,18 +1,15 @@
-var express = require('express');
+var express = require("express");
 const passport = require("passport");
-const { Router } = require('express');
-const {User} = require('../../db');
+const { Router } = require("express");
+const { User } = require("../../db");
 const jwt = require("jsonwebtoken");
-var LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
-
+var LocalStrategy = require("passport-local").Strategy;
 
 require("dotenv").config();
-const { SECRET_KEY} = process.env;
+const { SECRET_KEY } = process.env;
 
 const router = Router();
 router.use(express.json());
-
 
 // Configuración de estrategia local de Passport.
 
@@ -25,29 +22,24 @@ router.use(express.json());
 //  - Si hubo un error durante la ejecución de esta función --> done(err)
 
 passport.use(
-    new LocalStrategy(
-      {
-        usernameField: 'username', 
-        passwordField: 'password',
-        session: false
-      },
-      async (username, password, done) => {
-        // const hashedPassword = await bcrypt.hash('Password123', 12);
-        // console.log(password, 'password front')
-        
-        const user = await User.findOne({where:{ username: username }})
-        // console.log('user',user.dataValues.password);
-        if (!user) return done(null, false);
-        
-        if (!(password === user.dataValues.password)) {
-                return done(null, false);
-              }
+  new LocalStrategy(
+    {
+      usernameField: "username",
+      passwordField: "password",
+      session: false,
+    },
+    async (username, password, done) => {
+      const user = await User.findOne({ where: { username: username } });
 
-        return done(null, user);      
-        
-      })
-  );
-  
+      if (!user) return done(null, false);
+      if (password !== user.dataValues.password) {
+        return done(null, false);
+      }
+      return done(null, user);
+    }
+  )
+);
+
 // Configuración de la persistencia de la sesión autenticada
 
 // Para recuperar los datos de la sesión autenticada Passport necesita dos métodos para
@@ -57,31 +49,26 @@ passport.use(
 // lo más simple y pequeña posible
 
 passport.serializeUser((user, done) => {
-   
-    done(null, user.id);
-  });
+  done(null, user.id);
+});
 
 // Al deserealizar la información del usuario va a quedar almacenada en req.user
 passport.deserializeUser((id, done) => {
-    User.findOne({ _id: id }, (err, user) => {
-      const userInformation = {
-        username: user.username,
-      };
-      done(err, userInformation);    //ESTO ES PARA Q MANDE AL FRONT SOLO USERNAME Y NO CONTRASEÑA!!!
-    });
+  User.findOne({ _id: id }, (err, user) => {
+    const userInformation = {
+      username: user.username,
+    };
+    done(err, userInformation); //ESTO ES PARA Q MANDE AL FRONT SOLO USERNAME Y NO CONTRASEÑA!!!
   });
-  
- 
+});
+
 const BearerStrategy = require("passport-http-bearer").Strategy;
 
 passport.use(
-    new BearerStrategy((token, done) => {
-      jwt.verify(token, SECRET_KEY, function (err, usuario) {
-        if (err) return done(err);
-        return done(null, usuario ? usuario : false);
-      });
-    })
-  );
-  
-
- 
+  new BearerStrategy((token, done) => {
+    jwt.verify(token, SECRET_KEY, function (err, usuario) {
+      if (err) return done(err);
+      return done(null, usuario ? usuario : false);
+    });
+  })
+);

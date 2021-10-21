@@ -57,7 +57,7 @@ module.exports = async (req, res) => {
       arrivealDate,
       departureDate,
       type,
-      pointsOrder: pointsOrder
+      pointsOrder:pointsOrder
     };
 
     const order = await Order.create(newOrder);
