@@ -3,6 +3,9 @@
 //Retorna cantidad de dias
 
 export const howMuchDays = (arrivealDate, departureDate) => {
+  arrivealDate = arrivealDate.toString()
+  departureDate = departureDate.toString()
+
   const f1 = arrivealDate.split("-");
   const f2 = departureDate.split("-");
 

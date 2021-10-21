@@ -7,6 +7,7 @@ import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
+import CardActionArea from "@mui/material/CardActionArea";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocationCityIcon from "@mui/icons-material/LocationCity";
 import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
@@ -53,14 +54,17 @@ export default function HouseCard(props) {
 
   return (
     <Card sx={{ width: 300 }}>
-      <CardMedia
-        component="img"
-        sx={{ height: 250 }}
-        image={
-          image && image[Math.floor(Math.random() * (image.length - 1 - 0) + 0)]
-        }
-        alt={title}
-      />
+      <CardActionArea LinkComponent={Link} to={`/announcements/${id}`}>
+        <CardMedia
+          component="img"
+          sx={{ height: 250 }}
+          image={
+            image &&
+            image[Math.floor(Math.random() * (image.length - 1 - 0) + 0)]
+          }
+          alt={title}
+        />
+      </CardActionArea>
       <CardContent>
         <Typography
           textAlign="center"
