@@ -31,7 +31,7 @@ const {
 } = process.env;
 
 // Syncing all the models at once.
-conn.sync({ force: false }).then(async() => {
+conn.sync({ force: true }).then(async() => {
   await server.listen(PORT, async () => {
     console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
 
