@@ -1,22 +1,22 @@
 import React, { useEffect, useState } from "react";
-import HouseCard from "./HouseCard.jsx";
 import { useDispatch, useSelector } from "react-redux";
-import "./CityCards.css";
+import { clearPage, getHouseCity } from "../../redux/actions/postActions.js";
+import HouseCard from "./HouseCard.jsx";
 import NavBar from "../NavBar/NavBar.jsx";
 import Header from "../Header/Header.jsx";
 import Footer from "../Footer/Footer.jsx";
-import "./CityResults.css";
-import { clearPage } from "../../redux/actions/postActions.js";
-import { Grid } from "@mui/material";
 import OrderByGpNigth from "./OrderByGpNight";
 import OrderByRating from "./OrderbyRating";
 import FilterBySleeps from "./FilterBySleeps";
 import FilterByType from "./FilterByType";
+import Grid from "@mui/material/Grid";
+import "./CityCards.css";
+import "./CityResults.css";
 
-const CityResults = () => {
-  const houses = useSelector((state) => state.postReducer.searchResults);
+const CityResults = (props) => {
   const dispatch = useDispatch();
-
+  const cityName = props.location.pathname.split("/").pop();
+  const houses = useSelector((state) => state.postReducer.searchResults);
   const [currentPage, setCurrentPage] = useState(0);
   // eslint-disable-next-line
   const [order, setOrder] = useState("");
@@ -26,6 +26,7 @@ const CityResults = () => {
       setCurrentPage(currentPage);
     } else setCurrentPage(currentPage + 3);
   };
+
   const prev_Page = () => {
     if (currentPage < 4) {
       setCurrentPage(0);
@@ -33,16 +34,20 @@ const CityResults = () => {
       setCurrentPage(currentPage - 3);
     }
   };
+  
   const first_Page = () => {
     setCurrentPage(0);
   };
+  
   const last_Page = () => {
     setCurrentPage(houses.length - 3);
   };
+  
   useEffect(() => {
+    dispatch(getHouseCity(cityName));
     first_Page();
     return () => dispatch(clearPage());
-  }, [dispatch]);
+  }, [dispatch, cityName]);
 
   const filtredHouses = houses?.slice(currentPage, currentPage + 3);
 
@@ -56,7 +61,8 @@ const CityResults = () => {
       <Grid
         container
         direction="row"
-        justifyContent="space-evenly"
+        justifyContent="center"
+        gap={4}
         alignItems="center"
       >
         <FilterByType setCurrentPage={setCurrentPage} setOrder={setOrder} />
@@ -99,8 +105,7 @@ const CityResults = () => {
       </div>
 
       <div>
-        {   filtredHouses?.length === 0? null :
-          filtredHouses?.length >= 3 ? (
+        {houses?.length <= 3 ? null : houses?.length > 3 ? (
           <div className="arrow">
             <button className="button" onClick={first_Page}>
               {" "}
@@ -130,9 +135,7 @@ const CityResults = () => {
               {"<"}
             </button>
           </div>
-        )
-        
-        }
+        )}
       </div>
       <div>
         <Footer />

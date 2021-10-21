@@ -13,7 +13,6 @@ const announcementRoutes = require('./announcement')
 const reviewrRoutes = require('./review')
 const favouriteRoutes = require('./favourite')
 const mercadopagoRoutes = require('./mercadopago')
-const paymentRoutes = require('./payment');
 const pointsRoutes = require('./points');
 const auth = require("./auth")
 const emails = require("./sendMails.jsx")
@@ -24,7 +23,6 @@ router.use("/announcement", announcementRoutes);
 router.use("/review", reviewrRoutes);
 router.use("/favourites", favouriteRoutes);
 router.use("/mercadopago", mercadopagoRoutes);
-router.use('/mercadopago/payment', paymentRoutes);
 router.use('/points', pointsRoutes);
 router.use("/auth", auth);
 router.use("/mails", emails)
