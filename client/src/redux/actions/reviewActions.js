@@ -1,7 +1,7 @@
 import axios from "axios";
 import swal from "sweetalert";
 import * as types from "../types/reviewTypes";
-import { BASE_URL } from "../constants/urls";
+
 
 export function getAnnouncementReviews(id) {
   return async function (dispatch) {
@@ -28,12 +28,12 @@ export function createReview({ userId, announcementId, stars, description }) {
         stars,
         description,
       });
-      await axios.post(`/mails/reviewemail`, {
-        announcementId,
-        userId,
-        stars,
-        description,
-      });
+      // await axios.post(`${BASE_URL}/mails/reviewemail`, {
+      //   announcementId,
+      //   userId,
+      //   stars,
+      //   description,
+      // });
       await dispatch(getAnnouncementReviews(announcementId));
       return data.success ? swal(data.success) : swal(data.error);
     } catch (error) {

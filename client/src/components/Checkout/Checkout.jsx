@@ -7,6 +7,7 @@ import s from "./Checkout.module.css";
 import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
+import { Grid } from "@mui/material";
 
 export default function Checkout(/* { productos, data } */) {
   const [input, setInput] = useState({
@@ -64,9 +65,9 @@ export default function Checkout(/* { productos, data } */) {
           </form>
         </div>
       </div>
-      <div className={s.footerCheckout}>
+        <Grid> 
         <Footer />
-      </div>
+        </Grid>
     </div>
   );
 }

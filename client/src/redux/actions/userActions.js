@@ -14,7 +14,7 @@ export const postUser = (input) => {
         const { username, password, email } = input;
      
         const { data, request } = await axios.post(`/auth/login`, { username, password });
-        await axios.post(`/mails/confirmAuth`, {  username, email });
+        // await axios.post(`/mails/confirmAuth`, {  username, email });
         if (request.status === 200) {
           window.localStorage.setItem("user", JSON.stringify(data.token));
           window.location.href = '/';

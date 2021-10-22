@@ -39,10 +39,9 @@ const useStyles = makeStyles((theme) => ({
 const MyBookings = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const [currentId, setCurrentId] = useState(null);
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-
-  const token = window.localStorage.getItem("user");
 
   const userInfo = useSelector((state) => state.userReducer.details);
 
@@ -63,27 +62,20 @@ const MyBookings = () => {
   // console.log( ordersToUsers,"LO NUEVO");
   //   console.log(ordersToUser, "datos to user");
 
- 
-  useEffect(() => {    
-    return () => {   
+  useEffect(() => {
+    dispatch(getUserInfo());
+    first_Page();
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-    };      
-  },[selectedIndex]);
+  }, [userId,currentId]);
 
   useEffect(() => {
     return () => {
       dispatch(getUserOrders(userId));
       dispatch(getOrdersToUser(userId));
     };
-  }, [selectedIndex]);
-
-  useEffect(() => {
-    dispatch(getUserInfo());
-    first_Page();
-    dispatch(getUserOrders(userId));
-    dispatch(getOrdersToUser(userId));
-  }, [userId]);
+  }, [selectedIndex,currentId]);
+  
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -91,11 +83,21 @@ const MyBookings = () => {
   };
   //-----------------PAGINADO-----------------------------
   const [currentPage, setCurrentPage] = useState(0);
+  const filteredOrders =
+    selectedIndex === 0
+      ? ordersByUser?.slice(currentPage, currentPage + 3)
+      : ordersToUsers?.slice(currentPage, currentPage + 3);
 
   const next_Page = () => {
-    if (ordersByUser.length <= currentPage + 3) {
-      setCurrentPage(currentPage);
-    } else setCurrentPage(currentPage + 3);
+    if (selectedIndex === 0) {
+      if (ordersByUser.length <= currentPage + 3) {
+        setCurrentPage(currentPage);
+      } else setCurrentPage(currentPage + 3);
+    } else {
+      if (ordersToUsers.length <= currentPage + 3) {
+        setCurrentPage(currentPage);
+      } else setCurrentPage(currentPage + 3);
+    }
   };
   const prev_Page = () => {
     if (currentPage < 4) {
@@ -108,14 +110,16 @@ const MyBookings = () => {
     setCurrentPage(0);
   };
   const last_Page = () => {
-    setCurrentPage(ordersByUser.length - 3);
+    if(selectedIndex===0){
+     setCurrentPage(ordersByUser.length - 3); 
+    }else{
+      setCurrentPage(ordersToUsers.length - 3); 
+    }
+    
   };
 
-  const filteredOrders =
-    selectedIndex === 0
-      ? ordersByUser?.slice(currentPage, currentPage + 3)
-      : ordersToUsers?.slice(currentPage, currentPage + 3);
-
+  // console.log(ordersToUsers, "ordenes enviadas a Terri");
+  // console.log(ordersByUser, "ver diferencia");
   return (
     <Grid className="headerNav">
       <Grid item xs={12}>
@@ -164,6 +168,7 @@ const MyBookings = () => {
                       key={idKey}
                       orders={e}
                       userInfo={userInfo}
+                      handleUpdate={setCurrentId}
                       type="sent"
                     ></CardOrder>
                   ))
@@ -176,12 +181,13 @@ const MyBookings = () => {
                       orders={e}
                       userInfo={e.user}
                       type="received"
+                      handleUpdate={setCurrentId}
                     ></CardOrder>
                   ))
-                : "No hay ordenes")}
+                :    < h1>You have no orders</h1>)}
           </Grid>
           <div>
-            {filteredOrders.length === 0 ? null : filteredOrders?.length >=
+            {filteredOrders?.length === 0 ? null : filteredOrders?.length >=
               3 ? (
               <div className="arrow">
                 <button className="button" onClick={first_Page}>

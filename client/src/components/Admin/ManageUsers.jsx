@@ -34,7 +34,7 @@ const ManageUsers = ({ handleUpdate }) => {
 
   const handleChangeStatus = (e, params) => {
     e.stopPropagation();
-    const { id, isAdmin } = params.row;
+    const { id } = params.row;
     Swal.fire({
       title: "Do you want to change status of this user?",
       showDenyButton: true,

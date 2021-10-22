@@ -49,11 +49,11 @@ body {
   cursor: pointer;
 }
 
-.footerCheckout {
-  
-  bottom: 0;
-  width: 100vw;
-}
+/* .footerCheckout {
+  /* position: absolute; */
+  /* bottom: 0;
+  width: 100vw; */
+/* } */ 
 
 .pointInput {
   display: flex;
