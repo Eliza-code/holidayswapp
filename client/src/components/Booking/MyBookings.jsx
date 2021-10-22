@@ -67,7 +67,7 @@ const MyBookings = () => {
     first_Page();
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-  }, [userId]);
+  }, [userId,currentId]);
 
   useEffect(() => {
     return () => {
@@ -184,7 +184,7 @@ const MyBookings = () => {
                       handleUpdate={setCurrentId}
                     ></CardOrder>
                   ))
-                : "No hay ordenes")}
+                :    < h1>You have no orders</h1>)}
           </Grid>
           <div>
             {filteredOrders?.length === 0 ? null : filteredOrders?.length >=

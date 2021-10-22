@@ -207,34 +207,34 @@ router.post("/buypoints", async (req, res) => {
   }
 });
 
-router.post("/reviewemail", async (req, res) => {
-  const { userMail } = req.body;
+// router.post("/reviewemail", async (req, res) => {
+//   const { userMail } = req.body;
 
-  let transporter = nodemailer.createTransport({
-    host: "smtp.mail.yahoo.com",
-    port: 465,
-    secure: false,
-    service: "yahoo",
-    auth: {
-      user: USUARIO_EMAIL,
-      pass: PASSWORD_EMAIL_NODEMAILER,
-    },
-  });
+//   let transporter = nodemailer.createTransport({
+//     host: "smtp.mail.yahoo.com",
+//     port: 465,
+//     secure: false,
+//     service: "yahoo",
+//     auth: {
+//       user: USUARIO_EMAIL,
+//       pass: PASSWORD_EMAIL_NODEMAILER,
+//     },
+//   });
 
-  try {
-    let email = await transporter.sendMail({
-      from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
-      to: userMail,
-      subject: "online purchases",
-      text: "Thank you very much for trusting us, your review has already been published",
-      // html: "<div> si queres podes mandar html </div>",
-    });
-    console.log("email enviado!");
-    res.status(200).json(email);
-  } catch (error) {
-    res.status(500).send(error);
-  }
-});
+//   try {
+//     let email = await transporter.sendMail({
+//       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
+//       to: userMail,
+//       subject: "online purchases",
+//       text: "Thank you very much for trusting us, your review has already been published",
+//       // html: "<div> si queres podes mandar html </div>",
+//     });
+//     console.log("email enviado!");
+//     res.status(200).json(email);
+//   } catch (error) {
+//     res.status(500).send(error);
+//   }
+// });
 
 module.exports = router;
 
