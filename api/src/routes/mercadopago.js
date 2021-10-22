@@ -44,9 +44,9 @@ server.post('/', async (req, res) => {
       quantity: Number(quantity),
     }],
     back_urls: {
-      failure: `https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
-      success: `https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
-      pending: `https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      failure: `https://holidayswapp.herokuapp.com/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      success: `https://holidayswapp.herokuapp.com/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      pending: `https://holidayswapp.herokuapp.com/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
     },
   };
   mercadopago.preferences.create(preference)
