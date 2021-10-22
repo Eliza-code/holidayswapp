@@ -28,7 +28,7 @@ export function createReview({ userId, announcementId, stars, description }) {
         stars,
         description,
       });
-      // await axios.post(`${BASE_URL}/mails/reviewemail`, {
+      // await axios.post(`/mails/reviewemail`, {
       //   announcementId,
       //   userId,
       //   stars,
