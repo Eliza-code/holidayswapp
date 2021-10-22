@@ -67,7 +67,7 @@ const MyBookings = () => {
     first_Page();
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-  }, [userId]);
+  }, [userId,currentId]);
 
   useEffect(() => {
     return () => {
