@@ -84,6 +84,7 @@ router.post("/setAdmin", async (req, res, next) => {
         },
 
         attributes: ["id", "name", "username", "isAdmin"],
+        order:[['createdAt', 'DESC']]
       });
       if (userData) {
         userData.isAdmin = !userData.isAdmin;

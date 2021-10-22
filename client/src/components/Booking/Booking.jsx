@@ -5,13 +5,12 @@ import Header from "../Header/Header";
 import NavBar from "../NavBar/NavBar";
 import "../Booking/booking.css";
 import Footer from "../Footer/Footer";
-import { Field, Form, Formik } from "formik";
+import { Form, Formik } from "formik";
 import Button from "../FormUI/Button/index";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import {
-  Chip,
   Container,
   Divider,
   Grid,
