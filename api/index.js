@@ -27,7 +27,7 @@ const { getInfoPoints } = require("./src/utils/Points/pointsData")
 const { User } = require("./src/db");
 
 // Syncing all the models at once.
-conn.sync({ force: true
+conn.sync({ force: false
  }).then(async() => {
   await server.listen(3001, async () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
