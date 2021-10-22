@@ -1479,7 +1479,7 @@ let announcements = [
       "La vivienda es muy acogedora, cuidamos mucho la limpieza así como su equipación, encontrándose esta completamente equipada hasta el ultimo detalle para que puedas sentirte casi como en tu propio hogar",
   },
   {
-    userId: 37,
+    userId: 38,
     title: "MEMPHIS's House",
     owner: "MEMPHIS",
     country: "Netherlands",
@@ -1519,7 +1519,7 @@ let announcements = [
       " Wonderful place to stay on the ground floor half of a double house.",
   },
   {
-    userId: 38,
+    userId: 39,
     title: "DANY's House",
     owner: "DANY",
     country: "Netherlands",

@@ -461,6 +461,7 @@ const getInfoUsers = async () => {
         "I am Valeriia from Moscow, Russia, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //31
       username: "JESSE",
       profilePicture:
         "https://image.freepik.com/foto-gratis/joven-confiado_1098-20868.jpg",
@@ -476,6 +477,7 @@ const getInfoUsers = async () => {
         "I am Jesse from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //32
       username: "JOAN",
       profilePicture:
         "https://image.freepik.com/foto-gratis/tengo-excelente-idea-atractiva-mujer-alegre-pelo-rizado-levantar-dedo-indice-eureka-gesto-sonriendo-ampliamente-decision-tomada-pensar-buen-plan-compartir-pensamiento-sonriendo-emboscado-fondo-purpura_1258-56829.jpg",
@@ -491,6 +493,7 @@ const getInfoUsers = async () => {
         "I am Joan from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //33
       username: "MICK",
       profilePicture:
         "https://image.freepik.com/foto-gratis/retrato-joven-sonriente-gafas_171337-4842.jpg",
@@ -506,6 +509,7 @@ const getInfoUsers = async () => {
         "I am Mick from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //34
       username: "LAURIE",
       profilePicture:
         "https://image.freepik.com/foto-gratis/feliz-joven-sentada-suelo-ordenador-portatil-pared-gris_231208-11472.jpg",
@@ -521,6 +525,7 @@ const getInfoUsers = async () => {
         "I am Laurie from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //35
       username: "CARL",
       profilePicture:
         "https://image.freepik.com/foto-gratis/escuchar-musica-retrato-joven-caucasico-aislado-pared-azul-estudio_155003-40470.jpg",
@@ -536,6 +541,7 @@ const getInfoUsers = async () => {
         "I am Carl from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //36
       username: "MARIE",
       profilePicture:
         "https://image.freepik.com/foto-gratis/retrato-mujer-feliz-telefono-movil_171337-13105.jpg",
@@ -551,6 +557,7 @@ const getInfoUsers = async () => {
         "I am Marie from Miami, United States, I really like to travel and I would like to change houses with you",
     });
     await User.create({
+      //37
       username: "JUANA",
       profilePicture:
         "https://image.freepik.com/foto-gratis/chica_23-2148168127.jpg",
@@ -566,7 +573,7 @@ const getInfoUsers = async () => {
         "I am Juana from Madrid, Spain, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-      //3
+      //38
       username: "MEMPHIS",
       profilePicture:
         "https://image.freepik.com/foto-gratis/apuesto-joven-afroamericano-camiseta-caqui_176420-32046.jpg",
@@ -582,7 +589,7 @@ const getInfoUsers = async () => {
         "I am Memphis from Amsterdam, Netherlands, I really like to travel and I would like to change houses with you",
     });
     await User.create({
-      //3
+      //39
       username: "DANY",
       profilePicture:
         "https://image.freepik.com/foto-gratis/primer-disparo-hombre-guapo-sonriendo_181624-41237.jpg",
