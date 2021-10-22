@@ -27,7 +27,7 @@ export default function Checkout(/* { productos, data } */) {
     //console.log("input.quantity", input.quantity)
     //console.log("userId usuario logueado", userId)
    
-    axios.post(`http://localhost:3001/mercadopago`, { quantity, userId: userId })
+    axios.post(`https://holidayswapp.herokuapp.com/mercadopago`, { quantity, userId: userId })
       .then((response) => window.location = response.data)
       .catch((err) => console.log(err))
   }
