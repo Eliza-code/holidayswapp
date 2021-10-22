@@ -46,10 +46,11 @@ const Admin = () => {
           <ManageUsers handleUpdate={setCurrentId} />
         )}
       </Grid>
-      <div>
-      {/* <div style={{ bottom: 0, width: "100%", position: "absolute" }}> */}
-        <Footer />
-      </div>
+      <Grid item>
+          <Footer />
+      </Grid>
+      
+      
     </Grid>
   );
 };

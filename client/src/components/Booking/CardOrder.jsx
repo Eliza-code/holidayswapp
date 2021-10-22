@@ -15,9 +15,14 @@ import { makeStyles } from "@mui/styles";
 import CancelIcon from "@mui/icons-material/Cancel";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-import { updateOrderStatus } from "../../redux/actions/bookingActions";
+import {
+  getOrdersToUser,
+  getUserOrders,
+  updateOrderStatus,
+} from "../../redux/actions/bookingActions";
 import { useDispatch, useSelector } from "react-redux";
 import ReviewForm from "../Reviews/ReviewForm";
+import swal from "sweetalert";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -39,16 +44,32 @@ const useStyles = makeStyles((theme) => ({
 const CardOrder = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const { orders, userInfo, type } = props;
+  const { orders, userInfo, type, handleUpdate } = props;
+  // console.log(userInfo?.points);
+  // console.log(orders?.pointsOrder);
+
+  // console.log(userInfo.id,"mi id usuario")
 
   const handleOnclik = (newStatus, orderId) => {
     const data = { newStatus, orderId };
-    dispatch(updateOrderStatus(data));
+    if (newStatus !== "Completed") {
+      dispatch(updateOrderStatus(data));
+    } else {
+      const points = parseInt(userInfo?.points) - parseInt(orders?.pointsOrder);
+      console.log(points, "resta");
+      const pts = points * -1
+      points >= 0
+        ? dispatch(updateOrderStatus(data))
+        : swal({
+            title:
+              `Oops! You do not have enough points to complete the reservation.Try to buy ${pts} points!`,
+            icon: "warning",
+          });
+    }
+    handleUpdate(orderId)
   };
-  
-  useEffect(() => {
-    
-  }, [dispatch]);
+
+  useEffect(() => {}, []);
 
   // reviews
   const [open, setOpen] = useState(false);
@@ -63,16 +84,12 @@ const CardOrder = (props) => {
       <CardMedia
         component="img"
         height="140"
-        image={
-          userInfo === false
-            ? userInfo2.profilePicture
-            : userInfo.profilePicture
-        }
-        alt="green iguana"
+        image={userInfo.profilePicture}
+        alt="User Picture"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          {userInfo === false ? userInfo2.username : userInfo.username}
+          {userInfo.username}
         </Typography>
         <Typography gutterBottom variant="body2" color="text.secondary">
           {orders.description}
