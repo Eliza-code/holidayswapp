@@ -44,9 +44,9 @@ server.post('/', async (req, res) => {
       quantity: Number(quantity),
     }],
     back_urls: {
-      failure: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
-      success: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
-      pending: `http://localhost:3001/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      failure: `https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      success: `https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
+      pending: `https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
     },
   };
   mercadopago.preferences.create(preference)
@@ -132,7 +132,7 @@ server.get("/pagos", async (req, res) => {
         .then((_) => {
           console.info('redirect success')
 
-          return res.redirect(`https://holidayswapp-d704idfur-rojaseliza1491-gmailcom.vercel.app/?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`)
+          return res.redirect(`https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/paymentdetail?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`)
         })
         .catch((err) => {
           console.error('error al salvar', err)
