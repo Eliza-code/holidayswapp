@@ -39,15 +39,14 @@ export function postOrder(order) {
     return async function (dispatch) {
         try {
           const dato = await axios.post(`${BASE_URL}/order/addOrder`, order);
-          await axios.post(`${BASE_URL}/mails/reservationconfirmed`, order);
+          //await axios.post(`${BASE_URL}/mails/reservationconfirmed`, order);
           //console.log(dato)
           dispatch({
             type: types.POST_ORDER,
             payload: dato,
           });
         } catch (error) {
-          console.log(error);
-          alert("Order not created");
+          console.log(error);          
         }
     };
 }
@@ -63,8 +62,7 @@ export function updateOrderStatus(input) {
           });
          
         } catch (error) {
-          console.log(error);
-          alert("Not Updated");
+          console.log(error);         
         }
     };
 }

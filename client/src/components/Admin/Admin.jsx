@@ -39,16 +39,18 @@ const Admin = () => {
           {active ? "Manage users" : "Manage announcements"}
         </Button>
       </Grid>
-      <Grid item sx={{ height: 300 }}>
+      <Grid item sx={{ height: 500 }}>
         {active ? (
           <ManageAnnouncements handleUpdate={setCurrentId} />
         ) : (
           <ManageUsers handleUpdate={setCurrentId} />
         )}
       </Grid>
-      <div style={{ bottom: 0, width: "100%", position: "absolute" }}>
-        <Footer />
-      </div>
+      <Grid item>
+          <Footer />
+      </Grid>
+      
+      
     </Grid>
   );
 };

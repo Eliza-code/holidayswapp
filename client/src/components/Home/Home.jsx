@@ -17,7 +17,7 @@ const Home = () => {
   const history = useHistory();
 
   const user = useSelector((state) => state.userReducer.details);
-  const { isAdmin } = useSelector((state) => state.userReducer)
+  // const { isAdmin } = useSelector((state) => state.userReducer)
   //console.log('is admin', isAdmin);
 
   React.useEffect(() => {

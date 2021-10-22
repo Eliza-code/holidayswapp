@@ -1,13 +1,13 @@
-const { Order, User, Announcement} = require("../../db");
+const { Order, User, Announcement } = require("../../db");
 
 const howMuchDays = (arrivealDate, departureDate) => {
-  arrivealDate = arrivealDate.toString()
-  departureDate = departureDate.toString()
+  arrivealDate = arrivealDate.toString();
+  departureDate = departureDate.toString();
 
   let f1 = arrivealDate.split("T");
   let f2 = departureDate.split("T");
 
-   f1 = f1[0].split("-");
+  f1 = f1[0].split("-");
   f2 = f2[0].split("-");
 
   arrivealDate = Date.UTC(f1[0], f1[1], f1[2]);
@@ -26,26 +26,24 @@ module.exports = async (req, res) => {
     status,
     arrivealDate,
     departureDate,
-    type
+    type,
   } = req.body;
   
-  console.log( "*************createOrder: ", userId,
-    announcementId,
-    description,
-    status,
-    arrivealDate,
-    departureDate,
-    type)
-
-
 
   try {
     const user = await User.findByPk(userId);
     const announcement = await Announcement.findByPk(announcementId);
 
-    const days = howMuchDays(arrivealDate,departureDate)
-    const pointsOrder = parseInt(days) * parseInt(announcement.dataValues.points)
-    // console.log(pointsOrder)
+    let pointsOrder; 
+    if (type == "Pay with points") {
+      const days = howMuchDays(arrivealDate, departureDate);
+       pointsOrder =
+        parseInt(days) * parseInt(announcement.dataValues.points);
+    } else {
+      pointsOrder = 0;
+    }
+
+    
 
     if (!user) {
       throw new Error(`User with id: ${id} not found`);
@@ -57,21 +55,20 @@ module.exports = async (req, res) => {
       arrivealDate,
       departureDate,
       type,
-      pointsOrder: pointsOrder
+      pointsOrder: pointsOrder,
     };
 
     const order = await Order.create(newOrder);
-    
+
     await user.addOrder(order.id);
     await order.setUser(user.id);
 
     await announcement.addOrder(order.id);
     await order.setAnnouncement(announcement.id);
 
-    return res.status(201).send({orderId: order.id});
-
+    return res.status(201).send({ orderId: order.id });
   } catch (error) {
-    console.log(error)
+    console.log(error);
     // return res.status(409).send(error);
   }
 };

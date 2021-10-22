@@ -58,10 +58,7 @@ export default function HouseCard(props) {
         <CardMedia
           component="img"
           sx={{ height: 250 }}
-          image={
-            image &&
-            image[Math.floor(Math.random() * (image.length - 1 - 0) + 0)]
-          }
+          image={image[0]}
           alt={title}
         />
       </CardActionArea>

@@ -6,9 +6,6 @@ import Header from "../Header/Header";
 
 
 export const UserContext = createContext(null)
-console.log("UserContext", UserContext)
-
-
 
 export default function PaymentDetail() {
 
@@ -21,11 +18,12 @@ export default function PaymentDetail() {
 
   return (
     <div>
-      <Header />
+      <div className="headerNav">
+        <Header/>
+      </div>
       <div className='success'>
         <h2>Your purchase has been success!</h2>
       </div>
-
       <div className="detailDiv">
        <ul>
          <li>
@@ -47,12 +45,8 @@ export default function PaymentDetail() {
         <div className= 'congratulations'>
             <h2>Congratulations!   {quantityPayment} Points has been assigned in your account</h2>
         </div>
-        
-
         <h3 className='footerMail'>     We have sent an email to {emailUser} with more details</h3>
-
       </div>
-
     </div>
   );
 }

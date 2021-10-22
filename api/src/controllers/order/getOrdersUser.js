@@ -41,6 +41,7 @@ module.exports = async (req, res) => {
         model: User, // Usuario propietario de la casa a reservar
         attributes: ["id", "name", "username", "profilePicture"],
       },
+      order:[['createdAt', 'DESC']]
     });
 
     // console.log(orders)
