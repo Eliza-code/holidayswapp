@@ -11,7 +11,7 @@ const getInfoReviews = async () => {
     await Review.create({
       stars: 5,
       description:
-        "The apartment is very comfortable and beautiful. Excellent location",
+        "The house is very comfortable and beautiful. Excellent location",
       userId: 2,
       announcementId: 1,
     });

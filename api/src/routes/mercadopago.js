@@ -132,16 +132,16 @@ server.get("/pagos", async (req, res) => {
         .then((_) => {
           console.info('redirect success')
 
-          return res.redirect(`https://holidayswapp-l1rpswsum-rojaseliza1491-gmailcom.vercel.app/paymentdetail?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`)
+          return res.redirect(`holidayswapp.vercel.app/paymentdetail?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`)
         })
         .catch((err) => {
           console.error('error al salvar', err)
-          return res.redirect(`https://holidayswapp-d704idfur-rojaseliza1491-gmailcom.vercel.app/?error=${err}&where=al+salvar`)
+          return res.redirect(`holidayswapp.vercel.app/?error=${err}&where=al+salvar`)
         })
     })
     .catch(err => {
       console.error('error al buscar', err)
-      return res.redirect(`https://holidayswapp-d704idfur-rojaseliza1491-gmailcom.vercel.app/?error=${err}&where=al+buscar`)
+      return res.redirect(`holidayswapp.vercel.app/?error=${err}&where=al+buscar`)
     })
   //proceso los datos del pago 
   //redirijo de nuevo a react con mensaje de exito, falla o pendiente
