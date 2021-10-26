@@ -1,26 +1,23 @@
-const { Payment, Payment_detail, Points, User } = require('../db.js');
-const server = require('express').Router();
-const { transporter } = require( "../utils/emails/nodemailer" );
+const { Payment, Payment_detail, Points, User } = require("../db.js");
+const server = require("express").Router();
+const { transporter } = require("../utils/emails/nodemailer");
 
-// SDK de Mercado Pago
-const mercadopago = require('mercadopago');
+const mercadopago = require("mercadopago");
 
 const { ACCESS_TOKEN } = process.env;
 
-//Agrega credenciales
 mercadopago.configure({
-  access_token: ACCESS_TOKEN
+  access_token: ACCESS_TOKEN,
 });
 
-server.post('/', async (req, res) => {
-  
-  const { quantity, userId } = req.body
+server.post("/", async (req, res) => {
+  const { quantity, userId } = req.body;
   const id = 1;
   const price = 1;
-  const payment = await Payment.create({ userId: userId.id })
-  const pointsId = await Points.findByPk(id)
-  console.log("POINTS", pointsId)
-  const paymentId = payment.dataValues.id
+  const payment = await Payment.create({ userId: userId.id });
+  const pointsId = await Points.findByPk(id);
+  console.log("POINTS", pointsId);
+  const paymentId = payment.dataValues.id;
   const paymentDetail = await Payment_detail.create({
     paymentId: paymentId,
     pointId: pointsId.dataValues.id,
@@ -28,54 +25,53 @@ server.post('/', async (req, res) => {
     price: price,
   })
     .then((secondResponse) => {
-      //nos da el arreglo creado
       const quantity = secondResponse.dataValues.quantity;
       const pointId = secondResponse.dataValues.pointId;
       Points.decrement({ stock: quantity }, { where: { id: pointId } });
       User.increment({ points: quantity }, { where: { id: userId.id } });
-    }).catch((err) => next(err));
-
+    })
+    .catch((err) => next(err));
 
   let preference = {
-
-    items: [{
-      title: "Points",
-      unit_price: 1,
-      quantity: Number(quantity),
-    }],
+    items: [
+      {
+        title: "Points",
+        unit_price: 1,
+        quantity: Number(quantity),
+      },
+    ],
     back_urls: {
       failure: `https://holidayswapp.herokuapp.com/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
       success: `https://holidayswapp.herokuapp.com/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
       pending: `https://holidayswapp.herokuapp.com/mercadopago/pagos?paymentId=${paymentId}&quantity=${quantity}&userEmail=${userId.email}`,
     },
   };
-  mercadopago.preferences.create(preference)
+  mercadopago.preferences
+    .create(preference)
 
     .then(function (response) {
-      //trabajar con la respuesta de MP
-      console.log("response.body",response.body)
+      console.log("response.body", response.body);
       global.id = response.body.id;
-      res.send(response.body.init_point)
-    }).catch(function (error) {
+      res.send(response.body.init_point);
+    })
+    .catch(function (error) {
       console.log(error);
     });
+});
 
-})
-
-//Ruta que recibe la información del pago
 server.get("/pagos", async (req, res) => {
-  const{ paymentId, quantity, userEmail }= req.query
+  const { paymentId, quantity, userEmail } = req.query;
 
- console.info("EN LA RUTA PAGOS ", req)
-  const payment_id = req.query.payment_id
-  const payment_status = req.query.status
-  const merchant_order_id = req.query.merchant_order_id
-  const quantityP = req.query.quantity
-  const emailUser = req.query.userEmail
-  
-  console.log("payment_status ", payment_status)
-  console.log("emailUser ", userEmail)
-  if (payment_status === 'approved') {
+  console.info("EN LA RUTA PAGOS ", req);
+  const payment_id = req.query.payment_id;
+  const payment_status = req.query.status;
+  const merchant_order_id = req.query.merchant_order_id;
+  const quantityP = req.query.quantity;
+  const emailUser = req.query.userEmail;
+
+  console.log("payment_status ", payment_status);
+  console.log("emailUser ", userEmail);
+  if (payment_status === "approved") {
     let email = await transporter.sendMail({
       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
       to: userEmail,
@@ -115,55 +111,58 @@ server.get("/pagos", async (req, res) => {
 			</td>
 		</tr>
 	</table>
-       </div>`, 
+       </div>`,
     });
   } else {
-    console.log('El email no se envio')
+    console.log("El email no se envio");
   }
-  //Aquí edito el status de mi orden
+
   Payment.findByPk(paymentId)
     .then((order) => {
-      order.payment_status = payment_status
-      order.payment_id = payment_id
-      order.merchant_order_id = merchant_order_id
-      order.status = "completed"
-      console.info('Salvando order')
-      order.save()
+      order.payment_status = payment_status;
+      order.payment_id = payment_id;
+      order.merchant_order_id = merchant_order_id;
+      order.status = "completed";
+      console.info("Salvando order");
+      order
+        .save()
         .then((_) => {
-          console.info('redirect success')
+          console.info("redirect success");
 
-          return res.redirect(`https://holidayswapp.vercel.app/paymentdetail?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`)
+          return res.redirect(
+            `https://holidayswapp.vercel.app/paymentdetail?payment_status=${payment_status}&payment_id=${payment_id}&merchant_order_id=${merchant_order_id}&quantityPayment=${quantityP}&emailUser=${emailUser}`
+          );
         })
         .catch((err) => {
-          console.error('error al salvar', err)
-          return res.redirect(`https://holidayswapp.vercel.app/?error=${err}&where=al+salvar`)
-        })
+          console.error("error al salvar", err);
+          return res.redirect(
+            `https://holidayswapp.vercel.app/?error=${err}&where=al+salvar`
+          );
+        });
     })
-    .catch(err => {
-      console.error('error al buscar', err)
-      return res.redirect(`https://holidayswapp.vercel.app/?error=${err}&where=al+buscar`)
-    })
-  //proceso los datos del pago 
-  //redirijo de nuevo a react con mensaje de exito, falla o pendiente
-})
+    .catch((err) => {
+      console.error("error al buscar", err);
+      return res.redirect(
+        `https://holidayswapp.vercel.app/?error=${err}&where=al+buscar`
+      );
+    });
+});
 
-
-//Busco información de una orden de pago
 server.get("/pagos/:id", (req, res) => {
-  const mp = new mercadopago(ACCESS_TOKEN)
-  const id = req.params.id
-  console.info("Buscando el id", id)
-  mp.get(`/v1/payments/search`, { 'status': 'pending' }) //{"external_reference":id})
-    .then(resultado => {
-      console.info('resultado', resultado)
-      res.json({ "resultado": resultado })
+  const mp = new mercadopago(ACCESS_TOKEN);
+  const id = req.params.id;
+  console.info("Buscando el id", id);
+  mp.get(`/v1/payments/search`, { status: "pending" })
+    .then((resultado) => {
+      console.info("resultado", resultado);
+      res.json({ resultado: resultado });
     })
-    .catch(err => {
-      console.error('No se consulto:', err)
+    .catch((err) => {
+      console.error("No se consulto:", err);
       res.json({
-        error: err
-      })
-    })
-})
+        error: err,
+      });
+    });
+});
 
 module.exports = server;

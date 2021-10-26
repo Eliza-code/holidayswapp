@@ -1,9 +1,7 @@
-const { DataTypes } = require('sequelize');
-// Exportamos una funcion que define el modelo
-// Luego le injectamos la conexion a sequelize.
+const { DataTypes } = require("sequelize");
+
 module.exports = (sequelize) => {
-  // defino el modelo
-  sequelize.define('points', {
+  sequelize.define("points", {
     name: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -11,12 +9,12 @@ module.exports = (sequelize) => {
     price: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: 1
+      defaultValue: 1,
     },
     stock: {
       type: DataTypes.BIGINT,
       allowNull: false,
-      defaultValue: 1000000
+      defaultValue: 1000000,
     },
   });
 };

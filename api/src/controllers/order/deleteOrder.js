@@ -6,17 +6,17 @@ module.exports = async (req, res) => {
   try {
     const destroyQuery = {
       where: {
-        id: orderId
-      }
-    }
+        id: orderId,
+      },
+    };
 
-    if(force) {
+    if (force) {
       destroyQuery.force = true;
     }
 
     const deleted = await Order.destroy(destroyQuery);
 
-    if(!deleted) {
+    if (!deleted) {
       throw new Error(`Order with id: ${orderId} not found`);
     }
 

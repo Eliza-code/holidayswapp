@@ -47,10 +47,8 @@ const Admin = () => {
         )}
       </Grid>
       <Grid item>
-          <Footer />
+        <Footer />
       </Grid>
-      
-      
     </Grid>
   );
 };

@@ -1,5 +1,5 @@
-
-[{
+[
+  {
     "id": 1000320097,
     "nickname": "TETE2901978",
     "password": "qatest2015",
@@ -7,20 +7,20 @@
     "email": "test_user_27158900@testuser.com",
     "type": "seller",
     "credentials": {
-        "test" : {
-            "publickey": "TEST-267a575b-df33-4a57-8695-875f0f26fac7",
-            "accessToken":"TEST-7359461970731988-101414-d4fd943d93a9934ed1bcd14bffb60d93-1000320097"
-        },
-        "production" : {
-            "publickey": "APP_USR-b04fd341-1075-4a93-ae43-82c8c9ebe3c1",
-            "accessToken":"APP_USR-7359461970731988-101414-1c03a1662c5bad93e5111aa2557111fa-1000320097",
-            "clientId": 7359461970731988,
-            "clientSecret":"7yQvsYh5KZ0NlrWdLCGb92ewClkY5ugh"
-        }
+      "test": {
+        "publickey": "TEST-267a575b-df33-4a57-8695-875f0f26fac7",
+        "accessToken": "TEST-7359461970731988-101414-d4fd943d93a9934ed1bcd14bffb60d93-1000320097"
+      },
+      "production": {
+        "publickey": "APP_USR-b04fd341-1075-4a93-ae43-82c8c9ebe3c1",
+        "accessToken": "APP_USR-7359461970731988-101414-1c03a1662c5bad93e5111aa2557111fa-1000320097",
+        "clientId": 7359461970731988,
+        "clientSecret": "7yQvsYh5KZ0NlrWdLCGb92ewClkY5ugh"
+      }
     }
-},
+  },
 
-{
+  {
     "id": 1000344670,
     "nickname": "TESTESPV3SAX",
     "password": "qatest5709",
@@ -28,15 +28,16 @@
     "email": "test_user_79101709@testuser.com",
     "type": "buyer",
     "credentials": {
-        "test" : {
-            "publickey": "TEST-a6752d81-1b9f-4791-977f-b81947aae361",
-            "accessToken":"TEST-7237516771370513-101414-c1a4e31ed3247f8862cf5a9068a038ac-1000344670"
-        },
-        "production" : {
-            "publickey": "APP_USR-52a04901-7c60-4a9a-a47d-d90b11b77781",
-            "accessToken":"APP_USR-7237516771370513-101414-a1227587a2ee5fd99486e3f94763488f-1000344670",
-            "clientId": 7237516771370513,
-            "clientSecret":"ObefW8wl9yHWAdDfX6IZ2j48a1T6P7nU"
-        }
+      "test": {
+        "publickey": "TEST-a6752d81-1b9f-4791-977f-b81947aae361",
+        "accessToken": "TEST-7237516771370513-101414-c1a4e31ed3247f8862cf5a9068a038ac-1000344670"
+      },
+      "production": {
+        "publickey": "APP_USR-52a04901-7c60-4a9a-a47d-d90b11b77781",
+        "accessToken": "APP_USR-7237516771370513-101414-a1227587a2ee5fd99486e3f94763488f-1000344670",
+        "clientId": 7237516771370513,
+        "clientSecret": "ObefW8wl9yHWAdDfX6IZ2j48a1T6P7nU"
+      }
     }
-}]
+  }
+]

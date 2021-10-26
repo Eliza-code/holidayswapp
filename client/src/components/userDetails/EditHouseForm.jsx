@@ -15,29 +15,30 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
-import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
+import HighlightOffTwoToneIcon from "@mui/icons-material/HighlightOffTwoTone";
 import Swal from "sweetalert2";
-import {  updateHouseForm } from "../../redux/actions/userActions";
-import axios from 'axios';
+import { updateHouseForm } from "../../redux/actions/userActions";
+import axios from "axios";
 
 const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [images, setImages] = React.useState(house.image);
-  
 
-  const initialValues = {...house}
+  const initialValues = { ...house };
 
   const handleUpload = async (e) => {
-    try{
+    try {
       const files = e.target.files;
       const data = new FormData();
       for (let img of files) {
-        data.append('file', img);
-        data.append('upload_preset', 'holidayswapp');
-        const response = await axios.post("https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload", data)
-        setImages([...images, response.data.secure_url])
-        
+        data.append("file", img);
+        data.append("upload_preset", "holidayswapp");
+        const response = await axios.post(
+          "https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload",
+          data
+        );
+        setImages([...images, response.data.secure_url]);
       }
     } catch (err) {
       console.log(err);
@@ -47,39 +48,35 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
         text: "Upload failed. Please, try again",
       });
     }
-  }
+  };
   const handleDeleteImg = (elem) => {
-    setImages( images.filter( img => img !== elem))
-  }
+    setImages(images.filter((img) => img !== elem));
+  };
 
   const onSubmit = (values) => {
-    const input = { ...values, image: images }
+    const input = { ...values, image: images };
     Swal.fire({
-      title: 'Are you sure?',
-      icon: 'warning',
+      title: "Are you sure?",
+      icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes!'
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes!",
     }).then((result) => {
       if (result.isConfirmed) {
         dispatch(updateHouseForm(house.id, input));
-          Swal.fire(
-              'Your home has been updated!',
-              'success'
-          ).then(() => handleOpen(false))
+        Swal.fire("Your home has been updated!", "success").then(() =>
+          handleOpen(false)
+        );
       }
-    })
-    
+    });
   };
-  
 
   const formik = useFormik({
     initialValues,
     onSubmit,
   });
 
-  
   return (
     <div>
       <div>
@@ -98,15 +95,14 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
               autoComplete="off"
             >
               <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-              }}
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                  width: "100%",
+                }}
               >
                 <Button
-               
-                  sx={{ height: "2rem", width:"2rem", margin: 4}}
+                  sx={{ height: "2rem", width: "2rem", margin: 4 }}
                   variant="contained"
                   onClick={handleClose}
                 >
@@ -120,7 +116,6 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
                 >
                   Edit your home
                 </Typography>
-                
               </Box>
               <TextField
                 required
@@ -187,7 +182,7 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
                 value={formik.values.adress}
                 fullWidth
               />
-              
+
               <TextField
                 required
                 id="points"
@@ -254,19 +249,37 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
                 name="image"
                 type="file"
                 multiple
-                accept='image/*'
+                accept="image/*"
                 placeholder="Insert image"
                 onChange={(e) => handleUpload(e)}
               />
-              <Paper sx={{ display: 'flex', flexWrap:'wrap' , alignContent:'center', p:3, gap:2}} variant='outlined'>
-                {images?.map( (elem, i)  => (
+              <Paper
+                sx={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  alignContent: "center",
+                  p: 3,
+                  gap: 2,
+                }}
+                variant="outlined"
+              >
+                {images?.map((elem, i) => (
                   <div key={i}>
                     <IconButton
-                          style={{ position: "absolute", margin: 1, borderRadius: 10 }}
-                          onClick={() => handleDeleteImg(elem)}>
-                            <HighlightOffTwoToneIcon color="primary" />
-                        </IconButton>
-                    <img  src={elem} alt="Not found" style={{ width: 100, height: 100, borderRadius: 4 }}/>
+                      style={{
+                        position: "absolute",
+                        margin: 1,
+                        borderRadius: 10,
+                      }}
+                      onClick={() => handleDeleteImg(elem)}
+                    >
+                      <HighlightOffTwoToneIcon color="primary" />
+                    </IconButton>
+                    <img
+                      src={elem}
+                      alt="Not found"
+                      style={{ width: 100, height: 100, borderRadius: 4 }}
+                    />
                   </div>
                 ))}
               </Paper>
@@ -291,7 +304,7 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
                     label="Apartment"
                   />
                 </RadioGroup>
-              
+
                 <FormControlLabel
                   control={
                     <Checkbox
@@ -401,29 +414,29 @@ const AnnouncementUpdate = ({ house, handleOpen, handleClose }) => {
                 />
               </FormControl>
               <TextField
-                  id="arrivealDate"
-                  type="date"
-                  label = "Arrival Date"
-                  name="arrivealDate"
-                  inputProps={{
-                    min:  "2021-10-14"
-                  }}
-                  onChange={formik.handleChange}
-                  value={formik.values.arrivealDate}
-                  InputLabelProps={{ shrink: true }}
-                />
-                 <TextField
-                  id="departureDate"
-                  type="date"
-                  inputProps={{
-                    min:  "2021-10-14"
-                  }}
-                  label = "Departure Date"
-                  name="departureDate"
-                  onChange={formik.handleChange}
-                  value={formik.values.departureDate}
-                  InputLabelProps={{ shrink: true }}
-                />
+                id="arrivealDate"
+                type="date"
+                label="Arrival Date"
+                name="arrivealDate"
+                inputProps={{
+                  min: "2021-10-14",
+                }}
+                onChange={formik.handleChange}
+                value={formik.values.arrivealDate}
+                InputLabelProps={{ shrink: true }}
+              />
+              <TextField
+                id="departureDate"
+                type="date"
+                inputProps={{
+                  min: "2021-10-14",
+                }}
+                label="Departure Date"
+                name="departureDate"
+                onChange={formik.handleChange}
+                value={formik.values.departureDate}
+                InputLabelProps={{ shrink: true }}
+              />
               <Button
                 sx={{
                   marginTop: 5,

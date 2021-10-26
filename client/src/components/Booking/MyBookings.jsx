@@ -50,32 +50,24 @@ const MyBookings = () => {
   const ordersByUser = useSelector(
     (state) => state.bookingReducer.ordersByUser
   );
-  // const ordersByUser = data[0]?.orders;
-  // console.log(ordersByUser, "datos by user");
-  //console.log(ordersByUser, "byUser");
 
   const ordersToUsers = useSelector(
     (state) => state.bookingReducer.ordersToUser
   );
-  // const ordersToUsers = data2[1]?.orders;
-  //console.log(ordersToUsers, "toUser");
-  // console.log( ordersToUsers,"LO NUEVO");
-  //   console.log(ordersToUser, "datos to user");
 
   useEffect(() => {
     dispatch(getUserInfo());
     first_Page();
     dispatch(getUserOrders(userId));
     dispatch(getOrdersToUser(userId));
-  }, [userId,currentId]);
+  }, [userId, currentId]);
 
   useEffect(() => {
     return () => {
       dispatch(getUserOrders(userId));
       dispatch(getOrdersToUser(userId));
     };
-  }, [selectedIndex,currentId]);
-  
+  }, [selectedIndex, currentId]);
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -110,16 +102,13 @@ const MyBookings = () => {
     setCurrentPage(0);
   };
   const last_Page = () => {
-    if(selectedIndex===0){
-     setCurrentPage(ordersByUser.length - 3); 
-    }else{
-      setCurrentPage(ordersToUsers.length - 3); 
+    if (selectedIndex === 0) {
+      setCurrentPage(ordersByUser.length - 3);
+    } else {
+      setCurrentPage(ordersToUsers.length - 3);
     }
-    
   };
 
-  // console.log(ordersToUsers, "ordenes enviadas a Terri");
-  // console.log(ordersByUser, "ver diferencia");
   return (
     <Grid className="headerNav">
       <Grid item xs={12}>
@@ -174,17 +163,19 @@ const MyBookings = () => {
                   ))
                 : "No hay ordenes")}
             {selectedIndex === 1 &&
-              (filteredOrders?.length
-                ? filteredOrders.map((e, idKey) => (
-                    <CardOrder
-                      key={idKey}
-                      orders={e}
-                      userInfo={e.user}
-                      type="received"
-                      handleUpdate={setCurrentId}
-                    ></CardOrder>
-                  ))
-                :    < h1>You have no orders</h1>)}
+              (filteredOrders?.length ? (
+                filteredOrders.map((e, idKey) => (
+                  <CardOrder
+                    key={idKey}
+                    orders={e}
+                    userInfo={e.user}
+                    type="received"
+                    handleUpdate={setCurrentId}
+                  ></CardOrder>
+                ))
+              ) : (
+                <h1>You have no orders</h1>
+              ))}
           </Grid>
           <div>
             {filteredOrders?.length === 0 ? null : filteredOrders?.length >=

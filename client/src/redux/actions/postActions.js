@@ -2,18 +2,18 @@ import axios from "axios";
 import swal from "sweetalert";
 import * as types from "../types/postTypes";
 
-
 export function getHouses() {
-    return async function (dispatch) {
-      try {       
-        const json = await axios.get(`/announcement`)   
-        return dispatch({
-          type: types.GET_HOUSES, payload: json.data});
-      } catch (error) {
-        console.log(error);
-       
-      }
-    };
+  return async function (dispatch) {
+    try {
+      const json = await axios.get(`/announcement`);
+      return dispatch({
+        type: types.GET_HOUSES,
+        payload: json.data,
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
 }
 
 export function getHouseID(id) {
@@ -26,7 +26,6 @@ export function getHouseID(id) {
       });
     } catch (error) {
       console.log(error);
-     
     }
   };
 }
@@ -37,7 +36,7 @@ export function getHouseCity(city) {
       const json = await axios.get(`/announcement?name=${city}`);
       return dispatch({ type: types.GET_HOUSE_CITY, payload: json.data });
     } catch (error) {
-      console.log(error);      
+      console.log(error);
     }
   };
 }
@@ -49,7 +48,7 @@ export function clearPage() {
 export function postAnnouncements(input) {
   return async function (dispatch) {
     try {
-      const { request } = await axios.post(`/announcement`, input)
+      const { request } = await axios.post(`/announcement`, input);
       dispatch({ type: types.POST_ANNOUNCEMENT });
       if (request.status === 200) {
         window.location.href = "/profile";
@@ -79,7 +78,6 @@ export function orderByRating(payload) {
   };
 }
 export function filterBySleeps(payload) {
-  //console.log(payload);
   return {
     type: types.FILTER_BY_SLEEPS,
     payload,
@@ -92,11 +90,13 @@ export function filterByType(payload) {
   };
 }
 
-export function deleteAnnouncement(id){
+export function deleteAnnouncement(id) {
   return async function (dispatch) {
-    try{
-      const { request } = await axios.delete(`/announcement/deleteAnnouncement/${id}`)
-      if(request.status === 200 ){
+    try {
+      const { request } = await axios.delete(
+        `/announcement/deleteAnnouncement/${id}`
+      );
+      if (request.status === 200) {
         dispatch({ type: types.DELETE_ANNOUNCEMENT });
       } else {
         swal({
@@ -104,9 +104,8 @@ export function deleteAnnouncement(id){
           icon: "warning",
         });
       }
-    }catch (e) {
+    } catch (e) {
       console.error(e);
     }
-  }
+  };
 }
-

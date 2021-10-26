@@ -1,30 +1,9 @@
-
 const { Order, User, Announcement } = require("../../db");
-//const nodemailer = require("nodemailer");
-const { transporter } = require( "../../utils/emails/nodemailer" );
-
-// const { FRONT, GMAIL_APP_EMAIL } = process.env;
-
-
-// const howMuchDays = (arrivealDate, departureDate) => {
-//   arrivealDate = arrivealDate.toString();
-//   departureDate = departureDate.toString();
-
-//   const f1 = arrivealDate.split("-");
-//   const f2 = departureDate.split("-");
-
-//   arrivealDate = Date.UTC(f1[0], f1[1], f1[2]);
-//   departureDate = Date.UTC(f2[0], f2[1], f2[2]);
-
-//   const dif = departureDate - arrivealDate;
-//   var days = Math.floor(dif / (1000 * 60 * 60 * 24));
-//   return days;
-// };
+const { transporter } = require("../../utils/emails/nodemailer");
 
 module.exports = async (req, res) => {
   const { orderId, newStatus } = req.body;
 
-  //busco datos de la orden y usuario que la genero
   const order = await Order.findOne({
     where: {
       id: orderId,
@@ -32,7 +11,6 @@ module.exports = async (req, res) => {
     include: [User],
   });
 
-  //busco datos del anuncio a quien esta destinada la orden
   const announc = await Announcement.findOne({
     where: {
       id: order.dataValues.announcementId,
@@ -52,16 +30,13 @@ module.exports = async (req, res) => {
     } else {
       if (order.dataValues.type === "Pay with points") {
         console.log(order, "datos de orden");
-        // const days = howMuchDays(
-        //   order.dataValues.arrivealDate,
-        //   order.dataValues.departureDate
-        // );
-        // console.log(days, "dias de alquiler");
-        // const pointsOrder = days * announc.dataValues.points; //Hasta aca todo bien
-        // console.log(pointsOrder, "puntos");
 
         const userDecrPoints = await User.update(
-          { points: parseInt(order.user.dataValues.points) - parseInt(order.dataValues.pointsOrder) },
+          {
+            points:
+              parseInt(order.user.dataValues.points) -
+              parseInt(order.dataValues.pointsOrder),
+          },
           {
             where: {
               id: order.dataValues.userId,
@@ -74,22 +49,26 @@ module.exports = async (req, res) => {
             id: announc.dataValues.userId,
           },
         });
-        
+
         const userAddPoints = await User.update(
-          { points: parseInt(user2.dataValues.points) + parseInt(order.dataValues.pointsOrder) },
+          {
+            points:
+              parseInt(user2.dataValues.points) +
+              parseInt(order.dataValues.pointsOrder),
+          },
           {
             where: {
               id: announc.dataValues.userId,
             },
           }
         );
-        //Aca deberia mandar mail que los puntos fueron transferidos
+
         transporter.sendMail({
-              from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
-              to:  `${order.user.dataValues.email}, ${user2.dataValues.email}`,
-              subject: "Reservation",
-              //text: "The products are dispatched, Thank you!", // plain text body
-              html: `<div>
+          from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
+          to: `${order.user.dataValues.email}, ${user2.dataValues.email}`,
+          subject: "Reservation",
+
+          html: `<div>
               <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
 		<tr>
 			<td style="padding: 0">
@@ -123,8 +102,8 @@ module.exports = async (req, res) => {
 			</td>
 		</tr>
 	</table>
-              </div>`
-            });
+              </div>`,
+        });
 
         const [updated] = await Order.update(
           { status: newStatus },
@@ -146,22 +125,8 @@ module.exports = async (req, res) => {
       }
     }
 
-    // if(!updated) {
-    //   throw new Error(`Order ${orderId} not found / has not been modified`)
-    // }
-
-    //   transporter.sendMail({
-    //     from: `"On The Rocks" <${GMAIL_APP_EMAIL}>`, // sender address
-    //     to: order.user.email, // list of receivers
-    //     subject: "Order completed", // Subject line
-    //     text: "The products are dispatched, Thank you!", // plain text body
-    //     html: `<b>click on the link to see your order: <a href="${FRONT}/order/${orderId}"> HERE </a> </b>`, // html body
-    //   });
-    // }
-
     return res.status(200).send(`Order ${orderId} successfully updated`);
   } catch (error) {
-    console.log(error);
-    // return res.status(409).send(error);
+    return res.status(409).send(error);
   }
 };

@@ -7,12 +7,8 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 
   return (
     <Route {...rest}>
-        {isAuth ? (
-          <Component />
-        ) : (
-          <Redirect to="/signin" />
-        )}
-      </Route>     
+      {isAuth ? <Component /> : <Redirect to="/signin" />}
+    </Route>
   );
 };
 

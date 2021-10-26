@@ -10,13 +10,7 @@ import Button from "../FormUI/Button/index";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
-import {
-  Container,
-  Divider,
-  Grid,
-  Typography,
-  TextField,
-} from "@mui/material";
+import { Container, Divider, Grid, Typography, TextField } from "@mui/material";
 import Select from "../FormUI/Select/index";
 import Textfield from "../FormUI/Textfield/index";
 import * as Yup from "yup";
@@ -49,7 +43,7 @@ const initial_form_states = {
 const form_validation = Yup.object().shape({
   type: Yup.string().required("Required"),
   message: Yup.string(),
-  arrivealDate: Yup.date().required("Required"), //ver que tipo de dato le paso para que valide el de datepicker
+  arrivealDate: Yup.date().required("Required"),
   departureDate: Yup.date().required("Required"),
 });
 
@@ -60,7 +54,7 @@ const Booking = () => {
   const options = ["Reciprocal", "Pay with points"];
 
   const announInfo = useSelector((state) => state.postReducer.homeInfo);
-  //console.log(announInfo.id, "trayendo mi id de anuncio");
+
   const [value, setValue] = useState(announInfo.arrivealDate);
   const [value2, setValue2] = useState(value);
   const token = window.localStorage.getItem("user");
@@ -70,7 +64,7 @@ const Booking = () => {
     values.announcementId = announInfo.id;
     values.arrivealDate = value;
     values.departureDate = value2;
-    //console.log(values);
+
     dispatch(postOrder(values));
     history.push("/my-bookings");
   };
@@ -118,8 +112,8 @@ const Booking = () => {
                       name="arrivealDate"
                       label="Arrival Date"
                       value={value}
-                      minDate={new Date(announInfo.arrivealDate)} 
-                      maxDate={new Date(announInfo.departureDate)}                                           
+                      minDate={new Date(announInfo.arrivealDate)}
+                      maxDate={new Date(announInfo.departureDate)}
                       onChange={(newValue) => {
                         setValue(newValue);
                       }}
@@ -133,7 +127,7 @@ const Booking = () => {
                     <DatePicker
                       name="departureDate"
                       label="Departure Date"
-                      value={value2}                      
+                      value={value2}
                       minDate={new Date(value)}
                       maxDate={new Date(announInfo.departureDate)}
                       onChange={(newValue) => {

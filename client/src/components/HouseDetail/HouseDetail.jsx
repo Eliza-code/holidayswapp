@@ -38,16 +38,16 @@ export default function HomeID() {
   const dispatch = useDispatch();
   const history = useHistory();
   const { id } = useParams();
-  
+
   const homeDetailed = useSelector((state) => state.postReducer.homeInfo);
   const { isAuth } = useSelector((state) => state.userReducer);
   const user = useSelector((state) => state.userReducer.details);
-  
+
   React.useEffect(() => {
     dispatch(getUserInfo());
     dispatch(getHouseID(id));
   }, [dispatch, id]);
-  
+
   const handleBook = () => history.push("/booking");
 
   return (

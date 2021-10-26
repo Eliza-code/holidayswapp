@@ -2,7 +2,7 @@ import * as types from "../types/favouriteTypes";
 
 const initialState = {
   favourite: [],
-  filteredFavourite: [],
+
   actionFavourite: 0,
 };
 
@@ -11,37 +11,22 @@ const favouriteReducer = (state = initialState, action) => {
     case types.POST_FAVOURITE:
       return {
         ...state,
-        // favourite: action.payload,
-      }
+      };
 
-    // case types.GET_FAVOURITE:
-    //   return {
-    //     ...state,
-    //     favourite: action.payload,
-    //   };
-    // case types.GET_FAVOURITE_ID:
-    //   return {
-    //     ...state,
-    //     filteredFavourite: state.favourite.filter((e) =>
-    //       e.id.includes(action.payload)
-    //     ),
-    //   };
     case types.GET_FAVOURITE_ID:
       return {
         ...state,
-        favourite: action.payload        
+        favourite: action.payload,
       };
-    // case types.ADD_ANNOUNCEMENT_FAVOURITE:
-    //   return {
-    //     ...state,
-    //     favourite: state.favourite,
-    //   };
+
     case types.DELETE_FAVOURITE:
-      const filFavourite = state.favourite.filter(e =>e.id !== action.payload)
+      const filFavourite = state.favourite.filter(
+        (e) => e.id !== action.payload
+      );
       return {
         ...state,
         favourite: filFavourite,
-        actionFavourite: state.actionFavourite + 1
+        actionFavourite: state.actionFavourite + 1,
       };
     default:
       return state;

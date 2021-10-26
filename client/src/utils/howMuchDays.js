@@ -1,10 +1,6 @@
-
-//Recibe dos STRINGS de tipo 2021-01-01 y 2021-01-15 y calcula cuantos dias transcurren entre ambas fechas 
-//Retorna cantidad de dias
-
 export const howMuchDays = (arrivealDate, departureDate) => {
-  arrivealDate = arrivealDate.toString()
-  departureDate = departureDate.toString()
+  arrivealDate = arrivealDate.toString();
+  departureDate = departureDate.toString();
 
   const f1 = arrivealDate.split("-");
   const f2 = departureDate.split("-");

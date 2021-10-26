@@ -6,26 +6,18 @@ import MonetizationOn from "@mui/icons-material/MonetizationOn";
 
 const OrderByGpNight = ({ setCurrentPage, setOrder }) => {
   const dispatch = useDispatch();
-  const [type, setType] = React.useState('');
+  const [type, setType] = React.useState("");
 
   function handleSortPoints(e) {
     e.preventDefault();
     dispatch(orderByPoints(e.target.value));
     setCurrentPage(0);
     setType(e.target.value);
-    setOrder(e.target.value)  
+    setOrder(e.target.value);
   }
 
   return (
     <div>
-      {/* <select onChange={(e) => handleSortPoints(e)}>
-        <option disabled selected>
-          GP/Night
-        </option>
-        <option value="mayor">Higher</option>
-        <option value="menor">Lower</option>
-      </select> */}
-
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">
           <MonetizationOn sx={{ height: 40 }} />

@@ -55,7 +55,6 @@ router.get("/logout", (req, res, next) => {
   res.send("Logged out");
 });
 
-//Ruta para comprobar si un usuario es admin o no y hacer la Ruta de front privada para admin
 router.post("/admin", async (req, res, next) => {
   let { token } = req.body;
   try {
@@ -84,7 +83,7 @@ router.post("/setAdmin", async (req, res, next) => {
         },
 
         attributes: ["id", "name", "username", "isAdmin"],
-        order:[['createdAt', 'DESC']]
+        order: [["createdAt", "DESC"]],
       });
       if (userData) {
         userData.isAdmin = !userData.isAdmin;

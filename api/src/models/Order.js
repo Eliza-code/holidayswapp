@@ -13,28 +13,26 @@ module.exports = (sequelize) => {
     },
     status: {
       type: DataTypes.ENUM({
-        values: ["Pending", "Accepted" ,"Cancelled", "Completed"],
+        values: ["Pending", "Accepted", "Cancelled", "Completed"],
       }),
       allowNull: false,
-      // defaultValue: "Pending"
     },
     pointsOrder: {
       type: DataTypes.BIGINT,
-      // defaultValue: 0
     },
     arrivealDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
     },
     departureDate: {
       type: DataTypes.DATEONLY,
-      allowNull: false
+      allowNull: false,
     },
     type: {
-      type:DataTypes.ENUM({
-        values: ["Reciprocal" ,"Pay with points"],        
+      type: DataTypes.ENUM({
+        values: ["Reciprocal", "Pay with points"],
       }),
-      allowNull: false
-    }   
+      allowNull: false,
+    },
   });
 };

@@ -17,8 +17,6 @@ const Home = () => {
   const history = useHistory();
 
   const user = useSelector((state) => state.userReducer.details);
-  // const { isAdmin } = useSelector((state) => state.userReducer)
-  //console.log('is admin', isAdmin);
 
   React.useEffect(() => {
     dispatch(getUserInfo());
@@ -36,17 +34,17 @@ const Home = () => {
   return (
     <div>
       <div className="headerNav">
-        <Header/>
+        <Header />
         <NavBar />
       </div>
       <div className="citiesCards">
         {turisticCities.map((el, i) => (
-            <div key={i} className="cityCard">
-              <img src={el.image} alt="city" />
-              <button onClick={(e) => handleOnClick(e, el.name)}>
-                {el.name}
-              </button>
-            </div>
+          <div key={i} className="cityCard">
+            <img src={el.image} alt="city" />
+            <button onClick={(e) => handleOnClick(e, el.name)}>
+              {el.name}
+            </button>
+          </div>
         ))}
       </div>
       <div className="places">

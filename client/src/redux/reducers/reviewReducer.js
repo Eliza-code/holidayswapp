@@ -16,9 +16,9 @@ const reviewReducer = (state = initialState, action) => {
     case types.GET_USER_REVIEW:
       return {
         ...state,
-        userDetails: action.payload
-      }
-    
+        userDetails: action.payload,
+      };
+
     default:
       return state;
   }

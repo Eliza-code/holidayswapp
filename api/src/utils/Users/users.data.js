@@ -2,7 +2,7 @@ const { User } = require("../../db");
 const bcrypt = require("bcrypt");
 
 const getInfoUsers = async () => {
-  const hashedPassword = "Password123"
+  const hashedPassword = "Password123";
   try {
     await User.create({
       username: "TERRI",

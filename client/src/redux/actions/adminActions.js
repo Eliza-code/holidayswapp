@@ -3,7 +3,6 @@ import swal from "sweetalert";
 import Swal from "sweetalert2";
 import * as types from "../types/adminTypes";
 
-
 export function getAllUsers() {
   return async function (dispatch) {
     try {
@@ -21,9 +20,7 @@ export function getAllUsers() {
 export function deleteUser(id) {
   return async function (dispatch) {
     try {
-      const { request } = await axios.delete(
-        `/user/deleteUser/${id}`
-      );
+      const { request } = await axios.delete(`/user/deleteUser/${id}`);
       if (request.status === 200) {
         dispatch({ type: types.DELETE_USER });
       } else {
@@ -78,10 +75,10 @@ export function setNewAdmin(id) {
     try {
       const token = JSON.parse(window.localStorage.getItem("user"));
       if (token) {
-        const { data, request } = await axios.post(
-          `/auth/setAdmin`,
-          { token, idUser: id }
-        );
+        const { data, request } = await axios.post(`/auth/setAdmin`, {
+          token,
+          idUser: id,
+        });
         if (request.status === 200) {
           dispatch({
             type: types.ADMIN_CHANGE_STATUS_SUCCESS,
@@ -97,7 +94,6 @@ export function setNewAdmin(id) {
     } catch (e) {
       console.log(e);
       dispatch({ type: types.ADMIN_CHANGE_STATUS_FAILED });
-     
     }
   };
 }

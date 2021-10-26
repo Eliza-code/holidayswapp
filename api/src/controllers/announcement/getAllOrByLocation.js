@@ -3,7 +3,7 @@ const { Op } = require("sequelize");
 
 module.exports = async (req, res) => {
   const { name } = req.query;
-  //console.log(name);
+
   try {
     if (name) {
       const announcementLocation = await Announcement.findAll({
@@ -25,7 +25,7 @@ module.exports = async (req, res) => {
         include: {
           model: User,
           attributes: ["username"],
-        }
+        },
       });
       res.send(announcement);
     }

@@ -4,7 +4,7 @@ const initialState = {
   homeInfo: {},
   searchResults: [],
   houses: [],
-  allSearchResults: [],  
+  allSearchResults: [],
 };
 
 const postReducer = (state = initialState, action) => {
@@ -45,7 +45,7 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: sortedPoints,
       };
-    case types.ORDER_BY_RATING:      
+    case types.ORDER_BY_RATING:
       let sortedRating =
         action.payload === "mayor"
           ? state.searchResults.sort(function (a, b) {
@@ -60,12 +60,12 @@ const postReducer = (state = initialState, action) => {
         searchResults: sortedRating,
       };
     case types.FILTER_BY_SLEEPS:
-      const allResults = state.allSearchResults;      
+      const allResults = state.allSearchResults;
       const sleepsFiltered =
         action.payload === "All"
           ? allResults
           : allResults.filter((el) => {
-              return el.sleeps === (Number(action.payload));
+              return el.sleeps === Number(action.payload);
             });
 
       return {
@@ -84,12 +84,12 @@ const postReducer = (state = initialState, action) => {
         ...state,
         searchResults: typeFiltered,
       };
-    
-    case types.DELETE_ANNOUNCEMENT: 
+
+    case types.DELETE_ANNOUNCEMENT:
       return {
-        ...state
-      }
-   
+        ...state,
+      };
+
     default:
       return state;
   }

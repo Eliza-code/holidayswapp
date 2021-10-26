@@ -17,14 +17,13 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormLabel from "@mui/material/FormLabel";
 import Checkbox from "@mui/material/Checkbox";
 import CircularProgress from "@mui/material/CircularProgress";
-import HighlightOffTwoToneIcon from '@mui/icons-material/HighlightOffTwoTone';
+import HighlightOffTwoToneIcon from "@mui/icons-material/HighlightOffTwoTone";
 import { postAnnouncements } from "../../redux/actions/postActions";
 import { getUserInfo } from "../../redux/actions/userActions";
 import NavBar from "../NavBar/NavBar";
 import LocalizationProvider from "@mui/lab/LocalizationProvider";
 import DatePicker from "@mui/lab/DatePicker";
 import AdapterDateFns from "@mui/lab/AdapterDateFns";
-
 
 const AnnouncementCreation = () => {
   const dispatch = useDispatch();
@@ -66,7 +65,7 @@ const AnnouncementCreation = () => {
     arrivealDate: undefined,
     departureDate: undefined,
   };
-    
+
   const handleUpload = async (e) => {
     try {
       const files = e.target.files;
@@ -75,7 +74,10 @@ const AnnouncementCreation = () => {
         formData.append("file", img);
         formData.append("upload_preset", "holidayswapp");
         setLoading(true);
-        const { data } = await axios.post("https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload", formData);
+        const { data } = await axios.post(
+          "https://api.cloudinary.com/v1_1/dpqihpvhd/image/upload",
+          formData
+        );
         const file = data.secure_url;
         setImages((prevState) => [...prevState, file]);
         setLoading(false);
@@ -88,11 +90,11 @@ const AnnouncementCreation = () => {
         text: "Upload failed. Please, try again",
       });
     }
-  }
+  };
 
   const handleDeleteImg = (elem) => {
-    setImages((prevState) => prevState.filter((img) => img !== elem))
-  }
+    setImages((prevState) => prevState.filter((img) => img !== elem));
+  };
 
   const onSubmit = (values) => {
     const inputs = {
@@ -101,7 +103,7 @@ const AnnouncementCreation = () => {
       owner: user.username,
       arrivealDate: value,
       departureDate: value2,
-      image: images
+      image: images,
     };
     if (!images.length) {
       Swal.fire("Must contain an image");
@@ -118,9 +120,9 @@ const AnnouncementCreation = () => {
   });
 
   return (
-    <div >
+    <div>
       <div className="headerNav">
-        <Header /> 
+        <Header />
         <NavBar />
       </div>
       <div>
@@ -141,7 +143,7 @@ const AnnouncementCreation = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 "& .MuiTextField-root": { m: 2 },
-                "& input[type='number']": { width: "100%", height: 10 }
+                "& input[type='number']": { width: "100%", height: 10 },
               }}
               onSubmit={formik.handleSubmit}
               autoComplete="off"
@@ -355,22 +357,38 @@ const AnnouncementCreation = () => {
                     onChange={(e) => handleUpload(e)}
                   />
                 </div>
-                {
-                  images.length ? (
-                    <Paper sx={{ display: "flex", justifyContent: "center", flexWrap: "wrap", gap: 1, p: 3 }} variant="outlined">
-                      {images?.map((elem, idx) => (
-                        <div key={idx}>
+                {images.length ? (
+                  <Paper
+                    sx={{
+                      display: "flex",
+                      justifyContent: "center",
+                      flexWrap: "wrap",
+                      gap: 1,
+                      p: 3,
+                    }}
+                    variant="outlined"
+                  >
+                    {images?.map((elem, idx) => (
+                      <div key={idx}>
                         <IconButton
-                          style={{ position: "absolute", margin: 1, borderRadius: 10 }}
-                          onClick={() => handleDeleteImg(elem)}>
-                            <HighlightOffTwoToneIcon color="primary" />
+                          style={{
+                            position: "absolute",
+                            margin: 1,
+                            borderRadius: 10,
+                          }}
+                          onClick={() => handleDeleteImg(elem)}
+                        >
+                          <HighlightOffTwoToneIcon color="primary" />
                         </IconButton>
-                        <img src={elem} alt="Not found"  style={{ width: 150, height: 150, borderRadius: 4 }} />
+                        <img
+                          src={elem}
+                          alt="Not found"
+                          style={{ width: 150, height: 150, borderRadius: 4 }}
+                        />
                       </div>
-                      ))}
-                    </Paper>
-                  ) : null
-                }
+                    ))}
+                  </Paper>
+                ) : null}
                 {loading && <CircularProgress />}
               </Box>
               <Box
@@ -392,7 +410,6 @@ const AnnouncementCreation = () => {
                   onChange={formik.handleChange}
                 >
                   <FormControlLabel
-                  
                     value="House"
                     control={<Radio />}
                     label="House"
@@ -588,7 +605,6 @@ const AnnouncementCreation = () => {
           </Paper>
         </Container>
       </div>
-     
     </div>
   );
 };

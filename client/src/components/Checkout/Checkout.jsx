@@ -9,7 +9,7 @@ import NavBar from "../NavBar/NavBar";
 import Footer from "../Footer/Footer";
 import { Grid } from "@mui/material";
 
-export default function Checkout(/* { productos, data } */) {
+export default function Checkout() {
   const [input, setInput] = useState({
     quantity: "",
   });
@@ -21,17 +21,18 @@ export default function Checkout(/* { productos, data } */) {
   }, [dispatch]);
 
   const handleCheckout = (e) => {
-    let quantity = input.quantity
-    //console.log("input.quantity", input.quantity)
+    let quantity = input.quantity;
 
-    e.preventDefault()
-    //console.log("input.quantity", input.quantity)
-    //console.log("userId usuario logueado", userId)
-   
-    axios.post(`https://holidayswapp.herokuapp.com/mercadopago`, { quantity, userId: userId })
-      .then((response) => window.location = response.data)
-      .catch((err) => console.log(err))
-  }
+    e.preventDefault();
+
+    axios
+      .post(`https://holidayswapp.herokuapp.com/mercadopago`, {
+        quantity,
+        userId: userId,
+      })
+      .then((response) => (window.location = response.data))
+      .catch((err) => console.log(err));
+  };
 
   const handleChangeQuantity = (e) => {
     setInput({ [e.target.name]: e.target.value });
@@ -65,9 +66,9 @@ export default function Checkout(/* { productos, data } */) {
           </form>
         </div>
       </div>
-        <Grid> 
+      <Grid>
         <Footer />
-        </Grid>
+      </Grid>
     </div>
   );
 }

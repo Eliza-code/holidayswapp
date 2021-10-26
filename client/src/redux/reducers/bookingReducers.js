@@ -1,11 +1,11 @@
 import * as types from "../types/bookingTypes";
 
 const initialState = {
-    ordersByUser:[],
-    ordersToUser:[],
-    orders:{},
-    orderCreated:[],
-    orderUpdated:undefined
+  ordersByUser: [],
+  ordersToUser: [],
+  orders: {},
+  orderCreated: [],
+  orderUpdated: undefined,
 };
 
 const bookingReducer = (state = initialState, action) => {
@@ -15,18 +15,17 @@ const bookingReducer = (state = initialState, action) => {
         ...state,
         ordersByUser: action.payload,
       };
-      case types.GET_ORDERS_TO_USER:
+    case types.GET_ORDERS_TO_USER:
       return {
         ...state,
         ordersToUser: action.payload,
       };
-      case types.POST_ORDER:
+    case types.POST_ORDER:
       return {
         ...state,
         orderCreated: action.payload,
-        
       };
-      case types.UPDATE_ORDER_STATUS:
+    case types.UPDATE_ORDER_STATUS:
       return {
         ...state,
         orderUpdated: action.payload,

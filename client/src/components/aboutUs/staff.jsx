@@ -5,7 +5,6 @@ import eliza from "./imgs/eliza.jpg";
 import mauri from "./imgs/mauri.jpg";
 import sele from "./imgs/sele.jpg";
 
-
 const staff = [
   {
     name: "Elizabeth Lizcano Rojas",
@@ -46,7 +45,6 @@ const staff = [
     linkedin: "https://www.linkedin.com/in/selene-bruno-409ab0ba/",
     github: "https://github.com/selebruno",
   },
-
 ];
 
 export default staff;

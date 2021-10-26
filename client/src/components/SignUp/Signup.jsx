@@ -270,7 +270,6 @@ const Signup = () => {
                   value={formik.values.name}
                   onBlur={formik.handleBlur}
                   helperText={formik.errors.name}
-                  // InputLabelProps={{ shrink: true }}
                 />
 
                 <TextField
@@ -287,7 +286,6 @@ const Signup = () => {
                   value={formik.values.lastName}
                   onBlur={formik.handleBlur}
                   helperText={formik.errors.lastName}
-                  // InputLabelProps={{ shrink: true }}
                 />
               </div>
 
@@ -307,7 +305,6 @@ const Signup = () => {
                   helperText={
                     formik.touched.phoneNumber && formik.errors.phoneNumber
                   }
-                  // InputLabelProps={{ shrink: true }}
                 />
 
                 <TextField
@@ -341,7 +338,6 @@ const Signup = () => {
                   name="nacionality"
                   label="Nacionality"
                   options={nationalities}
-                  // InputLabelProps={{ shrink: true }}
                   onChange={(e, value) =>
                     formik.setFieldValue("nacionality", value)
                   }

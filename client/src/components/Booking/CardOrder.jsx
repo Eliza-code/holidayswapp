@@ -45,10 +45,6 @@ const CardOrder = (props) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { orders, userInfo, type, handleUpdate } = props;
-  // console.log(userInfo?.points);
-  // console.log(orders?.pointsOrder);
-
-  // console.log(userInfo.id,"mi id usuario")
 
   const handleOnclik = (newStatus, orderId) => {
     const data = { newStatus, orderId };
@@ -57,27 +53,24 @@ const CardOrder = (props) => {
     } else {
       const points = parseInt(userInfo?.points) - parseInt(orders?.pointsOrder);
       console.log(points, "resta");
-      const pts = points * -1
+      const pts = points * -1;
       points >= 0
         ? dispatch(updateOrderStatus(data))
         : swal({
-            title:
-              `Oops! You do not have enough points to complete the reservation.Try to buy ${pts} points!`,
+            title: `Oops! You do not have enough points to complete the reservation.Try to buy ${pts} points!`,
             icon: "warning",
           });
     }
-    handleUpdate(orderId)
+    handleUpdate(orderId);
   };
 
   useEffect(() => {}, []);
 
-  // reviews
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const userInfo2 = useSelector((state) => state.userReducer.ownerDetails);
-  //console.log(userInfo2, "mi usuario real");
 
   return (
     <Card className={classes.cards} sx={{ maxWidth: 200 }}>

@@ -17,25 +17,23 @@
 //     =====`-.____`.___ \_____/___.-`___.-'=====
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-const server = require('./src/app.js');
-const { conn } = require('./src/db.js');
-const { getInfoAnnoun } = require("./src/utils/Announcements/preload/announcements.preload")
-const { getInfoUsers } = require("./src/utils/Users/users.data")
-const { getInfoReviews} = require("./src/utils/Reviews/reviews.data")
-const { getInfoOrders } = require("./src/utils/Orders/orders.data")
-const { getInfoPoints } = require("./src/utils/Points/pointsData")
-const { User } = require("./src/db");
-require('dotenv').config();
+const server = require("./src/app.js");
+const { conn } = require("./src/db.js");
 const {
-  PORT,
-} = process.env;
+  getInfoAnnoun,
+} = require("./src/utils/Announcements/preload/announcements.preload");
+const { getInfoUsers } = require("./src/utils/Users/users.data");
+const { getInfoReviews } = require("./src/utils/Reviews/reviews.data");
+const { getInfoOrders } = require("./src/utils/Orders/orders.data");
+const { getInfoPoints } = require("./src/utils/Points/pointsData");
+const { User } = require("./src/db");
+require("dotenv").config();
+const { PORT } = process.env;
 
-// Syncing all the models at once.
-conn.sync({ force: false }).then(async() => {
+conn.sync({ force: false }).then(async () => {
   await server.listen(PORT, async () => {
-    console.log(`%s listening at ${PORT}`); // eslint-disable-line no-console
+    console.log(`%s listening at ${PORT}`);
 
-    //PUSE UNA CONDICION ASI CARGA SOLO SI ESTA VACIA LA DB ---> YAMILA
     const dbdata = await User.findAll();
     if (dbdata.length === 0) {
       try {

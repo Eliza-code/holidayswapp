@@ -46,7 +46,9 @@ export default function UserDetails() {
   const handleCloseHouse = () => setOpenHouse(false);
 
   return (
-    <div style={{ background: "linear-gradient(90deg, #4b6cb7 0%, #182848 100%)" }}>
+    <div
+      style={{ background: "linear-gradient(90deg, #4b6cb7 0%, #182848 100%)" }}
+    >
       <div className="headerNav">
         <Header />
         <NavBar />
@@ -222,7 +224,13 @@ export default function UserDetails() {
                 <Typography variant="h5" color="text.primary">
                   <b>My places</b>
                 </Typography>
-                <Box display="flex"  flexWrap="wrap" justifyContent="center" gap={5} mb={5}>
+                <Box
+                  display="flex"
+                  flexWrap="wrap"
+                  justifyContent="center"
+                  gap={5}
+                  mb={5}
+                >
                   {ownerHouses?.length ? (
                     ownerHouses.map((house, idx) => (
                       <HouseCard

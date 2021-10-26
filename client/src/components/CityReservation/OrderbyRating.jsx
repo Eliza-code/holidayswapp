@@ -2,36 +2,22 @@ import { FormControl, InputLabel, MenuItem, Select } from "@mui/material";
 import React from "react";
 import { useDispatch } from "react-redux";
 import { orderByRating } from "../../redux/actions/postActions";
-import StarRateIcon from '@mui/icons-material/StarRate';
+import StarRateIcon from "@mui/icons-material/StarRate";
 
 const OrderByRating = ({ setCurrentPage, setOrder }) => {
   const dispatch = useDispatch();
-  const [type, setType] = React.useState('');
+  const [type, setType] = React.useState("");
 
   function handleSortRating(e) {
     e.preventDefault();
     dispatch(orderByRating(e.target.value));
     setCurrentPage(0);
     setType(e.target.value);
-    setOrder(e.target.value)  
+    setOrder(e.target.value);
   }
 
   return (
     <div>
-      
-      {/* <select
-        onChange={(e) => {
-          handleSortRating(e);
-        }}
-      >
-        <option disabled selected>
-          Rating
-        </option>
-        <option value="mayor">Higher</option>
-        <option value="menor">Lower</option>
-      </select> */}
-
-
       <FormControl sx={{ m: 1, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">
           <StarRateIcon sx={{ height: 40 }} />
@@ -45,13 +31,12 @@ const OrderByRating = ({ setCurrentPage, setOrder }) => {
         >
           <MenuItem value="" disabled={true}>
             <em>Rating</em>
-          </MenuItem>          
+          </MenuItem>
           <MenuItem value="All">All</MenuItem>
           <MenuItem value="mayor">Higher</MenuItem>
           <MenuItem value="menor">Lower</MenuItem>
         </Select>
       </FormControl>
-
     </div>
   );
 };

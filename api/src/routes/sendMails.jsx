@@ -6,8 +6,6 @@ router.use(express.json());
 require("dotenv").config();
 const { PASSWORD_EMAIL_NODEMAILER, USUARIO_EMAIL } = process.env;
 const { User, Announcement } = require("../db");
-//import  navbar  from '../utils/pictures/navbar.jpg'
-//import footer from '../utils/pictures/footer.jpg'
 
 router.post("/confirmAuth", async (req, res) => {
   const { username, email } = req.body;
@@ -27,7 +25,7 @@ router.post("/confirmAuth", async (req, res) => {
       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
       to: email,
       subject: "User Creation",
-      //text: "Welcome, the user has been created successfully!",
+
       html: `<div>
       <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
       <tr>
@@ -98,7 +96,7 @@ router.post("/reservationconfirmed", async (req, res) => {
       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
       to: `${user.email}, ${userOwner.email}`,
       subject: "Reservation",
-      //text: "Hi! Your reservation has been confirmed!",
+
       html: `<div>
        <table style="max-width: 600px; padding: 10px; margin:0 auto; border-collapse: collapse;">
 		<tr>
@@ -207,54 +205,4 @@ router.post("/buypoints", async (req, res) => {
   }
 });
 
-// router.post("/reviewemail", async (req, res) => {
-//   const { userMail } = req.body;
-
-//   let transporter = nodemailer.createTransport({
-//     host: "smtp.mail.yahoo.com",
-//     port: 465,
-//     secure: false,
-//     service: "yahoo",
-//     auth: {
-//       user: USUARIO_EMAIL,
-//       pass: PASSWORD_EMAIL_NODEMAILER,
-//     },
-//   });
-
-//   try {
-//     let email = await transporter.sendMail({
-//       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',
-//       to: userMail,
-//       subject: "online purchases",
-//       text: "Thank you very much for trusting us, your review has already been published",
-//       // html: "<div> si queres podes mandar html </div>",
-//     });
-//     console.log("email enviado!");
-//     res.status(200).json(email);
-//   } catch (error) {
-//     res.status(500).send(error);
-//   }
-// });
-
 module.exports = router;
-
-// let transporter = nodemailer.createTransport({
-//   host: "smtp.mail.yahoo.com",
-//   port: 465,
-//   secure: false, // upgrade later with STARTTLS
-//   service: "yahoo",
-//   auth: {
-//     user: "henry.pg@yahoo.com",
-//     pass: PASSWORD_EMAIL_NODEMAILER, //acá va el password del correo. no es el que usas para loguearte, hay que crear un password para aplicaciones
-
-//     password generado : gcvxmmrjdvpoomvf
-//   },
-// });
-
-// let email = await transporter.sendMail({
-//   from: '"henry ecommerce" <henry.pg@yahoo.com>', // sender address
-//   to: user_email, // list of receivers
-//   subject: "aca va el subject",
-//   text: "Acá va el cuerpo del email", // plain text body
-//   // html: "<div> si queres podes mandar html </div>",
-// });

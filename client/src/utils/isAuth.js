@@ -18,7 +18,10 @@ export const userAuth = () => {
           window.localStorage.removeItem("userInfo");
           return false;
         } else if (response.request.status === 200) {
-          window.localStorage.setItem("userInfo", JSON.stringify(response.data));
+          window.localStorage.setItem(
+            "userInfo",
+            JSON.stringify(response.data)
+          );
           return true;
         }
       })
