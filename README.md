@@ -40,4 +40,4 @@ ACCESS_TOKEN=MercadoPago's Access Token
 PASSWORD_EMAIL_NODEMAILER=Nodemailer's password
 USUARIO_EMAIL=Nodemailer's user email
 ```
-You can check out our webpage in the following link: holidayswapp.vercel.app
+You can check out our webpage in the following link: https://holidayswapp.vercel.app/
