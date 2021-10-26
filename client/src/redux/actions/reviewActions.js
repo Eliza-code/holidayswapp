@@ -11,8 +11,6 @@ export function getAnnouncementReviews(id) {
           type: types.GET_ANNOUNCEMENT_REVIEW,
           payload: response.data,
         });
-      } else {
-        console.log("rompi todo");
       }
     } catch (e) {
       console.error(e);

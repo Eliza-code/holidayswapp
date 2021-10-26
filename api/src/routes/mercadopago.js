@@ -16,7 +16,7 @@ server.post("/", async (req, res) => {
   const price = 1;
   const payment = await Payment.create({ userId: userId.id });
   const pointsId = await Points.findByPk(id);
-  console.log("POINTS", pointsId);
+
   const paymentId = payment.dataValues.id;
   const paymentDetail = await Payment_detail.create({
     paymentId: paymentId,
@@ -50,7 +50,7 @@ server.post("/", async (req, res) => {
     .create(preference)
 
     .then(function (response) {
-      console.log("response.body", response.body);
+  
       global.id = response.body.id;
       res.send(response.body.init_point);
     })
@@ -69,8 +69,7 @@ server.get("/pagos", async (req, res) => {
   const quantityP = req.query.quantity;
   const emailUser = req.query.userEmail;
 
-  console.log("payment_status ", payment_status);
-  console.log("emailUser ", userEmail);
+ 
   if (payment_status === "approved") {
     let email = await transporter.sendMail({
       from: '"HolidaySwApp" <holidayswapp@yahoo.com>',

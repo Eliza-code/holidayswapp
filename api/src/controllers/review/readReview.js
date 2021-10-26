@@ -12,7 +12,6 @@ module.exports = async (req, res, next) => {
       throw new Error("Insufficient data");
     }
   } catch (err) {
-    console.log(err);
     return res.send({ error: err.message }).status(409);
   }
 };

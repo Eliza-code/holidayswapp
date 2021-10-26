@@ -47,7 +47,7 @@ export function updateOrderStatus(input) {
   return async function (dispatch) {
     try {
       const data = await axios.post(`/order/updateOrderStatus`, input);
-      console.log(data);
+      
       dispatch({
         type: types.UPDATE_ORDER_STATUS,
         payload: data,

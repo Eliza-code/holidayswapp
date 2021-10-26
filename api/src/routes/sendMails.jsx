@@ -9,7 +9,7 @@ const { User, Announcement } = require("../db");
 
 router.post("/confirmAuth", async (req, res) => {
   const { username, email } = req.body;
-  console.log("emailInBack: ", email, username);
+
   let transporter = await nodemailer.createTransport({
     host: "smtp.mail.yahoo.com",
     port: 465,
@@ -56,24 +56,15 @@ router.post("/confirmAuth", async (req, res) => {
         </table>
       </div>`,
     });
-    console.log("email enviado!");
+
     res.status(200).json(sendEmail);
   } catch (error) {
     res.status(500).send(error);
-    console.log(error);
   }
 });
 
 router.post("/reservationconfirmed", async (req, res) => {
-  const {
-    userId,
-    announcementId,
-    description,
-    status,
-    arrivealDate,
-    departureDate,
-    type,
-  } = req.body;
+  const { userId, announcementId } = req.body;
   const user = await User.findByPk(userId);
   const annuncement = await Announcement.findByPk(announcementId);
   const userOwner = await User.findOne({
@@ -133,11 +124,10 @@ router.post("/reservationconfirmed", async (req, res) => {
 	</table>
        </div>`,
     });
-    console.log("email enviado!");
+
     res.status(200).json(email);
   } catch (error) {
     res.status(500).send(error);
-    console.log("500", error);
   }
 });
 
@@ -198,7 +188,7 @@ router.post("/buypoints", async (req, res) => {
 	</table>
        </div>`,
     });
-    console.log("email enviado!");
+
     res.status(200).json(email);
   } catch (error) {
     res.status(500).send(error);

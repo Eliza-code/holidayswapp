@@ -52,7 +52,7 @@ const CardOrder = (props) => {
       dispatch(updateOrderStatus(data));
     } else {
       const points = parseInt(userInfo?.points) - parseInt(orders?.pointsOrder);
-      console.log(points, "resta");
+
       const pts = points * -1;
       points >= 0
         ? dispatch(updateOrderStatus(data))

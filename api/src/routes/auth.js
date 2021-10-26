@@ -64,7 +64,7 @@ router.post("/admin", async (req, res, next) => {
     });
     isAdmin ? res.json(true) : res.json(false);
   } catch (error) {
-    console.log(error);
+    res.json(error.message);
   }
 });
 

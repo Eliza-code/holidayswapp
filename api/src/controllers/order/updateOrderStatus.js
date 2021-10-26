@@ -29,7 +29,7 @@ module.exports = async (req, res) => {
       );
     } else {
       if (order.dataValues.type === "Pay with points") {
-        console.log(order, "datos de orden");
+       
 
         const userDecrPoints = await User.update(
           {

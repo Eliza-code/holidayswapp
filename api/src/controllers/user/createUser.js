@@ -3,7 +3,7 @@ const bcrypt = require("bcrypt");
 
 module.exports = async (req, res, next) => {
   let user = req.body;
-  console.log(user);
+
 
   try {
     if (typeof user.password === "undefined" || user.password.length < 8) {
